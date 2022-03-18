@@ -1,0 +1,31 @@
+﻿@model   List<ChoixSejour.Models.Sejour>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Lieu</th>
+            <th>Telephone</th>
+        </tr>
+        @foreach(var sejour in Model)
+        {
+        <tr>
+            <td>@sejour.Id</td>
+            <td>@sejour.Lieu</td>
+            <td>@sejour.Telephone</td>
+        </tr>
+        }
+    </table>
+   
+</body>
+</html>
