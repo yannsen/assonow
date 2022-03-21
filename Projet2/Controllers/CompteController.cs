@@ -61,9 +61,6 @@ namespace Projet2.Controllers
             ViewBag.Legend = "Modification du compte";
             if (ModelState.IsValid)
             {
-                viewModel.Member.Id = Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-                viewModel.Address.Id = _bddContext.Member.Find(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier))).AddressId;
-                viewModel.Member.Role = _bddContext.Member.Find(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier))).Role;
                 memberService.ModifyMember(viewModel);
                 return View(viewModel);
             }

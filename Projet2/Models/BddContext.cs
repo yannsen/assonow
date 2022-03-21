@@ -12,7 +12,7 @@ namespace Projet2.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=311009;database=projet2;");
+            optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=projet2;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
