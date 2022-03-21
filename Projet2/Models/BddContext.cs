@@ -10,6 +10,8 @@ namespace Projet2.Models
         public DbSet<Association> Association { get; set; }
         public DbSet<AssociationMember> AssociationMember { get; set; }
 
+        public DbSet<AssociationEvent> AssociationEvent { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=projet2;");

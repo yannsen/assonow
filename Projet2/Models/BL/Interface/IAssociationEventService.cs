@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Projet2.ViewModels;
+using System;
 
 namespace Projet2.Models.BL.Interface
 {
-    public interface IAssociationEventService : IDisposable
+    public interface IAssociationEventService // : IDisposable
     {
-        public int CreateAssociationEvent(DateTime date, int ticketNumber, string eventType, string speakers, string artists, int addressId, int associationId);
-        public void ModifyAssociationEvent(int associationEventId);
+        public int CreateAssociationEvent(AssociationEventInfoViewmodel viewModel);
+        public void ModifyAssociationEvent(AssociationEventInfoViewmodel viewModel);
         public void DeleteAssociationEvent(int associationEventId);
     }
 }

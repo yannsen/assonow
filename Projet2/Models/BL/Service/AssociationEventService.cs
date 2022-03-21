@@ -1,6 +1,7 @@
 ﻿using Projet2.Models.BL.Interface;
 using System;
 using Projet2.ViewModels;
+using Microsoft.AspNetCore.Authentication;
 
 namespace Projet2.Models.BL.Service
 {
@@ -8,11 +9,35 @@ namespace Projet2.Models.BL.Service
     {
         private BddContext _bddContext;
          private IAddressService addressService;
-        public int CreateAssociationEvent (DateTime date, int ticketNumber, string eventType, string speakers, string artists, int addressId, int associationId)
+        //AuthenticationService = new AuthentificationService();
+        public int CreateAssociationEvent (AssociationEventInfoViewmodel viewModel)
         {
             int idAddress = addressService.CreateAddress(viewModel.Address);
-            viewModel.Member.AddressId = idAddress;
-            return 
+            viewModel.AssociationEvent.AddressId = idAddress;
+            //viewModel.Member.Role = "Representant";
+            _bddContext.AssociationEvent.Add(viewModel.AssociationEvent);
+            _bddContext.SaveChanges();
+            return viewModel.AssociationEvent.AssociationId;
         }
+
+        public void ModifyAssociationEvent(AssociationEventInfoViewmodel viewModel)
+        {
+          addressService.ModifyAddress(viewModel.Address);
+          _bddContext.AssociationEvent.Update(viewModel.AssociationEvent);
+          _bddContext.SaveChanges();
+
+        }
+        public void DeleteAssociationEvent(int associationEventId)
+        {
+            AssociationEvent associationEvent = _bddContext.AssociationEvent.Find(associationEventId);
+            if (associationEvent != null)
+            {
+                addressService.DeleteAddress(associationEvent.AddressId);
+                _bddContext.AssociationEvent.Remove(associationEvent);
+            }
+        }
+
+
+
     }
 }

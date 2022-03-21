@@ -4,6 +4,7 @@ namespace Projet2.Models
 {
     public class AssociationEvent
     {
+        public int Id { get; set; }
         public DateTime Date { get; set; }
         public int TicketNumber { get; set; }
         public string EventType { get; set; }
