@@ -1,0 +1,8 @@
+﻿@model Projet2.ViewModels.AssociationInfoViewModel
+
+@{
+    ViewBag.title = "Création d'association";
+    Layout = "_Layout";
+}
+
+@await Html.PartialAsync("CreationModificationAssociationForm", @Model)
