@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Linq;
 using Projet2.Models.BL.Interface;
 using Projet2.Models.BL.Service;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Projet2.Controllers
 {
@@ -21,6 +22,7 @@ namespace Projet2.Controllers
             this._bddContext = new BddContext();
         }
 
+        [Authorize]
         public IActionResult Inscrire()
         {
             AssociationInfoViewModel viewModel = new AssociationInfoViewModel();
@@ -28,6 +30,7 @@ namespace Projet2.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Inscrire(AssociationInfoViewModel viewModel)
         {
             if (ModelState.IsValid)
