@@ -7,6 +7,10 @@
         <br>
         <br>
         <table width="50%" align="center">
+            @Html.HiddenFor(m => Model.Member.Id)
+            @Html.HiddenFor(m => Model.Member.AddressId)
+            @Html.HiddenFor(m => Model.Member.Role)
+            @Html.HiddenFor(m => Model.Address.Id)
             <tr>
                 <td width="50%" align="right">@Html.LabelFor(m => Model.Member.Lastname)</td>
                 <td>@Html.TextBoxFor(m => Model.Member.Lastname)</td>

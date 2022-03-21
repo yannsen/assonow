@@ -39,7 +39,7 @@ namespace Projet2.Models.BL.Service
         public void ModifyMember(MemberInfoViewModel viewModel)
         {
             addressService.ModifyAddress(viewModel.Address);
-            viewModel.Member.AddressId = viewModel.Address.Id;
+            viewModel.Member.Password = authentificationService.EncodeMD5(viewModel.Password);
             _bddContext.Member.Update(viewModel.Member);
             _bddContext.SaveChanges();
 
