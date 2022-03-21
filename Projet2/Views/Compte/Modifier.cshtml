@@ -1,0 +1,8 @@
+﻿@model Projet2.ViewModels.MemberInfoViewModel
+
+@{
+    ViewBag.Title = "Modification du compte";
+    Layout = "_Layout";
+}
+
+@await Html.PartialAsync("CreationModificationAccountForm", @Model)
