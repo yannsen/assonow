@@ -20,14 +20,9 @@ namespace Projet2.Controllers
 
         public IActionResult Index()
         {
-            List<AssociationInfoViewModel> associationAddressListViewModel = new List<AssociationInfoViewModel>();
-            BddContext _bddContext = new BddContext();
-            foreach (var association in associationService.GetAllAssociations())
-            {
-                Address address = _bddContext.Address.Find(association.AddressId);
-                associationAddressListViewModel.Add(new AssociationInfoViewModel { Address = address, Association = association});
-            }
-            return View(associationAddressListViewModel);
+            IndexViewModel viewModel = new IndexViewModel();
+            viewModel.AssociationList =  associationService.GetAllAssociations();
+            return View(viewModel);
         }
     }
 }
