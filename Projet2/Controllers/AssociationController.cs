@@ -12,7 +12,7 @@ namespace Projet2.Controllers
 {
     public class AssociationController : Controller
     {
-            private IAssociationService associationService;
+        private IAssociationService associationService;
             BddContext _bddContext;
   
 

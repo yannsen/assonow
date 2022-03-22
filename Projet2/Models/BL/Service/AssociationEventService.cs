@@ -17,7 +17,7 @@ namespace Projet2.Models.BL.Service
             //viewModel.Member.Role = "Representant";
             _bddContext.AssociationEvent.Add(viewModel.AssociationEvent);
             _bddContext.SaveChanges();
-            return viewModel.AssociationEvent.AssociationId;
+            return viewModel.AssociationEvent.Id;
         }
 
         public void ModifyAssociationEvent(AssociationEventInfoViewmodel viewModel)
