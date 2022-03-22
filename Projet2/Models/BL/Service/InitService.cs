@@ -37,6 +37,12 @@ namespace Projet2.Models.BL.Service
             _bddContext.Association.Add(new Association { Id = 3, AddressId = 4, Name = "Association Hirondelle", IsPublished = true, Description = "Description3", Image = File.ReadAllText("wwwroot/init/asso3.txt"), AssociationRepresentativeId = 1, Mail = "asso3@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 4, AddressId = 5, Name = "Tous Au Sport", IsPublished = true, Description = "Description3", Image = File.ReadAllText("wwwroot/init/asso4.txt"), AssociationRepresentativeId = 1, Mail = "asso4@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 5, AddressId = 6, Name = "Sidaction", IsPublished = true, Description = "Description3", Image = File.ReadAllText("wwwroot/init/asso5.txt"), AssociationRepresentativeId = 1, Mail = "asso4@gmail.com" });
+
+            //YS ajout d un membre  representant  de plusieurs associations
+            _bddContext.Member.Add(new Member { Id = 2, Firstname = "Yann", Lastname = "Senic", Mail = "ysenic@gmail.com", Password = authentificationService.EncodeMD5("123456"), Pseudonym = "Repres", AddressId = 2, Role = "Representative" });
+            _bddContext.AssociationMember.Add(new AssociationMember { Id = 1, AssociationId = 1, MemberId =2});
+            //_bddContext.AssociationMember.Add(new AssociationMember { Id = 2, AssociationId = 2, MemberId = 2 });
+            //YS End
             _bddContext.SaveChanges();
         }
 
