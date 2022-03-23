@@ -11,7 +11,7 @@ namespace Projet2.Controllers
     public class AssociationEventController : Controller
     {
         private IAssociationEventService associationEventService;
-        BddContext _bddcontext; 
+        BddContext _bddcontext;
 
 
         public IActionResult Index()
@@ -20,14 +20,14 @@ namespace Projet2.Controllers
         }
 
         public AssociationEventController()
-        {   
-           this.associationEventService =new AssociationEventService();
-           this._bddcontext = new BddContext();
+        {
+            this.associationEventService = new AssociationEventService();
+            this._bddcontext = new BddContext();
         }
 
         public IActionResult Inscrire()
         {
-            AssociationEventInfoViewmodel  viewModel = new AssociationEventInfoViewmodel();
+            AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
             return View(viewModel);
         }
 
@@ -42,5 +42,6 @@ namespace Projet2.Controllers
             }
             return View(viewModel);
         }
+
     }
 }

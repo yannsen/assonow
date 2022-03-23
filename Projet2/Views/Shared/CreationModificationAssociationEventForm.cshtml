@@ -28,6 +28,12 @@
                 <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.Date)</td>
             </tr>
 
+           <tr>
+                <td align="right">@Html.LabelFor(m => Model.AssociationEvent.AssociationId)</td>
+                <td>@Html.DropDownList("Model.AssociationEvent.AssociationId", string.Empty)</td>
+                <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.AssociationId)</td>
+            </tr>
+
 
             <tr>
                 <td align="right">@Html.LabelFor(m => Model.AssociationEvent.EventType)</td>
@@ -35,7 +41,7 @@
                 <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.EventType)</td>
             </tr>
 
-         <tr>
+            <tr>
                 <td align="right">@Html.LabelFor(m => Model.AssociationEvent.TicketsTotalNumber)</td>
                 <td>@Html.TextBoxFor(m => Model.AssociationEvent.TicketsTotalNumber)</td>
                 <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.TicketsTotalNumber)</td>
