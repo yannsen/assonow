@@ -10,8 +10,8 @@ namespace Projet2.Controllers
 {
     public class AssociationEventController : Controller
     {
-        private IAssociationEventService associationService;
-        BddContext _bddcontext; 
+        private IAssociationEventService associationEventService;
+        BddContext _bddcontext;
 
 
         public IActionResult Index()
@@ -20,16 +20,28 @@ namespace Projet2.Controllers
         }
 
         public AssociationEventController()
-        {   
-           this.associationService =new AssociationEventService();
-           this._bddcontext = new BddContext();
+        {
+            this.associationEventService = new AssociationEventService();
+            this._bddcontext = new BddContext();
         }
 
         public IActionResult Inscrire()
         {
-            AssociationEventInfoViewmodel  viewModel = new AssociationEventInfoViewmodel();
-            associationService.CreateAssociationEvent(viewModel, Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+            AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
             return View(viewModel);
         }
+
+        [HttpPost]
+        //[Authorize]
+        public IActionResult Inscrire(AssociationEventInfoViewmodel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                associationEventService.CreateAssociationEvent(viewModel, Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+                return RedirectToAction("Index", "Home");
+            }
+            return View(viewModel);
+        }
+
     }
 }

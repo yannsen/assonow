@@ -10,12 +10,12 @@ namespace Projet2.Models.BL.Service
     public class AssociationEventService : IAssociationEventService
     {
         private BddContext _bddContext;
-         private IAddressService addressService;
+        private IAddressService addressEventService;
         //AuthenticationService = new AuthentificationService();
         public AssociationEventService()
         {
             _bddContext = new BddContext();
-            this.addressService = new AddressService();
+            this.addressEventService = new AddressService();
         }
 
         public int CreateAssociationEvent (AssociationEventInfoViewmodel viewModel,int memberID)
@@ -23,12 +23,8 @@ namespace Projet2.Models.BL.Service
             //viewModel.Member.Role = "Representative";
             //List<AssociationMember> associationMembers  = _bddContext.AssociationMember.Where(a => a.MemberId == memberID);           
             //viewModel.AssociationEvent.
-            int idAddress = addressService.CreateAddress(viewModel.Address);
+            int idAddress = addressEventService.CreateAddress(viewModel.Address);
             viewModel.AssociationEvent.AddressId = idAddress;
- 
-           
-             
-            
             _bddContext.AssociationEvent.Add(viewModel.AssociationEvent);
             _bddContext.SaveChanges();
             return viewModel.AssociationEvent.Id;
@@ -36,7 +32,7 @@ namespace Projet2.Models.BL.Service
 
         public void ModifyAssociationEvent(AssociationEventInfoViewmodel viewModel)
         {
-          addressService.ModifyAddress(viewModel.Address);
+          addressEventService.ModifyAddress(viewModel.Address);
           _bddContext.AssociationEvent.Update(viewModel.AssociationEvent);
           _bddContext.SaveChanges();
 
@@ -46,7 +42,7 @@ namespace Projet2.Models.BL.Service
             AssociationEvent associationEvent = _bddContext.AssociationEvent.Find(associationEventId);
             if (associationEvent != null)
             {
-                addressService.DeleteAddress(associationEvent.AddressId);
+                addressEventService.DeleteAddress(associationEvent.AddressId);
                 _bddContext.AssociationEvent.Remove(associationEvent);
             }
         }
