@@ -2,6 +2,8 @@
 using System;
 using Projet2.ViewModels;
 using Microsoft.AspNetCore.Authentication;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Projet2.Models.BL.Service
 {
@@ -10,11 +12,23 @@ namespace Projet2.Models.BL.Service
         private BddContext _bddContext;
          private IAddressService addressService;
         //AuthenticationService = new AuthentificationService();
-        public int CreateAssociationEvent (AssociationEventInfoViewmodel viewModel)
+        public AssociationEventService()
         {
+            _bddContext = new BddContext();
+            this.addressService = new AddressService();
+        }
+
+        public int CreateAssociationEvent (AssociationEventInfoViewmodel viewModel,int memberID)
+        {
+            //viewModel.Member.Role = "Representative";
+            //List<AssociationMember> associationMembers  = _bddContext.AssociationMember.Where(a => a.MemberId == memberID);           
+            //viewModel.AssociationEvent.
             int idAddress = addressService.CreateAddress(viewModel.Address);
             viewModel.AssociationEvent.AddressId = idAddress;
-            //viewModel.Member.Role = "Representant";
+ 
+           
+             
+            
             _bddContext.AssociationEvent.Add(viewModel.AssociationEvent);
             _bddContext.SaveChanges();
             return viewModel.AssociationEvent.Id;

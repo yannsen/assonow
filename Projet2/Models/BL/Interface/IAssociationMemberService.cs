@@ -2,7 +2,7 @@
 {
     public interface IAssociationMemberService
     {
-        public int CreateAssociationMember(int idAssociation, int idMember);
+        public int CreateAssociationMember(int idAssociation, int memberID);
         public void DeleteAssociationMember(int id);
     }
 }
