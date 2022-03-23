@@ -53,3 +53,12 @@ body {
     color: black;
     margin-right: -200px;
 }
+
+.listBox{
+    width: 400px;
+}
+
+#imageSub {
+    width: 300px;
+    height: 300px;
+}
