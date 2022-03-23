@@ -4,6 +4,7 @@ using Projet2.Models.BL.Interface;
 using Projet2.Models.BL.Service;
 using Projet2.ViewModels;
 using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 
 namespace Projet2.Controllers

@@ -7,6 +7,10 @@
         <br>
         <br>
         <table width="50%" align="center">
+
+            <td width="50%" align="right">@Html.LabelFor(m => Model.AssociationEvent.AssociationId)</td>
+                <td>@Html.DropDownList("List<Model.AssociationEvent.AssociationId>")</td>
+                <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.EventTitle)</td>
             <tr>
                 <td width="50%" align="right">@Html.LabelFor(m => Model.AssociationEvent.EventTitle)</td>
                 <td>@Html.TextBoxFor(m => Model.AssociationEvent.EventTitle)</td>
@@ -27,13 +31,6 @@
                 <td>@Html.TextBoxFor(m => Model.AssociationEvent.Date)</td>
                 <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.Date)</td>
             </tr>
-
-           <tr>
-                <td align="right">@Html.LabelFor(m => Model.AssociationEvent.AssociationId)</td>
-                <td>@Html.DropDownList("Model.AssociationEvent.AssociationId", string.Empty)</td>
-                <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.AssociationId)</td>
-            </tr>
-
 
             <tr>
                 <td align="right">@Html.LabelFor(m => Model.AssociationEvent.EventType)</td>
