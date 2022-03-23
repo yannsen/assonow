@@ -8,6 +8,7 @@ namespace Projet2.ViewModels
     {
         public Association Association { get; set; }
         public Address Address { get; set; }
+        public AssociationMember AssociationMember { get; set; }
 
         [Display(Name = "Image :")]
 
