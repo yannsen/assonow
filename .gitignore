@@ -3,8 +3,10 @@
 project.lock.json
 .DS_Store
 *.pyc
+
 # Visual Studio Code
 .vscode
+
 # User-specific files
 *.suo
 *.user
@@ -24,6 +26,8 @@ bld/
 msbuild.log
 msbuild.err
 msbuild.wrn
+
 # Visual Studio 2015
 .vs/
+
 token.txt
