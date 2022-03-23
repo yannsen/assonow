@@ -1,0 +1,55 @@
+﻿@charset "UTF-8";
+
+body {
+    background-color: #FFF9EE;
+}
+
+.nav-link {
+    color: #009999;
+    font-weight:bold;
+}
+
+.btn-outline-primary {
+    color: #009999;
+    border-color: #009999;
+}
+
+.navbar {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.text-footer {
+    color: #009999;
+}
+.card{
+    text-align:center;
+}
+
+.card-img-top{
+    width : 200px;
+    height: 200px;
+}
+
+.card-body{
+    height: 200px;
+}
+
+.card-text {
+    width: 300px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.carousel-control-prev{
+    color: black;
+    margin-left:-200px;
+}
+
+.carousel-control-next {
+    color: black;
+    margin-right: -200px;
+}
