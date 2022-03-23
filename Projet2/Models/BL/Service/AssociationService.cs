@@ -23,6 +23,10 @@ namespace Projet2.Models.BL.Service
             int idAddress = addressService.CreateAddress(viewModel.Address);
             viewModel.Association.AddressId = idAddress;
             viewModel.Association.AssociationRepresentativeId = idRepresentative;
+            viewModel.Association.TicketService = false;
+            viewModel.Association.DonationService = false;
+            viewModel.Association.MemberService = false;
+            viewModel.Association.IsPublished = false;
             if (viewModel.File.Length > 0)
             {
                 using (var ms = new MemoryStream())
@@ -55,9 +59,19 @@ namespace Projet2.Models.BL.Service
                 _bddContext.SaveChanges();
             }
         }
+
+        public Association GetAssociation(int id)
+        {
+            return _bddContext.Association.Find(id);
+        }
         public List<Association> GetAllAssociations()
         {
-            return _bddContext.Association.ToList();
+            return _bddContext.Association.Where(a => a.IsPublished == true).ToList();
+        }
+
+        public List<Association> GetUnpublishedAssociations()
+        {
+            return _bddContext.Association.Where(a => a.IsPublished == false).ToList();
         }
     }
 }

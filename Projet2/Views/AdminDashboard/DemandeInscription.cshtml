@@ -1,0 +1,37 @@
+﻿@model Projet2.ViewModels.SubscriptionRequestViewModel
+
+@{
+    ViewBag.title = "Dashboard";
+    Layout = "_Layout";
+}
+
+<div class="container w-100 vh-100">
+    <div class="row w-100 h-100">
+        <div class="col w-50 h-100">
+            <div class="short-div h-25">
+                @using (Html.BeginForm())
+                {
+                    @Html.HiddenFor(m => m.unpublishedAssociations)
+                    @Html.DropDownListFor(m => m.SelectedAssociationId, new SelectList(Model.unpublishedAssociations, "Id", "Name", Model))
+                    <br />
+                    <input type="submit" value="Traiter la demande" />
+                }
+            </div>
+            <div class="short-div h-25">
+                <p>test Document</p>
+            </div>
+            <div class="short-div h-25">
+                @if (ViewBag.Id > 0)
+            {
+                 <img id="imageSub" src="@Model.AssociationInfo.Association.Image">
+            }
+            </div>
+        </div>
+        <div class="col w-50 h-100">
+            @if (ViewBag.Id > 0)
+            {
+                <p>test info</p>
+            }
+        </div>
+    </div>
+</div>

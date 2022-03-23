@@ -1,4 +1,5 @@
 ﻿using Projet2.Models.BL.Interface;
+using System.Linq;
 
 namespace Projet2.Models.BL.Service
 {
@@ -21,6 +22,23 @@ namespace Projet2.Models.BL.Service
             Address address = _bddContext.Address.Find(id);
             if (address != null)
                 _bddContext.Address.Remove(address);
+        }
+
+        public Address GetAddress(int id)
+        {
+            return _bddContext.Address.Find(id);
+        }
+
+        public Address GetAddressByAssociationId(int id)
+        {
+            int idAddress = _bddContext.Association.FirstOrDefault(a => a.Id == id).AddressId;
+            return _bddContext.Address.FirstOrDefault(a => a.Id == idAddress);
+        }
+
+        public Address GetAddressByMemberId(int id)
+        {
+            int idAddress = _bddContext.Member.FirstOrDefault(a => a.Id == id).AddressId;
+            return _bddContext.Address.FirstOrDefault(a => a.Id == idAddress);
         }
 
         public void ModifyAddress(Address address)
