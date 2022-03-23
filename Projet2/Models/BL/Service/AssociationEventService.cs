@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Authentication;
 using System.Linq;
 using System.Collections.Generic;
 using System.IO;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.Razor;
 
 namespace Projet2.Models.BL.Service
 {
@@ -19,7 +22,7 @@ namespace Projet2.Models.BL.Service
             this.addressEventService = new AddressService();
         }
 
-        public int CreateAssociationEvent (AssociationEventInfoViewmodel viewModel,int memberID)
+        public int CreateAssociationEvent(AssociationEventInfoViewmodel viewModel, int memberID)
         {
             //viewModel.Member.Role = "Representative";
             //List<AssociationMember> associationMembers  = _bddContext.AssociationMember.Where(a => a.MemberId == memberID);           
@@ -33,9 +36,9 @@ namespace Projet2.Models.BL.Service
 
         public void ModifyAssociationEvent(AssociationEventInfoViewmodel viewModel)
         {
-          addressEventService.ModifyAddress(viewModel.Address);
-          _bddContext.AssociationEvent.Update(viewModel.AssociationEvent);
-          _bddContext.SaveChanges();
+            addressEventService.ModifyAddress(viewModel.Address);
+            _bddContext.AssociationEvent.Update(viewModel.AssociationEvent);
+            _bddContext.SaveChanges();
 
         }
         public void DeleteAssociationEvent(int associationEventId)
@@ -47,6 +50,18 @@ namespace Projet2.Models.BL.Service
                 _bddContext.AssociationEvent.Remove(associationEvent);
             }
         }
+
+        // a Representative can manage more than one association
+        // so this method retrieve the Id of all associations managed by this Representative
+        //select  id from Association where RepresentativeId = MemberConnectedId
+        public List<Association> AssociationsRepresentative(int MemberConnectedId)
+        {
+                       
+            return _bddContext.Association.Where(a => a.Id == MemberConnectedId).ToList();
+                
+                
+        }
+
 
 
 

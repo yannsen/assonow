@@ -4,6 +4,7 @@ using Projet2.Models.BL.Interface;
 using Projet2.Models.BL.Service;
 using Projet2.ViewModels;
 using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 
 namespace Projet2.Controllers
@@ -28,6 +29,7 @@ namespace Projet2.Controllers
         public IActionResult Inscrire()
         {
             AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
+            List<Association> AssociationList = associationEventService.AssociationsRepresentative(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             return View(viewModel);
         }
 
