@@ -10,6 +10,8 @@ namespace Projet2.Models
         public DbSet<Association> Association { get; set; }
         public DbSet<AssociationMember> AssociationMember { get; set; }
         public DbSet<Document> Document { get; set; }
+        public DbSet<Donation> Donation { get; set; }
+        public DbSet<RecurringDonation> RecurringDonation { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

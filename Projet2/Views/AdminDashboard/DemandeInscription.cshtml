@@ -1,13 +1,13 @@
 ﻿@model Projet2.ViewModels.SubscriptionRequestViewModel
 
 @{
-    ViewBag.title = "Dashboard";
+    ViewBag.title = "Demande d'inscription";
     Layout = "_Layout";
 }
 
 @if (!Model.estVide)
 {
-    <div class="container-fluid w-100 vh-100 bg-light border border-dark">
+    <div class="container w-100 vh-100 bg-light border border-dark">
         <div class="d-flex flex-row w-100 h-100">
             <div class="d-flex flex-column w-25 h-100">
                 <div class="d-flex h-25 justify-content-center">
@@ -22,12 +22,12 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <a href="../AdminDashboard/DemandeInscription?result=1&&id=@ViewBag.Id" class="btn btn-success">Valider l'association</a>
+                                    <a href="../AdminDashboard/DemandeInscription?result=1&&id=@ViewBag.Id" class="btn btn-success">Valider l'inscription</a>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <a href="../AdminDashboard/DemandeInscription?result=0&&id=@ViewBag.Id" class="btn btn-danger">Refuser l'association</a>
+                                    <a href="../AdminDashboard/DemandeInscription?result=0&&id=@ViewBag.Id" class="btn btn-danger">Refuser l'inscription</a>
                                 </td>
                             </tr>
                         </table>
@@ -112,9 +112,23 @@
 }
 else
 {
-    <div class="d-flex flex-column justify-content-center w-100">
-        <p>Il n'y a aucune demande d'inscription en attente</p>
-        <a href="../AdminDashboard/Index" class="btn btn-primary">Retour au dashboard</a>
-        <a href="../Compte/Deconnexion" class="btn btn-primary">Se déconnecter</a>
+    <div class="d-flex justify-content-center w-100">
+        <table class="w-25 p-5">
+            <tr>
+                <td class="py-3">
+                    <p class="text-center">Il n'y a aucune demande d'inscription en attente</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="py-3">
+                    <a href="../AdminDashboard/Index" class="btn btn-primary w-100">Retour au dashboard</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="py-3">
+                    <a href="../Compte/Deconnexion" class="btn btn-primary w-100">Se déconnecter</a>
+                </td>
+            </tr>
+        </table>
     </div>
 }
