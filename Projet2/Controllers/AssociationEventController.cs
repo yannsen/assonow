@@ -48,7 +48,7 @@ namespace Projet2.Controllers
         //[Authorize]
         public IActionResult Inscrire(AssociationEventInfoViewmodel viewModel)
         {
-            //viewModel.AssociationEvent.AssociationId = viewModel.SelectedAssociationId;
+            viewModel.AssociationEvent.AssociationId = viewModel.SelectedAssociationId;
             if (ModelState.IsValid)
             {
 
