@@ -9,5 +9,13 @@ namespace Projet2.ViewModels
         public AssociationInfoViewModel AssociationInfo { get; set; }
         public List<AssociationSelectViewModel> unpublishedAssociations { get; set; }
         public int SelectedAssociationId { get; set; }
+
+        public string BankDetails;
+
+        public string RepresentativeID;
+
+        public string OfficialJournalPublication;
+
+        public bool estVide;
     }
 }

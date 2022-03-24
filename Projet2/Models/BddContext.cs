@@ -9,6 +9,7 @@ namespace Projet2.Models
         public DbSet<Address> Address { get; set; }
         public DbSet<Association> Association { get; set; }
         public DbSet<AssociationMember> AssociationMember { get; set; }
+        public DbSet<Document> Document { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
