@@ -3,7 +3,6 @@ using Projet2.Models;
 using Projet2.ViewModels;
 using System;
 using System.Security.Claims;
-using System.Linq;
 using Projet2.Models.BL.Interface;
 using Projet2.Models.BL.Service;
 using Microsoft.AspNetCore.Authorization;
