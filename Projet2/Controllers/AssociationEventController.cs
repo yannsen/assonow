@@ -28,10 +28,25 @@ namespace Projet2.Controllers
 
         public IActionResult Inscrire()
         {
-            AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
-            List<Association> AssociationList = associationEventService.AssociationsRepresentative(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+            //List<AssociationSelectViewModel> associationsOfRepresentative = new List<AssociationSelectViewModel>();
+            //Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier))
 
-            ViewBag.
+            AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
+            viewModel.AssociationList = associationEventService.AssociationsRepresentative(2);
+            
+            
+            //foreach (Association association in associationList)
+            //{
+            //    associationsOfRepresentative.Add(new AssociationSelectViewModel { Id = association.Id, Name = association.Name });
+
+            //}
+
+            //AssociationChoiceViewModel viewModel = new AssociationChoiceViewModel();
+            //viewModel.AssociationsOfRepresentative = associationsOfRepresentative;
+            //viewModel.AssociationEventInfo = new AssociationEventInfoViewmodel();
+            
+
+            //ViewBag.assoListe = viewModel.AssociationList;
             return View(viewModel);
         }
 

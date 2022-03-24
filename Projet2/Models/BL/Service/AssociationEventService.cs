@@ -22,7 +22,7 @@ namespace Projet2.Models.BL.Service
             this.addressEventService = new AddressService();
         }
 
-        public int CreateAssociationEvent(AssociationEventInfoViewmodel viewModel, int memberID)
+        public int CreateAssociationEvent(AssociationEventInfoViewmodel viewModel)
         {
             //viewModel.Member.Role = "Representative";
             //List<AssociationMember> associationMembers  = _bddContext.AssociationMember.Where(a => a.MemberId == memberID);           

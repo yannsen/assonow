@@ -28,11 +28,13 @@
                 <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.Date)</td>
             </tr>
 
-           <tr>
-                <td align="right">@Html.LabelFor(m => Model.AssociationEvent.AssociationId)</td>
-                <td>@Html.DropDownList("Model.AssociationEvent.AssociationId", string.Empty)</td>
-                <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.AssociationId)</td>
-            </tr>
+           <tr>      
+                 <td>
+                    @*@Html.DropDownList("asso", new SelectList(ViewBag.assoListe, "Id", "Name"))*@
+                      
+                    @Html.DropDownListFor(m => m.SelectedAssociationId, new SelectList(Model.AssociationList, "Id", "Name"))
+                 </td>
+           </tr>
 
 
             <tr>
