@@ -29,7 +29,9 @@ namespace Projet2.Controllers
         public IActionResult Inscrire()
         {
             AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
-            List<Association> AssociationList = associationEventService.AssociationsRepresentative(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            List<Association> AssociationList = associationEventService.AssociationsRepresentative(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+
+            ViewBag.
             return View(viewModel);
         }
 

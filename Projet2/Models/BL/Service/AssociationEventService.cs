@@ -56,8 +56,10 @@ namespace Projet2.Models.BL.Service
         //select  id from Association where RepresentativeId = MemberConnectedId
         public List<Association> AssociationsRepresentative(int MemberConnectedId)
         {
-                       
-            return _bddContext.Association.Where(a => a.Id == MemberConnectedId).ToList();
+            //var query = _bddContext.Association.Where(a => a.Id == MemberConnectedId).ToList();
+            var query =  from association in _bddContext.Association orderby association.Name where association.AssociationRepresentativeId == MemberConnectedId select association;
+            var associations = query.ToList();
+            return associations;
                 
                 
         }
