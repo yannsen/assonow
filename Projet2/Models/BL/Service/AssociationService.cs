@@ -23,6 +23,10 @@ namespace Projet2.Models.BL.Service
             int idAddress = addressService.CreateAddress(viewModel.Address);
             viewModel.Association.AddressId = idAddress;
             viewModel.Association.AssociationRepresentativeId = idRepresentative;
+            viewModel.Association.TicketService = false;
+            viewModel.Association.DonationService = false;
+            viewModel.Association.MemberService = false;
+            viewModel.Association.IsPublished = false;
             if (viewModel.File.Length > 0)
             {
                 using (var ms = new MemoryStream())
@@ -55,9 +59,41 @@ namespace Projet2.Models.BL.Service
                 _bddContext.SaveChanges();
             }
         }
+
+        public Association GetAssociation(int id)
+        {
+            return _bddContext.Association.Find(id);
+        }
         public List<Association> GetAllAssociations()
         {
-            return _bddContext.Association.ToList();
+            return _bddContext.Association.Where(a => a.IsPublished == true).ToList();
+        }
+
+        public List<Association> GetUnpublishedAssociations()
+        {
+            return _bddContext.Association.Where(a => a.IsPublished == false).ToList();
+        }
+
+        public List<AssociationSelectViewModel> GetAssociationSelectList()
+        {
+            List<AssociationSelectViewModel> unpublishedAssociations = new List<AssociationSelectViewModel>();
+            List<Association> associationList = GetUnpublishedAssociations();
+            foreach (Association association in associationList)
+            {
+                unpublishedAssociations.Add(new AssociationSelectViewModel
+                {
+                    Id = association.Id,
+                    Name = association.Name
+                });
+            }return unpublishedAssociations;
+        }
+
+        public void ValidateAssociation(int id)
+        {
+            Association association = _bddContext.Association.FirstOrDefault(a => a.Id == id);
+            association.IsPublished = true;
+            _bddContext.Association.Update(association);
+            _bddContext.SaveChanges();
         }
     }
 }

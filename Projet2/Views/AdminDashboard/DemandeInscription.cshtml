@@ -1,0 +1,120 @@
+﻿@model Projet2.ViewModels.SubscriptionRequestViewModel
+
+@{
+    ViewBag.title = "Dashboard";
+    Layout = "_Layout";
+}
+
+@if (!Model.estVide)
+{
+    <div class="container-fluid w-100 vh-100 bg-light border border-dark">
+        <div class="d-flex flex-row w-100 h-100">
+            <div class="d-flex flex-column w-25 h-100">
+                <div class="d-flex h-25 justify-content-center">
+                    @using (Html.BeginForm())
+                    {
+                        <table class="w-100 h-100">
+                            <tr>
+                                <td>
+                                    @Html.DropDownListFor(m => m.SelectedAssociationId, new SelectList(Model.unpublishedAssociations, "Id", "Name"))
+                                    <input type="submit" value="Voir" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="../AdminDashboard/DemandeInscription?result=1&&id=@ViewBag.Id" class="btn btn-success">Valider l'association</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="../AdminDashboard/DemandeInscription?result=0&&id=@ViewBag.Id" class="btn btn-danger">Refuser l'association</a>
+                                </td>
+                            </tr>
+                        </table>
+                    }
+                </div>
+                <div class="d-flex h-25 border-top border-dark">
+                    <table class="w-100 h-100 text-center">
+                        <tr>
+                            @if (Model.BankDetails.Equals(""))
+                            {
+                                <td>Le RIB n'a pas été fourni</td>
+                            }
+                            else
+                            {
+                                <td><a href=@Model.BankDetails target="_blank">RIB</a></td>
+                            }
+                        </tr>
+                        <tr>
+                            @if (Model.OfficialJournalPublication.Equals(""))
+                            {
+                                <td>La publication au journal officiel n'a pas été fournie</td>
+                            }
+                            else
+                            {
+                                <td><a href=@Model.OfficialJournalPublication target="_blank">Publication au journal officiel</a></td>
+                            }
+                        </tr>
+                        <tr>
+                            @if (Model.RepresentativeID.Equals(""))
+                            {
+                                <td>La pièce d'identité du mandataire n'a pas été fournie</td>
+                            }
+                            else
+                            {
+                                <td><a href=@Model.RepresentativeID target="_blank">Pièce d'identité du mandataire</a></td>
+                            }
+                        </tr>
+                    </table>
+                </div>
+                <div class="d-flex h-25 border-top border-dark justify-content-center">
+                    <img id="imageSub" src="@Model.AssociationInfo.Association.Image">
+                </div>
+            </div>
+            <div class="d-flex w-75 h-100">
+                <table class="table table-bordered table-light table-striped border-2 w-100 h-100">
+                    <tr>
+                        <td class="w-25">@Html.LabelFor(m => Model.AssociationInfo.Association.Name)</td>
+                        <td><p>@Model.AssociationInfo.Association.Name</p></td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.AssociationInfo.Association.Description)</td>
+                        <td><p>@Model.AssociationInfo.Association.Description</p></td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.AssociationInfo.Association.Mail)</td>
+                        <td><p>@Model.AssociationInfo.Association.Mail</p></td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.AssociationInfo.Address.RoadNumber)</td>
+                        <td><p>@Model.AssociationInfo.Address.RoadNumber</p></td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.AssociationInfo.Address.Road)</td>
+                        <td><p>@Model.AssociationInfo.Address.Road</p></td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.AssociationInfo.Address.City)</td>
+                        <td><p>@Model.AssociationInfo.Address.City</p></td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.AssociationInfo.Address.PostalCode)</td>
+                        <td><p>@Model.AssociationInfo.Address.PostalCode</p></td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => Model.AssociationInfo.Address.Country)</td>
+                        <td><p>@Model.AssociationInfo.Address.Country</p></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="d-flex flex-column justify-content-center w-100">
+        <p>Il n'y a aucune demande d'inscription en attente</p>
+        <a href="../AdminDashboard/Index" class="btn btn-primary">Retour au dashboard</a>
+        <a href="../Compte/Deconnexion" class="btn btn-primary">Se déconnecter</a>
+    </div>
+}

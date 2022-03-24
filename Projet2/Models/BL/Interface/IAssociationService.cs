@@ -11,6 +11,14 @@ namespace Projet2.Models.BL.Interface
 
         public void DeleteAssociation(int id);
 
+        public Association GetAssociation(int id);
+
         public List<Association> GetAllAssociations();
+
+        public List<Association> GetUnpublishedAssociations();
+
+        public List<AssociationSelectViewModel> GetAssociationSelectList();
+
+        public void ValidateAssociation(int id);
     }
 }

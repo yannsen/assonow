@@ -16,6 +16,7 @@ namespace Projet2.Models
         // add of a dbset for AdviceRequest
 
         public DbSet<AdviceRequest> AdviceRequest { get; set; }
+        public DbSet<Document> Document { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

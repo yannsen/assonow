@@ -10,10 +10,10 @@ namespace Projet2.Models
         [Required]
         public int AssociationRepresentativeId { get; set; }
 
-        public bool? IsPublished { get; set; }
-        public bool? TicketService { get; set; }
-        public bool? DonationService { get; set; }
-        public bool? MemberService { get; set; }
+        public bool IsPublished { get; set; }
+        public bool TicketService { get; set; }
+        public bool DonationService { get; set; }
+        public bool MemberService { get; set; }
         public int AddressId { get; set; }
         public Address Address { get; set; }
 
