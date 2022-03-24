@@ -40,11 +40,12 @@ namespace Projet2.Models.BL.Service
 
             //YS ajout d un membre  representant  de plusieurs associations
             _bddContext.Member.Add(new Member { Id = 2, Firstname = "Yann", Lastname = "Senic", Mail = "ysenic@gmail.com", Password = authentificationService.EncodeMD5("123456"), Pseudonym = "Repres", AddressId = 2, Role = "Representative" });
-            _bddContext.AssociationMember.Add(new AssociationMember { Id = 1, AssociationId = 1, MemberId =2});
-            _bddContext.AssociationMember.Add(new AssociationMember { Id = 2, AssociationId = 2, MemberId = 2 });
+            _bddContext.AssociationMember.Add(new AssociationMember { Id = 1, AssociationId = 3, MemberId =2});
+            _bddContext.AssociationMember.Add(new AssociationMember { Id = 2, AssociationId = 4, MemberId = 2 });
+            _bddContext.AssociationMember.Add(new AssociationMember { Id = 3, AssociationId = 5, MemberId = 2 });
             //YS End
-           
-           
+
+
             _bddContext.Document.Add(new Document { Id = 1, AssociationId = 4, Type = "OfficialJournalPublication", Path = "../FileSystem/Documents/Publication1.pdf" });
             _bddContext.Document.Add(new Document { Id = 2, AssociationId = 4, Type = "BankDetails", Path = "../FileSystem/Documents/RIB1.pdf" });
             _bddContext.Document.Add(new Document { Id = 3, AssociationId = 4, Type = "ID", Path = "../FileSystem/Documents/ID1.pdf" });

@@ -28,25 +28,19 @@ namespace Projet2.Controllers
 
         public IActionResult Inscrire()
         {
-            //List<AssociationSelectViewModel> associationsOfRepresentative = new List<AssociationSelectViewModel>();
-            //Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier))
 
             AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
             viewModel.AssociationList = associationEventService.AssociationsRepresentative(2);
-            
-            
-            //foreach (Association association in associationList)
-            //{
-            //    associationsOfRepresentative.Add(new AssociationSelectViewModel { Id = association.Id, Name = association.Name });
 
-            //}
+
+           
 
             //AssociationChoiceViewModel viewModel = new AssociationChoiceViewModel();
             //viewModel.AssociationsOfRepresentative = associationsOfRepresentative;
             //viewModel.AssociationEventInfo = new AssociationEventInfoViewmodel();
-            
 
-            //ViewBag.assoListe = viewModel.AssociationList;
+
+            //  ViewBag.assoListe = viewModel.AssociationList;
             return View(viewModel);
         }
 
@@ -54,11 +48,14 @@ namespace Projet2.Controllers
         //[Authorize]
         public IActionResult Inscrire(AssociationEventInfoViewmodel viewModel)
         {
+            //viewModel.AssociationEvent.AssociationId = viewModel.SelectedAssociationId;
             if (ModelState.IsValid)
             {
-                associationEventService.CreateAssociationEvent(viewModel, Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+
+                associationEventService.CreateAssociationEvent(viewModel);
                 return RedirectToAction("Index", "Home");
             }
+            else { Console.WriteLine(" ModelState false"); }
             return View(viewModel);
         }
 

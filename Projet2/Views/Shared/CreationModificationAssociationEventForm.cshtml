@@ -1,6 +1,6 @@
 ﻿@model Projet2.ViewModels.AssociationEventInfoViewmodel
 
-@using (Html.BeginForm("Inscrire", "Evenement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm())
 {
     <fieldset>
         <legend align="center">Informations sur l'évènement</legend>
@@ -30,9 +30,10 @@
 
            <tr>      
                  <td>
-                    @*@Html.DropDownList("asso", new SelectList(ViewBag.assoListe, "Id", "Name"))*@
-                      
-                    @Html.DropDownListFor(m => m.SelectedAssociationId, new SelectList(Model.AssociationList, "Id", "Name"))
+                   l'association liée à l'évènement' :
+                 @Html.DropDownListFor(m => m.SelectedAssociationId, new SelectList(Model.AssociationList, "Id", "Name"))
+                       
+                   @* @Html.DropDownListFor("SelectedAssociationId", new SelectList(ViewBag.assoListe,"Id","Name"))*@
                  </td>
            </tr>
 
@@ -41,6 +42,17 @@
                 <td align="right">@Html.LabelFor(m => Model.AssociationEvent.EventType)</td>
                 <td>@Html.TextBoxFor(m => Model.AssociationEvent.EventType)</td>
                 <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.EventType)</td>
+            </tr>
+
+            <tr>
+                <td align="right">@Html.LabelFor(m => Model.AssociationEvent.Speakers)</td>
+                <td>@Html.TextBoxFor(m => Model.AssociationEvent.Speakers)</td>
+                <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.Speakers)</td>
+            </tr>
+            <tr>
+                <td align="right">@Html.LabelFor(m => Model.AssociationEvent.Artists)</td>
+                <td>@Html.TextBoxFor(m => Model.AssociationEvent.Artists)</td>
+                <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.Artists)</td>
             </tr>
 
             <tr>
