@@ -44,6 +44,10 @@ namespace Projet2.Models.BL.Service
             _bddContext.AssociationMember.Add(new AssociationMember { Id = 2, AssociationId = 2, MemberId = 2 });
             //YS End
            
+            _bddContext.Document.Add(new Document { Id = 1, AssociationId = 4, Type = "OfficialJournalPublication", Path = "../FileSystem/Documents/Publication1.pdf" });
+            _bddContext.Document.Add(new Document { Id = 2, AssociationId = 4, Type = "BankDetails", Path = "../FileSystem/Documents/RIB1.pdf" });
+            _bddContext.Document.Add(new Document { Id = 3, AssociationId = 4, Type = "ID", Path = "../FileSystem/Documents/ID1.pdf" });
+
             _bddContext.SaveChanges();
         }
 
