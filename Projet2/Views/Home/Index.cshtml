@@ -6,7 +6,9 @@
     ViewBag.Title = "Acceuil";
     Layout = "_Layout";
 }
-
+@await Html.PartialAsync("SearchBar", @Model.AssociationList)
 @await Html.PartialAsync("CarouselAssociation", @Model.AssociationList)
+@await Html.PartialAsync("Team")
+
 
 
