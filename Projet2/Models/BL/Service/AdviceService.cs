@@ -1,4 +1,6 @@
 ﻿using Projet2.Models.BL.Interface;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Projet2.Models.BL.Service
 {
@@ -11,15 +13,17 @@ namespace Projet2.Models.BL.Service
             _bddContext = new BddContext();
         }
         
-        // add an advice in db
+        /*
+         //add an advice in db
         public int CreateAdvice(AdviceViewModel viewModel)
         {
             // A COMPLETER 
-            Advice advice = new Advice {/* AdviceRequestId = , AdviceRequest =,*/ AdviceSubject = , AdviceText = , Date = /*, Id =*/, Member = /*,MemberId = */}; 
+            Advice advice = new Advice {AdviceRequestId = , AdviceRequest =, AdviceSubject = , AdviceText = , Date = , Id =, Member =  ,MemberId = }; 
             _bddContext.Advice.Add(advice);
             _bddContext.SaveChanges();
             return advice.Id;
         }
+        */
 
         // delete an advice in db
         public void DeleteAdvice(int id)
@@ -31,6 +35,8 @@ namespace Projet2.Models.BL.Service
                 _bddContext.SaveChanges();
             }
         }
+
+      
 
     }
 }

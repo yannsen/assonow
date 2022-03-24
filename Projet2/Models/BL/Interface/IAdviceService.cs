@@ -1,10 +1,14 @@
-﻿namespace Projet2.Models.BL.Interface
+﻿using System.Collections.Generic;
+
+namespace Projet2.Models.BL.Interface
 {
     public interface IAdviceService
     {
         // A CHANGER
-        public int CreateAdvice(AdviceViewModel viewModel);
+        //public int CreateAdvice(AdviceViewModel viewModel);
         public void DeleteAdvice(int id);
+
+      
 
     }
 }

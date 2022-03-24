@@ -1,4 +1,6 @@
 ﻿using Projet2.Models.BL.Interface;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Projet2.Models.BL.Service
 {
@@ -26,6 +28,12 @@ namespace Projet2.Models.BL.Service
             if (adviceRequest != null)
                 _bddContext.AdviceRequest.Remove(adviceRequest);
                 _bddContext.SaveChanges();
+        }
+
+        // get all requests for advice in the form of a list 
+        public List<AdviceRequest> GetAllAdviceRequests()
+        {
+            return _bddContext.AdviceRequest.ToList();
         }
     }
 }

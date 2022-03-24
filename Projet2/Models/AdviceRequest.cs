@@ -10,9 +10,13 @@ namespace Projet2.Models
 
         // advice request's dates and times
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Date du jour")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)] 
         public DateTime Date { get; set; }
+
+        // advice request's subject
+        [Display(Name = "Sujet ")]
+        [StringLength(100)]
+        public string AdviceRequestSubject { get; set; }
 
         // advice request's text from legal expert
         [Display(Name = "Votre demande : ")]
@@ -23,12 +27,7 @@ namespace Projet2.Models
         // advise request's status (completed / or not)
         public bool CompletedRequest { get; set; }
 
-        // advice request's subject
-        [Display(Name = "Sujet ")]
-        [StringLength(100)]
-        public string AdviceRequestSubject { get; set; }
-
-        // foreign key member
+        // foreign key website member
         public int MemberId { get; set; }
         public Member Member { get; set; }
 

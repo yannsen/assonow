@@ -1,4 +1,5 @@
 ﻿using Projet2.Models.BL.Interface;
+using System;
 using System.IO;
 
 namespace Projet2.Models.BL.Service
@@ -38,6 +39,17 @@ namespace Projet2.Models.BL.Service
             _bddContext.Association.Add(new Association { Id = 4, AddressId = 5, Name = "Tous Au Sport", IsPublished = true, Description = "Cette association loi 1901 à but non lucratif, constituée le 25 juillet 2016, a pour objet de permettre l'accès le plus grand possible au sport à toutes et à tous et cela dans le cadre des cours collectifs.", Image = File.ReadAllText("wwwroot/init/asso4.txt"), AssociationRepresentativeId = 1, Mail = "asso4@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 5, AddressId = 6, Name = "Sidaction", IsPublished = true, Description = "Sidaction désigne à la fois une association de lutte contre le VIH/sida, créée en 1994 et un évènement télévisuel annuel de collecte de dons pour cette association qui finance à parts égales des programmes de recherche et des associations d’aide aux malades et de prévention, en France et à l’international. Pierre Bergé présidait l'association.", Image = File.ReadAllText("wwwroot/init/asso5.txt"), AssociationRepresentativeId = 1, Mail = "asso4@gmail.com" });
             _bddContext.SaveChanges();
+
+
+            _bddContext.AdviceRequest.Add(new AdviceRequest { Id = 1, AdviceRequestSubject = "DEMANDE DE CONSEIL UN ", AdviceRequestText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam", Date = new DateTime (2022,01,01), CompletedRequest = false, AssociationId = 1, MemberId = 1 });
+            _bddContext.AdviceRequest.Add(new AdviceRequest { Id = 2, AdviceRequestSubject = "DEMANDE DE CONSEIL DEUX ", AdviceRequestText = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem ac illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.", Date = new DateTime (2022, 02, 02), CompletedRequest = false, AssociationId = 2, MemberId = 1 });
+            _bddContext.SaveChanges();
+
+            _bddContext.Advice.Add(new Advice { Id = 1, AdviceSubject = "CONSEIL UN ", AdviceText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam", Date = new DateTime(2022, 02, 01),  AdviceRequestId = 1, MemberId = 1 });
+            //_bddContext.Advice.Add(new Advice { Id = 2, AdviceSubject = "CONSEIL DEUX ", AdviceText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam", Date = new DateTime(2022, 02, 01), AdviceRequestId = 2, MemberId = 1 });
+
+            _bddContext.SaveChanges();
+
         }
 
         public void Dispose()

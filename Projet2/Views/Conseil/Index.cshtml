@@ -1,0 +1,57 @@
+﻿@model Projet2.ViewModels.AdviceRequestViewModel
+@{
+    ViewBag.Title = "Accueil";
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Page de traitement des conseils juridiques</title>
+</head>
+<body>
+
+    <!-- Titre -->
+    <div> Voici la liste des demandes de conseil juridique de la part des membres </div>
+    <br />
+    <br />
+
+    <!-- Liste des demandes de conseil 
+    <ul>
+        <li>Model.AdviceR.Date</li>
+        <li>Model.Advice.AdviceSubject</li>
+        <li>Model.Advice.AdviceText</li>
+    </ul>
+    <br />
+    <br />
+
+    -->
+
+    <!-- Formulaire  -->
+
+    <div>Formulaire d'envoi du Conseil Juridique </div>
+    <br />
+    @Html.TextBox("Sujet")
+    <br />
+    @Html.TextBox("Message")
+    <br />
+    <input type="submit" value="Envoyer" />
+    <br />
+    <br />
+
+   <!-- DropDownList  -->
+
+    <div>DropDownList</div>
+    <!-- Html.DropDownList("Conseil choisi", new SelectList(ViewBag.MALISTE,"Id", "Lieu")) -->
+     <br />
+    <br />
+
+
+
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+</body>
+</html>
