@@ -15,7 +15,7 @@ namespace Projet2.Models.BL.Service
         public int CreateAdvice(AdviceViewModel viewModel)
         {
             // A COMPLETER 
-            Advice advice = new Advice {/* AdviceRequestId = , AdviceRequest =,*/ AdviceSubject = , AdviceText = , Date = /*, Id =, Member =, MemberId = */}; 
+            Advice advice = new Advice {/* AdviceRequestId = , AdviceRequest =,*/ AdviceSubject = , AdviceText = , Date = /*, Id =*/, Member = /*,MemberId = */}; 
             _bddContext.Advice.Add(advice);
             _bddContext.SaveChanges();
             return advice.Id;

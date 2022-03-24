@@ -5,10 +5,13 @@ namespace Projet2.Models
 {
     public class AdviceRequest
     {
-        // advice request's id
+        // Primary Key advice request's id
         public int Id { get; set; }
 
         // advice request's dates and times
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Date du jour")]
         public DateTime Date { get; set; }
 
         // advice request's text from legal expert
@@ -21,17 +24,17 @@ namespace Projet2.Models
         public bool CompletedRequest { get; set; }
 
         // advice request's subject
+        [Display(Name = "Sujet ")]
+        [StringLength(100)]
         public string AdviceRequestSubject { get; set; }
 
         // foreign key member
         public int MemberId { get; set; }
-
         public Member Member { get; set; }
 
         // foreign key asssociation
-        public Association Association { get; set; }
-
         public int AssociationId { get; set; }
+        public Association Association { get; set; }
 
     }
 }
