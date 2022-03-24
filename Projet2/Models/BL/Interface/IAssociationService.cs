@@ -16,5 +16,9 @@ namespace Projet2.Models.BL.Interface
         public List<Association> GetAllAssociations();
 
         public List<Association> GetUnpublishedAssociations();
+
+        public List<AssociationSelectViewModel> GetAssociationSelectList();
+
+        public void ValidateAssociation(int id);
     }
 }
