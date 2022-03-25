@@ -60,20 +60,26 @@ namespace Projet2.Controllers
         public ActionResult EventList()
         {
             AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
-            viewModel.EventsList = associationEventService.ListAssociationEvent(2);
-           
+            viewModel.EventsList = associationEventService.ListAssociationEvent(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+            viewModel.AssociationList = associationEventService.AssociationsRepresentative(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
             return View(viewModel);
         }
 
 
 
-        //public ActionResult EventDelete(Data model)
-        //{
-        //    //Code for delete
-        //    return View("Index", data);
-        //}
+        public ActionResult EventDelete(int associationEventId)
+        {
+            associationEventService.DeleteAssociationEvent(associationEventId);
 
-        //[HttpGet]
+            return View();
+        }
+
+        public ActionResult DeletedEvent(int associationEventId)
+        {
+            associationEventService.DeleteAssociationEvent(associationEventId);
+
+            return View();
+        }
         //public ActionResult EventEdit()
         //{
         //    //code for binding the existing records

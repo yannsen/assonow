@@ -17,12 +17,27 @@
                                         
                     <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Association" asp-action="ListeDesAssociations">Les associations</a></li>
                     <li class="nav-item"><a class="nav-link" href="/">Les évènements</a></li>
+ 
+                   @*  //YS*@
+                    @{
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item"><a class="nav-link" align="center"> @User.Identity.Name</a></li>
 
+                        }
+                        else
+                        {
+                            <li class="nav-item" ><a class="nav-link"align="center">Bienvenue</a></li>
+
+                        }
+                    }
+                     @*  //YS fin*@
                 </ul>
                 <ul class="navbar-nav">
                     @{
                         if (!User.Identity.IsAuthenticated)
-                        {
+                        {   
+                            
                             <li class="nav-item px-2"><a class="btn btn-outline-primary" href="../Compte/Creer">Créer un compte</a></li>
                             <li class="nav-item px-2"><a class="btn btn-outline-primary" href="../Compte/Connexion">Se connecter</a></li>
                         }else{
