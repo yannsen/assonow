@@ -20,5 +20,6 @@ namespace Projet2.Models.BL.Interface
         public List<AssociationSelectViewModel> GetAssociationSelectList();
 
         public void ValidateAssociation(int id);
+        public List<Association> GetSearchAssociation (string searchCriteria);
     }
 }

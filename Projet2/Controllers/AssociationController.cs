@@ -70,5 +70,20 @@ namespace Projet2.Controllers
             }
             return View(association);
         }
+
+        public IActionResult ListeDesAssociations()
+        {
+            ListSearchAssoicationViewModel viewModel = new ListSearchAssoicationViewModel();
+            viewModel.AssociationList = associationService.GetAllAssociations();
+            return View(viewModel);
+
+        }
+
+        public IActionResult Rechercher(string name)
+        {
+            ListSearchAssoicationViewModel viewModel = new ListSearchAssoicationViewModel();
+            viewModel.AssociationList = associationService.GetSearchAssociation(name);
+            return View(viewModel);
+        }
     }
 }
