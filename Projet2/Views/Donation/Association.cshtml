@@ -4,3 +4,32 @@
     ViewBag.Title = "Don à l'association";
     Layout = "_Layout";
 }
+
+<div class="d-flex w-100 justify-content-center">
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <legend align="center">Don à @Model.Association.Name</legend>
+        <table>
+            @Html.HiddenFor(m => m.Association.Id)
+            <tr> 
+                <td>
+                    @Html.LabelFor(m => m.Amount)
+                    @Html.TextBoxFor(m => m.Amount)
+                </td>
+            </tr>
+            <tr> 
+                <td>
+                    @Html.Label("Souhaitez vous faire ce don mensuellement ?")
+                    @Html.CheckBoxFor(m => m.isRecurrent)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center">
+                    <br><br><input type="submit" value="Valider" />
+                </td>
+            </tr>
+        </table>
+        </fieldset>
+    }
+</div>

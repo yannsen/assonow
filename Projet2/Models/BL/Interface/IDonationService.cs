@@ -4,6 +4,8 @@ namespace Projet2.Models.BL.Interface
 {
     public interface IDonationService
     {
-        public void CreateDonation(DonationViewModel viewModel);
+        public int CreateDonation(DonationViewModel viewModel);
+
+        public Donation GetDonation(int id);
     }
 }

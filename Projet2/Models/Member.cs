@@ -14,8 +14,6 @@ namespace Projet2.Models
         [MaxLength(256)]
         public string Password { get; set; }
 
-        public int? CreditCardId { get; set; }
-
         [Display(Name = "Prénom :")]
         [Required(ErrorMessage = "Le prénom est obligatoire")]
         [MaxLength(20, ErrorMessage = "La taille du prénom ne doit pas excéder 20 caractères")]

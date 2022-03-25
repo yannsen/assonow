@@ -20,5 +20,7 @@ namespace Projet2.Models.BL.Interface
         public List<AssociationSelectViewModel> GetAssociationSelectList();
 
         public void ValidateAssociation(int id);
+
+        public Association GetAssociationByDonationId(int id);
     }
 }

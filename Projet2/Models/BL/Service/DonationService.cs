@@ -16,32 +16,39 @@ namespace Projet2.Models.BL.Service
             this.fundraisingService = new FundraisingService();
         }
 
-        public void CreateDonation(DonationViewModel viewModel)
+        public int CreateDonation(DonationViewModel viewModel)
         {
-            if (viewModel.AssociationId != null)
+            Donation donation = new Donation();
+            if (viewModel.Association != null)
             {
-                if (viewModel.Frequency != null)
+                if (viewModel.isRecurrent == true)
                 {
-                    RecurringDonation recurringDonation = new RecurringDonation { AssociationId = (int)viewModel.AssociationId, Amount = viewModel.Amount, MemberId = viewModel.MemberId, Frequency = (int)viewModel.Frequency };
+                    RecurringDonation recurringDonation = new RecurringDonation { AssociationId = (int)viewModel.Association.Id, Amount = Int32.Parse(viewModel.Amount), MemberId = viewModel.MemberId};
                     _bddContext.RecurringDonation.Add(recurringDonation);
                     _bddContext.SaveChanges();
-                    Donation donation = new Donation { AssociationId = viewModel.AssociationId, Amount = viewModel.Amount, MemberId = viewModel.MemberId, Date = DateTime.Today, RecurringDonationId = recurringDonation.Id};
+                    donation = new Donation { AssociationId = viewModel.Association.Id, Amount = Int32.Parse(viewModel.Amount), MemberId = viewModel.MemberId, Date = DateTime.Today, RecurringDonationId = recurringDonation.Id};
                     _bddContext.Donation.Add(donation);
                     _bddContext.SaveChanges();
                 }
                 else
                 {
-                    Donation donation = new Donation { AssociationId = viewModel.AssociationId, Amount = viewModel.Amount, MemberId = viewModel.MemberId, Date = DateTime.Today};
+                    donation = new Donation { AssociationId = viewModel.Association.Id, Amount = Int32.Parse(viewModel.Amount), MemberId = viewModel.MemberId, Date = DateTime.Today};
                     _bddContext.Donation.Add(donation);
                     _bddContext.SaveChanges();
                 }
             }
             else
             {
-                Donation donation = new Donation { FundraisingId = viewModel.FundraisingId, Amount = viewModel.Amount, MemberId = viewModel.MemberId, Date = DateTime.Today};
+                donation = new Donation { FundraisingId = viewModel.Fundraising.Id, Amount = Int32.Parse(viewModel.Amount), MemberId = viewModel.MemberId, Date = DateTime.Today};
                 _bddContext.Donation.Add(donation);
                 _bddContext.SaveChanges();
             }
+            return donation.Id;
         }
+
+        public Donation GetDonation(int id)
+        {
+            return _bddContext.Donation.Find(id);
+        }   
     }
 }

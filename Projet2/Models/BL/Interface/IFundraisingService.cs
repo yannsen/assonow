@@ -2,5 +2,6 @@
 {
     public interface IFundraisingService
     {
+        public Fundraising GetFundraising(int id);
     }
 }

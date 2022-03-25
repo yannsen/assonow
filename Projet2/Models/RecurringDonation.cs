@@ -10,8 +10,6 @@
 
         public Member Member { get; set; }
 
-        public int Frequency;
-
         public int AssociationId { get; set; }
 
         public Association Association { get; set; } 
