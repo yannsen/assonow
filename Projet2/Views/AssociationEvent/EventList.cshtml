@@ -1,0 +1,60 @@
+﻿@model Projet2.ViewModels.AssociationEventInfoViewmodel
+
+@using (Html.BeginForm("EventList", "AssociationEvent", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <fieldset>
+        <legend align="center">Liste des évènements</legend>
+        <br>
+        <br>
+        <table width="50%" align="center">
+            <tr>
+                 <th>
+                     @Html.DisplayNameFor(m =>m.AssociationEvent.Id)
+                 </th>
+                 <th>
+                     @Html.DisplayNameFor(m =>m.AssociationEvent.EventTitle)
+                 </th>
+                 <th> @Html.DisplayNameFor(m =>m.AssociationEvent.Description)
+                 </th>
+
+
+           @foreach (var AssociationEvent  in Model.EventsList)
+           {
+            <tr>            
+
+                <td>
+                    @Html.DisplayFor(m =>m.AssociationEvent.Id)
+               <td>
+                    @Html.DisplayFor(m =>m.AssociationEvent.EventTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(m =>m.AssociationEvent.Description)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new {  id=Model.AssociationEvent.Id})
+                    @Html.ActionLink("Delete", "Delete", new {  id=Model.AssociationEvent.Id })
+               </td>
+                 @*
+                  <td>
+                        @Model.AssociationEvent.Id
+                 </td>
+                 <td>
+                      @Model.AssociationEvent.EventTitle
+                 </td>
+                 <td>
+                     @Model.AssociationEvent.Description
+                 </td>*@
+
+             </tr>
+
+           }
+           <tr>
+   
+
+
+            </tr>
+
+
+        </table>
+    </fieldset>
+}

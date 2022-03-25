@@ -60,7 +60,7 @@ namespace Projet2.Models.BL.Service
         }
 
         // a Representative can manage more than one association
-        // so this method retrieve the Id of all associations managed by this Representative
+        // so this method retrieve all associations managed by this Representative
         //select  id from Association where RepresentativeId = MemberConnectedId
         public List<Association> AssociationsRepresentative(int MemberConnectedId)
         {
@@ -74,6 +74,21 @@ namespace Projet2.Models.BL.Service
                 
         }
 
+        public List<AssociationEvent> ListAssociationEvent(int MemberConnectedId)
+        {
+
+            //"SELECT AssociationEvent.* FROM AssociationEvent where AssociationId = (select id FROM Association  where AssociationRepresentativeId = MemberConnectedId)";
+            var query = from ae in _bddContext.AssociationEvent
+                        let asso = from a in _bddContext.Association
+                                   where a.AssociationRepresentativeId == MemberConnectedId
+                                   select a.Id
+                        where asso.Contains(ae.Id)
+                        select ae;
+            
+            var EventAssocations = query.ToList();
+            return EventAssocations;
+
+        }
 
 
 

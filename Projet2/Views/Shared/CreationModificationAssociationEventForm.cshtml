@@ -31,9 +31,7 @@
            <tr>      
                  <td>
                    l'association liée à l'évènement' :
-                 @Html.DropDownListFor(m => m.SelectedAssociationId, new SelectList(Model.AssociationList, "Id", "Name"))
-                       
-                   @* @Html.DropDownListFor("SelectedAssociationId", new SelectList(ViewBag.assoListe,"Id","Name"))*@
+                 @Html.DropDownListFor(m => m.SelectedAssociationId, new SelectList(Model.AssociationList, "Id", "Name"))                   
                  </td>
            </tr>
 

@@ -11,5 +11,7 @@ namespace Projet2.Models.BL.Interface
         public void DeleteAssociationEvent(int associationEventId);
 
         public List<Association> AssociationsRepresentative(int MemberConnectedId);
+
+        public List<AssociationEvent> ListAssociationEvent(int MemberConnectedId);
     }
 }

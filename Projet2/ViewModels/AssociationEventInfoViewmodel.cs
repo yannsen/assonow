@@ -9,9 +9,10 @@ namespace Projet2.ViewModels
     public class AssociationEventInfoViewmodel
     {
         public AssociationEvent AssociationEvent { get; set; }
+        public List<AssociationEvent>EventsList { get; set; }
         public Address Address { get; set; }
 
-        public AssociationMember AssociationMember{ get; set; }
+      
 
     [Display(Name = "Image :")]
 
