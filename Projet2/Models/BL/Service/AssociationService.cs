@@ -94,6 +94,13 @@ namespace Projet2.Models.BL.Service
             association.IsPublished = true;
             _bddContext.Association.Update(association);
             _bddContext.SaveChanges();
+        } 
+
+        public List<Association> GetSearchAssociation (string searchCriteria)
+        {
+            List<Association> associations = new List<Association>();
+            associations.Add(new Association { Name = searchCriteria });
+            return associations;
         }
     }
 }

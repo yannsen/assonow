@@ -40,5 +40,50 @@ namespace Projet2.Controllers
             }
             return View(viewModel);
         }
+
+        public IActionResult Show(int id)
+        {
+            if (id == 0)
+            {
+                return NotFound();
+            }
+            Association association = associationService.GetAssociation((int)id);
+            if (association == null)
+            {
+                return NotFound();
+            }
+            return View(association);
+
+        }
+
+        public IActionResult Profil(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Association association = associationService.GetAssociation((int)id);
+            if (association == null)
+            {
+                return NotFound();
+            }
+            return View(association);
+        }
+
+        public IActionResult ListeDesAssociations()
+        {
+            ListSearchAssoicationViewModel viewModel = new ListSearchAssoicationViewModel();
+            viewModel.AssociationList = associationService.GetAllAssociations();
+            return View(viewModel);
+
+        }
+
+        public IActionResult Rechercher(string name)
+        {
+            ListSearchAssoicationViewModel viewModel = new ListSearchAssoicationViewModel();
+            viewModel.AssociationList = associationService.GetSearchAssociation(name);
+            return View(viewModel);
+        }
     }
 }

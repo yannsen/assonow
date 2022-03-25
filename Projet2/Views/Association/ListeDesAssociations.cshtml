@@ -1,0 +1,52 @@
+﻿@model Projet2.ViewModels.ListSearchAssoicationViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewBag.title = "Les associations présentes sur AssoNow";
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ListeDesAssociations</title>
+</head>
+<body>
+    <section class="py-5">
+                <div class="container px-5 my-5">
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-lg-8 col-xl-6">
+                            <div class="text-center">
+                                <h2 class="fw-bolder">AssoNow accompagne ces Associations</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row gx-5">
+                        @foreach (var item in Model.AssociationList)
+                        {
+                            <div class="col-lg-4 mb-5">
+                            <div class="card h-100 shadow border-0">
+                                <img class="card-img-top" src="@item.Image" alt="@item.Name" />
+                                <div class="card-body p-4">
+                                    <a class="text-decoration-none link-dark stretched-link" asp-area="" asp-controller="Association" asp-action="Profil" asp-route-id="@item.Id"><h5 class="card-title mb-3">@item.Name</h5></a>
+                                    <p class="card-text mb-0">@item.Description</p>
+                                </div>
+                                    </div>
+                                    <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+                                        <div class="d-flex align-items-end justify-content-between">
+                                            <div class="d-flex align-items-center">Nous contacter :
+          
+                                                <div class="small">
+                                                    <div class="fw-bold">@item.Mail</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        }
+                   </div>
+                </div>
+    </section>
+</body>
+</html>

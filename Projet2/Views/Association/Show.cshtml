@@ -1,0 +1,20 @@
+﻿@model Projet2.Models.Association
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewBag.title = "Profil Association";
+    Layout = "_Layout";
+}
+<main class="flex-shrink-0">
+            <!-- Navigation-->
+            <!-- About section one-->
+            <section class="py-5 bg-light" id="scroll-target">
+                <div class="container px-5 my-5">
+                    <div class="row gx-5 align-items-center">
+                        <h4>Vous êtes bien sur la page de l'association : @Html.DisplayFor(model => model.Name)</h4>
+
+                        <a asp-controller="Home" asp-action="Index">Retour sur la page d'accueil</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+

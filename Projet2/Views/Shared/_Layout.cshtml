@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 <html>
 <head>
@@ -13,15 +14,20 @@
             <a class="navbar-brand" href="/"><img src="~/Images/logoAssonow.png" width="100"/></a>
             <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
                 <ul class="navbar-nav">
+<<<<<<< HEAD
                     <li class="nav-item"><a class="nav-link" href="/">Les associations</a></li>
                     <li class="nav-item"><a class="nav-link" href="../AssociationEvent/Inscrire">Les évènements</a></li>
+=======
+                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Association" asp-action="ListeDesAssociations">Les associations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/">Les évènements</a></li>
+>>>>>>> fatoumata
                 </ul>
                 <ul class="navbar-nav">
                     @{
                         if (!User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item px-2"><a class="btn btn-outline-primary" href="../Compte/Creer">Créer un compte</a></li>
-                        <li class="nav-item px-2"><a class="btn btn-outline-primary" href="../Compte/Connexion">Se connecter</a></li>
+                            <li class="nav-item px-2"><a class="btn btn-outline-primary" href="../Compte/Connexion">Se connecter</a></li>
                         }else{
                             if (User.IsInRole("Administrator"))
                             {
