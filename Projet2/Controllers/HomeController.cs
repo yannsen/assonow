@@ -20,7 +20,7 @@ namespace Projet2.Controllers
 
         public IActionResult Index()
         {
-            ListSearchAssoicationViewModel viewModel = new ListSearchAssoicationViewModel();
+            ListSearchAssociationViewModel viewModel = new ListSearchAssociationViewModel();
             viewModel.AssociationList =  associationService.GetAllAssociations();
             return View(viewModel);
         }

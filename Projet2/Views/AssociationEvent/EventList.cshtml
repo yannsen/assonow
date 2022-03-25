@@ -9,19 +9,40 @@
         <table width="50%" align="center">
             <tr>
                  <th>
-                     @Html.DisplayNameFor(m =>m.AssociationEvent.Id)
+                     @Model.EventsList.
                  </th>
                  <th>
-                     @Html.DisplayNameFor(m =>m.AssociationEvent.EventTitle)
+                    Titre
                  </th>
-                 <th> @Html.DisplayNameFor(m =>m.AssociationEvent.Description)
+                 <th> 
+                     Description
                  </th>
 
 
-           @foreach (var AssociationEvent  in Model.EventsList)
+           @foreach (var item  in Model.EventsList)
            {
-            <tr>            
+            <tr>   
+                <td>
+                    @item.Id
+                </td>
+                <td>
+                    @item.EventTitle
+                </td>
+                 <td>
+                    @item.Description
+                </td>
 
+                
+
+             </tr>
+
+           }
+           <tr>
+   
+                 @*
+                     @Html.DisplayNameFor(m =>m.AssociationEvent.Id)
+                      @Html.DisplayNameFor(m =>m.AssociationEvent.EventTitle)
+                      @Html.DisplayNameFor(m =>m.AssociationEvent.Description)
                 <td>
                     @Html.DisplayFor(m =>m.AssociationEvent.Id)
                <td>
@@ -34,7 +55,7 @@
                     @Html.ActionLink("Edit", "Edit", new {  id=Model.AssociationEvent.Id})
                     @Html.ActionLink("Delete", "Delete", new {  id=Model.AssociationEvent.Id })
                </td>
-                 @*
+               
                   <td>
                         @Model.AssociationEvent.Id
                  </td>
@@ -44,13 +65,6 @@
                  <td>
                      @Model.AssociationEvent.Description
                  </td>*@
-
-             </tr>
-
-           }
-           <tr>
-   
-
 
             </tr>
 
