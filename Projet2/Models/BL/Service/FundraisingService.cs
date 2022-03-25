@@ -12,5 +12,10 @@ namespace Projet2.Models.BL.Service
             _bddContext = new BddContext();
             this.associationService = new AssociationService();
         }
+
+        public Fundraising GetFundraising(int id)
+        {
+            return _bddContext.Fundraising.Find(id);
+        }
     }
 }

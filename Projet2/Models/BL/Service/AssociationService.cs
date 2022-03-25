@@ -64,6 +64,7 @@ namespace Projet2.Models.BL.Service
         {
             return _bddContext.Association.Find(id);
         }
+
         public List<Association> GetAllAssociations()
         {
             return _bddContext.Association.Where(a => a.IsPublished == true).ToList();
@@ -94,6 +95,12 @@ namespace Projet2.Models.BL.Service
             association.IsPublished = true;
             _bddContext.Association.Update(association);
             _bddContext.SaveChanges();
+        }
+
+        public Association GetAssociationByDonationId(int id)
+        {
+            int AssociationId = (int)_bddContext.Donation.Find(id).AssociationId;
+            return GetAssociation(AssociationId);
         }
     }
 }

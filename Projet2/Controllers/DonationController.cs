@@ -13,18 +13,22 @@ namespace Projet2.Controllers
     public class DonationController : Controller
     {
         private IDonationService donationService;
+        private IAssociationService associationService;
+        private IFundraisingService fundraisingService;
         private BddContext _bddContext;
 
         public DonationController()
         {
             this.donationService = new DonationService();
+            this.associationService = new AssociationService();
+            this.fundraisingService = new FundraisingService();
             this._bddContext = new BddContext();
         }
 
-        public IActionResult Association(int AssociationId)
+        public IActionResult Association(int id)
         {
             DonationViewModel viewModel = new DonationViewModel();
-            viewModel.AssociationId = AssociationId;
+            viewModel.Association = associationService.GetAssociation(id);
             return View(viewModel);
         }
 
@@ -32,14 +36,17 @@ namespace Projet2.Controllers
         public IActionResult Association(DonationViewModel viewModel)
         {
             viewModel.MemberId = Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            donationService.CreateDonation(viewModel);
-            return View(viewModel);
+            int donationId = donationService.CreateDonation(viewModel);
+            PaymentViewModel paymentViewModel = new PaymentViewModel();
+            paymentViewModel.Amount = viewModel.Amount;
+            paymentViewModel.DonationId = donationId;
+            return RedirectToAction("CreditCard", "Payment", paymentViewModel);
         }
         
-        public IActionResult Collecte(int FundraisingId)
+        public IActionResult Collecte(int id)
         {
             DonationViewModel viewModel = new DonationViewModel();
-            viewModel.FundraisingId = FundraisingId;
+            viewModel.Fundraising = fundraisingService.GetFundraising(id);
             return View(viewModel);
         }
 
@@ -47,8 +54,17 @@ namespace Projet2.Controllers
         public IActionResult Collecte(DonationViewModel viewModel)
         {
             viewModel.MemberId = Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            donationService.CreateDonation(viewModel);
-            return View(viewModel);
+            int donationId = donationService.CreateDonation(viewModel);
+            PaymentViewModel paymentViewModel = new PaymentViewModel();
+            paymentViewModel.Amount = viewModel.Amount;
+            paymentViewModel.DonationId = donationId;
+            return RedirectToAction("CreditCard", "Payment", paymentViewModel);
+        }
+
+        public IActionResult Done(int id)
+        {
+            Association association = associationService.GetAssociationByDonationId(id);
+            return View(association);
         }
     }
 }

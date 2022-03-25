@@ -1,0 +1,26 @@
+﻿@model Projet2.Models.Association
+
+@{
+    ViewBag.title = "Don effectué";
+    Layout = "_Layout";
+}
+
+<div class ="d-flex justify-content-center w-100">
+    <table class="w-25 p-5">
+        <tr>
+            <td class="py-3">
+                <p class="text-center">Votre don à @Model.Name est bien reçu, merci !</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="py-3">
+                <a href="../Association/Profil/@Model.Id" class="btn btn-primary w-100">Retour à la page de l'association</a>
+            </td>
+        </tr>
+        <tr>
+            <td class="py-3">
+                <a href="../Home/Index" class="btn btn-primary w-100">Retour à l'acceuil</a>
+            </td>
+        </tr>
+    </table>
+</div>

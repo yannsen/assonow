@@ -12,6 +12,9 @@ namespace Projet2.Models
         public DbSet<Document> Document { get; set; }
         public DbSet<Donation> Donation { get; set; }
         public DbSet<RecurringDonation> RecurringDonation { get; set; }
+        public DbSet<Fundraising> Fundraising { get; set; }
+        public DbSet<Payment> Payment { get; set; }
+        public DbSet<CreditCard> CreditCard { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
