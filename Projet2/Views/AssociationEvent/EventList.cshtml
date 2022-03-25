@@ -9,7 +9,7 @@
         <table width="50%" align="center">
             <tr>
                  <th>
-                     @Model.EventsList.
+                     Id
                  </th>
                  <th>
                     Titre
@@ -32,7 +32,10 @@
                     @item.Description
                 </td>
 
-                
+                  <td>
+                    @Html.ActionLink("Edit", "Edit", new {  id=item.Id})
+                    @Html.ActionLink("Delete", "Delete", new {  id=item.Id })
+               </td>
 
              </tr>
 
@@ -51,10 +54,7 @@
                 <td>
                     @Html.DisplayFor(m =>m.AssociationEvent.Description)
                 </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new {  id=Model.AssociationEvent.Id})
-                    @Html.ActionLink("Delete", "Delete", new {  id=Model.AssociationEvent.Id })
-               </td>
+              
                
                   <td>
                         @Model.AssociationEvent.Id
