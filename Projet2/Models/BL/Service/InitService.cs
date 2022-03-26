@@ -38,6 +38,12 @@ namespace Projet2.Models.BL.Service
             _bddContext.Association.Add(new Association { Id = 4, AddressId = 5, Name = "Tous Au Sport", IsPublished = false, Description = "Cette association loi 1901 à but non lucratif, constituée le 25 juillet 2016, a pour objet de permettre l'accès le plus grand possible au sport à toutes et à tous et cela dans le cadre des cours collectifs.", Image = File.ReadAllText("wwwroot/init/asso4.txt"), AssociationRepresentativeId = 1, Mail = "asso4@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 5, AddressId = 6, Name = "Sidaction", IsPublished = false, Description = "Sidaction désigne à la fois une association de lutte contre le VIH/sida, créée en 1994 et un évènement télévisuel annuel de collecte de dons pour cette association qui finance à parts égales des programmes de recherche et des associations d’aide aux malades et de prévention, en France et à l’international. Pierre Bergé présidait l'association.", Image = File.ReadAllText("wwwroot/init/asso5.txt"), AssociationRepresentativeId = 1, Mail = "asso4@gmail.com" });
 
+            //YS ajout d un membre  representant  de plusieurs associations
+            _bddContext.Member.Add(new Member { Id = 2, Firstname = "Yann", Lastname = "Senic", Mail = "ysenic@gmail.com", Password = authentificationService.EncodeMD5("123456"), Pseudonym = "Repres", AddressId = 2, Role = "Representative" });
+            _bddContext.AssociationMember.Add(new AssociationMember { Id = 1, AssociationId = 1, MemberId = 2 });
+            _bddContext.AssociationMember.Add(new AssociationMember { Id = 2, AssociationId = 2, MemberId = 2 });
+            //YS End
+
             _bddContext.Document.Add(new Document { Id = 1, AssociationId = 4, Type = "OfficialJournalPublication", Path = "../FileSystem/Documents/Publication1.pdf" });
             _bddContext.Document.Add(new Document { Id = 2, AssociationId = 4, Type = "BankDetails", Path = "../FileSystem/Documents/RIB1.pdf" });
             _bddContext.Document.Add(new Document { Id = 3, AssociationId = 4, Type = "ID", Path = "../FileSystem/Documents/ID1.pdf" });
