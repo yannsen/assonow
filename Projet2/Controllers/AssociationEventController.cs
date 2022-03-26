@@ -32,14 +32,12 @@ namespace Projet2.Controllers
             }
            
             return View(associationsList);
-
         }
-
 
         public IActionResult AssociationManagement(int id)
         {
-
-               
+           
+            ViewData["Id"] = id;
 
                 return View();
         }
@@ -83,14 +81,14 @@ namespace Projet2.Controllers
         }
 
 
-        public ActionResult EventList()
+        public ActionResult EventList(int? associationId)
         {
-            AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
-            viewModel.EventsList = associationEventService.ListAssociationEvent(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
-            viewModel.AssociationList = associationEventService.AssociationsRepresentative(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
-            return View(viewModel);
-        }
+                AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
+                viewModel.EventsList = associationEventService.ListAssociationEvent(associationId.Value);
+                viewModel.SelectedAssociationId = associationId.Value;
+                return View(associationId);
 
+        }
 
 
         public ActionResult EventDelete(int associationEventId)
@@ -99,8 +97,6 @@ namespace Projet2.Controllers
 
             return View();
         }
-
-
         public ActionResult EventEdit(int associationEventID)
         {
             AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
@@ -110,8 +106,6 @@ namespace Projet2.Controllers
             return View(viewModel);
             
         }
-
-
 
         [HttpPost]
         public ActionResult EventEdit(AssociationEventInfoViewmodel viewModel)

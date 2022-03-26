@@ -75,15 +75,12 @@ namespace Projet2.Models.BL.Service
                 
         }
 
-        public List<AssociationEvent> ListAssociationEvent(int MemberConnectedId)
+        public List<AssociationEvent> ListAssociationEvent(int associationId)
         {
 
-            //"SELECT AssociationEvent.* FROM AssociationEvent where AssociationId = (select id FROM Association  where AssociationRepresentativeId = MemberConnectedId)";
+            //"SELECT AssociationEvent.* FROM AssociationEvent where AssociationId = associationId";
             var query = from ae in _bddContext.AssociationEvent
-                        let asso = from a in _bddContext.Association
-                                   where a.AssociationRepresentativeId == MemberConnectedId
-                                   select a.Id
-                        where asso.Contains(ae.Id)
+                        where ae.AssociationId == associationId
                         select ae;
             
             var EventAssocations = query.ToList();
