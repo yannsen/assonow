@@ -20,12 +20,12 @@
                     @{
                         if (!User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-item px-2"><a class="btn btn-outline-primary" href="../Compte/Creer">Créer un compte</a></li>
-                            <li class="nav-item px-2"><a class="btn btn-outline-primary" href="../Compte/Connexion">Se connecter</a></li>
+                            <li class="nav-item px-2"><a class="btn btn-outline-primary" href="~/Compte/Creer">Créer un compte</a></li>
+                            <li class="nav-item px-2"><a class="btn btn-outline-primary" href="~/Compte/Connexion">Se connecter</a></li>
                         }else{
                             if (User.IsInRole("Administrator"))
                             {
-                                <li class="nav-item px-2"><a class="btn btn-outline-primary" href="../AdminDashboard/Index">Tableau de bord</a></li>
+                                <li class="nav-item px-2"><a class="btn btn-outline-primary" href="~/AdminDashboard/Index">Tableau de bord</a></li>
                             }else if (User.IsInRole("Representative"))
                             {
                                 //Bouton pour le role representative
@@ -33,9 +33,9 @@
                             {
                                 //Bouton pour le role legalexpert
                             }else {
-                                <li class="nav-item px-2"><a class="btn btn-outline-primary" href="../Association/Inscrire">Inscrire une association</a></li>
+                                <li class="nav-item px-2"><a class="btn btn-outline-primary" href="~/Association/Inscrire">Inscrire une association</a></li>
                             }
-                            <li class="nav-item px-2"><a class="btn btn-outline-primary" href="../Compte/Deconnexion">Se déconnecter</a></li>
+                            <li class="nav-item px-2"><a class="btn btn-outline-primary" href="~/Compte/Deconnexion">Se déconnecter</a></li>
                         }
                     }
                     </ul>
