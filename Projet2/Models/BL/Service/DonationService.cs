@@ -49,6 +49,13 @@ namespace Projet2.Models.BL.Service
         public Donation GetDonation(int id)
         {
             return _bddContext.Donation.Find(id);
-        }   
+        }
+
+        public bool IsForFundraising(int id)
+        {
+            if (_bddContext.Donation.Find(id).FundraisingId != null)
+                return true;
+            return false;
+        }
     }
 }

@@ -95,6 +95,12 @@ namespace Projet2.Models.BL.Service
             return GetAssociation(AssociationId);
         }
 
+        public Association GetAssociationByFundraisingId(int id)
+        {
+            int associationId = (int)_bddContext.Fundraising.Find(id).AssociationId;
+            return GetAssociation(associationId);
+        }
+
         public List<Association> GetSearchAssociation(string searchCriteria)
         {
             List<Association> associations = new List<Association>();

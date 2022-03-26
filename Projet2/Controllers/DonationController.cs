@@ -43,7 +43,7 @@ namespace Projet2.Controllers
             return RedirectToAction("CreditCard", "Payment", paymentViewModel);
         }
         
-        public IActionResult Collecte(int id)
+        public IActionResult Fundraising(int id)
         {
             DonationViewModel viewModel = new DonationViewModel();
             viewModel.Fundraising = fundraisingService.GetFundraising(id);
@@ -51,7 +51,7 @@ namespace Projet2.Controllers
         }
 
         [HttpPost]
-        public IActionResult Collecte(DonationViewModel viewModel)
+        public IActionResult Fundraising(DonationViewModel viewModel)
         {
             viewModel.MemberId = Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             int donationId = donationService.CreateDonation(viewModel);
@@ -63,8 +63,21 @@ namespace Projet2.Controllers
 
         public IActionResult Done(int id)
         {
-            Association association = associationService.GetAssociationByDonationId(id);
-            return View(association);
+            DonationThanksViewModel viewModel = new DonationThanksViewModel();
+            if (donationService.GetDonation(id).AssociationId != null)
+            {
+                Association association = associationService.GetAssociationByDonationId(id);
+                viewModel.Association = association;
+            }
+            else
+            {
+                Fundraising fundraising = fundraisingService.GetFundraisingByDonationId(id);
+                Association association = associationService.GetAssociationByFundraisingId(fundraising.Id);
+                viewModel.Fundraising = fundraising;
+                viewModel.Association = association;
+                viewModel.IsForFundraising = true;
+            }
+            return View(viewModel);
         }
     }
 }

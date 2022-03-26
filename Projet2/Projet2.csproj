@@ -15,9 +15,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="wwwroot\FileSystem\Pictures\" />
 	  <Folder Include="wwwroot\Images\" />
-	  <Folder Include="wwwroot\Init\" />
 	</ItemGroup>
 
 	<ItemGroup>

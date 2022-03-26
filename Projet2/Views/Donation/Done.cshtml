@@ -1,4 +1,4 @@
-﻿@model Projet2.Models.Association
+﻿@model Projet2.ViewModels.DonationThanksViewModel
 
 @{
     ViewBag.title = "Don effectué";
@@ -7,14 +7,30 @@
 
 <div class ="d-flex justify-content-center w-100">
     <table class="w-25 p-5">
+        @if (Model.IsForFundraising == false)
+        {
+            <tr>
+                <td class="py-3">
+                    <p class="text-center">Votre don à @Model.Association.Name est bien reçu, merci !</p>
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td class="py-3">
+                    <p class="text-center">Votre don pour la collecte @Model.Fundraising.Name est bien reçu, l'association @Model.Association.Name vous remercie !</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="py-3">
+                    <a href="../Fundraising/Profile/@Model.Fundraising.Id" class="btn btn-primary w-100">Retour à la page de la collecte</a>
+                </td>
+            </tr>
+        }
         <tr>
             <td class="py-3">
-                <p class="text-center">Votre don à @Model.Name est bien reçu, merci !</p>
-            </td>
-        </tr>
-        <tr>
-            <td class="py-3">
-                <a href="../Association/Profil/@Model.Id" class="btn btn-primary w-100">Retour à la page de l'association</a>
+                <a href="../Association/Profil/@Model.Association.Id" class="btn btn-primary w-100">Retour à la page de l'association</a>
             </td>
         </tr>
         <tr>

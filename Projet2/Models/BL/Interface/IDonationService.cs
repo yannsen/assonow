@@ -7,5 +7,7 @@ namespace Projet2.Models.BL.Interface
         public int CreateDonation(DonationViewModel viewModel);
 
         public Donation GetDonation(int id);
+
+        public bool IsForFundraising(int id);
     }
 }
