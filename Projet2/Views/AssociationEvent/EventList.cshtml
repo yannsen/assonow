@@ -33,8 +33,9 @@
                 </td>
 
                   <td>
-                    @Html.ActionLink("Edit1", "Edit", new {  id=item.Id})
-                    @Html.ActionLink("Delete", "EventDelete", new {  id=item.Id })
+                    @Html.ActionLink("Modifier","EventEdit","AssociationEvent", null,new {id=item.Id})
+                    @Html.ActionLink("Effacer","EventDelete","AssociationEvent",new {id=item.Id})
+                    @Html.RouteLink("Effacer bis","EventDelete",new {id=2})
                </td>
 
              </tr>

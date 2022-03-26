@@ -13,22 +13,45 @@ namespace Projet2.Controllers
     public class AssociationEventController : Controller
     {
         private IAssociationEventService associationEventService;
-        BddContext _bddcontext;
+        BddContext _bddContext;
 
         public AssociationEventController()
         {
             this.associationEventService = new AssociationEventService();
-            this._bddcontext = new BddContext();
+            this._bddContext = new BddContext();
         }
 
         public IActionResult Index()
         {
+            AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
+            viewModel.AssociationList = associationEventService.AssociationsRepresentative(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+            if (viewModel.AssociationList.Count == 1)
+            {
+               return RedirectToAction("AssociationManagement", "AssociationEvent", new { Id = viewModel.AssociationList[0].Id });
+            }
+           
+            return View(viewModel);
+
+        }
+
+
+        public IActionResult AssociationManagement()
+        {
+
             return View();
         }
 
+
         public IActionResult EventManagement()
         {
+            AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
+            viewModel.AssociationList = associationEventService.AssociationsRepresentative(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+            if (viewModel.AssociationList.Count > 1   )
+            {
+                return View();
+            }
             return View();
+
         }
 
 
@@ -74,27 +97,30 @@ namespace Projet2.Controllers
             return View();
         }
 
-        public ActionResult DeletedEvent(int associationEventId)
+
+        public ActionResult EventEdit(int associationEventID)
         {
-            associationEventService.DeleteAssociationEvent(associationEventId);
-
-            return View();
+            AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
+            viewModel.AssociationEvent = _bddContext.AssociationEvent.Find(associationEventID);
+            viewModel.Address = _bddContext.Address.Find(viewModel.AssociationEvent.AddressId);
+            ViewBag.Legend = "Modification du compte";
+            return View(viewModel);
+            
         }
-        //public ActionResult EventEdit()
-        //{
-        //    //code for binding the existing records
-        //    return View(_data);
-        //}
 
 
 
-        //[HttpPost]
-        //public ActionResult EditEvent(string sampleDropdown, Data model)
-        //{
-        //    //code for saving the updated data
-        //    return RedirectToAction("Index", "Home");
-
-        //}
+        [HttpPost]
+        public ActionResult EventEdit(AssociationEventInfoViewmodel viewModel)
+        {  
+            if (ModelState.IsValid)
+            {
+                associationEventService.ModifyAssociationEvent(viewModel);
+                return View(viewModel);
+            }
+            return View(viewModel);
+            
+        }
 
     }
 }

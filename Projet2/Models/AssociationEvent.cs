@@ -17,7 +17,7 @@ namespace Projet2.Models
         public string Description { get; set; }
 
         public string Image { get; set; }
-        //  public string Video { get; set; }
+
         [Display(Name = "Date:")]
         [Required(ErrorMessage = "Veuillez indiquer la date de l'événement")]
         public DateTime Date { get; set; }

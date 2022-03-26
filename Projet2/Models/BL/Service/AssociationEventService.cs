@@ -56,6 +56,7 @@ namespace Projet2.Models.BL.Service
             {
                 addressService.DeleteAddress(associationEvent.AddressId);
                 _bddContext.AssociationEvent.Remove(associationEvent);
+                _bddContext.SaveChanges();
             }
         }
 
