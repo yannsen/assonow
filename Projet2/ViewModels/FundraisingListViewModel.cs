@@ -9,6 +9,8 @@ namespace Projet2.ViewModels
     {
         public List<Fundraising> FundraisingsList { get; set; }
 
+        public List<string> FundraisingsImage { get; set; }
+
         [Display(Name = "Nom de la collecte :")]
         public string FundraisingNameToSearch { get; set; }
 

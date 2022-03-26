@@ -5,19 +5,22 @@
     Layout = "_Layout";
 }
 
-<div class="d-flex flex-column w-100">
-    <div class="d-flex align-items-center w-100">
-        <img src="@Model.Association.Image" class="rounded mx-auto d-block" alt="@Model.Name">
+<div class="d-flex flex-column justify-content-center w-100">
+    <div class="d-flex">
+        <img src="@ViewBag.AssociationImage" class="rounded mx-auto d-block" alt="@Model.Name">
     </div>
-    <div class="d-flex flex-row align-items-center w-100">
-        <div class="d-flex align-items-center w-25">
-            <p>@Model.CurrentAmount</p>
+    <div class="d-flex flex-row justify-content-around w-100">
+        <div class="d-flex">
+            <p>Montant récolté : @Model.CurrentAmount</p>
         </div>
-        <div class="d-flex align-items-center w-25">
-            <p>@Model.DesiredAmount</p>
+        <div class="d-flex">
+            <p>Montant cible : @Model.DesiredAmount</p>
         </div>
     </div>
-    <div class="d-flex align-items-center w-100">
+    <div class="d-flex justify-content-center w-100">
         <p>@Model.Description</p>
+    </div>
+    <div class="d-flex justify-content-center w-100">
+        <a class="btn btn-primary" href="~/Donation/Fundraising/@Model.Id">Faire un don</a>
     </div>
 </div>

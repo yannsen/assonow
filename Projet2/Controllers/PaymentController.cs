@@ -11,13 +11,17 @@ namespace Projet2.Controllers
     public class PaymentController : Controller
     {
         private IPaymentService paymentService;
+        private IFundraisingService fundraisingService;
         private ICreditCardService creditCardService;
+        private IDonationService donationService;
         private BddContext _bddContext;
 
         public PaymentController()
         {
             this.paymentService = new PaymentService();
             this.creditCardService = new CreditCardService();
+            this.fundraisingService = new FundraisingService();
+            this.donationService = new DonationService();
             this._bddContext = new BddContext();
         }
 
@@ -50,6 +54,8 @@ namespace Projet2.Controllers
             if (viewModel.DonationId != null)
             {
                 ViewBag.Next = "../Donation/Done?id=" + viewModel.DonationId;
+                if (donationService.IsForFundraising((int)viewModel.DonationId))
+                    fundraisingService.AddAmount(fundraisingService.GetFundraisingByDonationId((int)viewModel.DonationId).Id, Int32.Parse(viewModel.Amount));
             }
             else if (viewModel.ContributionId != null)
             {

@@ -45,9 +45,9 @@
                             @if(i < Model.FundraisingsList.Count)
                             {
                                 <div class="card align-items-center w25">
-                                    @*<img class="card-img-top" src="@Model.FundraisingsList[i].Image">*@
+                                    <img class="card-img-top" src="@Model.FundraisingsImage[i]">
                                     <div class="card-body">
-                                        <h4 class="card-title">@Model.FundraisingsList[i].Name</h4>
+                                        <h5 class="card-title">@Model.FundraisingsList[i].Name</h5>
                                         <p class="card-text">@Model.FundraisingsList[i].Description</p>
                                         <a class="btn btn-primary" href="~/Fundraising/Profile?id=@Model.FundraisingsList[i].Id">Plus de détails</a>
                                     </div>

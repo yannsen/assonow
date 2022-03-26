@@ -31,5 +31,19 @@ namespace Projet2.Models.BL.Service
             return _bddContext.Fundraising.Where(f => f.IsActive == viewModel.SearchIfActive)
                 .Where(f => f.Name.Contains(viewModel.FundraisingNameToSearch)).ToList();
         }
+
+        public Fundraising GetFundraisingByDonationId(int id)
+        {
+            int fundraisingId = (int)_bddContext.Fundraising.Find(id).AssociationId;
+            return GetFundraising(fundraisingId);
+        }
+
+        public void AddAmount(int id, int amount)
+        {
+            Fundraising fundraising = GetFundraising(id);
+            fundraising.CurrentAmount += amount;
+            _bddContext.Fundraising.Update(fundraising);
+            _bddContext.SaveChanges();
+        }
     }
 }

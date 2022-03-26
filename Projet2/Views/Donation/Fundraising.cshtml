@@ -11,7 +11,7 @@
         <fieldset>
             <legend align="center">Don à @Model.Fundraising.Name</legend>
         <table>
-            @Html.HiddenFor(m => m.Fundraising)
+            @Html.HiddenFor(m => m.Fundraising.Id)
             <tr> 
                 <td>
                     @Html.LabelFor(m => m.Amount)

@@ -23,6 +23,8 @@ namespace Projet2.Models.BL.Interface
 
         public Association GetAssociationByDonationId(int id);
 
+        public Association GetAssociationByFundraisingId(int id);
+
         public List<Association> GetSearchAssociation(string searchCriteria);
     }
 }
