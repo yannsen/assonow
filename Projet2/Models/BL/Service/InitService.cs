@@ -1,4 +1,5 @@
 ﻿using Projet2.Models.BL.Interface;
+using System;
 using System.IO;
 
 namespace Projet2.Models.BL.Service
@@ -48,9 +49,18 @@ namespace Projet2.Models.BL.Service
             _bddContext.Document.Add(new Document { Id = 2, AssociationId = 4, Type = "BankDetails", Path = "../FileSystem/Documents/RIB1.pdf" });
             _bddContext.Document.Add(new Document { Id = 3, AssociationId = 4, Type = "ID", Path = "../FileSystem/Documents/ID1.pdf" });
 
+            _bddContext.Fundraising.Add(new Fundraising { Id = 1, AssociationId = 1, Name = "Des armes pour l'ukraine", Description = "Description1", IsActive = true, CurrentAmount = 0, DesiredAmount = 10000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Humanitaire"});
+            _bddContext.Fundraising.Add(new Fundraising { Id = 2, AssociationId = 1, Name = "Sauvez les éléphants", Description = "Description2", IsActive = true, CurrentAmount = 1500, DesiredAmount = 20000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Sport"});
+            _bddContext.Fundraising.Add(new Fundraising { Id = 3, AssociationId = 2, Name = "Aide aux victimes", Description = "Description3", IsActive = true, CurrentAmount = 500, DesiredAmount = 15000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Culture"});
+            _bddContext.Fundraising.Add(new Fundraising { Id = 4, AssociationId = 2, Name = "Blocage mine d'or", Description = "Description4", IsActive = true, CurrentAmount = 0, DesiredAmount = 18000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Enseignement"});
+            _bddContext.Fundraising.Add(new Fundraising { Id = 5, AssociationId = 3, Name = "Construction hopital", Description = "Description5", IsActive = true, CurrentAmount = 0, DesiredAmount = 5000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Défense des droits"});
+            _bddContext.Fundraising.Add(new Fundraising { Id = 6, AssociationId = 3, Name = "Achat lot de maillot", Description = "Description6", IsActive = true, CurrentAmount = 3000, DesiredAmount = 10000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Humanitaire"});
+            _bddContext.Fundraising.Add(new Fundraising { Id = 7, AssociationId = 4, Name = "Stop aux ailerons de requin !", Description = "Description7", IsActive = true, CurrentAmount = 50, DesiredAmount = 75000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Recherche"});
+            _bddContext.Fundraising.Add(new Fundraising { Id = 8, AssociationId = 4, Name = "Recherche scientifique", Description = "Description8", IsActive = true, CurrentAmount = 1, DesiredAmount = 100000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Humanitaire"});
+            _bddContext.Fundraising.Add(new Fundraising { Id = 9, AssociationId = 5, Name = "J'ai plus d'idée !", Description = "Description9", IsActive = true, CurrentAmount = 2500, DesiredAmount = 10000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Culture"});
+            _bddContext.Fundraising.Add(new Fundraising { Id = 10, AssociationId = 5, Name = "J'ai plus d'idée !", Description = "Description10", IsActive = false, CurrentAmount = 0, DesiredAmount = 15000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Loisirs"});
             _bddContext.SaveChanges();
         }
-
         public void Dispose()
         {
             _bddContext.Dispose();
