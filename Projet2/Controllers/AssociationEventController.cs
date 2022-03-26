@@ -13,32 +13,35 @@ namespace Projet2.Controllers
     public class AssociationEventController : Controller
     {
         private IAssociationEventService associationEventService;
+        private IAssociationService associationService;
         BddContext _bddContext;
 
         public AssociationEventController()
         {
             this.associationEventService = new AssociationEventService();
+            this.associationService = new AssociationService();
             this._bddContext = new BddContext();
         }
 
         public IActionResult Index()
         {
-            AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
-            viewModel.AssociationList = associationEventService.AssociationsRepresentative(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
-            if (viewModel.AssociationList.Count == 1)
+            List<Association> associationsList = associationEventService.AssociationsRepresentative(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+            if (associationsList.Count == 1)
             {
-               return RedirectToAction("AssociationManagement", "AssociationEvent", new { Id = viewModel.AssociationList[0].Id });
+               return RedirectToAction("AssociationManagement", "AssociationEvent", new { Id = associationsList[0].Id });
             }
            
-            return View(viewModel);
+            return View(associationsList);
 
         }
 
 
-        public IActionResult AssociationManagement()
+        public IActionResult AssociationManagement(int id)
         {
 
-            return View();
+               
+
+                return View();
         }
 
 

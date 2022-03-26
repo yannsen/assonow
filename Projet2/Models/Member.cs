@@ -38,4 +38,11 @@ namespace Projet2.Models
         public string Role { get; set; }
 
     }
+
+    public enum Role
+    {
+        Administrator,
+        Representative,
+        Legalexpert
+    }
 }
