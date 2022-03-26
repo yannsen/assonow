@@ -5,6 +5,7 @@ namespace Projet2.Models
     public class Fundraising
     {
         public string Name { get; set; }
+
         public int Id { get; set; }
 
         public string Description { get; set; }
@@ -20,5 +21,11 @@ namespace Projet2.Models
         public int DesiredAmount { get; set; }
 
         public int CurrentAmount { get; set; }
+
+        public bool IsActive { get; set; }
+
+        public string Field { get; set; }
+
+        public bool IsHighlighted { get; set; }
     }
 }

@@ -35,6 +35,9 @@ namespace Projet2.Controllers
         [HttpPost]
         public IActionResult Creer(MemberInfoViewModel viewModel)
         {
+            ModelState.Remove("Member.Id");
+            ModelState.Remove("Member.AddressId");
+            ModelState.Remove("Address.Id");
             if (ModelState.IsValid)
             {
                 memberService.CreateMember(viewModel);
