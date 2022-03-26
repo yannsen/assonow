@@ -102,5 +102,12 @@ namespace Projet2.Models.BL.Service
             int AssociationId = (int)_bddContext.Donation.Find(id).AssociationId;
             return GetAssociation(AssociationId);
         }
+
+        public List<Association> GetSearchAssociation(string searchCriteria)
+        {
+            List<Association> associations = new List<Association>();
+            associations.Add(new Association { Name = searchCriteria });
+            return associations;
+        }
     }
 }

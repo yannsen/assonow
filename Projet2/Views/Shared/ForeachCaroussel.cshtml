@@ -1,0 +1,39 @@
+﻿@model List<Projet2.Models.Association>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div class="text-center">
+    <h4>Les associations</h4>
+</div>
+<div class="container my-4">
+    <div id="carouselAssociation" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row">
+                    <div class="col">
+                        <div class="card align-items-center">
+                            @for (int i = 0; i < 10; i++)
+                            {
+                                <img class="card-img-top" src="Model[i].Association.Image">
+                                <div class="card-body">
+                                    <h4 class="card-title">Model[i].Association.Name</h4>
+                                    <p class="card-text">Model[i].Association.Description</p>
+                                    <a class="btn btn-primary"  asp-area="" asp-controller="Association" asp-action="Profil" asp-route-id="@Model[0].Id">Plus de détails</a>
+                                </div>
+                            }
+                          </div>
+                         </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselAssociation" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselAssociation" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>
+</div>

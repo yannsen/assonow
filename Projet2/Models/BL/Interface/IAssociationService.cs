@@ -22,5 +22,7 @@ namespace Projet2.Models.BL.Interface
         public void ValidateAssociation(int id);
 
         public Association GetAssociationByDonationId(int id);
+
+        public List<Association> GetSearchAssociation(string searchCriteria);
     }
 }
