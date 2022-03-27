@@ -7,6 +7,10 @@
         <br>
         <br>
         <table width="50%" align="center">
+           
+            <tr> 
+                @Model.AssociationEvent=Model.SelectedAssociationId
+          </tr>
 
           
             <tr>
@@ -29,16 +33,6 @@
                 <td>@Html.TextBoxFor(m => Model.AssociationEvent.Date)</td>
                 <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.Date)</td>
             </tr>
-
-
-           <tr>      
-                 <td>
-                   l'association liée à l'évènement' :
-                 @Html.DropDownListFor(m => m.SelectedAssociationId, new SelectList(Model.AssociationList, "Id", "Name"))                   
-                 </td>
-           </tr>
-
-
 
             <tr>
                 <td align="right">@Html.LabelFor(m => Model.AssociationEvent.EventType)</td>

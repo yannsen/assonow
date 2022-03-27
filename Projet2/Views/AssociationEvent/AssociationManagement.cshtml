@@ -1,4 +1,4 @@
-﻿@model Projet2.Models.Association
+﻿@model Projet2.ViewModels.AssociationEventInfoViewmodel
 @{
     ViewBag.title = "Liste des associations";
     Layout = "_Layout";
@@ -8,15 +8,17 @@
 <div class ="d-flex justify-content-center w-100">
     <table class="w-25 p-5">
        
+
+        
         <tr>
             <td >
-                <a href="/AssociationEvent/EventList/@ViewData["Id"]" class="btn btn-primary w-100">Gestion des évènements</a>
+                <img src="" width="200" height="200" />
             </td>
         </tr>
         
         <tr>
             <td >
-                <a href="/AssociationEvent/EventList/@ViewData["Id"]" class="btn btn-primary w-100">Gestion des évènements</a>
+                <a href="/AssociationEvent/EventList?id=@Model.SelectedAssociationId"" class="btn btn-primary w-100">Gestion des évènements</a>
             </td>
         </tr>
           <tr>
@@ -27,7 +29,7 @@
         <tr>
 
             <td>
-                <a href="Association/Index/@ViewData["Id"]" class="btn btn-primary w-100">gestion de vos dons</a>
+                <a href="Association/Index" class="btn btn-primary w-100">gestion de vos dons</a>
             </td>
         </tr>
               <tr>

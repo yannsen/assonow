@@ -49,7 +49,7 @@ namespace Projet2
             {
                 endpoints.MapControllerRoute(
                     name: "EventDelete",
-                    pattern: "{controller=AssociationEvent}/{action=EventDelete}/{id?}");
+                    pattern: "{controller=AssociationEvent}/{action=EventDelete}/{id?}/{eventid?}");
             });   
 
         }

@@ -36,10 +36,10 @@ namespace Projet2.Controllers
 
         public IActionResult AssociationManagement(int id)
         {
-           
-            ViewData["Id"] = id;
+            AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
+            viewModel.SelectedAssociationId= id;
 
-                return View();
+                return View(viewModel);
         }
 
 
@@ -55,52 +55,55 @@ namespace Projet2.Controllers
 
         }
 
-
-        public IActionResult Inscrire()
+        //register new Event for a specific association
+        public IActionResult EventRegister(int id)
         {
 
             AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
-            viewModel.AssociationList = associationEventService.AssociationsRepresentative(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+            viewModel.AssociationEvent = new AssociationEvent();
+            viewModel.SelectedAssociationId = id;
             return View(viewModel);
 
         }
 
         [HttpPost]
         [Authorize]
-        public IActionResult Inscrire(AssociationEventInfoViewmodel viewModel)
-        {
+        public IActionResult EventRegister(AssociationEventInfoViewmodel viewModel)
+        {   
             viewModel.AssociationEvent.AssociationId = viewModel.SelectedAssociationId;
             if (ModelState.IsValid)
             {
 
                 associationEventService.CreateAssociationEvent(viewModel);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("EventList", "AssociationEvent",new {id= viewModel.SelectedAssociationId});
             }
             else { Console.WriteLine(" ModelState false"); }
             return View(viewModel);
         }
 
-
-        public ActionResult EventList(int? associationId)
+        //List of all event of  an association. 
+        //id in parameter is for Id of association
+        public ActionResult EventList(int id)
         {
                 AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
-                viewModel.EventsList = associationEventService.ListAssociationEvent(associationId.Value);
-                viewModel.SelectedAssociationId = associationId.Value;
-                return View(associationId);
+                viewModel.EventsList = associationEventService.ListAssociationEvent(id);
+                viewModel.SelectedAssociationId = id;
+                return View(viewModel);
 
         }
 
 
-        public ActionResult EventDelete(int associationEventId)
-        {
-            associationEventService.DeleteAssociationEvent(associationEventId);
-
-            return View();
-        }
-        public ActionResult EventEdit(int associationEventID)
+        public ActionResult EventDelete(int id,int eventid)
         {
             AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
-            viewModel.AssociationEvent = _bddContext.AssociationEvent.Find(associationEventID);
+            associationEventService.DeleteAssociationEvent(eventid);
+            viewModel.SelectedAssociationId = id;
+            return View(viewModel);
+        }
+        public ActionResult EventEdit(int id)
+        {
+            AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
+            viewModel.AssociationEvent = _bddContext.AssociationEvent.Find(id);
             viewModel.Address = _bddContext.Address.Find(viewModel.AssociationEvent.AddressId);
             ViewBag.Legend = "Modification du compte";
             return View(viewModel);

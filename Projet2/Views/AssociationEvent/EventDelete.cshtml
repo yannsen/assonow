@@ -1,8 +1,8 @@
-﻿@model Projet2.Models.Association
+﻿@model Projet2.ViewModels.AssociationEventInfoViewmodel
 @{
     ViewBag.title = "Évènement effacé";
     Layout = "_Layout";
 }
 
-<meta http-equiv="refresh" content="3;../EventList/@ViewData["Id"]">
+<meta http-equiv="refresh" content="3;../EventList?id=@Model.SelectedAssociationId">
 <p align="center">l'évènnement a été effacé, vous allez être redirigé vers la lise des autres évènements dans quelques secondes...</p>
