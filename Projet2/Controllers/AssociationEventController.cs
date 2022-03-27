@@ -113,11 +113,13 @@ namespace Projet2.Controllers
             viewModel.SelectedAssociationId = id;
             return View(viewModel);
         }
-        public ActionResult EventEdit(int id)
+        //id in parameter is for Id of association
+        public ActionResult EventEdit(int id, int eventid)
         {
             AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
-            viewModel.AssociationEvent = _bddContext.AssociationEvent.Find(id);
+            viewModel.AssociationEvent = _bddContext.AssociationEvent.Find(eventid);
             viewModel.Address = _bddContext.Address.Find(viewModel.AssociationEvent.AddressId);
+            viewModel.SelectedAssociationId = id;
             ViewBag.Legend = "Modification du compte";
             return View(viewModel);
             
@@ -129,7 +131,7 @@ namespace Projet2.Controllers
             if (ModelState.IsValid)
             {
                 associationEventService.ModifyAssociationEvent(viewModel);
-                return View(viewModel);
+                return RedirectToAction("EventList", "AssociationEvent", new { Id = viewModel.SelectedAssociationId });
             }
             return View(viewModel);
             

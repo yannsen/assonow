@@ -5,6 +5,7 @@ namespace Projet2.Models
 {
     public class AssociationEvent
     {
+        [Key]    
         public int Id { get; set; }
 
         [Display(Name = "Nom de l'évènement :")]
