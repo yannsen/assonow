@@ -64,7 +64,6 @@ namespace Projet2.Controllers
         {
 
             AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
-            viewModel.AssociationEvent = new AssociationEvent();
             viewModel.SelectedAssociationId = id;
             return View(viewModel);
 

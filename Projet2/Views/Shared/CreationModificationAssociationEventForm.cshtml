@@ -9,8 +9,8 @@
         <table width="50%" align="center">
            
             <tr> 
-                @Model.AssociationEvent=Model.SelectedAssociationId
-          </tr>
+                @Html.HiddenFor(m=>m.SelectedAssociationId)
+            </tr>
 
           
             <tr>
