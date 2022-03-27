@@ -11,9 +11,12 @@ namespace Projet2.Models
         public DbSet<AssociationMember> AssociationMember { get; set; }
         public DbSet<Ticket> Ticket { get; set; }
         public DbSet<Document> Document { get; set; }
-
+        public DbSet<Donation> Donation { get; set; }
+        public DbSet<RecurringDonation> RecurringDonation { get; set; }
+        public DbSet<Fundraising> Fundraising { get; set; }
+        public DbSet<Payment> Payment { get; set; }
+        public DbSet<CreditCard> CreditCard { get; set; }
         public DbSet<AssociationEvent> AssociationEvent { get; set; }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=projet2;");

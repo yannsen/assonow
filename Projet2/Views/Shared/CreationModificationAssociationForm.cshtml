@@ -18,9 +18,9 @@
                 <td>@Html.ValidationMessageFor(m => Model.Association.Description)</td>
             </tr>
             <tr>
-                <td align="right">@Html.LabelFor(m => Model.File)</td>
-                <td>@Html.TextBoxFor(m => Model.File, new { type = "file" })</td>
-                <td>@Html.ValidationMessageFor(m => Model.File)</td>
+                <td align="right">@Html.LabelFor(model => model.File)</td>
+                <td>@Html.TextBoxFor(model => model.File, new { placeholder = "Description", @type = "file" })</td>
+                <td>@Html.ValidationMessageFor(model => model.File)</td>
             </tr>
             <tr>
                 <td align="right">@Html.LabelFor(m => Model.Association.Mail)</td>

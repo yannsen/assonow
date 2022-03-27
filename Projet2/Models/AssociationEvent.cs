@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 
 ﻿using System.ComponentModel.DataAnnotations;
 using System;
+=======
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+>>>>>>> test
 
 namespace Projet2.Models
 {

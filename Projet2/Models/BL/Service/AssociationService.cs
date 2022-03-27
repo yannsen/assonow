@@ -1,4 +1,5 @@
-﻿using Projet2.Models.BL.Interface;
+﻿using Microsoft.AspNetCore.Hosting;
+using Projet2.Models.BL.Interface;
 using Projet2.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -27,15 +28,6 @@ namespace Projet2.Models.BL.Service
             viewModel.Association.DonationService = false;
             viewModel.Association.MemberService = false;
             viewModel.Association.IsPublished = false;
-            if (viewModel.File.Length > 0)
-            {
-                using (var ms = new MemoryStream())
-                {
-                    viewModel.File.CopyTo(ms);
-                    var fileBytes = ms.ToArray();
-                    viewModel.Association.Image = string.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(fileBytes));
-                }
-            }
             _bddContext.Association.Add(viewModel.Association);
             _bddContext.SaveChanges();
             return viewModel.Association.Id;
@@ -64,6 +56,7 @@ namespace Projet2.Models.BL.Service
         {
             return _bddContext.Association.Find(id);
         }
+
         public List<Association> GetAllAssociations()
         {
             return _bddContext.Association.Where(a => a.IsPublished == true).ToList();
@@ -94,9 +87,21 @@ namespace Projet2.Models.BL.Service
             association.IsPublished = true;
             _bddContext.Association.Update(association);
             _bddContext.SaveChanges();
-        } 
+        }
 
-        public List<Association> GetSearchAssociation (string searchCriteria)
+        public Association GetAssociationByDonationId(int id)
+        {
+            int AssociationId = (int)_bddContext.Donation.Find(id).AssociationId;
+            return GetAssociation(AssociationId);
+        }
+
+        public Association GetAssociationByFundraisingId(int id)
+        {
+            int associationId = (int)_bddContext.Fundraising.Find(id).AssociationId;
+            return GetAssociation(associationId);
+        }
+
+        public List<Association> GetSearchAssociation(string searchCriteria)
         {
             List<Association> associations = new List<Association>();
             associations.Add(new Association { Name = searchCriteria });

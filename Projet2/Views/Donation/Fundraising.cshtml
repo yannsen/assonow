@@ -1,0 +1,29 @@
+﻿@model Projet2.ViewModels.DonationViewModel
+
+@{
+    ViewBag.Title = "Don à la collecte";
+    Layout = "_Layout";
+}
+
+<div class="d-flex w-100 justify-content-center">
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <legend align="center">Don à @Model.Fundraising.Name</legend>
+        <table>
+            @Html.HiddenFor(m => m.Fundraising.Id)
+            <tr> 
+                <td>
+                    @Html.LabelFor(m => m.Amount)
+                    @Html.TextBoxFor(m => m.Amount)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center">
+                    <br><br><input type="submit" value="Valider" />
+                </td>
+            </tr>
+        </table>
+        </fieldset>
+    }
+</div>

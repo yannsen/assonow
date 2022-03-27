@@ -17,8 +17,8 @@
                             <p class="lead fw-normal text-muted mb-0">
                                 @Html.DisplayFor(model => model.Description)
                             </p>
-                            <a asp-area="" asp-controller="Association" asp-action="Show" asp-route-id="@Model.Id">Nos Actualités</a>
-                            <a class="btn btn-primary btn-lg px-4 me-sm-3" asp-area="" asp-controller="Home" asp-action="Index">Faire un don</a>
+                            <a asp-controller="Association" asp-action="Show" asp-route-id="@Model.Id">Nos Actualités</a>
+                            <a class="btn btn-primary btn-lg px-4 me-sm-3" asp-controller="Donation" asp-action="Association" asp-route-id="@Model.Id">Faire un don</a>
                         </div>
                     </div>
                 </div>
