@@ -1,14 +1,10 @@
-﻿@model Projet2.ViewModels.ListSearchAssociationViewModel
+﻿@model Projet2.ViewModels.IndexViewModel
 
 @using System.IO
 
 @{
-    ViewBag.Title = "Accueil";
+    ViewBag.Title = "Acceuil";
     Layout = "_Layout";
 }
-@await Html.PartialAsync("SearchBar", @Model.AssociationList)
+
 @await Html.PartialAsync("CarouselAssociation", @Model.AssociationList)
-@await Html.PartialAsync("Team")
-
-
-
