@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Projet2.Models;
 using Projet2.Models.BL.Interface;
@@ -6,20 +7,23 @@ using Projet2.Models.BL.Service;
 using Projet2.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Security.Claims;
 
 namespace Projet2.Controllers
 {
     public class AssociationEventController : Controller
     {
+        private IWebHostEnvironment _webEnv;
         private IAssociationEventService associationEventService;
         private IAssociationService associationService;
         BddContext _bddContext;
 
-        public AssociationEventController()
+        public AssociationEventController(IWebHostEnvironment environment)
         {
             this.associationEventService = new AssociationEventService();
             this.associationService = new AssociationService();
+            this._webEnv = environment;
             this._bddContext = new BddContext();
         }
 
@@ -74,6 +78,16 @@ namespace Projet2.Controllers
             if (ModelState.IsValid)
             {
 
+                if (viewModel.File.Length > 0)
+                {
+                    string uploads = Path.Combine(_webEnv.WebRootPath, "FileSystem/Pictures");
+                    string filePath = Path.Combine(uploads, viewModel.File.FileName);
+                    using (Stream fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        viewModel.File.CopyToAsync(fileStream);
+                    }
+                }
+                viewModel.AssociationEvent.Image = "/FileSystem/Pictures/" + viewModel.File.FileName;
                 associationEventService.CreateAssociationEvent(viewModel);
                 return RedirectToAction("EventList", "AssociationEvent",new {id= viewModel.SelectedAssociationId});
             }
