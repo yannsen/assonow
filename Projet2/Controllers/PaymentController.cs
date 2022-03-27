@@ -39,14 +39,23 @@ namespace Projet2.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreditCard(PaymentCreditCardViewModel viewModel)
+        public IActionResult CreditCard(string submitButton, PaymentCreditCardViewModel viewModel)
         {
-            if(viewModel.SaveCard == true)
+            if(submitButton == "Changer de carte")
             {
-                viewModel.NewCreditCard.MemberId = Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-                creditCardService.SaveCard(viewModel.NewCreditCard);
+                viewModel.SavedCreditCard = null;
+                return View(viewModel);
             }
-            return RedirectToAction("Validation", "Payment", viewModel.PaymentViewModel);
+            if (ModelState.IsValid)
+            {
+                if (viewModel.SaveCard == true)
+                {
+                    viewModel.NewCreditCard.MemberId = Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                    creditCardService.SaveCard(viewModel.NewCreditCard);
+                }
+                return RedirectToAction("Validation", "Payment", viewModel.PaymentViewModel);
+            }
+            return View(viewModel);
         }
 
         public IActionResult Validation(PaymentViewModel viewModel)
