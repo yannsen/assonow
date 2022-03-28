@@ -1,0 +1,8 @@
+﻿@model Projet2.ViewModels.AssociationEventInfoViewmodel
+
+@{
+    ViewBag.title = "Création d'un évènement pour l'association";
+    Layout = "_Layout";
+}
+
+@await Html.PartialAsync("CreationModificationAssociationEventForm", @Model)

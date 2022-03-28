@@ -58,7 +58,27 @@ body {
     width: 400px;
 }
 
+.submitSearch {
+    width: 100px;
+    background-color: #1c87c9;
+    color: #ffffff;
+    #imageSub {
+    width: 300px;
+    height: 300px;
+}
+
+.team area {
+    width: 90%;
+    height: 10px;
+}
+
 #imageSub {
     width: 300px;
     height: 300px;
+}
+#searchbar {
+    width: 50%;
+}
+
+
 }

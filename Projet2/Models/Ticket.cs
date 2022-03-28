@@ -9,6 +9,8 @@
 
         public string Category { get; set; }
 
-        
+        public int AssociationEventId { get; set; }
+        public AssociationEvent AssociationEvent { get; set; }
+
     }
 }
