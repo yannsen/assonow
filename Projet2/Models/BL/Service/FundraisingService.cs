@@ -56,5 +56,10 @@ namespace Projet2.Models.BL.Service
         {
 
         }
+
+        public List<Fundraising> GetFundraisingsByAssociation(int id)
+        {
+            return _bddContext.Fundraising.Where(f => f.AssociationId == id).ToList();
+        }
     }
 }
