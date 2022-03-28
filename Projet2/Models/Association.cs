@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Projet2.Models
 {
@@ -30,5 +31,6 @@ namespace Projet2.Models
         public string Description { get; set; }
         public string Image { get; set; }
 
+        public bool IsHighlighted { get; set; }
     }
 }

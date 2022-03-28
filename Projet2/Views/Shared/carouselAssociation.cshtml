@@ -1,113 +1,50 @@
 ﻿@model List<Projet2.Models.Association>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 <div class="text-center">
     <h4>Les associations</h4>
 </div>
+
 <div class="container my-4">
     <div id="carouselAssociation" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="row">
-                    <div class="col">
-                        <div class="card align-items-center">
-                            <img class="card-img-top" src="@Model[0].Image">
-                            <div class="card-body">
-                                <h4 class="card-title">@Model[0].Name</h4>
-                                <p class="card-text">@Model[0].Description</p>
-                                <a class="btn btn-primary" href="../Association/Profil?id=@Model[0].Id">Plus de détails</a>
-                            </div>
+            @{
+                string isFirst = "active";
+                int i = 0;
+                while (i < Model.Count)
+                {
+                    <div class="carousel-item @isFirst">
+                        @{
+                            isFirst = "";
+                        }
+                        <div class="d-flex flex-row">
+                            @for (int j = 0; j < 4; j++)
+                            {
+                                @if (i < Model.Count)
+                                {
+                                    <div class="card align-items-center">
+                                        <img class="card-img-top" src="@Model[i].Image">
+                                        <div class="card-body">
+                                            <h4 class="card-title">@Model[i].Name</h4>
+                                            <p class="card-text">@Model[i].Description</p>
+                                            <a class="btn btn-primary" href="../Association/Profil?id=@Model[i].Id">Plus de détails</a>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="card align-items-center">
+                                        <div class="card-body">
+                                            <p class="card-text">D'autres associations à venir</p>
+                                        </div>
+                                    </div>
+                                }
+                                i++;
+                            }
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="card align-items-center">
-                            <img class="card-img-top" src="@Model[1].Image">
-                            <div class="card-body">
-                                <h4 class="card-title">@Model[1].Name</h4>
-                                <p class="card-text">@Model[1].Description</p>
-                                <a class="btn btn-primary" href="../Association/Profil?id=@Model[1].Id">Plus de détails</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card align-items-center">
-                            <img class="card-img-top" src="@Model[2].Image">
-                            <div class="card-body">
-                                <h4 class="card-title">@Model[2].Name</h4>
-                                <p class="card-text">@Model[2].Description</p>
-                                <a class="btn btn-primary" href="../Association/Profil?id=@Model[2].Id">Plus de détails</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="row">
-                    <div class="col">
-                        <div class="card align-items-center">
-                            <img class="card-img-top" src="@Model[2].Image">
-                            <div class="card-body">
-                                <h4 class="card-title">@Model[2].Name</h4>
-                                <p class="card-text">@Model[2].Description</p>
-                                <a class="btn btn-primary" href="../Association/Profil?id=@Model[2].Id">Plus de détails</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card align-items-center">
-                            <img class="card-img-top" src="@Model[1].Image">
-                            <div class="card-body">
-                                <h4 class="card-title">@Model[1].Name</h4>
-                                <p class="card-text">@Model[1].Description.</p>
-                                <a class="btn btn-primary" href="../Association/Profil?id=@Model[1].Id">Plus de détails</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card align-items-center">
-                            <img class="card-img-top" src="@Model[0].Image">
-                            <div class="card-body">
-                                <h4 class="card-title">@Model[0].Name</h4>
-                                <p class="card-text">@Model[0].Description</p>
-                                <a class="btn btn-primary" href="../Association/Profil?id=@Model[0].Id">Plus de détails</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="row">
-                    <div class="col">
-                        <div class="card align-items-center">
-                            <img class="card-img-top" src="@Model[2].Image">
-                            <div class="card-body">
-                                <h4 class="card-title">@Model[2].Name</h4>
-                                <p class="card-text">@Model[2].Description</p>
-                                <a class="btn btn-primary" href="../Association/Profil?id=@Model[2].Id">Plus de détails</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card align-items-center">
-                            <img class="card-img-top" src="@Model[0].Image">
-                            <div class="card-body">
-                                <h4 class="card-title">@Model[0].Name</h4>
-                                <p class="card-text">@Model[0].Description</p>
-                                <a class="btn btn-primary" href="../Association/Profil?id=@Model[0].Id">Plus de détails</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card align-items-center">
-                            <img class="card-img-top" src="@Model[1].Image">
-                            <div class="card-body">
-                                <h4 class="card-title">@Model[1].Name</h4>
-                                <p class="card-text">@Model[1].Description</p>
-                                <a class="btn btn-primary" href="../Association/Profil?id=@Model[1].Id">Plus de détails</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                }
+            }
         </div>
         <div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselAssociation" data-bs-slide="prev">

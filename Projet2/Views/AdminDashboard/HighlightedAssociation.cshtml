@@ -1,0 +1,86 @@
+﻿@model Projet2.ViewModels.HighlightedViewModel
+
+@{
+    ViewBag.title = "Gérer les associations mise en avant";
+    Layout = "_Layout";
+}
+
+<div class="d-flex flex-column align-items-center w-100">
+    <div class="d-flex flex-column align-items-center">
+        @if (@Model.Highlighted.Count > 0)
+        {
+            @using (Html.BeginForm())
+            {
+                int i = 0;
+                int nbTotalH = 0;
+                Dictionary<int, bool> entriesH = new Dictionary<int, bool>();
+                @foreach (KeyValuePair<int, bool> entry in Model.Highlighted)
+                {
+                    entriesH.Add(entry.Key, entry.Value);
+                    i++;
+                    nbTotalH++;
+                    if (nbTotalH >= @Model.Highlighted.Count && 0 < i && i < 4)
+                    {
+                        <ul id="ulhighlight" class="list-group list-group-horizontal">
+                            @foreach (KeyValuePair<int, bool> entry2 in entriesH)
+                            {
+                                <li id="lihighlight" class="list-group-item">
+                                    <p>@Model.HighlightedName[entry2.Key] : @Html.CheckBoxFor(d => d.Highlighted[entry2.Key])</p>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    if (i == 4)
+                    {
+                        <ul id="ulhighlight" class="list-group list-group-horizontal">
+                            @foreach (KeyValuePair<int, bool> entry2 in entriesH)
+                            {
+                                <li id="lihighlight" class="list-group-item">
+                                    <p>@Model.HighlightedName[entry2.Key] : @Html.CheckBoxFor(d => d.Highlighted[entry2.Key])</p>
+                                </li>
+                            }
+                        </ul>
+                        i = 0;
+                        entriesH.Clear();
+                    }
+                }
+                <div class="d-flex">
+                    <input type="submit" value="Valider" />
+                </div>
+                int x = 0;
+                int nbTotalNH = 0;
+                Dictionary<int, bool> entriesNH = new Dictionary<int, bool>();
+                @foreach (KeyValuePair<int, bool> entry in Model.ToHighlight)
+                {
+                    entriesNH.Add(entry.Key, entry.Value);
+                    x++;
+                    nbTotalNH++;
+                    if (nbTotalNH >= @Model.ToHighlight.Count && 0 < x && x < 4)
+                    {
+                        <ul id="ulhighlight" class="list-group list-group-horizontal">
+                            @foreach (KeyValuePair<int, bool> entry2 in entriesNH)
+                            {
+                                <li id="lihighlight" class="list-group-item">
+                                    <p>@Model.ToHighlightName[entry2.Key] : @Html.CheckBoxFor(d => d.ToHighlight[entry2.Key])</p>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    if (x == 4)
+                    {
+                        <ul id="ulhighlight" class="list-group list-group-horizontal">
+                            @foreach (KeyValuePair<int, bool> entry2 in entriesNH)
+                            {
+                                <li id="lihighlight" class="list-group-item">
+                                    <p>@Model.ToHighlightName[entry2.Key] : @Html.CheckBoxFor(d => d.Highlighted[entry2.Key])</p>
+                                </li>
+                            }
+                        </ul>
+                        x = 0;
+                        entriesNH.Clear();
+                    }
+                }
+            }
+        }
+    </div>
+</div>

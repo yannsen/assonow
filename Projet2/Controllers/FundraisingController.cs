@@ -4,17 +4,21 @@ using Projet2.Models.BL.Service;
 using Projet2.Models;
 using Projet2.ViewModels;
 using System.Collections.Generic;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Projet2.Controllers
 {
     public class FundraisingController : Controller
     {
+        private IWebHostEnvironment _webEnv;
         private IFundraisingService fundraisingService;
         private IAssociationService associationService;
         private BddContext _bddContext;
 
-        public FundraisingController()
+        public FundraisingController(IWebHostEnvironment environment)
         {
+            this._webEnv = environment;
             this.associationService = new AssociationService();
             this.fundraisingService = new FundraisingService();
             this._bddContext = new BddContext();
@@ -23,6 +27,34 @@ namespace Projet2.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+        
+        public IActionResult Create(int id)
+        {
+            FundraisingInfoViewModel viewModel = new FundraisingInfoViewModel();
+            //viewModel.Fundraising.AssociationId = id;
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult Create(FundraisingInfoViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                if (viewModel.File.Length > 0)
+                {
+                    string uploads = Path.Combine(_webEnv.WebRootPath, "FileSystem/Pictures");
+                    string filePath = Path.Combine(uploads, viewModel.File.FileName);
+                    using (Stream fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        viewModel.File.CopyToAsync(fileStream);
+                    }
+                }
+                viewModel.Fundraising.Image = "/FileSystem/Pictures/" + viewModel.File.FileName;
+                fundraisingService.Create(viewModel);
+                return View(viewModel);
+            }
+            return View(viewModel);
         }
 
         public IActionResult FundraisingList()

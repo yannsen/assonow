@@ -1,0 +1,43 @@
+﻿@model Projet2.ViewModels.AssociationInfoViewModel
+@{
+    ViewBag.title = "Liste des associations";
+    Layout = "_Layout";
+}
+
+
+<div class ="d-flex justify-content-center w-100">
+    <table class="w-25 p-5">
+       
+
+        
+        <tr>
+            <td colspan="3">
+                <img src="@Model.Association.Image" width="200" height="200" />
+            </td>
+        </tr>
+        
+        <tr>
+            <td >
+                <a href="/AssociationEvent/EventList?id=@Model.Association.Id" class="btn btn-primary w-100">Gestion des évènements</a>
+            </td>
+        </tr>
+          <tr>
+            <td >
+                <a href="/home/Index" class="btn btn-primary w-100">gestion de vos adhérents</a>
+            </td>
+        </tr>
+        <tr>
+
+            <td>
+                <a href="Association/Index" class="btn btn-primary w-100">gestion de vos dons</a>
+            </td>
+        </tr>
+              <tr>
+
+            <td>
+                <a href="/Home/Index" class="btn btn-primary w-100">Retour à l'accueil de votre tableau de bord</a>
+            </td>
+        </tr>
+
+    </table>
+</div>

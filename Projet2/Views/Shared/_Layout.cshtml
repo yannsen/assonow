@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 <html>
 <head>
@@ -28,7 +29,7 @@
                             {
                                 <li class="nav-item px-2"><a class="btn btn-outline-primary" href="~/AdminDashboard/Index">Tableau de bord</a></li>
                             }else if (User.IsInRole("Representative"))
-                            {
+                            {<li class="nav-item px-2"><a class="btn btn-outline-primary" href="~/AssociationEvent/Index">Tableau de bord</a></li>
                                 //Bouton pour le role representative
                             }else if (User.IsInRole("LegalExpert"))
                             {
@@ -36,7 +37,18 @@
                             }else {
                                 <li class="nav-item px-2"><a class="btn btn-outline-primary" href="~/Association/Inscrire">Inscrire une association</a></li>
                             }
-                            <li class="nav-item px-2"><a class="btn btn-outline-primary" href="~/Compte/Deconnexion">Se déconnecter</a></li>
+                            <li>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Mon compte
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="~/Compte/Modifier">Modifier mes informations</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="~/Compte/Deconnexion">Se déconnecter</a></li>
+                                </ul>
+                            </div>
+                            </li>
                         }
                     }
                     </ul>
