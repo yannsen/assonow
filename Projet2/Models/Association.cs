@@ -29,5 +29,6 @@ namespace Projet2.Models
         [Display(Name = "Description :")]
         public string Description { get; set; }
         public string Image { get; set; }
+
     }
 }

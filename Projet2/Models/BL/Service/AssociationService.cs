@@ -101,11 +101,18 @@ namespace Projet2.Models.BL.Service
             return GetAssociation(associationId);
         }
 
-        public List<Association> GetSearchAssociation(string searchCriteria)
+        /*public List<Association> GetSearchAssociation(string searchCriteria)
         {
             List<Association> associations = new List<Association>();
             associations.Add(new Association { Name = searchCriteria });
             return associations;
+        }*/
+
+
+        //Méthode de recherche d'association en fonction du nom
+        public List<Association> GetAssociationsToSearch( ListSearchAssociationViewModel viewModel)
+        {
+            return _bddContext.Association.Where(a => a.Name.Contains(viewModel.SearchName)).ToList();
         }
     }
 }
