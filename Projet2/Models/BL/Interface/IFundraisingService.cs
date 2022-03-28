@@ -20,5 +20,9 @@ namespace Projet2.Models.BL.Interface
         public void modify(Fundraising fundraising);
 
         public List<Fundraising> GetFundraisingsByAssociation(int id);
+
+        public List<Fundraising> GetHighlightedFundraisings();
+
+        public List<Fundraising> GetNotHighlightedFundraisings();
     }
 }

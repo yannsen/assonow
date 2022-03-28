@@ -54,12 +54,28 @@ namespace Projet2.Models.BL.Service
 
         public void modify(Fundraising fundraising)
         {
-
+            Fundraising toUpdate = GetFundraising(fundraising.Id);
+            toUpdate.Name = fundraising.Name;
+            toUpdate.Description = fundraising.Description;
+            if(fundraising.Image != null)
+                toUpdate.Image = fundraising.Image;
+            _bddContext.Fundraising.Update(toUpdate);
+            _bddContext.SaveChanges();
         }
 
         public List<Fundraising> GetFundraisingsByAssociation(int id)
         {
             return _bddContext.Fundraising.Where(f => f.AssociationId == id).ToList();
+        }
+
+        public List<Fundraising> GetHighlightedFundraisings()
+        {
+            return _bddContext.Fundraising.Where(f => f.IsHighlighted == true).ToList();
+        }
+
+        public List<Fundraising> GetNotHighlightedFundraisings()
+        {
+            return _bddContext.Fundraising.Where(f => f.IsHighlighted == false).ToList();
         }
     }
 }

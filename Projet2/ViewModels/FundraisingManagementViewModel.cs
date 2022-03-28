@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace Projet2.ViewModels
 {
-    public class IndexViewModel
+    public class FundraisingManagementViewModel
     {
-        public List<Association> Associations { get; set; }
-
         public List<Fundraising> Fundraisings { get; set; }
+
+        public int AssociationId { get; set; }
     }
 }
