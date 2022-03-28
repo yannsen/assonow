@@ -65,6 +65,17 @@ namespace Projet2.Models.BL.Service
             _bddContext.Fundraising.Add(new Fundraising { Id = 9, AssociationId = 5, Name = "J'ai plus d'idée !", Description = "Description9", IsActive = true, CurrentAmount = 2500, DesiredAmount = 10000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Culture"});
             _bddContext.Fundraising.Add(new Fundraising { Id = 10, AssociationId = 5, Name = "J'ai plus d'idée !", Description = "Description10", IsActive = false, CurrentAmount = 0, DesiredAmount = 15000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Loisirs"});
             _bddContext.SaveChanges();
+
+
+            _bddContext.AdviceRequest.Add(new AdviceRequest { Id = 1, AdviceRequestSubject = "DEMANDE DE CONSEIL UN ", AdviceRequestText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam", Date = new DateTime (2022,01,01), CompletedRequest = false, AssociationId = 1, MemberId = 1 });
+            _bddContext.AdviceRequest.Add(new AdviceRequest { Id = 2, AdviceRequestSubject = "DEMANDE DE CONSEIL DEUX ", AdviceRequestText = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem ac illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.", Date = new DateTime (2022, 02, 02), CompletedRequest = false, AssociationId = 2, MemberId = 1 });
+            _bddContext.SaveChanges();
+
+            _bddContext.Advice.Add(new Advice { Id = 1, AdviceSubject = "CONSEIL UN ", AdviceText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam", Date = new DateTime(2022, 02, 01),  AdviceRequestId = 1, MemberId = 1 });
+            //_bddContext.Advice.Add(new Advice { Id = 2, AdviceSubject = "CONSEIL DEUX ", AdviceText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam", Date = new DateTime(2022, 02, 01), AdviceRequestId = 2, MemberId = 1 });
+
+            _bddContext.SaveChanges();
+
         }
         public void Dispose()
         {

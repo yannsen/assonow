@@ -10,6 +10,14 @@ namespace Projet2.Models
         public DbSet<Association> Association { get; set; }
         public DbSet<AssociationMember> AssociationMember { get; set; }
         public DbSet<Ticket> Ticket { get; set; }
+        
+        // add of a dbset for Advice
+        public DbSet<Advice> Advice { get; set; }
+
+        // add of a dbset for AdviceRequest
+
+        public DbSet<AdviceRequest> AdviceRequest { get; set; }
+
         public DbSet<Document> Document { get; set; }
         public DbSet<Donation> Donation { get; set; }
         public DbSet<RecurringDonation> RecurringDonation { get; set; }
