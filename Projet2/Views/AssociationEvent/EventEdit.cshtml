@@ -1,6 +1,12 @@
 ﻿@model Projet2.ViewModels.AssociationEventInfoViewmodel
 
-@using (Html.BeginForm("EventRegister", "AssociationEvent", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@{
+    ViewBag.Title = "Modification de l'évènement";
+    Layout = "_Layout";
+}
+
+
+@using (Html.BeginForm("EventEdit", "AssociationEvent", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <fieldset>
         <legend align="center">Informations sur l'évènement</legend>
@@ -10,6 +16,9 @@
            
             <tr> 
                 @Html.HiddenFor(m=>m.SelectedAssociationId)
+                @Html.HiddenFor(m=>m.AssociationEvent.AddressId)
+                @Html.HiddenFor(m=>m.AssociationEvent.AssociationId)
+                @Html.HiddenFor(m=>m.AssociationEvent.Id)
             </tr>
 
           
