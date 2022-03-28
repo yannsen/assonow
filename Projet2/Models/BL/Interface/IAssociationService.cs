@@ -25,6 +25,8 @@ namespace Projet2.Models.BL.Interface
 
         public Association GetAssociationByFundraisingId(int id);
 
+        public List<Association> GetHighlightedAssociation();
+
         public List<Association> GetSearchAssociation(string searchCriteria);
     }
 }

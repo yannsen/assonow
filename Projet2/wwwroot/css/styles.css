@@ -62,3 +62,12 @@ body {
     width: 300px;
     height: 300px;
 }
+
+#trhighlight {
+    width:100%;
+    text-align:center;
+}
+
+#tdhighlight {
+    width: 25%;
+}

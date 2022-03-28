@@ -1,0 +1,50 @@
+﻿@model Projet2.ViewModels.HighlightedViewModel
+
+@{
+    ViewBag.title = "Gérer les associations mise en avant";
+    Layout = "_Layout";
+}
+
+<div class="d-flex flex-column align-items-center w-100">
+    @if (@Model.Highlighted.Count > 0)
+    {
+        @using (Html.BeginForm())
+        {
+            int i = 0;
+            int nbTotal = 0;
+            Dictionary<int, bool> entries = new Dictionary<int, bool>();
+            <table class="table">
+                @foreach (KeyValuePair<int, bool> entry in Model.Highlighted)
+                {
+                    entries.Add(entry.Key, entry.Value);
+                    i++;
+                    nbTotal++;
+                    if (nbTotal >= @Model.Highlighted.Count && 0 < i && i < 4)
+                    {
+                        <tr id="trhighlight">
+                            @foreach (KeyValuePair<int, bool> entry2 in entries)
+                            {
+                                <td id="tdhighlight">
+                                    <p>@Model.HighlightedName[entry2.Key] : @Html.CheckBoxFor(d => d.Highlighted[entry2.Key])</p>
+                                </td>
+                            }
+                        </tr>
+                    }
+                    if (i == 4)
+                    {
+                        <tr id="trhighlight" class="list-group list-group-horizontal">
+                            @foreach (KeyValuePair<int, bool> entry2 in entries)
+                            {
+                                <td id="tdhighlight">
+                                    <p>@Model.HighlightedName[entry2.Key] : @Html.CheckBoxFor(d => d.Highlighted[entry2.Key])</p>
+                                </td>
+                            }
+                        </tr>
+                        i = 0;
+                        entries.Clear();
+                    }
+                }
+            </table>
+        }
+    }
+</div>

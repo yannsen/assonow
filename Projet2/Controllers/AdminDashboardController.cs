@@ -73,5 +73,31 @@ namespace Projet2.Controllers
             ViewBag.Id = viewModel.SelectedAssociationId;
             return View(viewModel);
         }
+
+        public IActionResult HighlightedAssociation()
+        {
+            HighlightedViewModel viewModel = new HighlightedViewModel();
+            viewModel.Highlighted = new Dictionary<int, bool>();
+            viewModel.HighlightedName = new Dictionary<int, string>();
+            viewModel.ToHighlight = new Dictionary<int, bool>();
+            viewModel.ToHighlightName = new Dictionary<int, string>();
+            List<Association> associations = associationService.GetHighlightedAssociation();
+            foreach (Association association in associations)
+            {
+                viewModel.Highlighted.Add(association.Id, true);
+                viewModel.HighlightedName.Add(association.Id, association.Name);
+            }
+            return View(viewModel);
+        }
+
+        public IActionResult HighlightedFundraising()
+        {
+            return View();
+        }
+
+        public IActionResult HighlightedEvent()
+        {
+            return View();
+        }
     }
 }
