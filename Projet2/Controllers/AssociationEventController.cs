@@ -40,8 +40,8 @@ namespace Projet2.Controllers
 
         public IActionResult AssociationManagement(int id)
         {
-            AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
-            viewModel.SelectedAssociationId= id;
+           AssociationInfoViewModel viewModel = new AssociationInfoViewModel();
+            viewModel.Association= _bddContext.Association.Find(id);
 
                 return View(viewModel);
         }

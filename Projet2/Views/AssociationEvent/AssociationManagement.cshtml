@@ -1,4 +1,4 @@
-﻿@model Projet2.ViewModels.AssociationEventInfoViewmodel
+﻿@model Projet2.ViewModels.AssociationInfoViewModel
 @{
     ViewBag.title = "Liste des associations";
     Layout = "_Layout";
@@ -11,14 +11,14 @@
 
         
         <tr>
-            <td >
-                <img src="" width="200" height="200" />
+            <td colspan="3">
+                <img src="@Model.Association.Image" width="200" height="200" />
             </td>
         </tr>
         
         <tr>
             <td >
-                <a href="/AssociationEvent/EventList?id=@Model.SelectedAssociationId"" class="btn btn-primary w-100">Gestion des évènements</a>
+                <a href="/AssociationEvent/EventList?id=@Model.Association.Id" class="btn btn-primary w-100">Gestion des évènements</a>
             </td>
         </tr>
           <tr>

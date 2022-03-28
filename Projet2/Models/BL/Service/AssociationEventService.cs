@@ -46,7 +46,7 @@ namespace Projet2.Models.BL.Service
         {
             addressService.ModifyAddress(viewModel.Address);
             _bddContext.AssociationEvent.Update(viewModel.AssociationEvent);
-            _bddContext.SaveChanges();
+            this._bddContext.SaveChanges();
 
         }
         public void DeleteAssociationEvent(int associationEventId)
