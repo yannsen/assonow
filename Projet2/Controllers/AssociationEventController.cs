@@ -120,6 +120,7 @@ namespace Projet2.Controllers
             viewModel.AssociationEvent = _bddContext.AssociationEvent.Find(eventid);
             viewModel.Address = _bddContext.Address.Find(viewModel.AssociationEvent.AddressId);
             viewModel.SelectedAssociationId = id;
+            //viewModel.File.FileName= ;
             ViewBag.Legend = "Modification du compte";
             return View(viewModel);
             
@@ -130,11 +131,44 @@ namespace Projet2.Controllers
         {  
             if (ModelState.IsValid)
             {
+
+                if (viewModel.File.Length > 0)
+                {
+                    string uploads = Path.Combine(_webEnv.WebRootPath, "FileSystem/Pictures");
+                    string filePath = Path.Combine(uploads, viewModel.File.FileName);
+                    using (Stream fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        viewModel.File.CopyToAsync(fileStream);
+                    }
+                }
+                viewModel.AssociationEvent.Image = "/FileSystem/Pictures/" + viewModel.File.FileName;
+
                 associationEventService.ModifyAssociationEvent(viewModel);
                 return RedirectToAction("EventList", "AssociationEvent", new { Id = viewModel.SelectedAssociationId });
             }
             return View(viewModel);
             
+        }
+
+
+        // view of one event with id of event as parameter
+
+        public ActionResult EventView(int id)
+        {
+            AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
+            viewModel.AssociationEvent = _bddContext.AssociationEvent.Find(id);
+            viewModel.Address = _bddContext.Address.Find(viewModel.AssociationEvent.AddressId);
+            
+            return View(viewModel);
+        }
+
+
+        [HttpPost]
+        public ActionResult EventView()
+        {
+        
+        
+        return View();
         }
 
     }

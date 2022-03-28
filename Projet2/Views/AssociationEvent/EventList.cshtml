@@ -1,5 +1,14 @@
 ﻿@model Projet2.ViewModels.AssociationEventInfoViewmodel
 
+
+
+@{
+    ViewBag.Title = "Modification de l'évènement";
+    Layout = "_Layout";
+}
+
+
+
 @using (Html.BeginForm("EventList", "AssociationEvent", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <fieldset>

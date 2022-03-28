@@ -1,0 +1,134 @@
+﻿@model Projet2.ViewModels.AssociationEventInfoViewmodel
+
+@{
+    ViewBag.Title = "l'évènement";
+    Layout = "_Layout";
+}
+
+
+@using (Html.BeginForm("TicketRegister", "Ticketing", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <fieldset>
+        <legend align="center">Informations sur l'évènement</legend>
+        <br>
+        <br>
+
+
+         @Html.HiddenFor(m=>m.SelectedAssociationId)
+                @Html.HiddenFor(m=>m.AssociationEvent.AddressId)
+                @Html.HiddenFor(m=>m.AssociationEvent.AssociationId)
+                @Html.HiddenFor(m=>m.AssociationEvent.Id)
+                @Html.HiddenFor(m=>m.AssociationEvent.Image)
+
+
+
+<div class="d-flex flex-column justify-content-center w-100">
+    <div class="d-flex">
+        <img src="@Model.AssociationEvent.Image" class="rounded mx-auto d-block" alt="@Model.SelectedAssociationId">
+    </div>
+    <div class="d-flex flex-row justify-content-around w-100">
+        <div class="d-flex">
+            <img src="@Model.AssociationEvent.Image" width="100" height="100"/>
+        </div>
+        <div class="d-flex">
+            <table class="table"> 
+                <tr>
+                      <td>@Html.LabelFor(m => Model.AssociationEvent.EventTitle)</td>
+                      <td>@Model.AssociationEvent.EventTitle)</td>  
+                </tr>
+            <tr>
+                <td>@Html.LabelFor(m => Model.AssociationEvent.Description)</td>
+                <td>@Model.AssociationEvent.Description)</td>
+            </tr>
+
+            </table>   
+
+        </div>
+    </div>
+    <div class="d-flex justify-content-center w-100">
+        
+            <table>
+            <tr>
+                <td align="right">@Html.LabelFor(m => Model.AssociationEvent.Date)</td>
+                <td>@Model.AssociationEvent.Date)</td>
+            </tr>
+
+            <tr>
+                <td align="right">@Html.LabelFor(m => Model.AssociationEvent.EventType)</td>
+                <td>@Model.AssociationEvent.EventType</td>
+            </tr>
+
+            <tr>
+                <td align="right">@Html.LabelFor(m => Model.AssociationEvent.Speakers)</td>
+                <td>@Model.AssociationEvent.Speakers</td>
+            </tr>
+            <tr>
+                <td align="right">@Html.LabelFor(m => Model.AssociationEvent.Artists)</td>
+                <td>@Model.AssociationEvent.Artists</td>
+            </tr>
+        </table>
+
+
+
+    </div>
+    <div class="d-flex justify-content-center w-100">
+        <input type="submit" value="Ajouter" /> 
+        <br>
+        <a class="btn btn-primary" href="~/Ticketing/TicketRegister/">ajouter au panier</a>
+        <br>
+        <a class="btn btn-primary" href="~/Ticketing/Index/">Voir panier</a>
+    </div>
+</div>
+
+
+
+
+
+          
+           
+
+     
+
+
+
+
+
+
+
+
+
+
+     @*<table>
+        <tr>
+                <td>Nombre de tickets restant</td>
+                <td>@Model.AssociationEvent.RemainingTickets</td>
+            </tr>
+
+             <tr>
+                <td> Adresse</td>
+               </tr>
+               <tr>
+                <td>@Model.Address.RoadNumber, @Model.Address.Road</td>
+                <tr>
+                </tr>
+                <td>@Model.Address.PostalCode, @Model.Address.City</td>
+            </tr>
+
+           
+            <tr>
+                <td>@Html.LabelFor(m => Model.Address.Country)</td>
+                <td>@Model.Address.Country</td>
+            </tr> 
+       </table>
+       *@
+
+
+
+
+
+
+    </fieldset>
+
+
+
+}
