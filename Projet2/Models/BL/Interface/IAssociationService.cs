@@ -7,7 +7,9 @@ namespace Projet2.Models.BL.Interface
     {
         public int CreateAssociation(AssociationInfoViewModel viewModel, int idRepresentative);
 
-        public void ModifyAssociation(AssociationInfoViewModel viewModel);
+        public void ModifyAssociation(Association association);
+
+        public void ModifyAssociationViewModel(AssociationInfoViewModel viewModel);
 
         public void DeleteAssociation(int id);
 
@@ -25,8 +27,12 @@ namespace Projet2.Models.BL.Interface
 
         public Association GetAssociationByFundraisingId(int id);
 
-        public List<Association> GetHighlightedAssociation();
+        public List<Association> GetHighlightedAssociations();
+
+        public List<Association> GetNotHighlightedAssociations();
 
         public List<Association> GetSearchAssociation(string searchCriteria);
+
+        
     }
 }

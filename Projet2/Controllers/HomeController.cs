@@ -21,7 +21,7 @@ namespace Projet2.Controllers
         public IActionResult Index()
         {
             IndexViewModel viewModel = new IndexViewModel();
-            viewModel.AssociationList =  associationService.GetAllAssociations();
+            viewModel.AssociationList =  associationService.GetHighlightedAssociations();
             return View(viewModel);
         }
     }

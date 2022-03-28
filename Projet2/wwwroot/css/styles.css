@@ -63,11 +63,10 @@ body {
     height: 300px;
 }
 
-#trhighlight {
-    width:100%;
+#ulhighlight {
     text-align:center;
 }
 
-#tdhighlight {
-    width: 25%;
+#lihighlight {
+    width:250px;
 }
