@@ -1,0 +1,8 @@
+﻿@model Projet2.ViewModels.FundraisingInfoViewModel
+
+@{
+    ViewBag.Title = "Modification d'une collecte de dons";
+    Layout = "_Layout";
+}
+
+@await Html.PartialAsync("CreationModificationFundraisingForm", @Model)

@@ -1,0 +1,38 @@
+﻿@model Projet2.ViewModels.FundraisingManagementViewModel
+
+@{
+    ViewBag.title = "Gérer les collectes de dons";
+    Layout = "_Layout";
+}
+
+<div class="d-flex flex-column align-items-center w-100">
+    <div class="d-flex">
+        <a href="~/Fundraising/Create" class="btn btn-primary">Ajouter une collecte</a>
+    </div>
+    <div class="d-flex">
+        @{
+            int i = 0;
+            while(i < Model.Fundraisings.Count)
+            {
+                <div class="d-flex flex-row w-100">
+                @for(int j=0; j<4; j++)
+                {
+                            @if(i < Model.Fundraisings.Count)
+                            {
+                                <div class="card align-items-center">
+                                    <img class="card-img-top" src="@Model.Fundraisings[i].Image">
+                                    <div class="card-body">
+                                        <b/>
+                                        <h5 class="card-title">@Model.Fundraisings[i].Name</h5>
+                                        <b/>
+                                        <a class="btn btn-primary" href="~/Fundraising/Modify?id=@Model.Fundraisings[i].Id">Modifier</a>
+                                    </div>
+                                </div>
+                            }
+                            i++;
+                        }
+                </div>
+            }
+        }
+    </div>
+</div>

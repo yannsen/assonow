@@ -8,7 +8,6 @@ namespace Projet2.Models
         [Required(ErrorMessage = "Le nom est obligatoire")]
         [Display(Name = "Nom :")]
         [MaxLength(30, ErrorMessage = "Le nom ne doit pas excéder 20 caractères")]
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Le nom ne doit contenir que des lettres")]
         public string Name { get; set; }
 
         public int Id { get; set; }
