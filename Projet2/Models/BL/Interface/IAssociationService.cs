@@ -33,6 +33,6 @@ namespace Projet2.Models.BL.Interface
 
         public List<Association> GetSearchAssociation(string searchCriteria);
 
-        
+        public List<Association> GetAssociationsToSearch(ListSearchAssociationViewModel viewModel);
     }
 }

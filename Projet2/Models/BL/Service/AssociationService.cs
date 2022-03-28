@@ -117,11 +117,10 @@ namespace Projet2.Models.BL.Service
             return _bddContext.Association.Where(a => a.IsHighlighted == false).Where(a => a.IsPublished == true).ToList();
         }
 
-        public List<Association> GetSearchAssociation(string searchCriteria)
+        //Méthode de recherche d'association en fonction du nom
+        public List<Association> GetAssociationsToSearch( ListSearchAssociationViewModel viewModel)
         {
-            List<Association> associations = new List<Association>();
-            associations.Add(new Association { Name = searchCriteria });
-            return associations;
+            return _bddContext.Association.Where(a => a.Name.Contains(viewModel.SearchName)).ToList();
         }
     }
 }
