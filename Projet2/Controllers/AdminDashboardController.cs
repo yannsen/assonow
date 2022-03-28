@@ -5,8 +5,6 @@ using Projet2.Models.BL.Interface;
 using Projet2.Models.BL.Service;
 using System.Collections.Generic;
 using Projet2.ViewModels;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 
 namespace Projet2.Controllers
 {
@@ -72,6 +70,71 @@ namespace Projet2.Controllers
             viewModel.RepresentativeID = documentService.GetAssociationRepresentativeID(viewModel.SelectedAssociationId);
             ViewBag.Id = viewModel.SelectedAssociationId;
             return View(viewModel);
+        }
+
+        public IActionResult HighlightedAssociation()
+        {
+            HighlightedViewModel viewModel = InitializeHighlightedViewModel();
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult HighlightedAssociation(HighlightedViewModel viewModel)
+        {
+            bool H = associationService.GetHighlightedAssociations().Count != 0;
+            bool NH = associationService.GetNotHighlightedAssociations().Count != 0;
+            if (H)
+            {
+                foreach (KeyValuePair<int, bool> entry in viewModel.Highlighted)
+                {
+                    Association association = associationService.GetAssociation(entry.Key);
+                    association.IsHighlighted = entry.Value;
+                    associationService.ModifyAssociation(association); 
+                }
+            }
+            if (NH)
+            {
+                foreach (KeyValuePair<int, bool> entry in viewModel.ToHighlight)
+                {
+                    Association association = associationService.GetAssociation(entry.Key);
+                    association.IsHighlighted = entry.Value;
+                    associationService.ModifyAssociation(association);
+                }
+            }
+            HighlightedViewModel newViewModel = InitializeHighlightedViewModel();
+            return View(newViewModel);
+        }
+
+        public HighlightedViewModel InitializeHighlightedViewModel()
+        {
+            HighlightedViewModel viewModel = new HighlightedViewModel();
+            viewModel.Highlighted = new Dictionary<int, bool>();
+            viewModel.HighlightedName = new Dictionary<int, string>();
+            viewModel.ToHighlight = new Dictionary<int, bool>();
+            viewModel.ToHighlightName = new Dictionary<int, string>();
+            List<Association> associationsH = associationService.GetHighlightedAssociations();
+            foreach (Association association in associationsH)
+            {
+                viewModel.Highlighted.Add(association.Id, true);
+                viewModel.HighlightedName.Add(association.Id, association.Name);
+            }
+            List<Association> associationsNH = associationService.GetNotHighlightedAssociations();
+            foreach (Association association in associationsNH)
+            {
+                viewModel.ToHighlight.Add(association.Id, false);
+                viewModel.ToHighlightName.Add(association.Id, association.Name);
+            }
+                return viewModel;
+        }
+
+        public IActionResult HighlightedFundraising()
+        {
+            return View();
+        }
+
+        public IActionResult HighlightedEvent()
+        {
+            return View();
         }
     }
 }

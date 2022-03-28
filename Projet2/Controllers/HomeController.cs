@@ -20,8 +20,8 @@ namespace Projet2.Controllers
 
         public IActionResult Index()
         {
-           IndexViewModel viewModel = new IndexViewModel();
-            viewModel.AssociationList =  associationService.GetAllAssociations();
+            IndexViewModel viewModel = new IndexViewModel();
+            viewModel.AssociationList =  associationService.GetHighlightedAssociations();
             return View(viewModel);
         }
     }

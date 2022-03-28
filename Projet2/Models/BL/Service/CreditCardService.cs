@@ -16,21 +16,16 @@ namespace Projet2.Models.BL.Service
 
         public int SaveCard(CreditCard creditCard)
         {
-            CreditCard formerCard = new CreditCard();
-            formerCard = _bddContext.CreditCard.FirstOrDefault(c => c.MemberId == creditCard.MemberId);
-            if(formerCard == null)
+            if(!_bddContext.CreditCard.Any(c => c.MemberId == creditCard.MemberId))
                 _bddContext.Add(creditCard);
             else
             {
-                formerCard = new CreditCard 
-                { 
-                    CardNumber = creditCard.CardNumber,
-                    Cvc = creditCard.Cvc, 
-                    DateTime = creditCard.DateTime, 
-                    Firstname = creditCard.Firstname,
-                    Lastname = creditCard.Lastname,
-                    MemberId = creditCard.MemberId,
-                };
+                CreditCard formerCard = GetSavedCard(creditCard.MemberId);
+                formerCard.CardNumber = creditCard.CardNumber;
+                formerCard.Cvc = creditCard.Cvc;
+                formerCard.DateTime = creditCard.DateTime;
+                formerCard.Firstname = creditCard.Firstname;
+                formerCard.Lastname = creditCard.Lastname;
                 _bddContext.Update(formerCard);
             }
             _bddContext.SaveChanges();

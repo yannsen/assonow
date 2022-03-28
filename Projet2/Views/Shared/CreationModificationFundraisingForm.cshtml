@@ -1,0 +1,48 @@
+﻿@model Projet2.ViewModels.FundraisingInfoViewModel
+
+@using (Html.BeginForm("Create", "Fundraising", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <fieldset>
+        <legend align="center">Informations collecte de dons</legend>
+        <br>
+        <br>
+        <table width="50%" align="center">
+            @Html.HiddenFor(f => f.Fundraising.AssociationId)
+            <tr>
+                <td width="50%" align="right">@Html.LabelFor(m => Model.Fundraising.Name)</td>
+                <td>@Html.TextBoxFor(m => Model.Fundraising.Name)</td>
+                <td>@Html.ValidationMessageFor(m => Model.Fundraising.Name)</td>
+            </tr>
+            <tr>
+                <td align="right">@Html.LabelFor(m => Model.Fundraising.Description)</td>
+                <td>@Html.TextBoxFor(m => Model.Fundraising.Description)</td>
+                <td>@Html.ValidationMessageFor(m => Model.Fundraising.Description)</td>
+            </tr>
+            <tr>
+                <td align="right">@Html.LabelFor(model => model.File)</td>
+                <td>@Html.TextBoxFor(model => model.File, new { placeholder = "Description", @type = "file" })</td>
+                <td>@Html.ValidationMessageFor(model => model.File)</td>
+            </tr>
+            <tr>
+                <td align="right">@Html.LabelFor(m => Model.Fundraising.StartingDate)</td>
+                <td>@Html.TextBoxFor(m => Model.Fundraising.StartingDate)</td>
+                <td>@Html.ValidationMessageFor(m => Model.Fundraising.StartingDate)</td>
+            </tr>
+            <tr>
+                <td align="right">@Html.LabelFor(m => Model.Fundraising.EndingDate)</td>
+                <td>@Html.TextBoxFor(m => Model.Fundraising.EndingDate)</td>
+                <td>@Html.ValidationMessageFor(m => Model.Fundraising.EndingDate)</td>
+            </tr>
+            <tr>
+                <td align="right">@Html.LabelFor(m => Model.Fundraising.DesiredAmount)</td>
+                <td>@Html.TextBoxFor(m => Model.Fundraising.DesiredAmount)</td>
+                <td>@Html.ValidationMessageFor(m => Model.Fundraising.DesiredAmount)</td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center">
+                    <br><br><input type="submit" value="Valider" />
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+}
