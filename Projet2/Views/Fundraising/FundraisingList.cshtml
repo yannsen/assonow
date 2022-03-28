@@ -1,0 +1,63 @@
+﻿@model Projet2.ViewModels.FundraisingListViewModel
+
+@{
+    ViewBag.title = "Liste des collectes de fonds";
+    Layout = "_Layout";
+}
+
+<div class="d-flex flex-column w-100">
+    <div class="d-flex flex-row w-100">
+        @*@await Html.PartialAsync("CarouselFundraising", @Model.FundraisingsList)*@
+    </div>
+    <div class="d-flex flex-row w-100">
+        <div class="d-flex w-25">
+            @using (Html.BeginForm()){
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Recherche</td>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.FundraisingNameToSearch)</td>
+                    <td>@Html.TextBoxFor(m => Model.FundraisingNameToSearch)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => Model.SearchIfActive)</td>
+                    <td>@Html.CheckBoxFor(m => Model.SearchIfActive)</td>
+                </tr>
+                <tr>
+                    <td>
+                        <br><br><input type="submit" value="Rechercher" />
+                    </td>
+                </tr>
+            </table>
+            }
+        </div>
+        <div class="d-flex flex-column w-75">
+            @{
+            int i = 0;
+            while(i < Model.FundraisingsList.Count)
+            {
+                <div class="d-flex flex-row w-100">
+                @for(int j=0; j<4; j++)
+                {
+                            @if(i < Model.FundraisingsList.Count)
+                            {
+                                <div class="card align-items-center w25">
+                                    <img class="card-img-top" src="@Model.FundraisingsImage[i]">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@Model.FundraisingsList[i].Name</h5>
+                                        <p class="card-text">@Model.FundraisingsList[i].Description</p>
+                                        <a class="btn btn-primary" href="~/Fundraising/Profile?id=@Model.FundraisingsList[i].Id">Plus de détails</a>
+                                    </div>
+                                </div>
+                            }
+                            i++;
+                        }
+                </div>
+            }
+        }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,93 @@
+﻿@model Projet2.ViewModels.AssociationEventInfoViewmodel
+
+@using (Html.BeginForm("EventRegister", "AssociationEvent", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <fieldset>
+        <legend align="center">Informations sur l'évènement</legend>
+        <br>
+        <br>
+        <table width="50%" align="center">
+           
+            <tr> 
+                @Html.HiddenFor(m=>m.SelectedAssociationId)
+            </tr>
+
+          
+            <tr>
+                <td width="50%" align="right">@Html.LabelFor(m => Model.AssociationEvent.EventTitle)</td>
+                <td>@Html.TextBoxFor(m => Model.AssociationEvent.EventTitle)</td>
+                <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.EventTitle)</td>
+            </tr>
+            <tr>
+                <td align="right">@Html.LabelFor(m => Model.AssociationEvent.Description)</td>
+                <td>@Html.TextBoxFor(m => Model.AssociationEvent.Description)</td>
+                <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.Description)</td>
+            </tr>
+            <tr>
+                 <td align="right">@Html.LabelFor(model => model.File)</td>
+                <td>@Html.TextBoxFor(model => model.File, new { placeholder = "Description", @type = "file" })</td>
+                <td>@Html.ValidationMessageFor(model => model.File)</td>
+            </tr>
+            <tr>
+                <td align="right">@Html.LabelFor(m => Model.AssociationEvent.Date)</td>
+                <td>@Html.TextBoxFor(m => Model.AssociationEvent.Date)</td>
+                <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.Date)</td>
+            </tr>
+
+            <tr>
+                <td align="right">@Html.LabelFor(m => Model.AssociationEvent.EventType)</td>
+                <td>@Html.TextBoxFor(m => Model.AssociationEvent.EventType)</td>
+                <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.EventType)</td>
+            </tr>
+
+            <tr>
+                <td align="right">@Html.LabelFor(m => Model.AssociationEvent.Speakers)</td>
+                <td>@Html.TextBoxFor(m => Model.AssociationEvent.Speakers)</td>
+                <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.Speakers)</td>
+            </tr>
+            <tr>
+                <td align="right">@Html.LabelFor(m => Model.AssociationEvent.Artists)</td>
+                <td>@Html.TextBoxFor(m => Model.AssociationEvent.Artists)</td>
+                <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.Artists)</td>
+            </tr>
+
+            <tr>
+                <td align="right">@Html.LabelFor(m => Model.AssociationEvent.TicketsTotalNumber)</td>
+                <td>@Html.TextBoxFor(m => Model.AssociationEvent.TicketsTotalNumber)</td>
+                <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.TicketsTotalNumber)</td>
+            </tr>
+
+             <tr>
+                <td align="right">@Html.LabelFor(m => Model.Address.RoadNumber)</td>
+                <td>@Html.TextBoxFor(m => Model.Address.RoadNumber)</td>
+                <td>@Html.ValidationMessageFor(m => Model.Address.RoadNumber)</td>
+            </tr>
+
+            <tr>
+                <td align="right">@Html.LabelFor(m => Model.Address.Road)</td>
+                <td>@Html.TextBoxFor(m => Model.Address.Road)</td>
+                <td>@Html.ValidationMessageFor(m => Model.Address.Road)</td>
+            </tr>
+            <tr>
+                <td align="right">@Html.LabelFor(m => Model.Address.City)</td>
+                <td>@Html.TextBoxFor(m => Model.Address.City)</td>
+                <td>@Html.ValidationMessageFor(m => Model.Address.City)</td>
+            </tr>
+            <tr>
+                <td align="right">@Html.LabelFor(m => Model.Address.PostalCode)</td>
+                <td>@Html.TextBoxFor(m => Model.Address.PostalCode)</td>
+                <td>@Html.ValidationMessageFor(m => Model.Address.PostalCode)</td>
+            </tr>
+            <tr>
+                <td align="right">@Html.LabelFor(m => Model.Address.Country)</td>
+                <td>@Html.TextBoxFor(m => Model.Address.Country)</td>
+                <td>@Html.ValidationMessageFor(m => Model.Address.Country)</td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center">
+                    <br><br><input type="submit" value="Valider" />
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+}

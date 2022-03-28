@@ -9,6 +9,7 @@ namespace Projet2.Models
         public DbSet<Address> Address { get; set; }
         public DbSet<Association> Association { get; set; }
         public DbSet<AssociationMember> AssociationMember { get; set; }
+        public DbSet<Ticket> Ticket { get; set; }
         
         // add of a dbset for Advice
         public DbSet<Advice> Advice { get; set; }
@@ -16,8 +17,14 @@ namespace Projet2.Models
         // add of a dbset for AdviceRequest
 
         public DbSet<AdviceRequest> AdviceRequest { get; set; }
-        public DbSet<Document> Document { get; set; }
 
+        public DbSet<Document> Document { get; set; }
+        public DbSet<Donation> Donation { get; set; }
+        public DbSet<RecurringDonation> RecurringDonation { get; set; }
+        public DbSet<Fundraising> Fundraising { get; set; }
+        public DbSet<Payment> Payment { get; set; }
+        public DbSet<CreditCard> CreditCard { get; set; }
+        public DbSet<AssociationEvent> AssociationEvent { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql("server=localhost;user id=root;password=rrrrr;database=projet2;");

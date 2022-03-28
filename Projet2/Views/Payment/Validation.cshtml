@@ -1,0 +1,15 @@
+﻿@model Projet2.ViewModels.PaymentViewModel
+
+@{
+    ViewBag.title = "Validation du paiment";
+    Layout = "_Layout";
+}
+
+<meta http-equiv="refresh" content="3;@ViewBag.Next">
+
+<div class="d-flex flex-column align-items-center">
+    <div>
+        <p>Votre paiement est en cours, vous allez être redirigé</p>
+    </div>
+    <div class="spinner-border text-info" role="status"></div>
+</div>
