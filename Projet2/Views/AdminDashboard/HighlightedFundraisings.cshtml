@@ -1,0 +1,65 @@
+﻿@model Projet2.ViewModels.HighlightedViewModel
+
+@{
+    ViewBag.title = "Gérer les collectes mise en avant";
+    Layout = "_Layout";
+}
+
+<div class="d-flex flex-column align-items-center w-100">
+    <div class="d-flex flex-column align-items-center">
+        <div class="d-flex flex-row w-50 justify-content-between">
+            <a href="~/AdminDashboard/HighlightedAssociations" class="btn btn-primary w-100">Associations</a>
+            <a href="~/AdminDashboard/HighlightedEvents" class="btn btn-primary w-100">Évènements</a>
+        </div>
+        @{
+            @using (Html.BeginForm())
+            {
+                int i = 0;
+                if (Model.HFundraisings != null)
+                {
+                    while (i < Model.HFundraisings.Count)
+                    {
+                        <ul id="ulhighlight" class="list-group list-group-horizontal">
+                            @for (int j = 0; j < 4; j++)
+                            {
+                                @if (i < Model.HFundraisings.Count)
+                                {
+                                    <li id="lihighlight" class="list-group-item">
+                                        <p>@Model.HFundraisings[i].Name : @Html.CheckBoxFor(a => a.HFundraisings[i].IsHighlighted)</p>
+                                    </li>
+                                    @Html.HiddenFor(a => a.HFundraisings[i].Id)
+                                    @Html.HiddenFor(a => a.HFundraisings[i].Name)
+                                    i++;
+                                }
+                            }
+                        </ul>
+                    }
+                }
+                <div class="d-flex">
+                    <input type="submit" value="Valider" />
+                </div>
+                int x = 0;
+                if (Model.NHFundraisings != null)
+                {
+                    while (x < Model.NHFundraisings.Count)
+                    {
+                        <ul id="ulhighlight" class="list-group list-group-horizontal">
+                            @for (int j = 0; j < 4; j++)
+                            {
+                                @if (x < Model.NHFundraisings.Count)
+                                {
+                                    <li id="lihighlight" class="list-group-item">
+                                        <p>@Model.NHFundraisings[x].Name : @Html.CheckBoxFor(a => a.NHFundraisings[x].IsHighlighted)</p>
+                                    </li>
+                                    @Html.HiddenFor(a => a.NHFundraisings[x].Id)
+                                    @Html.HiddenFor(a => a.NHFundraisings[x].Name)
+                                    x++;
+                                }
+                            }
+                        </ul>
+                    }
+                }
+            }
+        }
+    </div>
+</div>

@@ -52,7 +52,7 @@ namespace Projet2.Models.BL.Service
             _bddContext.SaveChanges();
         }
 
-        public void modify(Fundraising fundraising)
+        public void Modify(Fundraising fundraising)
         {
             Fundraising toUpdate = GetFundraising(fundraising.Id);
             toUpdate.Name = fundraising.Name;
