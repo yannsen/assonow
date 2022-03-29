@@ -14,5 +14,11 @@ namespace Projet2.Models.BL.Interface
         public Fundraising GetFundraisingByDonationId(int id);
 
         public void AddAmount(int id, int amount);
+
+        public int Create(FundraisingInfoViewModel viewModel);
+
+        public void modify(Fundraising fundraising);
+
+        public List<Fundraising> GetFundraisingsByAssociation(int id);
     }
 }

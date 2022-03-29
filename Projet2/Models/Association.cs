@@ -30,6 +30,7 @@ namespace Projet2.Models
         [Display(Name = "Description :")]
         public string Description { get; set; }
         public string Image { get; set; }
-        //public List<AssociationEvent> AssociationEvents { get; set; }
+
+        public bool IsHighlighted { get; set; }
     }
 }

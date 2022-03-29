@@ -76,9 +76,11 @@ body {
     width: 300px;
     height: 300px;
 }
-#searchbar {
-    width: 50%;
+
+#ulhighlight {
+    text-align:center;
 }
 
-
+#lihighlight {
+    width:250px;
 }

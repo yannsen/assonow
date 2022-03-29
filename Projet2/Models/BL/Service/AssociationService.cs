@@ -33,7 +33,13 @@ namespace Projet2.Models.BL.Service
             return viewModel.Association.Id;
         }
 
-        public void ModifyAssociation(AssociationInfoViewModel viewModel)
+        public void ModifyAssociation(Association association)
+        {
+            _bddContext.Association.Update(association);
+            _bddContext.SaveChanges();
+        }
+
+        public void ModifyAssociationViewModel(AssociationInfoViewModel viewModel)
         {
             addressService.ModifyAddress(viewModel.Address);
             viewModel.Association.AddressId = viewModel.Address.Id;
@@ -101,11 +107,20 @@ namespace Projet2.Models.BL.Service
             return GetAssociation(associationId);
         }
 
-        public List<Association> GetSearchAssociation(string searchCriteria)
+        public List<Association> GetHighlightedAssociations()
         {
-            List<Association> associations = new List<Association>();
-            associations.Add(new Association { Name = searchCriteria });
-            return associations;
+            return _bddContext.Association.Where(a => a.IsHighlighted).ToList();
+        }
+
+        public List<Association> GetNotHighlightedAssociations()
+        {
+            return _bddContext.Association.Where(a => a.IsHighlighted == false).Where(a => a.IsPublished == true).ToList();
+        }
+
+        //Méthode de recherche d'association en fonction du nom
+        public List<Association> GetAssociationsToSearch( ListSearchAssociationViewModel viewModel)
+        {
+            return _bddContext.Association.Where(a => a.Name.Contains(viewModel.SearchName)).ToList();
         }
     }
 }
