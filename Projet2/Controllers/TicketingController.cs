@@ -15,7 +15,6 @@ namespace Projet2.Controllers
     public class TicketingController : Controller
     {
         private ITicketingService TicketingService;
-        //private IAssociationService associationService;
         BddContext _bddContext;
 
         public TicketingController()
@@ -29,19 +28,26 @@ namespace Projet2.Controllers
             return View();
         }
 
-        public IActionResult TicketRegister(int EventId,int TicketNumber, int Price, int MemberID)
+        public IActionResult TicketRegister(int Id,int TicketsNumber, int Price)
         {
 
-            TicketingService viewModel = new TicketingService();
-            //int CreateTicket()
-           // viewModel.Tic = id;
-            return View(viewModel);
+            TicketingViewModel viewModel = new TicketingViewModel();
+
+           
+            //viewModel.ticket.AssociationEventId = EventId;
+            //viewModel.ticket.Position = TicketNumber;
+
+            //viewModel.cartItem.TicketId = TicketingService.CreateTicket(viewModel.ticket);
+
+           // viewModel.cartItem.TicketId;
+
+            return RedirectToAction("EventView", "AssociationEvent", new { id = Id, });
 
 
             // controle que le nombre max n est pas atteint
             //la position  indique le numero du ticket
 
-            return View();
+
         }
     }
 }

@@ -8,7 +8,13 @@ namespace Projet2.ViewModels
     public class TicketingViewModel
     {
 
-        List<CartItem> cart;
+       public List<CartItem> cart { get; set; }
+        public Ticket ticket { get; set; }
+
+        public Order order { get; set; }
+
+        public CartItem cartItem { get; set; }
+
 
 
     }

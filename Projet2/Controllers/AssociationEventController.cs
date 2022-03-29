@@ -164,11 +164,12 @@ namespace Projet2.Controllers
 
 
         [HttpPost]
-        public ActionResult EventView()
+        public ActionResult EventView(AssociationEventInfoViewmodel viewModel)
         {
+       
+
         
-        
-        return View();
+        return View(viewModel);
         }
 
     }

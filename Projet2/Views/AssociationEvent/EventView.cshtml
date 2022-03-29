@@ -26,7 +26,7 @@
     <div class="d-flex">
         <img src="@Model.AssociationEvent.Image" class="rounded mx-auto d-block" alt="@Model.SelectedAssociationId">
     </div>
-    <div class="d-flex flex-row justify-content-around w-100">
+    <div class="d-flex flex-row justify-content-center w-100">
         <div class="d-flex">
             <img src="@Model.AssociationEvent.Image" width="100" height="100"/>
         </div>
@@ -66,15 +66,39 @@
                 <td align="right">@Html.LabelFor(m => Model.AssociationEvent.Artists)</td>
                 <td>@Model.AssociationEvent.Artists</td>
             </tr>
+
+            <tr>
+                <br>
+                <td align="right">Nombre de places disponibles</td>
+                <td>@Model.AssociationEvent.TicketsTotalNumber</td>
+            </tr>
         </table>
 
-
+        
 
     </div>
+    <div>
+
+           <table width="50%" align="center">
+            <tr>
+                <td width="50%" align="right">@Html.LabelFor(m => Model.TicketsNumber) </td>
+                <td> </td>
+                <td>@Html.TextBoxFor(m => Model.TicketsNumber)</td>
+                <td> </td>
+                <td align="right">@Model.AssociationEvent.TicketPrice</td>
+                <td> = </td>
+                <td align="right">@(Model.AssociationEvent.TicketPrice*Model.TicketsNumber)</td>
+            </tr>
+
+
+
+        </table>
+</div>
+
     <div class="d-flex justify-content-center w-100">
         <input type="submit" value="Ajouter" /> 
         <br>
-        <a class="btn btn-primary" href="~/Ticketing/TicketRegister/">ajouter au panier</a>
+        <a class="btn btn-primary" href="~/Ticketing/TicketRegister?id=@Model.AssociationEvent&TicketsNumber=">ajouter au panier</a>
         <br>
         <a class="btn btn-primary" href="~/Ticketing/Index/">Voir panier</a>
     </div>

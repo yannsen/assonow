@@ -18,10 +18,20 @@ namespace Projet2.Models.BL.Service
         private IAssociationEventService associationEventService;
 
         public int CreateTicket(Ticket ticket)
-        { 
-           
+        {
+            _bddContext.Ticket.Add(ticket);
+            _bddContext.SaveChanges();
 
             return ticket.Id;
+
+        }
+
+        public int CreateCartItem(CartItem cartItem)
+        {
+            _bddContext.CartItem.Add(cartItem);
+            _bddContext.SaveChanges();
+
+            return cartItem.Id;
 
         }
         public void DeleteTicket(int id)
