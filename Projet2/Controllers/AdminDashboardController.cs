@@ -46,9 +46,9 @@ namespace Projet2.Controllers
                 viewModel.AssociationInfo = new AssociationInfoViewModel();
                 viewModel.AssociationInfo.Association = associationService.GetAssociation(viewModel.unpublishedAssociations[0].Id);
                 viewModel.AssociationInfo.Address = addressService.GetAddressByAssociationId(viewModel.unpublishedAssociations[0].Id);
-                viewModel.BankDetails = documentService.GetBankDetails(viewModel.unpublishedAssociations[0].Id);
-                viewModel.OfficialJournalPublication = documentService.GetOfficialJournalPublication(viewModel.unpublishedAssociations[0].Id);
-                viewModel.RepresentativeID = documentService.GetAssociationRepresentativeID(viewModel.unpublishedAssociations[0].Id);
+                viewModel.BankDetails = documentService.GetBankDetailsPath(viewModel.unpublishedAssociations[0].Id);
+                viewModel.OfficialJournalPublication = documentService.GetOfficialJournalPublicationPath(viewModel.unpublishedAssociations[0].Id);
+                viewModel.RepresentativeID = documentService.GetAssociationRepresentativeIDPath(viewModel.unpublishedAssociations[0].Id);
                 ViewBag.Id = viewModel.unpublishedAssociations[0].Id;
                 viewModel.estVide = false;
             }
@@ -66,9 +66,9 @@ namespace Projet2.Controllers
             viewModel.AssociationInfo.Association = associationService.GetAssociation(viewModel.SelectedAssociationId);
             viewModel.AssociationInfo.Address = addressService.GetAddressByAssociationId(viewModel.SelectedAssociationId);
             viewModel.unpublishedAssociations = associationService.GetAssociationSelectList();
-            viewModel.BankDetails = documentService.GetBankDetails(viewModel.SelectedAssociationId);
-            viewModel.OfficialJournalPublication = documentService.GetOfficialJournalPublication(viewModel.SelectedAssociationId);
-            viewModel.RepresentativeID = documentService.GetAssociationRepresentativeID(viewModel.SelectedAssociationId);
+            viewModel.BankDetails = documentService.GetBankDetailsPath(viewModel.SelectedAssociationId);
+            viewModel.OfficialJournalPublication = documentService.GetOfficialJournalPublicationPath(viewModel.SelectedAssociationId);
+            viewModel.RepresentativeID = documentService.GetAssociationRepresentativeIDPath(viewModel.SelectedAssociationId);
             ViewBag.Id = viewModel.SelectedAssociationId;
             return View(viewModel);
         }
