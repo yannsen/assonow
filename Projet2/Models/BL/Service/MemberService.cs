@@ -45,5 +45,17 @@ namespace Projet2.Models.BL.Service
 
         }
 
+        public Member GetMember(int id)
+        {
+            return _bddContext.Member.Find(id);
+        }
+
+        public void NewRole(int id, string newRole)
+        {
+            Member member = GetMember(id);
+            member.Role = newRole;
+            _bddContext.Member.Update(member);
+            _bddContext.SaveChanges();
+        }
     }
 }

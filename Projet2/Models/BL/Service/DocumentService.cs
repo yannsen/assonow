@@ -15,41 +15,59 @@ namespace Projet2.Models.BL.Service
             this.associationService = new AssociationService();
         }
 
-        public void CreateDocument()
+        public int CreateDocument(Document document)
         {
-
+            _bddContext.Document.Add(document);
+            _bddContext.SaveChanges();
+            return document.Id;
         }
 
-        public void DeleteDocument()
+        public void DeleteDocument(int id)
         {
-
+            _bddContext.Document.Remove(GetDocument(id));
+            _bddContext.SaveChanges();
         }
 
-        public string GetDocument(int id)
+        public Document GetDocument(int id)
         {
-            return _bddContext.Document.FirstOrDefault(d => d.Id == id).Path;
+            return _bddContext.Document.Find(id);
         }
 
-        public string GetAssociationRepresentativeID(int AssociationId)
+        public string GetAssociationRepresentativeIDPath(int associationId)
         {
-            var result = _bddContext.Document.Where(d => d.AssociationId == AssociationId).Where(d => d.Type.Equals("ID")).FirstOrDefault();
+            var result = _bddContext.Document.Where(d => d.AssociationId == associationId).Where(d => d.Type.Equals("ID")).FirstOrDefault();
             if (result == null) return "";
             else return result.Path;
         }
 
-        public string GetOfficialJournalPublication(int AssociationId)
+        public string GetOfficialJournalPublicationPath(int associationId)
         {
-            var result = _bddContext.Document.Where(d => d.AssociationId == AssociationId).Where(d => d.Type.Equals("OfficialJournalPublication")).FirstOrDefault();
+            var result = _bddContext.Document.Where(d => d.AssociationId == associationId).Where(d => d.Type.Equals("OfficialJournalPublication")).FirstOrDefault();
             if (result == null) return "";
             else return result.Path;
         }
 
-        public string GetBankDetails(int AssociationId)
+        public string GetBankDetailsPath(int associationId)
         {
-            var result = _bddContext.Document.Where(d => d.AssociationId == AssociationId).Where(d => d.Type.Equals("BankDetails")).FirstOrDefault();
+            var result = _bddContext.Document.Where(d => d.AssociationId == associationId).Where(d => d.Type.Equals("BankDetails")).FirstOrDefault();
             if (result == null) return "";
             else return result.Path;
           
+        }
+
+        public Document GetBankDetails(int associationId)
+        {
+            return _bddContext.Document.FirstOrDefault(d => d.AssociationId == associationId && d.Type == "BankDetails");
+        }
+
+        public Document GetOfficialJournalPublication(int associationId)
+        {
+            return _bddContext.Document.FirstOrDefault(d => d.AssociationId == associationId && d.Type == "OfficialJournalPublication");
+        }
+
+        public Document GetAssociationRepresentativeID(int associationId)
+        {
+            return _bddContext.Document.FirstOrDefault(d => d.AssociationId == associationId && d.Type == "ID");
         }
     }
 }
