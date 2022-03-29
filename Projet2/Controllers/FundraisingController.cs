@@ -94,7 +94,7 @@ namespace Projet2.Controllers
                     }
                     viewModel.Fundraising.Image = "/FileSystem/Pictures/" + fileName;
                 }
-                fundraisingService.modify(viewModel.Fundraising);
+                fundraisingService.Modify(viewModel.Fundraising);
                 ViewBag.Action = "Modify";
                 return RedirectToAction("Management", new { Id = viewModel.AssociationId });
             }
