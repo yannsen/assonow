@@ -85,7 +85,7 @@ namespace Projet2.Models.BL.Service
         public void InitializeDB_Associations()
         {
             // 1 -> 10
-            _bddContext.Association.Add(new Association { Id = 1, AddressId = 20, Name = "Petits Princes", IsPublished = true, Description = "L'Association Petits Princes est une association à but non lucratif créée en 1987 qui s'est donné pour but de réaliser les rêves d’enfants et adolescents malades atteints de cancers, leucémies et certaines maladies génétiques.", Image = "/FileSystem/Pictures/petitprince.jpg", AssociationRepresentativeId = 1, Mail = "asso1@gmail.com" });
+            _bddContext.Association.Add(new Association { Id = 1, Contribution = 50, AddressId = 20, Name = "Petits Princes", IsPublished = true, Description = "L'Association Petits Princes est une association à but non lucratif créée en 1987 qui s'est donné pour but de réaliser les rêves d’enfants et adolescents malades atteints de cancers, leucémies et certaines maladies génétiques.", Image = "/FileSystem/Pictures/petitprince.jpg", AssociationRepresentativeId = 1, Mail = "asso1@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 2, AddressId = 21, Name = "WWF", IsPublished = true, Description = "Le WWF ou Fonds mondial pour la nature est une organisation non gouvernementale internationale (ONGI) créée en 1961, vouée à la protection de l'environnement et au développement durable.", Image = "/FileSystem/Pictures/wwf.png", AssociationRepresentativeId = 2, Mail = "asso2@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 3, AddressId = 22, Name = "Association Hirondelle", IsPublished = true, Description = "Créée il y a plus de 25 ans, l’association Hirondelle est une association reconnue dans le domaine de la protection de l’environnement dans la région du Pays de Retz.", Image = "/FileSystem/Pictures/associationhirondelle.jpg", AssociationRepresentativeId = 2, Mail = "asso3@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 4, AddressId = 23, Name = "Tous Au Sport", IsPublished = false, Description = "Cette association loi 1901 à but non lucratif, constituée le 25 juillet 2016, a pour objet de permettre l'accès le plus grand possible au sport à toutes et à tous et cela dans le cadre des cours collectifs.", Image = "/FileSystem/Pictures/tousausport.png", AssociationRepresentativeId = 3, Mail = "asso4@gmail.com" });
@@ -127,7 +127,6 @@ namespace Projet2.Models.BL.Service
         // ASSOCIATIONS MEMBERS
         public void InitializeDB_AMembers()
         {
-
             _bddContext.AssociationMember.Add(new AssociationMember { Id = 1, AssociationId = 3, MemberId = 2 });
             _bddContext.AssociationMember.Add(new AssociationMember { Id = 2, AssociationId = 4, MemberId = 2 });
             _bddContext.AssociationMember.Add(new AssociationMember { Id = 3, AssociationId = 5, MemberId = 2 });

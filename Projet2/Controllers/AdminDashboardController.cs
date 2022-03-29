@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Projet2.Models;
 using Projet2.Models.BL.Interface;
 using Projet2.Models.BL.Service;
-using System.Collections.Generic;
 using Projet2.ViewModels;
 
 namespace Projet2.Controllers
@@ -12,6 +11,7 @@ namespace Projet2.Controllers
     public class AdminDashboardController : Controller
     {
         private IAssociationService associationService;
+        private IFundraisingService fundraisingService;
         private IAddressService addressService;
         private IDocumentService documentService;
         BddContext _bddContext;
@@ -19,6 +19,7 @@ namespace Projet2.Controllers
         public AdminDashboardController()
         {
             this.addressService = new AddressService();
+            this.fundraisingService = new FundraisingService();
             this.associationService = new AssociationService();
             this.documentService = new DocumentService();
             this._bddContext = new BddContext();
@@ -72,69 +73,72 @@ namespace Projet2.Controllers
             return View(viewModel);
         }
 
-        public IActionResult HighlightedAssociation()
+        public IActionResult HighlightedAssociations()
         {
-            HighlightedViewModel viewModel = InitializeHighlightedViewModel();
+            HighlightedViewModel viewModel = new HighlightedViewModel();
+            viewModel.HAssociations = associationService.GetHighlightedAssociations();
+            viewModel.NHAssociations = associationService.GetNotHighlightedAssociations();
             return View(viewModel);
         }
 
         [HttpPost]
-        public IActionResult HighlightedAssociation(HighlightedViewModel viewModel)
+        public IActionResult HighlightedAssociations(HighlightedViewModel viewModel)
         {
-            bool H = associationService.GetHighlightedAssociations().Count != 0;
-            bool NH = associationService.GetNotHighlightedAssociations().Count != 0;
+            bool H = associationService.GetHighlightedAssociations().Count > 0;
+            bool NH = associationService.GetNotHighlightedAssociations().Count > 0;
             if (H)
             {
-                foreach (KeyValuePair<int, bool> entry in viewModel.Highlighted)
+                foreach (Association association in viewModel.HAssociations)
                 {
-                    Association association = associationService.GetAssociation(entry.Key);
-                    association.IsHighlighted = entry.Value;
-                    associationService.ModifyAssociation(association); 
+                    Association associationToUpdate = associationService.GetAssociation(association.Id);
+                    associationToUpdate.IsHighlighted = association.IsHighlighted;
+                    associationService.ModifyAssociation(associationToUpdate);
                 }
             }
             if (NH)
             {
-                foreach (KeyValuePair<int, bool> entry in viewModel.ToHighlight)
+                foreach (Association association in viewModel.NHAssociations)
                 {
-                    Association association = associationService.GetAssociation(entry.Key);
-                    association.IsHighlighted = entry.Value;
-                    associationService.ModifyAssociation(association);
+                    Association associationToUpdate = associationService.GetAssociation(association.Id);
+                    associationToUpdate.IsHighlighted = association.IsHighlighted;
+                    associationService.ModifyAssociation(associationToUpdate);
                 }
             }
-            HighlightedViewModel newViewModel = InitializeHighlightedViewModel();
-            return View(newViewModel);
+            return RedirectToAction("HighlightedAssociations");
         }
 
-        public HighlightedViewModel InitializeHighlightedViewModel()
+        public IActionResult HighlightedFundraisings()
         {
             HighlightedViewModel viewModel = new HighlightedViewModel();
-            viewModel.Highlighted = new Dictionary<int, bool>();
-            viewModel.HighlightedName = new Dictionary<int, string>();
-            viewModel.ToHighlight = new Dictionary<int, bool>();
-            viewModel.ToHighlightName = new Dictionary<int, string>();
-            List<Association> associationsH = associationService.GetHighlightedAssociations();
-            foreach (Association association in associationsH)
-            {
-                viewModel.Highlighted.Add(association.Id, true);
-                viewModel.HighlightedName.Add(association.Id, association.Name);
-            }
-            List<Association> associationsNH = associationService.GetNotHighlightedAssociations();
-            foreach (Association association in associationsNH)
-            {
-                viewModel.ToHighlight.Add(association.Id, false);
-                viewModel.ToHighlightName.Add(association.Id, association.Name);
-            }
-                return viewModel;
+            viewModel.HFundraisings = fundraisingService.GetHighlightedFundraisings();
+            viewModel.NHFundraisings = fundraisingService.GetNotHighlightedFundraisings();
+            return View(viewModel);
         }
 
-        public IActionResult HighlightedFundraising()
+        [HttpPost]
+        public IActionResult HighlightedFundraisings(HighlightedViewModel viewModel)
         {
-            return View();
-        }
-
-        public IActionResult HighlightedEvent()
-        {
-            return View();
+            bool H = fundraisingService.GetHighlightedFundraisings().Count > 0;
+            bool NH = fundraisingService.GetNotHighlightedFundraisings().Count > 0;
+            if (H)
+            {
+                foreach (Fundraising fundraising in viewModel.HFundraisings)
+                {
+                    Fundraising fundraisingToUpdate = fundraisingService.GetFundraising(fundraising.Id);
+                    fundraisingToUpdate.IsHighlighted = fundraising.IsHighlighted;
+                    fundraisingService.Modify(fundraisingToUpdate);
+                }
+            }
+            if (NH)
+            {
+                foreach (Fundraising fundraising in viewModel.NHFundraisings)
+                {
+                    Fundraising fundraisingToUpdate = fundraisingService.GetFundraising(fundraising.Id);
+                    fundraisingToUpdate.IsHighlighted = fundraising.IsHighlighted;
+                    fundraisingService.Modify(fundraisingToUpdate);
+                }
+            }
+            return RedirectToAction("HighlightedFundraisings");
         }
     }
 }
