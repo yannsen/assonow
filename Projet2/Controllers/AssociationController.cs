@@ -73,15 +73,17 @@ namespace Projet2.Controllers
         public IActionResult ListeDesAssociations()
         {
             ListSearchAssociationViewModel viewModel = new ListSearchAssociationViewModel();
-            viewModel.AssociationList = associationService.GetAllAssociations();
+            viewModel.AssociationsList = associationService.GetAllAssociations();
             return View(viewModel);
 
         }
 
-        public IActionResult Rechercher(string name)
+        [HttpPost]
+        public IActionResult ListeDesAssociations(ListSearchAssociationViewModel viewModel)
         {
-            ListSearchAssociationViewModel viewModel = new ListSearchAssociationViewModel();
-            viewModel.AssociationList = associationService.GetSearchAssociation(name);
+
+            if (viewModel.SearchName == null) viewModel.SearchName = "";
+            viewModel.AssociationsList = associationService.GetAssociationsToSearch(viewModel);
             return View(viewModel);
         }
     }
