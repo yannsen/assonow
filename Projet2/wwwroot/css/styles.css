@@ -30,7 +30,7 @@ body {
 }
 
 .card-img-top{
-    width:auto;
+    max-width:auto;
     height: 200px;
 }
 

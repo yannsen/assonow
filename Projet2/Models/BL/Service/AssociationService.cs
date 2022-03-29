@@ -122,5 +122,10 @@ namespace Projet2.Models.BL.Service
         {
             return _bddContext.Association.Where(a => a.Name.Contains(viewModel.SearchName)).ToList();
         }
+
+        public int GetContribution(int id)
+        {
+            return _bddContext.Association.FirstOrDefault(a => a.Id == id).Contribution;
+        }
     }
 }

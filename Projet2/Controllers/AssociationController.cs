@@ -15,14 +15,16 @@ namespace Projet2.Controllers
     {
         private IWebHostEnvironment _webEnv;
         private IAssociationService associationService;
-        BddContext _bddContext;
-  
+        private IContributionService contributionService;
+        private IAssociationMemberService associationMemberService;
+
 
         public AssociationController(IWebHostEnvironment environment)
         {
             this.associationService = new AssociationService();
+            this.contributionService = new ContributionService();
             this._webEnv = environment;
-            this._bddContext = new BddContext();
+            this.associationMemberService = new AssociationMemberService();
         }
 
         [Authorize]
@@ -85,6 +87,36 @@ namespace Projet2.Controllers
             if (viewModel.SearchName == null) viewModel.SearchName = "";
             viewModel.AssociationsList = associationService.GetAssociationsToSearch(viewModel);
             return View(viewModel);
+        }
+
+        public IActionResult Join(int id)
+        {
+            Association association = associationService.GetAssociation(id);
+            ViewBag.IsMember = false;
+            if (associationMemberService.DoMembershipExist(id, Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier))))
+                ViewBag.IsMember = true;
+            return View(association);
+        }
+
+        [HttpPost]
+        public IActionResult Join(Association association)
+        {
+            associationMemberService.CreateAssociationMember(association.Id, Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+            if (association.Contribution == 0)
+            {
+                return RedirectToAction("Joined", new { Id = association.Id });
+            }
+            PaymentViewModel paymentViewModel = new PaymentViewModel();
+            paymentViewModel.Amount = association.Contribution.ToString();
+            paymentViewModel.ContributionId = contributionService.CreateContribution(association.Contribution, Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)), association.Id);
+            return RedirectToAction("CreditCard", "Payment", paymentViewModel);
+        }
+
+        public IActionResult Joined(int id)
+        {
+            ViewBag.Name = associationService.GetAssociation(id).Name;
+            ViewBag.Id = id;
+            return View();
         }
     }
 }
