@@ -99,7 +99,7 @@ namespace Projet2.Controllers
         public ActionResult EventList(int id)
         {
                 AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
-                viewModel.EventsList = associationEventService.ListAssociationEvent(id);
+                viewModel.AssociationEventsList = associationEventService.ListAssociationEvent(id);
                 viewModel.SelectedAssociationId = id;
                 return View(viewModel);
 
@@ -120,7 +120,6 @@ namespace Projet2.Controllers
             viewModel.AssociationEvent = _bddContext.AssociationEvent.Find(eventid);
             viewModel.Address = _bddContext.Address.Find(viewModel.AssociationEvent.AddressId);
             viewModel.SelectedAssociationId = id;
-            //viewModel.File.FileName= ;
             ViewBag.Legend = "Modification du compte";
             return View(viewModel);
             
@@ -152,24 +151,44 @@ namespace Projet2.Controllers
 
 
         // view of one event with id of event as parameter
-
+       // [Authorize]
         public ActionResult EventView(int id)
         {
             AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
             viewModel.AssociationEvent = _bddContext.AssociationEvent.Find(id);
             viewModel.Address = _bddContext.Address.Find(viewModel.AssociationEvent.AddressId);
-            
-            return View(viewModel);
+
+           return View(viewModel);
         }
 
 
         [HttpPost]
         public ActionResult EventView(AssociationEventInfoViewmodel viewModel)
         {
-       
+            //TicketsNumber
+            //MemberID; Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier))
+            //DateTime.Today;
+            //Amount
+            associationEventService.CreateTicket(viewModel);
+            return RedirectToAction("TicketRegister", "AssociationEvent");
+
+        }
 
         
-        return View(viewModel);
+        public ActionResult VisibleEventList()
+        {
+            AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
+            viewModel.AssociationEventsList = associationEventService.GetAllAssociationEvents();
+            return View(viewModel);
+
+        }
+
+        public ActionResult TicketRegister(AssociationEventInfoViewmodel viewModel)
+        {
+
+            int donationId = associationEventService.CreateTicket(viewModel);
+
+            return View(viewModel);
         }
 
     }

@@ -27,10 +27,12 @@ namespace Projet2.Models
         public string EventType { get; set; }
 
         [Display(Name = "Conférencier.e.s :")]
+#nullable enable
         public string? Speakers { get; set; }
 
         [Display(Name = "Artiste.s :")]
         public string? Artists { get; set; }
+#nullable disable
 
         [Display(Name = "Nombre de tickets :")]
         [Required(ErrorMessage = "Quel est le nombre de ticket")]

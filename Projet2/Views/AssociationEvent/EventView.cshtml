@@ -1,12 +1,12 @@
 ﻿@model Projet2.ViewModels.AssociationEventInfoViewmodel
 
 @{
-    ViewBag.Title = "l'évènement";
+    ViewBag.Title = "Evènement";
     Layout = "_Layout";
 }
 
 
-@using (Html.BeginForm("TicketRegister", "Ticketing", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm())
 {
     <fieldset>
         <legend align="center">Informations sur l'évènement</legend>
@@ -14,27 +14,26 @@
         <br>
 
 
-         @Html.HiddenFor(m=>m.SelectedAssociationId)
+                @Html.HiddenFor(m=>m.SelectedAssociationId)
                 @Html.HiddenFor(m=>m.AssociationEvent.AddressId)
                 @Html.HiddenFor(m=>m.AssociationEvent.AssociationId)
                 @Html.HiddenFor(m=>m.AssociationEvent.Id)
-                @Html.HiddenFor(m=>m.AssociationEvent.Image)
 
 
 
-<div class="d-flex flex-column justify-content-center w-100">
+
+@*<div class="d-flex flex-column justify-content-center w-100">*@
+    <div class="float:left;width:33%;">
     <div class="d-flex">
         <img src="@Model.AssociationEvent.Image" class="rounded mx-auto d-block" alt="@Model.SelectedAssociationId">
     </div>
     <div class="d-flex flex-row justify-content-center w-100">
-        <div class="d-flex">
-            <img src="@Model.AssociationEvent.Image" width="100" height="100"/>
-        </div>
+       
         <div class="d-flex">
             <table class="table"> 
                 <tr>
                       <td>@Html.LabelFor(m => Model.AssociationEvent.EventTitle)</td>
-                      <td>@Model.AssociationEvent.EventTitle)</td>  
+                      <td>@Model.AssociationEvent.EventTitle)</td> 
                 </tr>
             <tr>
                 <td>@Html.LabelFor(m => Model.AssociationEvent.Description)</td>
@@ -45,8 +44,38 @@
 
         </div>
     </div>
-    <div class="d-flex justify-content-center w-100">
-        
+
+
+
+    <div class="float:left;width:33%;">
+
+        <table>
+                 <tr>
+                <td>Nombre de tickets restant</td>
+                <td>@Model.AssociationEvent.RemainingTickets</td>
+            </tr>
+
+             <tr>
+                <td> Adresse</td>
+               </tr>
+               <tr>
+                <td>@Model.Address.RoadNumber, @Model.Address.Road</td>
+                <tr>
+                </tr>
+            <tr>
+                <td>@Model.Address.PostalCode, @Model.Address.City</td>
+            </tr>
+           
+            <tr>
+                <td>@Html.LabelFor(m => Model.Address.Country)</td>
+                <td>@Model.Address.Country</td>
+            </tr> 
+       </table>
+
+    </div>
+
+    @*<div class="d-flex justify-content-center w-100">*@
+      <div class="float:left;width:33%;">
             <table>
             <tr>
                 <td align="right">@Html.LabelFor(m => Model.AssociationEvent.Date)</td>
@@ -67,27 +96,26 @@
                 <td>@Model.AssociationEvent.Artists</td>
             </tr>
 
-            <tr>
-                <br>
-                <td align="right">Nombre de places disponibles</td>
-                <td>@Model.AssociationEvent.TicketsTotalNumber</td>
-            </tr>
-        </table>
+  
+        </table>    
 
-        
-
-    </div>
+      </div>
     <div>
 
            <table width="50%" align="center">
             <tr>
-                <td width="50%" align="right">@Html.LabelFor(m => Model.TicketsNumber) </td>
-                <td> </td>
+
+                <td align="center" colspan="7">Nombre de places disponibles @Model.AssociationEvent.TicketsTotalNumber</td>
+            </tr>
+            <tr>
+                <td width="50%" >@Html.LabelFor(m => Model.TicketsNumber) </td>
+
                 <td>@Html.TextBoxFor(m => Model.TicketsNumber)</td>
-                <td> </td>
-                <td align="right">@Model.AssociationEvent.TicketPrice</td>
-                <td> = </td>
-                <td align="right">@(Model.AssociationEvent.TicketPrice*Model.TicketsNumber)</td>
+                <td>@Html.ValidationMessageFor(m => Model.TicketsNumber)</td>
+
+                <td>@Model.AssociationEvent.TicketPrice</td>
+
+                <td >@(Model.AssociationEvent.TicketPrice*Model.TicketsNumber)</td>
             </tr>
 
 
@@ -95,12 +123,13 @@
         </table>
 </div>
 
+
+
+
+
     <div class="d-flex justify-content-center w-100">
-        <input type="submit" value="Ajouter" /> 
-        <br>
-        <a class="btn btn-primary" href="~/Ticketing/TicketRegister?id=@Model.AssociationEvent&TicketsNumber=">ajouter au panier</a>
-        <br>
-        <a class="btn btn-primary" href="~/Ticketing/Index/">Voir panier</a>
+        <input align="center" colspan="3" type="submit" value="Commander" /> 
+
     </div>
 </div>
 
@@ -123,7 +152,7 @@
 
 
      @*<table>
-        <tr>
+                 <tr>
                 <td>Nombre de tickets restant</td>
                 <td>@Model.AssociationEvent.RemainingTickets</td>
             </tr>
