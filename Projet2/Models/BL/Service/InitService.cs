@@ -80,6 +80,7 @@ namespace Projet2.Models.BL.Service
       
         }
 
+
         // ASSOCIATIONS
         public void InitializeDB_Associations()
         {
@@ -122,6 +123,7 @@ namespace Projet2.Models.BL.Service
            
         }
 
+         
         // ASSOCIATIONS MEMBERS
         public void InitializeDB_AMembers()
         {
