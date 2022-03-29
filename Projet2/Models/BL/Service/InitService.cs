@@ -127,7 +127,6 @@ namespace Projet2.Models.BL.Service
         // ASSOCIATIONS MEMBERS
         public void InitializeDB_AMembers()
         {
-
             _bddContext.AssociationMember.Add(new AssociationMember { Id = 1, AssociationId = 3, MemberId = 2 });
             _bddContext.AssociationMember.Add(new AssociationMember { Id = 2, AssociationId = 4, MemberId = 2 });
             _bddContext.AssociationMember.Add(new AssociationMember { Id = 3, AssociationId = 5, MemberId = 2 });

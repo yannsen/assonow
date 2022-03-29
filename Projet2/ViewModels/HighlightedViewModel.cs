@@ -1,15 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using Projet2.Models;
+using System.Collections.Generic;
 
 namespace Projet2.ViewModels
 {
     public class HighlightedViewModel
     {
-        public Dictionary<int, bool> Highlighted { get; set; }
+        public List<Association> HAssociations { get; set; }
 
-        public Dictionary<int, string> HighlightedName { get; set; }
+        public List<Association> NHAssociations { get; set; }
 
-        public Dictionary<int, bool> ToHighlight { get; set; }
+        public List<Fundraising> HFundraisings { get; set; }
 
-        public Dictionary<int, string> ToHighlightName { get; set; }
+        public List<Fundraising> NHFundraisings { get; set; }
+
+        public List<AssociationEvent> AssociationEvents { get; set; }
+
+        public List<AssociationEvent> NAssociationEvents { get; set; }
     }
 }

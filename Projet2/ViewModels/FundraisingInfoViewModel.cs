@@ -12,5 +12,7 @@ namespace Projet2.ViewModels
 
         [Required(ErrorMessage = "Aucune image n'est fournie")]
         public IFormFile File { get; set; }
+
+        public int AssociationId { get; set; }
     }
 }

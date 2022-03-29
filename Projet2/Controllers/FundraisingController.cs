@@ -6,6 +6,7 @@ using Projet2.ViewModels;
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using System;
 
 namespace Projet2.Controllers
 {
@@ -32,7 +33,8 @@ namespace Projet2.Controllers
         public IActionResult Create(int id)
         {
             FundraisingInfoViewModel viewModel = new FundraisingInfoViewModel();
-            //viewModel.Fundraising.AssociationId = id;
+            viewModel.AssociationId = id;
+            ViewBag.Action = "Create";
             return View(viewModel);
         }
 
@@ -51,8 +53,50 @@ namespace Projet2.Controllers
                     }
                 }
                 viewModel.Fundraising.Image = "/FileSystem/Pictures/" + viewModel.File.FileName;
+                viewModel.Fundraising.AssociationId = viewModel.AssociationId;
+                viewModel.Fundraising.StartingDate = DateTime.Now;
                 fundraisingService.Create(viewModel);
-                return View(viewModel);
+                ViewBag.Action = "Create";
+                return RedirectToAction("Management", "Fundraising", viewModel.AssociationId);
+            }
+            return View(viewModel);
+        }
+
+        public IActionResult Modify(int id)
+        {
+            FundraisingInfoViewModel viewModel = new FundraisingInfoViewModel();
+            viewModel.Fundraising = fundraisingService.GetFundraising(id);
+            viewModel.AssociationId = viewModel.Fundraising.AssociationId;
+            ViewBag.Action = "Modify";
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult Modify(FundraisingInfoViewModel viewModel)
+        {
+            ModelState.Remove("File");
+            if (ModelState.IsValid)
+            {
+                if (viewModel.File != null)
+                {
+                    string fileName = "";
+                    if (viewModel.File.Length > 0)
+                    {
+                        string withoutExtension = Path.GetFileNameWithoutExtension(viewModel.File.FileName);
+                        string extension = Path.GetExtension(viewModel.File.FileName);
+                        fileName = withoutExtension + "_" + viewModel.AssociationId + "_" + viewModel.Fundraising.Id + extension;
+                        string uploads = Path.Combine(_webEnv.WebRootPath, "FileSystem/Pictures");
+                        string filePath = Path.Combine(uploads, fileName);
+                        using (Stream fileStream = new FileStream(filePath, FileMode.Create))
+                        {
+                            viewModel.File.CopyToAsync(fileStream);
+                        }
+                    }
+                    viewModel.Fundraising.Image = "/FileSystem/Pictures/" + fileName;
+                }
+                fundraisingService.Modify(viewModel.Fundraising);
+                ViewBag.Action = "Modify";
+                return RedirectToAction("Management", new { Id = viewModel.AssociationId });
             }
             return View(viewModel);
         }
@@ -78,6 +122,13 @@ namespace Projet2.Controllers
             foreach (Fundraising fundraising in viewModel.FundraisingsList)
                 imagesList.Add(associationService.GetAssociationByFundraisingId(fundraising.Id).Image);
             viewModel.FundraisingsImage = imagesList;
+            return View(viewModel);
+        }
+
+        public IActionResult Management(int id)
+        {
+            FundraisingManagementViewModel viewModel = new FundraisingManagementViewModel();
+            viewModel.Fundraisings = fundraisingService.GetFundraisingsByAssociation(id);
             return View(viewModel);
         }
 
