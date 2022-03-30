@@ -20,6 +20,7 @@ namespace Projet2.Controllers
         private IMemberService memberService;
         private IContributionService contributionService;
         private IAssociationMemberService associationMemberService;
+        private IFundraisingService fundraisingService;
 
 
         public AssociationController(IWebHostEnvironment environment)
