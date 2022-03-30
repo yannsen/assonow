@@ -23,6 +23,7 @@ namespace Projet2.Controllers
         private IFundraisingService fundraisingService;
 
 
+
         public AssociationController(IWebHostEnvironment environment)
         {
             this.fundraisingService = new FundraisingService();
@@ -124,6 +125,7 @@ namespace Projet2.Controllers
             ViewBag.Id = id;
             return View();
         }
+
 
         public IActionResult Services(int id)
         {
@@ -228,5 +230,6 @@ namespace Projet2.Controllers
             }
             return RedirectToAction("AssociationManagement", "AssociationEvent", new { Id = viewModel.AssociationId });
         }
+
     }
 }

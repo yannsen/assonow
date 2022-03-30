@@ -79,7 +79,6 @@ namespace Projet2.Models.BL.Service
             _bddContext.Member.Add(new Member { Id = 19, Firstname = "Jean", Lastname = "Beverly", Mail = "feverly@yahoo.fr", Password = authentificationService.EncodeMD5("123456"), Pseudonym = "Memb10", AddressId = 19, Role = "Member" });
       
         }
-
         // ASSOCIATIONS
         public void InitializeDB_Associations()
         {
@@ -116,7 +115,6 @@ namespace Projet2.Models.BL.Service
             _bddContext.Association.Add(new Association { Id = 28, AddressId = 47, Name = "Société Géologique de France", IsPublished = true, Description = "Concourir à l'avancement de la géologie en général et particulièrement de faire connaître le sol de la France tant en lui même que dans ses rapports avec les arts industriels et l'agriculture.", Image = "/FileSystem/Pictures/geologue.jpg", AssociationRepresentativeId = 1, Mail = "geologue@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 29, AddressId = 48, Name = "Société Française d'Anesthésie et de Réanimation (SFAR)", IsPublished = true, Description = "L'étude, l'avancement et l'enseignement de l'Anesthésiologie, telle qu'elle est définie par l'ordre National des médecins d'anesthésie et réanimation.", Image = "/FileSystem/Pictures/anest.jpg", AssociationRepresentativeId = 1, Mail = "anest@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 30, AddressId = 49, Name = "Société d'Horticulture de la Gironde (SHG)", IsPublished = true, Description = "Perfectionnement et les progrès de toutes les branches de l'horticulture des arts et industries qui s'y rattachent; récompenser par des primes diverses tous les mérites horticoles.", Image = "/FileSystem/Pictures/horti.jpg", AssociationRepresentativeId = 1, Mail = "horti@gmail.com" });
-
             // empty to complete
             //_bddContext.Association.Add(new Association { Id = 11, AddressId = 30, Name = "A chacun son everest", IsPublished = true, Description = "", Image = "/FileSystem/Pictures/petitprince.jpg", AssociationRepresentativeId = 1, Mail = "asso1@gmail.com" });
            
@@ -125,21 +123,19 @@ namespace Projet2.Models.BL.Service
         // ASSOCIATIONS MEMBERS
         public void InitializeDB_AMembers()
         {
-
             _bddContext.AssociationMember.Add(new AssociationMember { Id = 1, AssociationId = 3, MemberId = 2 });
             _bddContext.AssociationMember.Add(new AssociationMember { Id = 2, AssociationId = 4, MemberId = 2 });
             _bddContext.AssociationMember.Add(new AssociationMember { Id = 3, AssociationId = 5, MemberId = 2 });
 
         }
-
         // ASSOCIATIONS EVENTS
         public void InitializeDB_AEvents()
         {
             _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 1, EventTitle = " Concert des petits Princes", Description = "Le plus grand concert javmais vu avec Rammstein", Image = "lien vers image", Date = new DateTime(2022, 03, 24), EventType = "Concert", Speakers = "Al Capone", Artists = " Rammstein", TicketsTotalNumber = 3210, AddressId = 1, AssociationId = 1 });
             _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 2, EventTitle = " Concert des WWE", Description = "Le plus grand concert ou cela va se bastonner", Image = "lien vers image", Date = new DateTime(2022, 03, 24), EventType = "Concert", Speakers = "Al Bundy", Artists = " Croix de bois", TicketsTotalNumber = 2350, AddressId = 2, AssociationId = 4 });
         }
+        
         // DOCUMENTS
-
         public void InitializeDB_Documents()
         {
             _bddContext.Document.Add(new Document { Id = 1, AssociationId = 4, Type = "OfficialJournalPublication", Path = "../FileSystem/Documents/Publication1.pdf" });
@@ -235,10 +231,7 @@ namespace Projet2.Models.BL.Service
             _bddContext.Address.Add(new Address { Id = 48, RoadNumber = "8", Road = "Rue Haskell Curry", City = "Nantes", PostalCode = "44109", Country = "France" });
             _bddContext.Address.Add(new Address { Id = 49, RoadNumber = "19", Road = "Rue Andreï Ershov", City = "Nantes", PostalCode = "44109", Country = "France" });
             _bddContext.Address.Add(new Address { Id = 50, RoadNumber = "2", Road = "Rue Jay Forrester", City = "Nantes", PostalCode = "44109", Country = "France" });
-
-
         }
-
 
         public void Dispose()
         {

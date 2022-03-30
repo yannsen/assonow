@@ -44,7 +44,7 @@ namespace Projet2.Models.BL.Service
             _bddContext.SaveChanges();
 
         }
-
+        
         public Member GetMember(int id)
         {
             return _bddContext.Member.Find(id);

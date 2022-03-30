@@ -128,5 +128,10 @@ namespace Projet2.Models.BL.Service
         {
             return _bddContext.Association.FirstOrDefault(a => a.Id == id).Contribution;
         }
+
+        public int GetContribution(int id)
+        {
+            return _bddContext.Association.FirstOrDefault(a => a.Id == id).Contribution;
+        }
     }
 }

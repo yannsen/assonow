@@ -1,4 +1,4 @@
-﻿using Projet2.Models.BL.Interface;
+using Projet2.Models.BL.Interface;
 using Projet2.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
