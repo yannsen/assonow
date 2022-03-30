@@ -25,7 +25,7 @@ namespace Projet2.Controllers
             return View();
         }
         //id =eventId
-        public IActionResult TicketRegister(int id)
+        public IActionResult TicketRegister(int id,int RemainingTicket)
 
         {
             TicketingViewModel viewModel = new TicketingViewModel();
@@ -34,6 +34,7 @@ namespace Projet2.Controllers
             viewModel.TicketPrice = associationEvent.TicketPrice;
             viewModel.EventTitle = associationEvent.EventTitle;
             viewModel.EventId = id;
+            viewModel.RemainingTicket=RemainingTicket;
 
             return View(viewModel);
         }

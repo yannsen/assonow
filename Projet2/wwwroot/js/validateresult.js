@@ -2,23 +2,27 @@
 
 
 function onkeyupsum() { // calculate sum and show in textbox
-  
-    var sum = 0,
-        amount = document.querySelectorAll('.amount'), i;
-    for (i = 0; i < amount.length; i++) {
-        sum += parseFloat(amount[i].value || 0);
-    }
-    document.submitform.tamt.value = sum;
+    var nbr;
+    var multiply = 1,
+    
+
+        multiply = Number(document.getElementById("TicketsNumber").value) * Number(document.getElementById("TicketPrice").value);
+
+        document.getElementById("Amount").value = multiply;
 }
 
-
+//WARNING RemainingTicket must in the last atribute of URL
 function check() {
     var nbr;
-    nbr = Number(document.getElementById("ticketsnumber").value);
-    if (nbr > 10) {
-        alert("il reste seulement X billets");
+    var url = window.location.href;
+    var queue_url = Number(url.substring(url.lastIndexOf("=") + 1));
+        
+    nbr = Number(document.getElementById("TicketsNumber").value);
+    if (nbr > queue_url) {
+        alert("il reste seulement " + queue_url + " billets");
+        document.getElementById("submitbutton").disabled = true;
+    } else {
+        document.getElementById("submitbutton").disabled = false;
     }
-    else {
-        alert("ok");
-    }
+   
 }

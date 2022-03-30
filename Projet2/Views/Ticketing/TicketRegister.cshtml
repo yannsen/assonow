@@ -13,11 +13,22 @@
         <table>
             @Html.HiddenFor(m => m.EventId)
             @Html.HiddenFor(m => m.TicketPrice)
-            <tr> 
+            @Html.HiddenFor(m => m.RemainingTicket)
+            
+                 @if (@Model.RemainingTicket < 10)
+                    {
+                        <tr>
+                        <td>
+                        <label>Attention il ne reste que @Model.RemainingTicket place(s) de disponible</label>
+                        </td>
+                      </tr>
+                    }
+             <tr> 
                 <td>
+                   
                     @Html.LabelFor(m => m.TicketsNumber)
-                    @Html.TextBoxFor(m => m.TicketsNumber,new {@class="amount", @onkeyup="onkeyupsum()", @autocomplete="off"})
-                     @Html.DisplayFor(m=>m.TicketPrice,new {@class="amount", @onkeyup="onkeyupsum()", @autocomplete="off"})
+                    @Html.TextBoxFor(m => m.TicketsNumber,new {@class="multi", @onkeyup="setTimeout(check, 1000);onkeyupsum()", @autocomplete="off"})
+                     @Html.DisplayFor(m=>m.TicketPrice,new {@class="multi",})
                     X
                     @Html.TextBoxFor(m=>m.Amount)
                     
@@ -25,7 +36,7 @@
             </tr>
             <tr>
                 <td colspan="3" align="center">
-                    <br><br><input type="submit" value="Valider"  onclick="check()"/>
+                    <br><br><input type="submit" value="Valider"  id="submitbutton" onclick=""/>
                 </td>
             </tr>
         </table>

@@ -38,15 +38,17 @@ namespace Projet2.Models
         [Display(Name = "Nombre de tickets :")]
         [Required(ErrorMessage = "Quel est le nombre de ticket")]
         public int TicketsTotalNumber { get; set; }
-
+        public int RemainingTickets { get; set; }
 
         public int AddressId { get; set; }
         public Address Address { get; set; }
         public int AssociationId { get; set; }
         public Association Association { get; set; }
 
+        [Display(Name = "Prix d'une place :")]
+        [Required(ErrorMessage = "Quel est le prix d'une place")]
         public double TicketPrice { get; set; }
-        public int RemainingTickets { get; set; }
+
 
     }
 }

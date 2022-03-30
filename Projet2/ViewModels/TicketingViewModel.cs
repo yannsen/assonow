@@ -8,10 +8,10 @@
 
         public int TicketsNumber { get; set; }
         public double Amount { get; set; }
-        //public int MemberId { get; set; }
+        public int RemainingTicket { get; set; }
 
 
-      
+
 
     }
 
