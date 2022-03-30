@@ -15,11 +15,13 @@ namespace Projet2.Controllers
     {
         private IWebHostEnvironment _webEnv;
         private IAssociationService associationService;
+        private IFundraisingService fundraisingService;
         BddContext _bddContext;
   
 
         public AssociationController(IWebHostEnvironment environment)
         {
+            this.fundraisingService = new FundraisingService();
             this.associationService = new AssociationService();
             this._webEnv = environment;
             this._bddContext = new BddContext();
@@ -61,13 +63,10 @@ namespace Projet2.Controllers
             {
                 return NotFound();
             }
-
-            Association association = associationService.GetAssociation((int)id);
-            if (association == null)
-            {
-                return NotFound();
-            }
-            return View(association);
+            AssociationProfileViewModel viewModel = new AssociationProfileViewModel();
+            viewModel.Association = associationService.GetAssociation((int)id);
+            viewModel.Fundraisings = fundraisingService.GetFundraisingsByAssociation((int)id);
+            return View(viewModel);
         }
 
         public IActionResult ListeDesAssociations()

@@ -118,9 +118,10 @@ namespace Projet2.Models.BL.Service
         }
 
         //Méthode de recherche d'association en fonction du nom
-        public List<Association> GetAssociationsToSearch( ListSearchAssociationViewModel viewModel)
+        public List<Association> GetAssociationsToSearch(ListSearchAssociationViewModel viewModel)
         {
             return _bddContext.Association.Where(a => a.Name.Contains(viewModel.SearchName)).ToList();
+
         }
     }
 }

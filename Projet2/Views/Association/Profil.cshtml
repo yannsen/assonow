@@ -1,47 +1,64 @@
-﻿@model Projet2.Models.Association
+﻿@model Projet2.ViewModels.AssociationProfileViewModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewBag.title = "Profil Association";
     Layout = "_Layout";
 }
 <main class="flex-shrink-0">
-            <!-- Navigation-->
             <!-- About section one-->
             <section class="py-5 bg-light" id="scroll-target">
                 <div class="container px-5 my-5">
                     <div class="row gx-5 align-items-center">
-                        <div class="col-lg-6">
-                            <img class="img-fluid rounded mb-5 mb-lg-0" src="@Model.Image" alt="@Model.Name" /></div>
-                        <div class="col-lg-6">
-                            <h2 class="fw-bolder">@Html.DisplayFor(model => model.Name)</h2>
+                        <div class="col-lg-4">
+                            <img class="img-fluid rounded mb-5 mb-lg-0" src="@Model.Association.Image" alt="@Model.Association.Name" /></div>
+                        <div class="col-lg-8">
+                            <h2 class="fw-bolder">@Html.DisplayFor(model => Model.Association.Name)</h2>
                             <p class="lead fw-normal text-muted mb-0">
-                                @Html.DisplayFor(model => model.Description)
+                                @Html.DisplayFor(model => Model.Association.Description)
                             </p>
-                            <a asp-controller="Association" asp-action="Show" asp-route-id="@Model.Id">Nos Actualités</a>
-                            <a class="btn btn-primary btn-lg px-4 me-sm-3" asp-controller="Donation" asp-action="Association" asp-route-id="@Model.Id">Faire un don</a>
+                            <a class="btn btn-primary btn-sm px-4 me-sm-3" asp-controller="Association" asp-action="Show" asp-route-id="@Model.Association.Id">Nos Actualités</a>
+                            <a class="btn btn-primary btn-sm px-4 me-sm-3" asp-controller="Donation" asp-action="Association" asp-route-id="@Model.Association.Id">Faire un don</a>
+                            <a class="btn btn-primary btn-sm px-4 me-sm-3" asp-controller="Donation" asp-action="Association" asp-route-id="@Model.Association.Id">Gérer les adhérents</a>
                         </div>
                     </div>
                 </div>
             </section>
             <!-- About section two-->
-            <section class="py-5">
+            @*<section class="py-5">
                 <div class="container px-5 my-5">
-                    <div class="row gx-5 align-items-center">
-                        <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
-                        <div class="col-lg-6">
-                            <a asp-area="" asp-controller="Association" asp-action="Show" asp-route-id="@Model.Id">
-                            <h2 class="fw-bolder">NOS PROJETS</h2>
-                            <p>
-                                @Html.DisplayFor(model => model.Description)
-                            </p>
-                            </a>
-                            <p class="lead fw-normal text-muted mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto est, ut esse a labore aliquam beatae expedita. Blanditiis impedit numquam libero molestiae et fugit cupiditate, quibusdam expedita, maiores eaque quisquam.</p>
-                            <a asp-area="" asp-controller="Association" asp-action="Show" asp-route-id="@Model.Id">Consulter les projets en cours</a>
+                    <div class="row gx-5>
+                        @foreach (var item in Model.Fundraisings)
+                        {
+                            <div class="card h-100 shadow border-0">
+                               <div class="card-body p-4">
+                                    <img class="img-fluid rounded mb-5 mb-lg-0" src="@item.Image" alt="@item.Name" /></div>
+                        <div class="col-lg-8">
+                            <h2 class="fw-bolder">@Html.DisplayFor(model => item.Name)</h2>
+                            <p class="lead fw-normal text-muted mb-0">
+                                @Html.DisplayFor(model => item.Description)
                         </div>
+                        </div>
+                        }
                     </div>
                 </div>
-            </section>
-            <section class="py-5">
+            </section>*@
+            <div class="row gx-5>
+            @foreach (var item in Model.Fundraisings)
+            {
+                <div class="col-lg-4 mb-5">
+                            <div class="card h-100 shadow border-0">
+                                <img class="card-img-top" src="@item.Image" alt="@item.Name" />
+                                <div class="card-body p-4">
+                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">@item.Name</div>
+                                    <a class="text-decoration-none link-dark stretched-link"><h5 class="card-title mb-3">@item.Name</h5></a>
+                                    <p class="card-text mb-0">This text is a bit longer to illustrate the adaptive height of each card. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                            </div>
+            }
+            </div>
+
+            @*<section class="py-5">
                 <div class="container px-5 my-5">
                     <div class="row gx-5 align-items-center">
                         <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
@@ -93,6 +110,6 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section>*@
         </main>
 
