@@ -165,10 +165,11 @@ namespace Projet2.Controllers
         [HttpPost]
         public ActionResult EventView(AssociationEventInfoViewmodel viewModel)
         {
+            public
             //TicketsNumber
             //MemberID; Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier))
             //DateTime.Today;
-            //Amount
+            double Amount = (double)viewModel.TicketsNumber * viewModel.AssociationEvent.TicketPrice;
             associationEventService.CreateTicket(viewModel);
             return RedirectToAction("TicketRegister", "AssociationEvent");
 

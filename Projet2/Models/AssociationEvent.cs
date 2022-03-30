@@ -44,7 +44,7 @@ namespace Projet2.Models
         public int AssociationId { get; set; }
         public Association Association { get; set; }
 
-        public int TicketPrice { get; set; }
+        public double TicketPrice { get; set; }
         public int RemainingTickets { get; set; }
 
     }
