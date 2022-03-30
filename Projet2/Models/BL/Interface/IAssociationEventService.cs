@@ -13,5 +13,9 @@ namespace Projet2.Models.BL.Interface
         public List<Association> AssociationsRepresentative(int MemberConnectedId);
 
         public List<AssociationEvent> ListAssociationEvent(int MemberConnectedId);
+
+        public int CreateOrder(Order order);
+        public int CreateTicket(AssociationEventInfoViewmodel viewModel);
+        public List<AssociationEvent> GetAllAssociationEvents();
     }
 }
