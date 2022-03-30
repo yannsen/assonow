@@ -136,8 +136,8 @@ namespace Projet2.Models.BL.Service
         // ASSOCIATIONS EVENTS
         public void InitializeDB_AEvents()
         {
-            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 1, EventTitle = " Concert des petits Princes", Description = "Le plus grand concert javmais vu avec Rammstein", Image = "lien vers image", Date = new DateTime(2022, 03, 24), EventType = "Concert", Speakers = "Al Capone", Artists = " Rammstein", TicketsTotalNumber = 3210, AddressId = 1, AssociationId = 1 });
-            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 2, EventTitle = " Concert des WWE", Description = "Le plus grand concert ou cela va se bastonner", Image = "lien vers image", Date = new DateTime(2022, 03, 24), EventType = "Concert", Speakers = "Al Bundy", Artists = " Croix de bois", TicketsTotalNumber = 2350, AddressId = 2, AssociationId = 4 });
+            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 1, EventTitle = " Concert des petits Princes", Description = "Le plus grand concert javmais vu avec Rammstein", Image = "/FileSystem/Pictures/aigles.jpeg", Date = new DateTime(2022, 03, 24), EventType = "Concert", Speakers = "Al Capone", Artists = " Rammstein", TicketsTotalNumber = 3210, AddressId = 1, AssociationId = 1,TicketPrice= 12.0 });
+            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 2, EventTitle = " Concert des WWE", Description = "Le plus grand concert ou cela va se bastonner", Image = "/FileSystem/Pictures/butterfly17532.jpg", Date = new DateTime(2022, 03, 24), EventType = "Concert", Speakers = "Al Bundy", Artists = " Croix de bois", TicketsTotalNumber = 2350, AddressId = 2, AssociationId = 4, TicketPrice = 15.50 });
         }
         // DOCUMENTS
 
@@ -235,14 +235,6 @@ namespace Projet2.Models.BL.Service
             _bddContext.Address.Add(new Address { Id = 48, RoadNumber = "8", Road = "Rue Haskell Curry", City = "Nantes", PostalCode = "44109", Country = "France" });
             _bddContext.Address.Add(new Address { Id = 49, RoadNumber = "19", Road = "Rue Andreï Ershov", City = "Nantes", PostalCode = "44109", Country = "France" });
             _bddContext.Address.Add(new Address { Id = 50, RoadNumber = "2", Road = "Rue Jay Forrester", City = "Nantes", PostalCode = "44109", Country = "France" });
-
-        }
-
-
-        public void InitializeDB_Event()
-        {
-            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 1, EventTitle = " Concert des petits Princes",Description="Le plus grand concert javmais vu avec Rammstein", Image = "/FileSystem/Pictures/aigles.jpeg", Date = new DateTime(2022, 03, 24), EventType ="Concert", Speakers ="Al Capone", Artists=" Rammstein",TicketsTotalNumber=3210,AddressId=1,AssociationId=1, TicketPrice = 14 });
-            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 2, EventTitle = " Concert des WWE", Description = "Le plus grand concert ou cela va se bastonner", Image = "/FileSystem/Pictures/butterfly17532.jpg", Date = new DateTime(2022, 03, 24), EventType = "Concert", Speakers = "Al Bundy", Artists = " Croix de bois", TicketsTotalNumber = 2350, AddressId = 2, AssociationId = 4,TicketPrice = 12 });
 
         }
 

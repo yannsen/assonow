@@ -11,7 +11,7 @@ namespace Projet2.Models
         public DateTime PurchaseDate { get; set; }
 
         //If the price of tickets changes  over time by the representative,the  eventual refund will made on the correct amount 
-        public int Amount { get; set; }
+        public Double Amount { get; set; }
 
     }
 }
