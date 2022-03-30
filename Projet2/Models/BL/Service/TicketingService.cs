@@ -3,7 +3,7 @@
     public class TicketingService
     {
 
-        public int CreateTicket(Ticket ticket)
+        public void CreateTicket(Ticket ticket)
         {
 
         }

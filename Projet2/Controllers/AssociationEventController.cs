@@ -169,8 +169,7 @@ namespace Projet2.Controllers
             //TicketsNumber
             //MemberID; Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier))
             //DateTime.Today;
-            double Amount = (double)viewModel.TicketsNumber * viewModel.AssociationEvent.TicketPrice;
-            associationEventService.CreateTicket(viewModel);
+            
             return RedirectToAction("TicketRegister", "AssociationEvent");
 
         }
@@ -184,13 +183,8 @@ namespace Projet2.Controllers
 
         }
 
-        public ActionResult TicketRegister(AssociationEventInfoViewmodel viewModel)
-        {
 
-            int donationId = associationEventService.CreateTicket(viewModel);
 
-            return View(viewModel);
-        }
 
     }
 }
