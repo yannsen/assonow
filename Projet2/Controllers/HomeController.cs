@@ -10,18 +10,21 @@ namespace Projet2.Controllers
     public class HomeController : Controller
     {
         private IAssociationService associationService;
+        private IFundraisingService fundraisingService;
 
         BddContext _bddContext;
         public HomeController()
         {
             this.associationService = new AssociationService();
+            this.fundraisingService = new FundraisingService();
             this._bddContext = new BddContext();
         }
 
         public IActionResult Index()
         {
-           IndexViewModel viewModel = new IndexViewModel();
-            viewModel.AssociationList =  associationService.GetAllAssociations();
+            IndexViewModel viewModel = new IndexViewModel();
+            viewModel.Associations =  associationService.GetHighlightedAssociations();
+            viewModel.Fundraisings = fundraisingService.GetHighlightedFundraisings();
             return View(viewModel);
         }
     }

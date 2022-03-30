@@ -1,0 +1,64 @@
+﻿@model Projet2.Models.Association
+
+@{
+    ViewBag.title = "Validation de l'adhésion";
+    Layout = "_Layout";
+}
+
+@{
+    if (ViewBag.IsMember)
+    {
+        <div class="d-flex flex-column align-items-center">
+            <div>
+                <p>Vous êtes déjà adhérent de @Model.Name</p>
+            </div>
+            <div class="d-flex flex-row">
+                <a href="~/Association/Profil/@Model.Id" class="btn btn-primary w-100">Retour à la page de l'association</a>
+                <a href="~/Home/Index" class="btn btn-primary w-100">Retour à l'accueil</a>
+            </div>
+        </div>
+    }
+    else
+    {
+        if (Model.Contribution > 0)
+        {
+            <div class="d-flex flex-column align-items-center">
+                <div>
+                    <p>Vous êtes sur le point d'adhérer à @Model.Name dont la cotisation mensuelle s'élève à @Model.Contribution €</p>
+                    <p>Si vous acceptez, vous serez redirigé vers le paiement de votre première cotisation</p>
+                </div>
+                <div class="d-flex flex-row">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.HiddenFor(v => v.Id)
+                        @Html.HiddenFor(v => v.Name)
+                        @Html.HiddenFor(v => v.Contribution)
+                        @Html.HiddenFor(v => v.Id)
+                        @Html.HiddenFor(v => v.Name)
+                        @Html.HiddenFor(v => v.Contribution)
+                        <input class="btn btn-primary" type="submit" value="Accepter" />
+                    }
+                    <a class="btn btn-primary" href="~/Association/Profil?id=@Model.Id">Annuler</a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="d-flex flex-column align-items-center">
+                <div>
+                    <p>Vous êtes sur le point d'adhérer à @Model.Name</p>
+                </div>
+                <div class="d-flex flex-row">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.HiddenFor(v => v.Id)
+                        @Html.HiddenFor(v => v.Name)
+                        @Html.HiddenFor(v => v.Contribution)
+                        <input class="btn btn-primary" type="submit" value="Accepter" />
+                    }
+                    <a class="btn btn-primary" href="~/Association/Profil?id=@Model.Id">Annuler</a>
+                </div>
+            </div>
+        }
+    }
+}

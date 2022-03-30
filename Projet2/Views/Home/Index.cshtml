@@ -7,4 +7,5 @@
     Layout = "_Layout";
 }
 
-@await Html.PartialAsync("CarouselAssociation", @Model.AssociationList)
+@await Html.PartialAsync("CarouselAssociation", @Model.Associations)
+@await Html.PartialAsync("CarouselFundraising", @Model.Fundraisings)

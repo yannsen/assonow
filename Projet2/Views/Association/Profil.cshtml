@@ -19,6 +19,7 @@
                             </p>
                             <a asp-controller="Association" asp-action="Show" asp-route-id="@Model.Id">Nos Actualités</a>
                             <a class="btn btn-primary btn-lg px-4 me-sm-3" asp-controller="Donation" asp-action="Association" asp-route-id="@Model.Id">Faire un don</a>
+                            <a class="btn btn-primary btn-lg px-4 me-sm-3" asp-controller="Association" asp-action="Join" asp-route-id="@Model.Id">Adhérer</a>
                         </div>
                     </div>
                 </div>
@@ -31,6 +32,9 @@
                         <div class="col-lg-6">
                             <a asp-area="" asp-controller="Association" asp-action="Show" asp-route-id="@Model.Id">
                             <h2 class="fw-bolder">NOS PROJETS</h2>
+                            <p>
+                                @Html.DisplayFor(model => model.Description)
+                            </p>
                             </a>
                             <p class="lead fw-normal text-muted mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto est, ut esse a labore aliquam beatae expedita. Blanditiis impedit numquam libero molestiae et fugit cupiditate, quibusdam expedita, maiores eaque quisquam.</p>
                             <a asp-area="" asp-controller="Association" asp-action="Show" asp-route-id="@Model.Id">Consulter les projets en cours</a>

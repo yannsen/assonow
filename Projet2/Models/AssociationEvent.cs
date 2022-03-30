@@ -26,6 +26,7 @@ namespace Projet2.Models
 
         public string EventType { get; set; }
 
+#nullable enable
         [Display(Name = "Conférencier.e.s :")]
 #nullable enable
         public string? Speakers { get; set; }

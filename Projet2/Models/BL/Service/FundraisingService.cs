@@ -16,6 +16,12 @@ namespace Projet2.Models.BL.Service
             this.associationService = new AssociationService();
         }
 
+        public int Create(FundraisingInfoViewModel viewModel)
+        {
+            _bddContext.Fundraising.Add(viewModel.Fundraising);
+            _bddContext.SaveChanges();
+            return viewModel.Fundraising.Id;
+        }
         public Fundraising GetFundraising(int id)
         {
             return _bddContext.Fundraising.Find(id);
@@ -44,6 +50,32 @@ namespace Projet2.Models.BL.Service
             fundraising.CurrentAmount += amount;
             _bddContext.Fundraising.Update(fundraising);
             _bddContext.SaveChanges();
+        }
+
+        public void Modify(Fundraising fundraising)
+        {
+            Fundraising toUpdate = GetFundraising(fundraising.Id);
+            toUpdate.Name = fundraising.Name;
+            toUpdate.Description = fundraising.Description;
+            if(fundraising.Image != null)
+                toUpdate.Image = fundraising.Image;
+            _bddContext.Fundraising.Update(toUpdate);
+            _bddContext.SaveChanges();
+        }
+
+        public List<Fundraising> GetFundraisingsByAssociation(int id)
+        {
+            return _bddContext.Fundraising.Where(f => f.AssociationId == id).ToList();
+        }
+
+        public List<Fundraising> GetHighlightedFundraisings()
+        {
+            return _bddContext.Fundraising.Where(f => f.IsHighlighted == true).ToList();
+        }
+
+        public List<Fundraising> GetNotHighlightedFundraisings()
+        {
+            return _bddContext.Fundraising.Where(f => f.IsHighlighted == false).ToList();
         }
     }
 }

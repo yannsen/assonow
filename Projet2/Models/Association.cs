@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Projet2.Models
 {
     public class Association
     {
-        
         public int Id { get; set; }
 
         [Required]
@@ -17,6 +16,10 @@ namespace Projet2.Models
         public bool MemberService { get; set; }
         public int AddressId { get; set; }
         public Address Address { get; set; }
+
+        [Required]
+        [Display(Name = "Cotisation mensuelle pour les adhérents :")]
+        public int Contribution { get; set; }
 
         [Required(ErrorMessage = "L'adresse mail est obligatoire")]
         [Display(Name = "Adresse mail :")]
@@ -30,5 +33,9 @@ namespace Projet2.Models
         [Display(Name = "Description :")]
         public string Description { get; set; }
         public string Image { get; set; }
+
+
+        public bool IsHighlighted { get; set; }
+
     }
 }
