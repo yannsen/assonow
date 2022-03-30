@@ -86,23 +86,7 @@ namespace Projet2.Models.BL.Service
             var EventAssocations = query.ToList();
             return EventAssocations;
 
-        }
-
-        public int CreateOrder(Order order)
-        {
-            _bddContext.Order.Add(order);
-            _bddContext.SaveChanges();
-            return order.Id;
-        }
-
-        public int CreateTicket(AssociationEventInfoViewmodel viewModel)
-        {
-            int idOrder = CreateOrder(viewModel.Order);
-            viewModel.Ticket.OrderId = idOrder;
-            _bddContext.Ticket.Add(viewModel.Ticket);
-            _bddContext.SaveChanges();
-            return viewModel.AssociationEvent.Id;
-
+        
         }
         public List<AssociationEvent> GetAllAssociationEvents()
         {

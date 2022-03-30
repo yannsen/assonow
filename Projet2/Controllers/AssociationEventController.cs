@@ -165,7 +165,7 @@ namespace Projet2.Controllers
         [HttpPost]
         public ActionResult EventView(AssociationEventInfoViewmodel viewModel)
         {
-            public
+            //public
             //TicketsNumber
             //MemberID; Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier))
             //DateTime.Today;
