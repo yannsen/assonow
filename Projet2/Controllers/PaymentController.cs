@@ -68,7 +68,7 @@ namespace Projet2.Controllers
             }
             else if (viewModel.ContributionId != null)
             {
-                //Redirection page contribution
+                ViewBag.Next = "../Association/Joined?id=" + viewModel.ContributionId;
             }
             else if (viewModel.CommandId != null)
             {

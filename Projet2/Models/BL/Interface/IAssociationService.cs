@@ -30,6 +30,9 @@ namespace Projet2.Models.BL.Interface
         public List<Association> GetHighlightedAssociations();
 
         public List<Association> GetNotHighlightedAssociations();
+
+        public int GetContribution(int id);
+
         public List<Association> GetAssociationsToSearch(ListSearchAssociationViewModel viewModel);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Projet2.Models.BL.Interface;
+using System.Linq;
 
 namespace Projet2.Models.BL.Service
 {
@@ -10,9 +11,9 @@ namespace Projet2.Models.BL.Service
             _bddContext = new BddContext();
         }
 
-        public int CreateAssociationMember(int idAssociation, int idMember)
+        public int CreateAssociationMember(int associationId, int memberId)
         {
-            AssociationMember associationMember = new AssociationMember() { AssociationId = idAssociation, MemberId = idMember };
+            AssociationMember associationMember = new AssociationMember() { AssociationId = associationId, MemberId = memberId };
             _bddContext.AssociationMember.Add(associationMember);
             _bddContext.SaveChanges();
             return associationMember.Id;
@@ -26,6 +27,11 @@ namespace Projet2.Models.BL.Service
                 _bddContext.AssociationMember.Remove(associationMember);
                 _bddContext.SaveChanges();
             }
+        }
+
+        public bool DoMembershipExist(int associationId, int memberId)
+        {
+            return _bddContext.AssociationMember.Any(a => a.AssociationId == associationId && a.MemberId == memberId);
         }
     }
 }
