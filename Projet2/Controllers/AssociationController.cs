@@ -8,6 +8,7 @@ using Projet2.Models.BL.Service;
 using Microsoft.AspNetCore.Authorization;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authentication;
 
 namespace Projet2.Controllers
 {
@@ -15,14 +16,21 @@ namespace Projet2.Controllers
     {
         private IWebHostEnvironment _webEnv;
         private IAssociationService associationService;
+        private IDocumentService documentService;
+        private IMemberService memberService;
         private IContributionService contributionService;
         private IAssociationMemberService associationMemberService;
+        private IFundraisingService fundraisingService;
+
 
 
         public AssociationController(IWebHostEnvironment environment)
         {
+            this.fundraisingService = new FundraisingService();
             this.associationService = new AssociationService();
             this.contributionService = new ContributionService();
+            this.memberService = new MemberService();
+            this.documentService = new DocumentService();
             this._webEnv = environment;
             this.associationMemberService = new AssociationMemberService();
         }
@@ -52,7 +60,9 @@ namespace Projet2.Controllers
                 }
                 viewModel.Association.Image = "/FileSystem/Pictures/" + viewModel.File.FileName;
                 associationService.CreateAssociation(viewModel, Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
-                return RedirectToAction("Index", "Home");
+                memberService.NewRole(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)), "Representative");
+                HttpContext.SignOutAsync();
+                return RedirectToAction("Connexion", "Compte");
             }
             return View(viewModel);
         }
@@ -63,13 +73,10 @@ namespace Projet2.Controllers
             {
                 return NotFound();
             }
-
-            Association association = associationService.GetAssociation((int)id);
-            if (association == null)
-            {
-                return NotFound();
-            }
-            return View(association);
+            AssociationProfileViewModel viewModel = new AssociationProfileViewModel();
+            viewModel.Association = associationService.GetAssociation((int)id);
+            viewModel.Fundraisings = fundraisingService.GetFundraisingsByAssociation((int)id);
+            return View(viewModel);
         }
 
         public IActionResult ListeDesAssociations()
@@ -118,5 +125,111 @@ namespace Projet2.Controllers
             ViewBag.Id = id;
             return View();
         }
+
+
+        public IActionResult Services(int id)
+        {
+            ServicesViewModel viewModel = new ServicesViewModel();
+            Association association = associationService.GetAssociation(id);
+            viewModel.TicketService = association.TicketService;
+            viewModel.MemberService = association.MemberService;
+            viewModel.DonationService = association.DonationService;
+            viewModel.AssociationId = id;
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult Services(ServicesViewModel viewModel)
+        {
+            Association association = associationService.GetAssociation(viewModel.AssociationId);
+            association.TicketService = viewModel.TicketService;
+            association.MemberService = viewModel.MemberService;
+            association.DonationService = viewModel.DonationService;
+            associationService.ModifyAssociation(association);
+            return RedirectToAction("AssociationManagement", "AssociationEvent", new { Id = viewModel.AssociationId });
+        }
+
+        public IActionResult Documents(int id)
+        {
+            DocumentsViewModel viewModel = new DocumentsViewModel();
+            viewModel.AssociationId = id;
+            viewModel.FormerOfficialJournalPublication = documentService.GetOfficialJournalPublicationPath(id);
+            viewModel.FormerRepresentativeID = documentService.GetAssociationRepresentativeIDPath(id);
+            viewModel.FormerBankDetails = documentService.GetBankDetailsPath(id);
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult Documents(DocumentsViewModel viewModel)
+        {
+            string fileName = "";
+            if (viewModel.BankDetails != null)
+            {
+                if (documentService.GetBankDetails(viewModel.AssociationId) != null)
+                {
+                    documentService.DeleteDocument(documentService.GetBankDetails(viewModel.AssociationId).Id);
+                }
+                string withoutExtension = Path.GetFileNameWithoutExtension(viewModel.BankDetails.FileName);
+                string extension = Path.GetExtension(viewModel.BankDetails.FileName);
+                fileName = withoutExtension + "_" + viewModel.AssociationId + extension;
+                string uploads = Path.Combine(_webEnv.WebRootPath, "FileSystem/Documents");
+                string filePath = Path.Combine(uploads, fileName);
+                using (Stream fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    viewModel.BankDetails.CopyToAsync(fileStream);
+                }
+                Document bankDetails = new Document();
+                bankDetails.AssociationId = viewModel.AssociationId;
+                bankDetails.Path = "/FileSystem/Documents/" + fileName;
+                bankDetails.Type = "BankDetails";
+                documentService.CreateDocument(bankDetails);
+            }
+            fileName = "";
+            if (viewModel.RepresentativeID != null)
+            {
+                if (documentService.GetAssociationRepresentativeID(viewModel.AssociationId) != null)
+                {
+                    documentService.DeleteDocument(documentService.GetAssociationRepresentativeID(viewModel.AssociationId).Id);
+                }
+                string withoutExtension = Path.GetFileNameWithoutExtension(viewModel.RepresentativeID.FileName);
+                string extension = Path.GetExtension(viewModel.RepresentativeID.FileName);
+                fileName = withoutExtension + "_" + viewModel.AssociationId + extension;
+                string uploads = Path.Combine(_webEnv.WebRootPath, "FileSystem/Documents");
+                string filePath = Path.Combine(uploads, fileName);
+                using (Stream fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    viewModel.RepresentativeID.CopyToAsync(fileStream);
+                }
+                Document representativeID = new Document();
+                representativeID.AssociationId = viewModel.AssociationId;
+                representativeID.Path = "/FileSystem/Documents/" + fileName;
+                representativeID.Type = "ID";
+                documentService.CreateDocument(representativeID);
+            }
+            fileName = "";
+            if (viewModel.OfficialJournalPublication != null)
+            {
+                if (documentService.GetOfficialJournalPublication(viewModel.AssociationId) != null)
+                {
+                    documentService.DeleteDocument(documentService.GetOfficialJournalPublication(viewModel.AssociationId).Id);
+                }
+                string withoutExtension = Path.GetFileNameWithoutExtension(viewModel.OfficialJournalPublication.FileName);
+                string extension = Path.GetExtension(viewModel.OfficialJournalPublication.FileName);
+                fileName = withoutExtension + "_" + viewModel.AssociationId + extension;
+                string uploads = Path.Combine(_webEnv.WebRootPath, "FileSystem/Documents");
+                string filePath = Path.Combine(uploads, fileName);
+                using (Stream fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    viewModel.OfficialJournalPublication.CopyToAsync(fileStream);
+                }
+                Document officialJournalPublication = new Document();
+                officialJournalPublication.AssociationId = viewModel.AssociationId;
+                officialJournalPublication.Path = "/FileSystem/Documents/" + fileName;
+                officialJournalPublication.Type = "OfficialJournalPublication";
+                documentService.CreateDocument(officialJournalPublication);
+            }
+            return RedirectToAction("AssociationManagement", "AssociationEvent", new { Id = viewModel.AssociationId });
+        }
+
     }
 }
