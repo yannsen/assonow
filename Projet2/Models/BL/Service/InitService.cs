@@ -79,8 +79,6 @@ namespace Projet2.Models.BL.Service
             _bddContext.Member.Add(new Member { Id = 19, Firstname = "Jean", Lastname = "Beverly", Mail = "feverly@yahoo.fr", Password = authentificationService.EncodeMD5("123456"), Pseudonym = "Memb10", AddressId = 19, Role = "Member" });
       
         }
-
-
         // ASSOCIATIONS
         public void InitializeDB_Associations()
         {
@@ -101,7 +99,7 @@ namespace Projet2.Models.BL.Service
             _bddContext.Association.Add(new Association { Id = 13, AddressId = 32, Name = "A Domicile 45 ", IsPublished = true, Description = "Mettre en œuvre, organiser et gérer toute action individuelle, pluridisciplaire ou collective destinée à l’aide et au maintien à domicile de toutes personnes ou groupes de personnes, notamment des personnes handicapées, des personnes âgées, des personnes et des familles vulnérables, en situation de précarité ou de pauvreté, en tenant compte de leurs besoins et de leurs attentes, sur l’ensemble du Département du Loiret.", Image = "/FileSystem/Pictures/domicile.jpeg", AssociationRepresentativeId = 1, Mail = "domicile@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 14, AddressId = 33, Name = "Peuples Solidiaires", IsPublished = true, Description = "Créer une dynamique en faveur du développement solidaire de tous les peuples et permettre à chacun/chacune d'être acteur /actrice de la construction collective d'un monde solidaire où les droits fondamentaux sont universellement respectés", Image = "/FileSystem/Pictures/peuples.jpeg", AssociationRepresentativeId = 1, Mail = "peuples@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 15, AddressId = 34, Name = "Agir Soigner Eduquer Insérer (ASEI)", IsPublished = true, Description = "Prise en charge globale et insertion des personnes handicapées quel que soit leur âge, la prise en charge des personnes dépendantes et fragilisées, la promotion des droits des personnes en situation de handicap et la lutte contre l’exclusion de ces personnes, dans le respect des valeurs qui ont toujours présidé à l’action de l’association : la laïcié, le refus de toutes les discriminations, le respect de la personne et la solidarité.", Image = "/FileSystem/Pictures/asei.jpg", AssociationRepresentativeId = 1, Mail = "asei@gmail.com" });
-            _bddContext.Association.Add(new Association { Id = 16, AddressId = 35, Name = "Asssociation Aurore", IsPublished = true, Description = "Réadaptation sociale et professionnelle des personnes que la maladie, l'isolement, les détresses morales et matérielles, un séjour en prison ou à l'hôpital ont privé d'une vie normale.", Image = "/FileSystem/Pictures/aurore.jpg", AssociationRepresentativeId = 1, Mail = "aurore@gmail.com" });
+            _bddContext.Association.Add(new Association { Id = 16, AddressId = 35, Name = "Association Aurore", IsPublished = true, Description = "Réadaptation sociale et professionnelle des personnes que la maladie, l'isolement, les détresses morales et matérielles, un séjour en prison ou à l'hôpital ont privé d'une vie normale.", Image = "/FileSystem/Pictures/aurore.jpg", AssociationRepresentativeId = 1, Mail = "aurore@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 17, AddressId = 36, Name = "Académie de l'air et de l'espace", IsPublished = true, Description = "Elaborer une pensée multidisciplinaire de haut niveau et de favoriser le développement d’activités de qualité de toute nature dans le domaine de l’air et de l’espace ; elle se propose de valoriser et d’enrichir le patrimoine scientifique, technique, culturel et humain, de diffuser les connaissances et d’être un pôle d’animation.", Image = "/FileSystem/Pictures/academie.jpg", AssociationRepresentativeId = 1, Mail = "academie@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 18, AddressId = 37, Name = "Les jours heureux", IsPublished = true, Description = "Venir en aide aux familles par des informations et des conseils, de promouvoir et mettre en œuvre tout ce qui pourrait être nécessaire pour le meilleur développement physique, intellectuel et moral de leurs enfants mineurs ou majeurs handicapés mentaux ; accueillir des personnes handicapées mentales au sein d'établissements et de services appropriés avec pour objectifs leur éducation, leur accompagnement, leur réducation, leur adaptation, leur mise au travail, leur insertion sociale, leur hébergement, l'organisation de leurs loisirs, et toute autre action qui apparaitrait nécessaire.", Image = "/FileSystem/Pictures/heureux.jpg", AssociationRepresentativeId = 1, Mail = "heureux@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 19, AddressId = 38, Name = "Les petits frères des pauvres", IsPublished = true, Description = "Accueil, aide et accompagnement dans une relation fraternelle et désintéressée, des personnes, en priorité de plus de 50 ans, souffrant de pauvreté, de solitude, d’ exclusion, de précarité, de maladie grave, par des moyens et dans des conditions adaptés à chacune d’elles. Elle a pour objet de promouvoir le bénévolat de solidarité ; sensibiliser et alerter l’opinion et les pouvoirs publics ; et ce, au service des personnes quels que soient leur origine, leur situation sociale et leur été physique ou psychique.", Image = "/FileSystem/Pictures/freres.jpg", AssociationRepresentativeId = 1, Mail = "freres@gmail.com" });
@@ -117,13 +115,11 @@ namespace Projet2.Models.BL.Service
             _bddContext.Association.Add(new Association { Id = 28, AddressId = 47, Name = "Société Géologique de France", IsPublished = true, Description = "Concourir à l'avancement de la géologie en général et particulièrement de faire connaître le sol de la France tant en lui même que dans ses rapports avec les arts industriels et l'agriculture.", Image = "/FileSystem/Pictures/geologue.jpg", AssociationRepresentativeId = 1, Mail = "geologue@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 29, AddressId = 48, Name = "Société Française d'Anesthésie et de Réanimation (SFAR)", IsPublished = true, Description = "L'étude, l'avancement et l'enseignement de l'Anesthésiologie, telle qu'elle est définie par l'ordre National des médecins d'anesthésie et réanimation.", Image = "/FileSystem/Pictures/anest.jpg", AssociationRepresentativeId = 1, Mail = "anest@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 30, AddressId = 49, Name = "Société d'Horticulture de la Gironde (SHG)", IsPublished = true, Description = "Perfectionnement et les progrès de toutes les branches de l'horticulture des arts et industries qui s'y rattachent; récompenser par des primes diverses tous les mérites horticoles.", Image = "/FileSystem/Pictures/horti.jpg", AssociationRepresentativeId = 1, Mail = "horti@gmail.com" });
-
             // empty to complete
             //_bddContext.Association.Add(new Association { Id = 11, AddressId = 30, Name = "A chacun son everest", IsPublished = true, Description = "", Image = "/FileSystem/Pictures/petitprince.jpg", AssociationRepresentativeId = 1, Mail = "asso1@gmail.com" });
            
         }
 
-         
         // ASSOCIATIONS MEMBERS
         public void InitializeDB_AMembers()
         {
@@ -132,15 +128,14 @@ namespace Projet2.Models.BL.Service
             _bddContext.AssociationMember.Add(new AssociationMember { Id = 3, AssociationId = 5, MemberId = 2 });
 
         }
-
         // ASSOCIATIONS EVENTS
         public void InitializeDB_AEvents()
         {
             _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 1, EventTitle = " Concert des petits Princes", Description = "Le plus grand concert javmais vu avec Rammstein", Image = "lien vers image", Date = new DateTime(2022, 03, 24), EventType = "Concert", Speakers = "Al Capone", Artists = " Rammstein", TicketsTotalNumber = 3210, AddressId = 1, AssociationId = 1 });
             _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 2, EventTitle = " Concert des WWE", Description = "Le plus grand concert ou cela va se bastonner", Image = "lien vers image", Date = new DateTime(2022, 03, 24), EventType = "Concert", Speakers = "Al Bundy", Artists = " Croix de bois", TicketsTotalNumber = 2350, AddressId = 2, AssociationId = 4 });
         }
+        
         // DOCUMENTS
-
         public void InitializeDB_Documents()
         {
             _bddContext.Document.Add(new Document { Id = 1, AssociationId = 4, Type = "OfficialJournalPublication", Path = "../FileSystem/Documents/Publication1.pdf" });
@@ -187,6 +182,7 @@ namespace Projet2.Models.BL.Service
             _bddContext.Address.Add(new Address { Id = 4, RoadNumber = "5", Road = "Rue du général de gaulle", City = "Bordeaux", PostalCode = "33000", Country = "France" });
             _bddContext.Address.Add(new Address { Id = 5, RoadNumber = "6", Road = "Rue du général", City = "Paris", PostalCode = "75000", Country = "France" });
             _bddContext.Address.Add(new Address { Id = 6, RoadNumber = "7", Road = "Rue du caporal", City = "Grenoble", PostalCode = "38000", Country = "France" });
+
             _bddContext.Address.Add(new Address { Id = 7, RoadNumber = "2", Road = "Rue de bel air", City = "Saint-Pryvé-Saint-Mesmin", PostalCode = "45750", Country = "France" });
             _bddContext.Address.Add(new Address { Id = 8, RoadNumber = "3", Road = "Avenue de la république", City = "Angers", PostalCode = "49000", Country = "France" });
             _bddContext.Address.Add(new Address { Id = 9, RoadNumber = "4", Road = "Rue du paradis", City = "Le Mans", PostalCode = "72000", Country = "France" });
@@ -235,9 +231,7 @@ namespace Projet2.Models.BL.Service
             _bddContext.Address.Add(new Address { Id = 48, RoadNumber = "8", Road = "Rue Haskell Curry", City = "Nantes", PostalCode = "44109", Country = "France" });
             _bddContext.Address.Add(new Address { Id = 49, RoadNumber = "19", Road = "Rue Andreï Ershov", City = "Nantes", PostalCode = "44109", Country = "France" });
             _bddContext.Address.Add(new Address { Id = 50, RoadNumber = "2", Road = "Rue Jay Forrester", City = "Nantes", PostalCode = "44109", Country = "France" });
-
         }
-
 
         public void Dispose()
         {
