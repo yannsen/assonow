@@ -49,7 +49,7 @@ namespace Projet2.Models.BL.Service
         {
             return _bddContext.Member.Find(id);
         }
-
+        
         public void NewRole(int id, string newRole)
         {
             Member member = GetMember(id);

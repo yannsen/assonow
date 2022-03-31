@@ -20,13 +20,13 @@
             </tr>
             <tr>
                 <td align="right">@Html.LabelFor(m => Model.AssociationEvent.Description)</td>
-                <td>@Html.TextBoxFor(m => Model.AssociationEvent.Description)</td>
+                <td>@Html.TextAreaFor(m => Model.AssociationEvent.Description, new { @class = "descriptionForm"})</td>
                 <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.Description)</td>
             </tr>
             <tr>
-                 <td align="right">@Html.LabelFor(model => model.File)</td>
-                <td>@Html.TextBoxFor(model => model.File, new { placeholder = "Description", @type = "file" })</td>
-                <td>@Html.ValidationMessageFor(model => model.File)</td>
+                 <td align="right">@Html.LabelFor(m => m.File)</td>
+                <td>@Html.TextBoxFor(m => m.File, new { placeholder = "Description", @type = "file" })</td>
+                <td>@Html.ValidationMessageFor(m => m.File)</td>
             </tr>
             <tr>
                 <td align="right">@Html.LabelFor(m => Model.AssociationEvent.Date)</td>

@@ -15,7 +15,7 @@ namespace Projet2.Models.BL.Service
     {
         private BddContext _bddContext;
         private IAddressService addressService;
-      
+
         public AssociationEventService()
         {
             _bddContext = new BddContext();
@@ -71,8 +71,8 @@ namespace Projet2.Models.BL.Service
             var associations = _bddContext.Association.Where(a => a.AssociationRepresentativeId == MemberConnectedId).ToList();
 
             return associations;
-                
-                
+
+
         }
 
         public List<AssociationEvent> ListAssociationEvent(int associationId)
@@ -82,13 +82,22 @@ namespace Projet2.Models.BL.Service
             var query = from ae in _bddContext.AssociationEvent
                         where ae.AssociationId == associationId
                         select ae;
-            
+
             var EventAssocations = query.ToList();
             return EventAssocations;
 
+        
+        }
+        public List<AssociationEvent> GetAllAssociationEvents()
+        {
+            var query = from ae in _bddContext.AssociationEvent
+                        select ae;
+
+            var AllAssocationsEvent = query.ToList();
+            return AllAssocationsEvent;
+
         }
 
-
-
     }
+
 }

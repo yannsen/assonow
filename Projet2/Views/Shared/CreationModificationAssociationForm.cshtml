@@ -14,7 +14,7 @@
             </tr>
             <tr>
                 <td align="right">@Html.LabelFor(m => Model.Association.Description)</td>
-                <td>@Html.TextBoxFor(m => Model.Association.Description)</td>
+                <td>@Html.TextAreaFor(m => Model.Association.Description, new { @class = "descriptionForm"})</td>
                 <td>@Html.ValidationMessageFor(m => Model.Association.Description)</td>
             </tr>
             <tr>

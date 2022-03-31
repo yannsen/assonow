@@ -27,6 +27,7 @@ namespace Projet2.Controllers
             this._bddContext = new BddContext();
         }
 
+        [Authorize(Roles = "Representative")]
         public IActionResult Index()
         {
             List<Association> associationsList = associationEventService.AssociationsRepresentative(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
@@ -38,6 +39,7 @@ namespace Projet2.Controllers
             return View(associationsList);
         }
 
+        [Authorize(Roles = "Representative")]
         public IActionResult AssociationManagement(int id)
         {
            AssociationInfoViewModel viewModel = new AssociationInfoViewModel();
@@ -46,7 +48,7 @@ namespace Projet2.Controllers
                 return View(viewModel);
         }
 
-
+        [Authorize(Roles = "Representative")]
         public IActionResult EventManagement()
         {
             AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
@@ -59,6 +61,7 @@ namespace Projet2.Controllers
 
         }
 
+        [Authorize(Roles = "Representative")]
         //register new Event for a specific association
         public IActionResult EventRegister(int id)
         {
@@ -69,6 +72,7 @@ namespace Projet2.Controllers
 
         }
 
+        [Authorize(Roles = "Representative")]
         [HttpPost]
         [Authorize]
         public IActionResult EventRegister(AssociationEventInfoViewmodel viewModel)
@@ -96,16 +100,17 @@ namespace Projet2.Controllers
 
         //List of all event of  an association. 
         //id in parameter is for Id of association
+        [Authorize(Roles = "Representative")]
         public ActionResult EventList(int id)
         {
                 AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
-                viewModel.EventsList = associationEventService.ListAssociationEvent(id);
+                viewModel.AssociationEventsList = associationEventService.ListAssociationEvent(id);
                 viewModel.SelectedAssociationId = id;
                 return View(viewModel);
 
         }
 
-
+        [Authorize(Roles = "Representative")]
         public ActionResult EventDelete(int id,int eventid)
         {
             AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
@@ -113,7 +118,9 @@ namespace Projet2.Controllers
             viewModel.SelectedAssociationId = id;
             return View(viewModel);
         }
+
         //id in parameter is for Id of association
+        [Authorize(Roles = "Representative")]
         public ActionResult EventEdit(int id, int eventid)
         {
             AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
@@ -125,11 +132,24 @@ namespace Projet2.Controllers
             
         }
 
+        [Authorize(Roles = "Representative")]
         [HttpPost]
         public ActionResult EventEdit(AssociationEventInfoViewmodel viewModel)
         {  
             if (ModelState.IsValid)
             {
+
+                if (viewModel.File.Length > 0)
+                {
+                    string uploads = Path.Combine(_webEnv.WebRootPath, "FileSystem/Pictures");
+                    string filePath = Path.Combine(uploads, viewModel.File.FileName);
+                    using (Stream fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        viewModel.File.CopyToAsync(fileStream);
+                    }
+                }
+                viewModel.AssociationEvent.Image = "/FileSystem/Pictures/" + viewModel.File.FileName;
+
                 associationEventService.ModifyAssociationEvent(viewModel);
                 return RedirectToAction("EventList", "AssociationEvent", new { Id = viewModel.SelectedAssociationId });
             }
@@ -137,5 +157,37 @@ namespace Projet2.Controllers
             
         }
 
+
+        // view of one event with id of event as parameter
+        public ActionResult EventView(int id)
+        {
+            AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
+            viewModel.AssociationEvent = _bddContext.AssociationEvent.Find(id);
+            viewModel.Address = _bddContext.Address.Find(viewModel.AssociationEvent.AddressId);
+
+           return View(viewModel);
+        }
+
+
+        [HttpPost]
+        public ActionResult EventView(AssociationEventInfoViewmodel viewModel)
+        {
+            //public
+            //TicketsNumber
+            //MemberID; Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier))
+            //DateTime.Today;
+            
+            return RedirectToAction("TicketRegister", "AssociationEvent");
+
+        }
+
+        
+        public ActionResult VisibleEventList()
+        {
+            AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
+            viewModel.AssociationEventsList = associationEventService.GetAllAssociationEvents();
+            return View(viewModel);
+
+        }
     }
 }

@@ -16,12 +16,18 @@ namespace Projet2.Controllers
     {
         private IMemberService memberService;
         private IAuthentificationService authentificationService;
+        private IAssociationService associationService;
+        private IAssociationMemberService associationMemberService;
+        private IContributionService contributionService;
 
         BddContext _bddContext;
         public CompteController()
         {
             this.memberService = new MemberService();
+            this.contributionService = new ContributionService();
             this.authentificationService = new AuthentificationService();
+            this.associationService = new AssociationService();
+            this.associationMemberService = new AssociationMemberService();
             this._bddContext = new BddContext();
         }
 
@@ -51,7 +57,7 @@ namespace Projet2.Controllers
         public IActionResult Modifier()
         {
             MemberInfoViewModel viewModel = new MemberInfoViewModel();
-            viewModel.Member = _bddContext.Member.Find(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+            viewModel.Member = memberService.GetMember(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
             viewModel.Address = _bddContext.Address.Find(viewModel.Member.AddressId);
             ViewBag.Legend = "Modification du compte";
             return View(viewModel);
@@ -121,6 +127,27 @@ namespace Projet2.Controllers
         {
             HttpContext.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+
+        [Authorize(Roles = "Member,Representative")]
+        public IActionResult Adhesions()
+        {
+            List<Association> associations = associationMemberService.GetAssociationsForMember(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+            return View(associations);
+        }
+
+        [Authorize(Roles = "Member,Representative")]
+        public IActionResult QuitAssociation(int id)
+        {
+            if (associationService.GetAssociation(id).Contribution > 0)
+                contributionService.DeleteContribution(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)), id);
+            associationMemberService.DeleteAssociationMember(associationMemberService.GetAssociationMember(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)), id).Id);
+            return RedirectToAction("Adhesions");
+        }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }

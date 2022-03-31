@@ -19,7 +19,7 @@
             </tr>
             <tr>
                 <td align="right">@Html.LabelFor(m => Model.Fundraising.Description)</td>
-                <td>@Html.TextBoxFor(m => Model.Fundraising.Description)</td>
+                <td>@Html.TextAreaFor(m => Model.Fundraising.Description, new { @class = "descriptionForm"})</td>
                 <td>@Html.ValidationMessageFor(m => Model.Fundraising.Description)</td>
             </tr>
             @if (action == "Create")
