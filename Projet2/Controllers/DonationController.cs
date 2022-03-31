@@ -9,7 +9,6 @@ using System.Security.Claims;
 
 namespace Projet2.Controllers
 {
-    [Authorize]
     public class DonationController : Controller
     {
         private IDonationService donationService;
@@ -25,6 +24,7 @@ namespace Projet2.Controllers
             this._bddContext = new BddContext();
         }
 
+        [Authorize(Roles = "Member,Representative")]
         public IActionResult Association(int id)
         {
             DonationViewModel viewModel = new DonationViewModel();
@@ -32,6 +32,7 @@ namespace Projet2.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = "Member,Representative")]
         [HttpPost]
         public IActionResult Association(DonationViewModel viewModel)
         {
@@ -42,7 +43,8 @@ namespace Projet2.Controllers
             paymentViewModel.DonationId = donationId;
             return RedirectToAction("CreditCard", "Payment", paymentViewModel);
         }
-        
+
+        [Authorize(Roles = "Member,Representative")]
         public IActionResult Fundraising(int id)
         {
             DonationViewModel viewModel = new DonationViewModel();
@@ -50,6 +52,7 @@ namespace Projet2.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = "Member,Representative")]
         [HttpPost]
         public IActionResult Fundraising(DonationViewModel viewModel)
         {
@@ -61,6 +64,7 @@ namespace Projet2.Controllers
             return RedirectToAction("CreditCard", "Payment", paymentViewModel);
         }
 
+        [Authorize(Roles = "Member,Representative")]
         public IActionResult Done(int id)
         {
             DonationThanksViewModel viewModel = new DonationThanksViewModel();

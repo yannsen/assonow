@@ -27,6 +27,7 @@ namespace Projet2.Controllers
             this._bddContext = new BddContext();
         }
 
+        [Authorize(Roles = "Representative")]
         public IActionResult Index()
         {
             List<Association> associationsList = associationEventService.AssociationsRepresentative(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
@@ -38,6 +39,7 @@ namespace Projet2.Controllers
             return View(associationsList);
         }
 
+        [Authorize(Roles = "Representative")]
         public IActionResult AssociationManagement(int id)
         {
            AssociationInfoViewModel viewModel = new AssociationInfoViewModel();
@@ -46,7 +48,7 @@ namespace Projet2.Controllers
                 return View(viewModel);
         }
 
-
+        [Authorize(Roles = "Representative")]
         public IActionResult EventManagement()
         {
             AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
@@ -59,6 +61,7 @@ namespace Projet2.Controllers
 
         }
 
+        [Authorize(Roles = "Representative")]
         //register new Event for a specific association
         public IActionResult EventRegister(int id)
         {
@@ -69,6 +72,7 @@ namespace Projet2.Controllers
 
         }
 
+        [Authorize(Roles = "Representative")]
         [HttpPost]
         [Authorize]
         public IActionResult EventRegister(AssociationEventInfoViewmodel viewModel)
@@ -96,6 +100,7 @@ namespace Projet2.Controllers
 
         //List of all event of  an association. 
         //id in parameter is for Id of association
+        [Authorize(Roles = "Representative")]
         public ActionResult EventList(int id)
         {
                 AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
@@ -105,7 +110,7 @@ namespace Projet2.Controllers
 
         }
 
-
+        [Authorize(Roles = "Representative")]
         public ActionResult EventDelete(int id,int eventid)
         {
             AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
@@ -113,7 +118,9 @@ namespace Projet2.Controllers
             viewModel.SelectedAssociationId = id;
             return View(viewModel);
         }
+
         //id in parameter is for Id of association
+        [Authorize(Roles = "Representative")]
         public ActionResult EventEdit(int id, int eventid)
         {
             AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
@@ -125,6 +132,7 @@ namespace Projet2.Controllers
             
         }
 
+        [Authorize(Roles = "Representative")]
         [HttpPost]
         public ActionResult EventEdit(AssociationEventInfoViewmodel viewModel)
         {  
@@ -151,7 +159,6 @@ namespace Projet2.Controllers
 
 
         // view of one event with id of event as parameter
-       // [Authorize]
         public ActionResult EventView(int id)
         {
             AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
@@ -182,9 +189,5 @@ namespace Projet2.Controllers
             return View(viewModel);
 
         }
-
-
-
-
     }
 }
