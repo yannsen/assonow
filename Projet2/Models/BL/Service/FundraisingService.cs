@@ -1,4 +1,4 @@
-using Projet2.Models.BL.Interface;
+﻿using Projet2.Models.BL.Interface;
 using Projet2.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,9 +62,10 @@ namespace Projet2.Models.BL.Service
             _bddContext.Fundraising.Update(toUpdate);
             _bddContext.SaveChanges();
         }
+
         public List<Fundraising> GetFundraisingsByAssociation(int id)
         {
-            return _bddContext.Fundraising.Where(f => f.AssociationId == id).Where(f => f.IsActive).ToList();
+            return _bddContext.Fundraising.Where(f => f.AssociationId == id).ToList();
         }
 
         public List<Fundraising> GetHighlightedFundraisings()

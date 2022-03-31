@@ -4,36 +4,8 @@
 
 @{
     ViewBag.Title = "Accueil";
-    Layout = "_LayoutIndex";
+    Layout = "_Layout";
 }
 
-  <div class="page-header section-dark" style="background-image: url('./assets/img/antoine-barre1.jpg')">
-    <div class="filter" ></div> <!-- class="filter" -->
-    <div class="content-center">
-      <div class="container">
-        <div class="title-brand">
-          <h1 class="presentation-title">AssoNow</h1>
-          <div class="fog-low">
-            <img src="./assets/img/fog-low.png" alt="">
-          </div>
-          <div class="fog-low right">
-            <img src="./assets/img/fog-low.png" alt="">
-          </div>
-        </div>
-        <h2 class="presentation-subtitle text-center"> Concentrez-vous sur l’essentiel. Nous faisons le reste. </h2>
-      </div>
-    </div>
-    <div class="moving-clouds" style="background-image: url('./assets/img/clouds.png'); "></div>
-    <h6 class="category category-absolute">GitHub :)
-      <a href="https://github.com/yannsen/assonow" target="_blank">
-        <img src="./assets/img/github_logo.png" width="50" height="50" mr-1 class="d-inline-block " class="creative-tim-logo"> <!--src="./assets/img/creative-tim-white-slim2.png" -->
-      </a>
-    </h6>
-  </div>
-
-
-
-
-
-    @await Html.PartialAsync("CarouselAssociation", @Model.Associations)
-    @await Html.PartialAsync("CarouselFundraising", @Model.Fundraisings)
+@await Html.PartialAsync("CarouselAssociation", @Model.Associations)
+@await Html.PartialAsync("CarouselFundraising", @Model.Fundraisings)
