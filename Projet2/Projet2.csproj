@@ -16,6 +16,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="wwwroot\Images\" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Include="wwwroot\FileSystem\Documents\ID1.pdf" />
 	  <None Include="wwwroot\FileSystem\Documents\Publication1.pdf" />
 	  <None Include="wwwroot\FileSystem\Documents\RIB1.pdf" />
