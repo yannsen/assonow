@@ -156,6 +156,7 @@ namespace Projet2.Models.BL.Service
             _bddContext.Fundraising.Add(new Fundraising { Id = 8, AssociationId = 4, Name = "Recherche scientifique", Description = "Description8", IsActive = true, CurrentAmount = 1, DesiredAmount = 100000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Humanitaire" });
             _bddContext.Fundraising.Add(new Fundraising { Id = 9, AssociationId = 5, Name = "J'ai plus d'idée !", Description = "Description9", IsActive = true, CurrentAmount = 2500, DesiredAmount = 10000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Culture" });
             _bddContext.Fundraising.Add(new Fundraising { Id = 10, AssociationId = 5, Name = "J'ai plus d'idée !", Description = "Description10", IsActive = false, CurrentAmount = 0, DesiredAmount = 15000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Loisirs" });
+            _bddContext.Fundraising.Add(new Fundraising { Id = 11, AssociationId = 1, Name = "Course des héros !", Description = "Description11", IsActive = true, CurrentAmount = 0, DesiredAmount = 15000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Sport" });
 
         }
 
