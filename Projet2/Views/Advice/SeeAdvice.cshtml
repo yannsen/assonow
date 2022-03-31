@@ -1,0 +1,79 @@
+﻿@model Projet2.ViewModels.AdviceListViewModel
+
+@{
+    ViewBag.Title = "Vos échanges";
+    Layout = "_Layout";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.AssociationId)
+    <div class="d-flex justify-content-center w-100">
+        @if (ViewBag.EstVide == true)
+        {
+            <div class="d-flex flex-column">
+                <div class="d-flex">
+                    <p>Vous n'avez pas encore eu d'échange avec notre équipe</p>
+                </div>
+                <div class="d-flex">
+                    <a href="~/AssociationEvent/AssociationManagement/@Model.AssociationId" class="btn btn-primary">Retour à gestion de l'association</a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="d-flex flex-column align-items-center w-100">
+                <div class="d-flex flex-column align-items-center">
+                    @if (@Model.Advices.Count > 0)
+                    {
+                        <div class="d-flex">
+                            <p>Nos réponses</p>
+                        </div>
+                        <div class="d-flex mb-5">
+                            @Html.DropDownListFor(m => m.SelectedAdviceId, new SelectList(@Model.Advices, "Id", "AdviceSubject"), new { onchange = "submit()", style = "width:500px" })
+                        </div>
+                    }
+                </div>
+                <div class="d-flex flex-row w-75 justify-content-between">
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="d-flex">
+                            <p>La demande :</p>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <div class="d-flex">
+                                @Html.Label("Objet de votre demande :")
+                            </div>
+                            <div class="d-flex">
+                                @Html.TextBoxFor(m => m.SelectedAdviceRequest.AdviceRequestSubject, new { style = "width: 500px", @readonly = true})
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <div class="d-flex mt-3">
+                                @Html.TextAreaFor(m => m.SelectedAdviceRequest.AdviceRequestText, new { style = "width: 500px; height: 500px", @readonly = true})
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="d-flex">
+                            <p>Votre réponse :</p>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <div class="d-flex">
+                                @Html.Label("Objet de la réponse :")
+                            </div>
+                            <div class="d-flex">
+                                @Html.TextBoxFor(m => m.SelectedAdvice.AdviceSubject, new { style = "width: 500px", @readonly = true})
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <div class="d-flex mt-3">
+                                @Html.TextAreaFor(m => m.SelectedAdvice.AdviceText, new { style = "width: 500px; height: 500px", @readonly = true})
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

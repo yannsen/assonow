@@ -27,12 +27,11 @@ namespace Projet2.Models
         // advise request's status (completed / or not)
         public bool CompletedRequest { get; set; }
 
-        // foreign key website member
-        public int MemberId { get; set; }
-        public Member Member { get; set; }
-
         // foreign key asssociation
         public int AssociationId { get; set; }
+
+        public string AssociationName { get; set; }
+
         public Association Association { get; set; }
 
     }
