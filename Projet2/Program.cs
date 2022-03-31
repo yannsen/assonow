@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using System;
 
 namespace Projet2
 {
@@ -15,16 +14,7 @@ namespace Projet2
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    if (System.Diagnostics.Debugger.IsAttached)
-                    {
-                        Console.WriteLine("Debug mode");
-                        webBuilder.UseStartup<Startup>();
-                    }
-                    else
-                    {
-                        Console.WriteLine("Release mode");
-                        webBuilder.UseStartup<Startup>().UseUrls("http://0.0.0.0:5000", "http://0.0.0.0:5001");
-                    }
+                    webBuilder.UseStartup<Startup>();
                 });
     }
 }
