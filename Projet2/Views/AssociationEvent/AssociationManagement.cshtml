@@ -5,91 +5,59 @@
     Layout = "_Layout";
 }
 
-
-@{
-    <div class="d-flex justify-content-center w-100">
-        @if (@Model.Association.IsPublished)
-        {
-            <table class="w-25 p-5">
-                <tr>
-                    <td align="center" colspan="3">
-                        <img src="@Model.Association.Image" width="200" height="200" />
-                    </td>
-                </tr>
-                @if (Model.Association.TicketService)
-                {
-                    <tr>
-                        <td>
-                            <a href="/AssociationEvent/EventList?id=@Model.Association.Id" class="btn btn-primary w-100">Gestion des évènements</a>
-                        </td>
-                    </tr>
-                }
-                @if (Model.Association.MemberService)
-                {
-                    <tr>
-                        <td>
-                            <a href="/Association/Member?id=@Model.Association.Id" class="btn btn-primary w-100">Gestion de vos adhérents</a>
-                        </td>
-                    </tr>
-                }
-                @if (Model.Association.DonationService)
-                {
-                    <tr>
-                        <td>
-                            <a href="~/Fundraising/Management?id=@Model.Association.Id" class="btn btn-primary w-100">Gestion de vos collectes de dons</a>
-                        </td>
-                    </tr>
-                }
-                <tr>
-                    <td>
-                        <div class="btn-group w-100">
-                                <button type="button" class="btn btn-primary dropdown-toggle w-100" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Vos échanges avec notre équipe
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                     <a href="~/Advice/AskForAdvice?id=@Model.Association.Id" class="dropdown-item">Demander un conseil</a>
-                                     <a href="~/Advice/SeeAdvice?id=@Model.Association.Id" class="dropdown-item">Voir vos réponses</a>
-                                </ul>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="~/Association/Services?id=@Model.Association.Id" class="btn btn-primary w-100">Nos services</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="/Home/Index" class="btn btn-primary w-100">Retour à l'accueil</a>
-                    </td>
-                </tr>
-            </table>
-        }
-        else
-        {
-            <table class="w-25 p-5">
-                <tr>
-                    <td align="center" colspan="3">
-                        <img src="@Model.Association.Image" width="200" height="200" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>Votre association est en cours de validation par notre équipe. Pensez à fournir vos documents si ce n'est pas encore fait.</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="/Association/Documents?id=@Model.Association.Id" class="btn btn-primary w-100">Fournir vos Documents</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="/Home/Index" class="btn btn-primary w-100">Retour à l'accueil</a>
-                    </td>
-                </tr>
-            </table>
-        }
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start list-group-flush" id="menu">
+                    <li class="nav-item">
+                        <img src="@Model.Association.Image" class="rounded" width="250" height="200" />
+                    </li>
+                    <li class="nav-item list-group-item bg-light w-100">
+                        <a href="~/AssociationEvent/EventList?id=@Model.Association.Id" class="nav-link align-middle px-0">
+                            <span class="ms-1 d-none d-sm-inline">Gestion des évènements</span>
+                        </a>
+                    </li>
+                    <li class="nav-item list-group-item bg-light w-100">
+                        <a href="~/Association/Member?id=@Model.Association.Id" class="nav-link align-middle px-0">
+                            <span class="ms-1 d-none d-sm-inline">Gestion de vos adhérents</span>
+                        </a>
+                    </li>
+                    <li class="nav-item list-group-item bg-light w-100">
+                        <a href="~/Fundraising/Management?id=@Model.Association.Id" class="nav-link align-middle px-0">
+                            <span class="ms-1 d-none d-sm-inline">Gestion de vos collectes</span>
+                        </a>
+                    </li>
+                    <li class="nav-item list-group-item bg-light w-100">
+                        <a href="~/Advice/AskForAdvice?id=@Model.Association.Id" class="nav-link align-middle px-0">
+                            <span class="ms-1 d-none d-sm-inline">Demander un conseil</span>
+                        </a>
+                    </li>
+                    <li class="nav-item list-group-item bg-light w-100">
+                        <a href="~/Advice/SeeAdvice?id=@Model.Association.Id" class="nav-link align-middle px-0">
+                            <span class="ms-1 d-none d-sm-inline">Voir nos réponses</span>
+                        </a>
+                    </li>
+                    <li class="nav-item list-group-item bg-light w-100">
+                        <a href="~/Association/Services?id=@Model.Association.Id" class="nav-link align-middle px-0">
+                            <span class="ms-1 d-none d-sm-inline">Nos services</span>
+                        </a>
+                    </li>
+                    <li class="nav-item list-group-item bg-light w-100">
+                        <a href="~/Association/Profil?id=@Model.Association.Id" class="nav-link align-middle px-0">
+                            <span class="ms-1 d-none d-sm-inline">Profil de l'association</span>
+                        </a>
+                    </li>
+                    <li class="nav-item list-group-item bg-light w-100">
+                        <a href="~/Association/Documents?id=@Model.Association.Id" class="nav-link align-middle px-0">
+                            <span class="ms-1 d-none d-sm-inline">Fournir vos documents</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col py-3">
+            Content area...
+        </div>
     </div>
-}
-
+</div>
