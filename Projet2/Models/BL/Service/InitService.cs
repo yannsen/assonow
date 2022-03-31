@@ -263,6 +263,15 @@ namespace Projet2.Models.BL.Service
         }
 
 
+        public void InitializeDB_Event()
+        {
+            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 1, EventTitle = " Concert des petits Princes",Description="Le plus grand concert javmais vu avec Rammstein", Image = "/FileSystem/Pictures/aigles.jpeg", Date = new DateTime(2022, 03, 24), EventType ="Concert", Speakers ="Al Capone", Artists=" Rammstein",TicketsTotalNumber=3210,AddressId=1,AssociationId=1, TicketPrice = 14 });
+            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 2, EventTitle = " Concert des WWE", Description = "Le plus grand concert ou cela va se bastonner", Image = "/FileSystem/Pictures/butterfly17532.jpg", Date = new DateTime(2022, 03, 24), EventType = "Concert", Speakers = "Al Bundy", Artists = " Croix de bois", TicketsTotalNumber = 2350, AddressId = 2, AssociationId = 4,TicketPrice = 12 });
+
+        }
+
+
+
         public void Dispose()
         {
             _bddContext.Dispose();

@@ -4,40 +4,50 @@
     Layout = "_Layout";
 }
 
-<h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Associations que vous gérez</h2>
-		<!-- Icon Divider-->
-		<div class="divider-custom">
-			<div class="divider-custom-line"></div>
-			<div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-			<div class="divider-custom-line"></div>
-		</div>
-		<div class="row justify-content-start">
-			@foreach (var association in Model)
-			{
-				string selectLink = "/AssociationEvent/associationManagement/" + association.Id;
-				<div class="card col-6 m-5" style="width: 18rem;">
-					<div class="card-body d-flex flex-column justify-content-between">
-                        <div>
-                            <h5 class="card-title">@association.Name</h5>
-                            <div class="my-3">
-                                <img src="@association.Image" width="200" height="200" />
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ListeDesAssociations</title>
+</head>
+<body>
+    <section class="py-5">
+                <div class="container px-5 my-5">
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-lg-8 col-xl-6">
+                            <div class="text-center">
+                                <h2 class="fw-bolder">AssoNow accompagne ces Associations</h2>
                             </div>
-                           
-                         
-                            <p class="card-text">@association.Description</p>
-
                         </div>
-			
-                        <div>
-                            <a href=@selectLink class="card-link">Sélectionner</a>
-
- 
-
-                        </div>
-						
-
-					</div>
-				</div>
-			}
-
-			</div>
+                    </div>
+                    <div class="row gx-5">
+                        @foreach (var association in Model)
+                        {
+                            <div class="col-lg-4 mb-5">
+                            <div class="card h-100 shadow border-0 align-items-center">
+                                <img class="card-img-top" src="@association.Image" alt="@association.Name" />
+                                <div class="card-body p-4">
+                                    <p class="card-text mb-0">@association.Description</p>
+                                    <a class="btn btn-primary" href="../AssociationEvent/AssociationManagement?id=@association.Id">Plus de détails</a>
+                                </div>
+                                    </div>
+                                    <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+                                        <div class="d-flex align-items-end justify-content-between">
+                                            <div class="d-flex align-items-center">Adresse de contact :
+          
+                                                <div class="small">
+                                                    <div class="fw-bold">@association.Mail</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        }
+                   </div>
+                </div>
+    </section>
+</body>
+</html>

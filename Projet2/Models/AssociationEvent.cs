@@ -28,6 +28,7 @@ namespace Projet2.Models
 
 #nullable enable
         [Display(Name = "Conférencier.e.s :")]
+#nullable enable
         public string? Speakers { get; set; }
 
         [Display(Name = "Artiste.s :")]
@@ -43,6 +44,9 @@ namespace Projet2.Models
         public Address Address { get; set; }
         public int AssociationId { get; set; }
         public Association Association { get; set; }
+
+        public double TicketPrice { get; set; }
+        public int RemainingTickets { get; set; }
 
     }
 }
