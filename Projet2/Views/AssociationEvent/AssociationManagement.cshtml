@@ -28,7 +28,7 @@
                 {
                     <tr>
                         <td>
-                            <a href="/home/Index" class="btn btn-primary w-100">Gestion de vos adhérents</a>
+                            <a href="/Association/Member?id=@Model.Association.Id" class="btn btn-primary w-100">Gestion de vos adhérents</a>
                         </td>
                     </tr>
                 }
@@ -40,6 +40,19 @@
                         </td>
                     </tr>
                 }
+                <tr>
+                    <td>
+                        <div class="btn-group w-100">
+                                <button type="button" class="btn btn-primary dropdown-toggle w-100" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Vos échanges avec notre équipe
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                     <a href="~/Advice/AskForAdvice?id=@Model.Association.Id" class="dropdown-item">Demander un conseil</a>
+                                     <a href="~/Advice/SeeAdvice?id=@Model.Association.Id" class="dropdown-item">Voir vos réponses</a>
+                                </ul>
+                        </div>
+                    </td>
+                </tr>
                 <tr>
                     <td>
                         <a href="~/Association/Services?id=@Model.Association.Id" class="btn btn-primary w-100">Nos services</a>

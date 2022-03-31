@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Authentication;
+using System.Collections.Generic;
 
 namespace Projet2.Controllers
 {
@@ -228,6 +229,21 @@ namespace Projet2.Controllers
                 documentService.CreateDocument(officialJournalPublication);
             }
             return RedirectToAction("AssociationManagement", "AssociationEvent", new { Id = viewModel.AssociationId });
+        }
+
+        public IActionResult Member(int id)
+        {
+            List<Member> members = associationMemberService.GetMembersForAssociation(id);
+            ViewBag.AssociationId = id;
+            return View(members);
+        }
+
+        public IActionResult DeleteMember(int memberId, int associationId)
+        {
+            if (associationService.GetAssociation(associationId).Contribution > 0)
+                contributionService.DeleteContribution(memberId, associationId);
+            associationMemberService.DeleteAssociationMember(associationMemberService.GetAssociationMember(memberId, associationId).Id);
+            return RedirectToAction("Member", new { id = associationId});
         }
     }
 }

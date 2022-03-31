@@ -16,8 +16,7 @@
                         <table class="w-100 h-100">
                             <tr>
                                 <td>
-                                    @Html.DropDownListFor(m => m.SelectedAssociationId, new SelectList(Model.unpublishedAssociations, "Id", "Name"))
-                                    <input type="submit" value="Voir" />
+                                    @Html.DropDownListFor(m => m.SelectedAssociationId, new SelectList(Model.unpublishedAssociations, "Id", "Name"), new { onchange = "submit()" })
                                 </td>
                             </tr>
                             <tr>
