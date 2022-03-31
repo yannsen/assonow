@@ -12,5 +12,8 @@ namespace Projet2.Models.BL.Interface
         public void DeleteTicket(int TicketId);
         public void DeleteOrder(int orderId);
 
+        public List<Order> ListAllOrderByMember(int IdMember);
+
+        public List<AssociationEvent> GetAssociationEventByOrder(int IdOrder);
     }
 }

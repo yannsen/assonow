@@ -86,7 +86,9 @@ namespace Projet2.Models.BL.Service
 
         public void DeleteOrder(int orderId)
         {
-            Ticket order = _bddContext.Ticket.Find(orderId);
+            Order order = _bddContext.Order.Find(orderId);
+            _bddContext.Order.Remove(order);
+            _bddContext.SaveChanges();
             List<Ticket> ticketsList = GetAllTicketByOrder(orderId);
             if (order != null)
             {
@@ -94,26 +96,28 @@ namespace Projet2.Models.BL.Service
                 {
                     DeleteTicket(ticket.Id);
                 }
-                _bddContext.Ticket.Remove(order);
-                _bddContext.SaveChanges();
+
             }
         }
-        // select * from ticket where OrderId == (select id from order where memberId == idmember;
-        public List<Ticket> ListAllTicketBymember(int IdMember)
-        {
-            var request = from t in Ticket
-                          let ord = from o in Order
-                                    where o.MemberId == IdMember
-                                    select id
-                          where ord.Contains()
-                          select t;
-
-
-          List < Ticket > ticketsList = _bddContext.Ticket.Where(t => t.Mem == orderId).ToList();
-            return ticketsList;
+        // select * from ticket where OrderId == (select id from order where memberId = idmember;
+        public List<Order> ListAllOrderByMember(int IdMember)
+        {       
+            return _bddContext.Order.Where(O => O.MemberId == IdMember).ToList(); ;
         }
 
+        // select * from AssociationEvent where Id == (select EventId from Ticket where OrderId = idOrder;
+        public List<AssociationEvent> GetAssociationEventByOrder(int IdOrder)
+        {
+            var request = from ae in _bddContext.AssociationEvent
+                          let tic = from t in _bddContext.Ticket
+                                    where  t.OrderId == IdOrder
+                                    select t.AssociationEventId
+                          where tic.Contains(ae.Id)
+                                    select ae;
 
+            return request.ToList();
+
+        }
 
     }
 }

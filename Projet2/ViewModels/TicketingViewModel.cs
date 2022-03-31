@@ -15,9 +15,15 @@ namespace Projet2.ViewModels
         public int RemainingTicket { get; set; }
 
         public int Position { get; set; }
+        public double NewAmount { get; set; }
+        public int NewTicketsNumber { get; set; }
+        public Order Order { get; set; } 
 
-       public List<Ticket>TicketsList { get; set; }
+        public double Threshold { get; set; } 
 
+        public List<Order> OrderList { get; set; }
+
+        public List<OrderByEvent> OrderByEventList { get; set; }
 
     }
 

@@ -35,7 +35,7 @@ namespace Projet2.Models
         public string? Artists { get; set; }
 #nullable disable
 
-        [Display(Name = "Nombre de tickets :")]
+        [Display(Name = "Nombre de places pour l'évènement :")]
         [Required(ErrorMessage = "Quel est le nombre de ticket")]
         public int TicketsTotalNumber { get; set; }
         public int RemainingTickets { get; set; }
