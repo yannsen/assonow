@@ -97,7 +97,23 @@ namespace Projet2.Models.BL.Service
                 _bddContext.Ticket.Remove(order);
                 _bddContext.SaveChanges();
             }
-
         }
+        // select * from ticket where OrderId == (select id from order where memberId == idmember;
+        public List<Ticket> ListAllTicketBymember(int IdMember)
+        {
+            var request = from t in Ticket
+                          let ord = from o in Order
+                                    where o.MemberId == IdMember
+                                    select id
+                          where ord.Contains()
+                          select t;
+
+
+          List < Ticket > ticketsList = _bddContext.Ticket.Where(t => t.Mem == orderId).ToList();
+            return ticketsList;
+        }
+
+
+
     }
 }

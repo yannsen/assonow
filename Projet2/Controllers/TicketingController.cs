@@ -35,6 +35,9 @@ namespace Projet2.Controllers
             viewModel.EventTitle = associationEvent.EventTitle;
             viewModel.EventId = id;
             viewModel.RemainingTicket=RemainingTicket;
+            viewModel.Position = associationEvent.TicketsTotalNumber - viewModel.RemainingTicket-1;
+
+
 
             return View(viewModel);
         }
@@ -46,11 +49,13 @@ namespace Projet2.Controllers
             int _MemberId = Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             DateTime _PurchaseDate = DateTime.Now;
             viewModel.Amount = viewModel.TicketPrice * viewModel.TicketsNumber;
+            viewModel.Position=
 
              _OrderId = ticketingService.CreateOrder(_MemberId, viewModel.TicketsNumber, _PurchaseDate, viewModel.Amount);
             for (int i = 1; i <= viewModel.TicketsNumber; i++)
             {
-                ticketingService.CreateTicket(i, viewModel.EventId, _OrderId);
+                viewModel.Position += 1;
+                ticketingService.CreateTicket(viewModel.Position, viewModel.EventId, _OrderId);
             }
             PaymentViewModel paymentViewModel = new PaymentViewModel();
             paymentViewModel.Amount = viewModel.Amount.ToString();
@@ -61,6 +66,23 @@ namespace Projet2.Controllers
             paymentViewModel.DonationId = viewModel.EventId;
             return RedirectToAction("CreditCard", "Payment", paymentViewModel);
         }
+   
+
+        public IActionResult MemberTicketList()
+
+        {
+            TicketingViewModel viewModel = new TicketingViewModel();
+            viewModel.TicketsList = ticketingService.ListMemberTicket(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+            viewModel.SelectedAssociationId = id;
+            return View(viewModel);
+
+            return View();
+        }
+    
     }
+
+
+
+
 }
 
