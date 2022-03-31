@@ -26,11 +26,14 @@
                 <td>@Html.TextBoxFor(m => Model.Member.Pseudonym)</td>
                 <td>@Html.ValidationMessageFor(m => Model.Member.Pseudonym)</td>
             </tr>
-            <tr>
-                <td align="right">@Html.LabelFor(m => Model.Password)</td>
-                <td>@Html.TextBoxFor(m => Model.Password)</td>
-                <td>@Html.ValidationMessageFor(m => Model.Password)</td>
-            </tr>
+            @if (ViewBag.Legend == "Création de compte")
+            {
+                <tr>
+                    <td align="right">@Html.LabelFor(m => Model.Password)</td>
+                    <td>@Html.PasswordFor(m => Model.Password)</td>
+                    <td>@Html.ValidationMessageFor(m => Model.Password)</td>
+                </tr>
+            }
             <tr>
                 <td align="right">@Html.LabelFor(m => Model.Member.Mail)</td>
                 <td>@Html.TextBoxFor(m => Model.Member.Mail)</td>
@@ -61,9 +64,21 @@
                 <td>@Html.TextBoxFor(m => Model.Address.Country)</td>
                 <td>@Html.ValidationMessageFor(m => Model.Address.Country)</td>
             </tr>
+           @* @if (ViewBag.Legend == "Modification du compte")
+            {
+                <tr>
+                    <td align="right">@Html.Label("Nouveau mot de passe :")</td>
+
+                    <td>@Html.PasswordFor(m => Model.Password)</td>
+                    <td>@Html.ValidationMessageFor(m => Model.Password)</td>
+                </tr>
+                <tr>
+                    <td colspan="3" align="center"><p>Laissez le champ vide si vous ne souhaitez pas le changer</p></td>
+                </tr>
+            }*@
             <tr>
                 <td colspan="3" align="center">
-                    <br><br><input type="submit" value="Valider" />
+                    <br><input type="submit" value="Valider" />
                 </td>
             </tr>
         </table>

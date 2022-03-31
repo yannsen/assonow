@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Projet2.Models;
 using Projet2.Models.BL.Interface;
 using Projet2.Models.BL.Service;
@@ -26,6 +27,7 @@ namespace Projet2.Controllers
             this._bddContext = new BddContext();
         }
 
+        [Authorize(Roles = "LegalExpert")]
         public IActionResult Index()
         {
             AdviceRequestListViewModel viewModel = new AdviceRequestListViewModel();
@@ -43,6 +45,7 @@ namespace Projet2.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = "LegalExpert")]
         [HttpPost]
         public IActionResult Index(AdviceRequestListViewModel viewModel)
         {
@@ -69,6 +72,7 @@ namespace Projet2.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = "Representative")]
         public IActionResult AskForAdvice(int id)
         {
             AdviceRequest adviceRequest = new AdviceRequest();
@@ -79,6 +83,7 @@ namespace Projet2.Controllers
             return View(adviceRequest);
         }
 
+        [Authorize(Roles = "Representative")]
         [HttpPost]
         public IActionResult AskForAdvice(AdviceRequest adviceRequest)
         {
@@ -87,6 +92,7 @@ namespace Projet2.Controllers
             return RedirectToAction("AssociationManagement", "AssociationEvent", new { Id = adviceRequest.AssociationId });
         }
 
+        [Authorize(Roles = "Representative")]
         public IActionResult SeeAdvice(int id)
         {
             AdviceListViewModel viewModel = new AdviceListViewModel();
@@ -111,6 +117,7 @@ namespace Projet2.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = "Representative")]
         [HttpPost]
         public IActionResult SeeAdvice(AdviceListViewModel viewModel)
         {
