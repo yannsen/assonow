@@ -16,5 +16,7 @@ namespace Projet2.Models
 
         public int IdOrder { get; set; }
 
+        public DateTime PurchasedDate { get; set; }
+
     }
 }

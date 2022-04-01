@@ -103,10 +103,11 @@ namespace Projet2.Controllers
         [Authorize(Roles = "Representative")]
         public ActionResult EventList(int id)
         {
-                AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
-                viewModel.AssociationEventsList = associationEventService.ListAssociationEvent(id);
-                viewModel.SelectedAssociationId = id;
-                return View(viewModel);
+            AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
+            viewModel.AssociationEventsList = associationEventService.ListAssociationEvent(id);
+            viewModel.SelectedAssociationId = id;
+            viewModel.Association = associationService.GetAssociation(id);
+            return View(viewModel);
 
         }
 
@@ -157,7 +158,6 @@ namespace Projet2.Controllers
             
         }
 
-
         // view of one event with id of event as parameter
         public ActionResult EventView(int id)
         {
@@ -167,20 +167,6 @@ namespace Projet2.Controllers
 
            return View(viewModel);
         }
-
-
-        [HttpPost]
-        public ActionResult EventView(AssociationEventInfoViewmodel viewModel)
-        {
-            //public
-            //TicketsNumber
-            //MemberID; Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier))
-            //DateTime.Today;
-            
-            return RedirectToAction("TicketRegister", "AssociationEvent");
-
-        }
-
         
         public ActionResult VisibleEventList()
         {
