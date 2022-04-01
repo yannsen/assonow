@@ -21,10 +21,13 @@ namespace Projet2.Controllers
         private IMemberService memberService;
         private IContributionService contributionService;
         private IAssociationMemberService associationMemberService;
+        private IFundraisingService fundraisingService;
+
 
 
         public AssociationController(IWebHostEnvironment environment)
         {
+            this.fundraisingService = new FundraisingService();
             this.associationService = new AssociationService();
             this.contributionService = new ContributionService();
             this.memberService = new MemberService();
@@ -71,13 +74,10 @@ namespace Projet2.Controllers
             {
                 return NotFound();
             }
-
-            Association association = associationService.GetAssociation((int)id);
-            if (association == null)
-            {
-                return NotFound();
-            }
-            return View(association);
+            AssociationProfileViewModel viewModel = new AssociationProfileViewModel();
+            viewModel.Association = associationService.GetAssociation((int)id);
+            viewModel.Fundraisings = fundraisingService.GetFundraisingsByAssociation((int)id);
+            return View(viewModel);
         }
 
         public IActionResult ListeDesAssociations()
