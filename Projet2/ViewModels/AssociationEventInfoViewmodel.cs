@@ -22,5 +22,6 @@ namespace Projet2.ViewModels
 
         public Association Association { get; set; }
 
+        public int TicketsTotalNumber { get; set; }
     }
 }
