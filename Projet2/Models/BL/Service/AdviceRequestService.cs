@@ -33,7 +33,20 @@ namespace Projet2.Models.BL.Service
         // get all requests for advice in the form of a list 
         public List<AdviceRequest> GetAllAdviceRequests()
         {
-            return _bddContext.AdviceRequest.ToList();
+            return _bddContext.AdviceRequest.Where(a => a.CompletedRequest == false).ToList();
+        }
+
+        public AdviceRequest GetAdviceRequest(int id)
+        {
+            return _bddContext.AdviceRequest.Find(id);
+        }
+
+        public void Validate(int id)
+        {
+            AdviceRequest toUpdate = GetAdviceRequest(id);
+            toUpdate.CompletedRequest = true;
+            _bddContext.AdviceRequest.Update(toUpdate);
+            _bddContext.SaveChanges();
         }
     }
 }

@@ -20,7 +20,7 @@
             </tr>
             <tr>
                 <td align="right">@Html.LabelFor(m => Model.AssociationEvent.Description)</td>
-                <td>@Html.TextBoxFor(m => Model.AssociationEvent.Description)</td>
+                <td>@Html.TextAreaFor(m => Model.AssociationEvent.Description, new { @class = "descriptionForm"})</td>
                 <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.Description)</td>
             </tr>
             <tr>

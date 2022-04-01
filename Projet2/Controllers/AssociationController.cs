@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Authentication;
+using System.Collections.Generic;
 
 namespace Projet2.Controllers
 {
@@ -20,10 +21,13 @@ namespace Projet2.Controllers
         private IMemberService memberService;
         private IContributionService contributionService;
         private IAssociationMemberService associationMemberService;
+        private IFundraisingService fundraisingService;
+
 
 
         public AssociationController(IWebHostEnvironment environment)
         {
+            this.fundraisingService = new FundraisingService();
             this.associationService = new AssociationService();
             this.contributionService = new ContributionService();
             this.memberService = new MemberService();
@@ -32,15 +36,15 @@ namespace Projet2.Controllers
             this.associationMemberService = new AssociationMemberService();
         }
 
-        [Authorize]
+        [Authorize(Roles ="Member,Representative")]
         public IActionResult Inscrire()
         {
             AssociationInfoViewModel viewModel = new AssociationInfoViewModel();
             return View(viewModel);
         }
 
+        [Authorize(Roles = "Member,Representative")]
         [HttpPost]
-        [Authorize]
         public IActionResult Inscrire(AssociationInfoViewModel viewModel)
         {
             if (ModelState.IsValid)
@@ -70,13 +74,10 @@ namespace Projet2.Controllers
             {
                 return NotFound();
             }
-
-            Association association = associationService.GetAssociation((int)id);
-            if (association == null)
-            {
-                return NotFound();
-            }
-            return View(association);
+            AssociationProfileViewModel viewModel = new AssociationProfileViewModel();
+            viewModel.Association = associationService.GetAssociation((int)id);
+            viewModel.Fundraisings = fundraisingService.GetFundraisingsByAssociation((int)id);
+            return View(viewModel);
         }
 
         public IActionResult ListeDesAssociations()
@@ -96,6 +97,7 @@ namespace Projet2.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = "Member,Representative")]
         public IActionResult Join(int id)
         {
             Association association = associationService.GetAssociation(id);
@@ -105,6 +107,7 @@ namespace Projet2.Controllers
             return View(association);
         }
 
+        [Authorize(Roles = "Member,Representative")]
         [HttpPost]
         public IActionResult Join(Association association)
         {
@@ -119,6 +122,7 @@ namespace Projet2.Controllers
             return RedirectToAction("CreditCard", "Payment", paymentViewModel);
         }
 
+        [Authorize(Roles = "Member,Representative")]
         public IActionResult Joined(int id)
         {
             ViewBag.Name = associationService.GetAssociation(id).Name;
@@ -126,6 +130,7 @@ namespace Projet2.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Representative")]
         public IActionResult Services(int id)
         {
             ServicesViewModel viewModel = new ServicesViewModel();
@@ -137,6 +142,7 @@ namespace Projet2.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = "Representative")]
         [HttpPost]
         public IActionResult Services(ServicesViewModel viewModel)
         {
@@ -148,6 +154,7 @@ namespace Projet2.Controllers
             return RedirectToAction("AssociationManagement", "AssociationEvent", new { Id = viewModel.AssociationId });
         }
 
+        [Authorize(Roles = "Representative")]
         public IActionResult Documents(int id)
         {
             DocumentsViewModel viewModel = new DocumentsViewModel();
@@ -158,6 +165,7 @@ namespace Projet2.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = "Representative")]
         [HttpPost]
         public IActionResult Documents(DocumentsViewModel viewModel)
         {
@@ -228,6 +236,23 @@ namespace Projet2.Controllers
                 documentService.CreateDocument(officialJournalPublication);
             }
             return RedirectToAction("AssociationManagement", "AssociationEvent", new { Id = viewModel.AssociationId });
+        }
+
+        [Authorize(Roles = "Representative")]
+        public IActionResult Member(int id)
+        {
+            List<Member> members = associationMemberService.GetMembersForAssociation(id);
+            ViewBag.AssociationId = id;
+            return View(members);
+        }
+
+        [Authorize(Roles = "Representative")]
+        public IActionResult DeleteMember(int memberId, int associationId)
+        {
+            if (associationService.GetAssociation(associationId).Contribution > 0)
+                contributionService.DeleteContribution(memberId, associationId);
+            associationMemberService.DeleteAssociationMember(associationMemberService.GetAssociationMember(memberId, associationId).Id);
+            return RedirectToAction("Member", new { id = associationId});
         }
     }
 }

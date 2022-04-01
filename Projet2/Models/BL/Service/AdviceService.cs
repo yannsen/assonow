@@ -13,19 +13,13 @@ namespace Projet2.Models.BL.Service
             _bddContext = new BddContext();
         }
         
-        /*
-         //add an advice in db
-        public int CreateAdvice(AdviceViewModel viewModel)
+        public int CreateAdvice(Advice advice)
         {
-            // A COMPLETER 
-            Advice advice = new Advice {AdviceRequestId = , AdviceRequest =, AdviceSubject = , AdviceText = , Date = , Id =, Member =  ,MemberId = }; 
             _bddContext.Advice.Add(advice);
             _bddContext.SaveChanges();
             return advice.Id;
         }
-        */
 
-        // delete an advice in db
         public void DeleteAdvice(int id)
         {
             Advice advice = _bddContext.Advice.Find(id);
@@ -36,7 +30,28 @@ namespace Projet2.Models.BL.Service
             }
         }
 
-      
+        public Advice GetAdvice(int id)
+        {
+            return _bddContext.Advice.Find(id);
+        }
+
+        public List<Advice> GetReadAdvice (int id)
+        {
+            return _bddContext.Advice.Where(a => a.IsRead == true & a.AssociationId == id).ToList();
+        }
+
+        public List<Advice> GetNewAdvice (int id)
+        {
+            return _bddContext.Advice.Where(a => a.IsRead == false & a.AssociationId == id).ToList();
+        }
+
+        public void IsRead(int id)
+        {
+            Advice advice = _bddContext.Advice.Find(id);
+            advice.IsRead = true;
+            _bddContext.Advice.Update(advice);
+            _bddContext.SaveChanges();
+        }
 
     }
 }
