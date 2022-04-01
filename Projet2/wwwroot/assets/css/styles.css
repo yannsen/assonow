@@ -1,16 +1,7 @@
 ﻿@charset "UTF-8";
 
-body {
-    background-color: #FFF9EE;
-}
-
 h4 {
     font-size: 20px;
-}
-
-.nav-link {
-    color: #009999;
-    font-weight:bold;
 }
 
 .btn-outline-primary {
@@ -23,9 +14,6 @@ h4 {
     padding-right: 20px;
 }
 
-.text-footer {
-    color: #009999;
-}
 .card {
     padding-top: 20px;
     text-align: center;
@@ -33,9 +21,9 @@ h4 {
     height: 430px;
 }
 
-.card-img-top{
-    max-width:auto;
-    height: 200px;
+.card-img-top {
+    max-width: auto !important;
+    height: 200px !important;
 }
 
 .card-body{
@@ -43,13 +31,18 @@ h4 {
 }
 
 .card-text {
-    width: 300px; 
-    overflow: hidden;
-    text-overflow: ellipsis;
+    max-width: 300px !important;
+    text-overflow: ellipsis !important;
     display: -webkit-box !important;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: scroll !important;
 }
+
+.card-text::-webkit-scrollbar{
+    display:none;
+}
+
 
 .carousel-control-prev{
     color: dimgray;
