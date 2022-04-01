@@ -121,11 +121,9 @@ h4 {
 .descriptionForm {
     height: 200px;
     width: 190px;
-  
-body {
-    padding: 60px 0px;
-    background-color: rgb(220, 220, 220);
 }
+
+    
 
 .event-list {
     list-style: none;
