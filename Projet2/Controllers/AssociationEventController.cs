@@ -103,10 +103,11 @@ namespace Projet2.Controllers
         [Authorize(Roles = "Representative")]
         public ActionResult EventList(int id)
         {
-                AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
-                viewModel.AssociationEventsList = associationEventService.ListAssociationEvent(id);
-                viewModel.SelectedAssociationId = id;
-                return View(viewModel);
+            AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
+            viewModel.AssociationEventsList = associationEventService.ListAssociationEvent(id);
+            viewModel.SelectedAssociationId = id;
+            viewModel.Association = associationService.GetAssociation(id);
+            return View(viewModel);
 
         }
 

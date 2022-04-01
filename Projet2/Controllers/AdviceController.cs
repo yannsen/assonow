@@ -80,6 +80,7 @@ namespace Projet2.Controllers
             adviceRequest.AssociationId = id;
             adviceRequest.Date = DateTime.Now;
             adviceRequest.AssociationName = associationService.GetAssociation(id).Name;
+            ViewBag.Association = associationService.GetAssociation(id);
             return View(adviceRequest);
         }
 
@@ -114,6 +115,7 @@ namespace Projet2.Controllers
                 viewModel.SelectedAdvice = viewModel.Advices[0];
                 viewModel.SelectedAdviceRequest = adviceRequestService.GetAdviceRequest(viewModel.Advices[0].AdviceRequestId);
             }
+            ViewBag.Association = associationService.GetAssociation(id);
             return View(viewModel);
         }
 
@@ -132,6 +134,7 @@ namespace Projet2.Controllers
             foreach (Advice advice in ReadAdvices)
                 viewModel.Advices.Add(advice);
             ModelState.Clear();
+            ViewBag.Association = associationService.GetAssociation(viewModel.AssociationId);
             return View(viewModel);
         }
     }
