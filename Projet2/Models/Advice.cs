@@ -31,5 +31,11 @@ namespace Projet2.Models
         // foreign key legal expert's id
         public int MemberId { get; set; }
         public Member Member { get; set; }
+
+        public int AssociationId { get; set; }
+
+        public Association Association { get; set; }
+
+        public bool IsRead { get; set; }
     }
 }

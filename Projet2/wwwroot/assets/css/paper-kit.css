@@ -26,6 +26,39 @@
  */
 
 
+/* carroussel*/
+
+.card {
+    padding-top: 20px;
+    text-align: center;
+    width: 330px;
+    height: 430px;
+}
+
+
+.card-img-top {
+    /* test : max-width: auto;*/
+    height: 100px;
+    /*ajout*/
+    object-fit: cover;
+}
+ 
+
+.card-body {
+    height: 200px;
+}
+
+.card-text {
+    width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+/* boutons carroussel*/
+
 
 
 .bootstrap-switch {

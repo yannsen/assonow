@@ -1,4 +1,4 @@
-﻿using Projet2.Models.BL.Interface;
+using Projet2.Models.BL.Interface;
 using System;
 using Projet2.ViewModels;
 using Microsoft.AspNetCore.Authentication;
@@ -15,7 +15,7 @@ namespace Projet2.Models.BL.Service
     {
         private BddContext _bddContext;
         private IAddressService addressService;
-      
+
         public AssociationEventService()
         {
             _bddContext = new BddContext();
@@ -71,8 +71,8 @@ namespace Projet2.Models.BL.Service
             var associations = _bddContext.Association.Where(a => a.AssociationRepresentativeId == MemberConnectedId).ToList();
 
             return associations;
-                
-                
+
+
         }
 
         public List<AssociationEvent> ListAssociationEvent(int associationId)
@@ -82,15 +82,27 @@ namespace Projet2.Models.BL.Service
             var query = from ae in _bddContext.AssociationEvent
                         where ae.AssociationId == associationId
                         select ae;
-            
+
             var EventAssocations = query.ToList();
             return EventAssocations;
 
+        
         }
+        public List<AssociationEvent> GetAllAssociationEvents()
+        {
+            var query = from ae in _bddContext.AssociationEvent
+                        select ae;
 
+            var AllAssocationsEvent = query.ToList();
+            return AllAssocationsEvent;
+
+        }
+        
         public List<AssociationEvent> GetEventsByAssociation(int id)
         {
             return _bddContext.AssociationEvent.Where(e => e.AssociationId == id).ToList();
         }
+
     }
+
 }

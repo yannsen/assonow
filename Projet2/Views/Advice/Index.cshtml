@@ -1,0 +1,79 @@
+﻿@model Projet2.ViewModels.AdviceRequestListViewModel
+
+@{
+    ViewBag.Title = "Répondre aux demandes de conseil";
+    Layout = "_Layout";
+}
+
+
+@using (Html.BeginForm())
+{
+    <div class="d-flex justify-content-center w-100">
+        @if (ViewBag.EstVide == true)
+        {
+            <div class="d-flex flex-column">
+                <div class="d-flex">
+                    <p>Toutes les demandes de conseil ont été traitées, bon travail !</p>
+                </div>
+                <div class="d-flex">
+                    <a href="~/Home/Index" class="btn btn-primary">Retour à l'accueil</a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="d-flex flex-row w-75 justify-content-between">
+                <div class="d-flex flex-column align-items-center">
+                    <div class="d-flex">
+                        <p>La demande :</p>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <div class="d-flex">
+                            @Html.Label("Sujet :")
+                        </div>
+                        <div class="d-flex">
+                            @Html.TextBoxFor(m => m.SelectedAdviceRequest.AdviceRequestSubject, new { style = "width: 500px", @readonly = true})
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <div class="d-flex">
+                            @Html.Label("La demande :")
+                        </div>
+                        <div class="d-flex">
+                            @Html.TextAreaFor(m => m.SelectedAdviceRequest.AdviceRequestText, new { style = "width: 500px; height: 500px", @readonly = true})
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-column align-items-center">
+                    <div class="d-flex mb-5">
+                        @Html.DropDownListFor(m => m.SelectedAdviceRequest.Id, new SelectList(@Model.AdviceRequestList, "Id", "AssociationName"), new { onchange = "submit()" })
+                    </div>
+                    <div class="d-flex">
+                        <input type="submit" value="Envoyer la réponse" />
+                    </div>
+                </div>
+                 <div class="d-flex flex-column align-items-center">
+                     <div class="d-flex">
+                        <p>Votre réponse :</p>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <div class="d-flex">
+                            @Html.Label("Sujet :")
+                        </div>
+                        <div class="d-flex">
+                            @Html.TextBoxFor(m => m.Advice.AdviceSubject, new { style = "width: 500px"})
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <div class="d-flex">
+                            @Html.Label("Votre réponse :")
+                        </div>
+                        <div class="d-flex">
+                            @Html.TextAreaFor(m => m.Advice.AdviceText, new { style = "width: 500px; height: 500px"})
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

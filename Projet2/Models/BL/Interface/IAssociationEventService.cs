@@ -1,4 +1,4 @@
-﻿using Projet2.ViewModels;
+using Projet2.ViewModels;
 using System;
 using System.Collections.Generic;
 
@@ -13,7 +13,9 @@ namespace Projet2.Models.BL.Interface
         public List<Association> AssociationsRepresentative(int MemberConnectedId);
 
         public List<AssociationEvent> ListAssociationEvent(int MemberConnectedId);
-
+        
+        public List<AssociationEvent> GetAllAssociationEvents();
+        
         public List<AssociationEvent> GetEventsByAssociation(int id);
     }
 }

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Projet2.Controllers
 {
@@ -25,11 +26,7 @@ namespace Projet2.Controllers
             this._bddContext = new BddContext();
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-        
+        [Authorize(Roles = "Representative")]
         public IActionResult Create(int id)
         {
             FundraisingInfoViewModel viewModel = new FundraisingInfoViewModel();
@@ -38,6 +35,7 @@ namespace Projet2.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = "Representative")]
         [HttpPost]
         public IActionResult Create(FundraisingInfoViewModel viewModel)
         {
@@ -62,6 +60,7 @@ namespace Projet2.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = "Representative")]
         public IActionResult Modify(int id)
         {
             FundraisingInfoViewModel viewModel = new FundraisingInfoViewModel();
@@ -71,6 +70,7 @@ namespace Projet2.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = "Representative")]
         [HttpPost]
         public IActionResult Modify(FundraisingInfoViewModel viewModel)
         {
@@ -125,6 +125,7 @@ namespace Projet2.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = "Representative")]
         public IActionResult Management(int id)
         {
             FundraisingManagementViewModel viewModel = new FundraisingManagementViewModel();

@@ -5,6 +5,7 @@ using Projet2.ViewModels;
 using Projet2.Models;
 using System;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Projet2.Controllers
 {
@@ -25,11 +26,7 @@ namespace Projet2.Controllers
             this._bddContext = new BddContext();
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
+        [Authorize(Roles = "Member,Representative")]
         public IActionResult CreditCard (PaymentViewModel paymentViewModel)
         {
             PaymentCreditCardViewModel viewModel = new PaymentCreditCardViewModel();
@@ -38,6 +35,7 @@ namespace Projet2.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = "Member,Representative")]
         [HttpPost]
         public IActionResult CreditCard(string submitButton, PaymentCreditCardViewModel viewModel)
         {
@@ -58,6 +56,7 @@ namespace Projet2.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = "Member,Representative")]
         public IActionResult Validation(PaymentViewModel viewModel)
         {
             if (viewModel.DonationId != null)

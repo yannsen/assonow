@@ -10,5 +10,9 @@ namespace Projet2.Models.BL.Interface
 
         // List of Advice Request
         List<AdviceRequest> GetAllAdviceRequests();
+
+        public void Validate(int id);
+
+        public AdviceRequest GetAdviceRequest(int id);
     }
 }

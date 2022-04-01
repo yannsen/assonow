@@ -17,6 +17,7 @@ namespace Projet2
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
             {
                 options.LoginPath = "/Compte/Connexion";
+                options.AccessDeniedPath = "/Compte/AccessDenied";
             });
             services.AddControllersWithViews();
         }

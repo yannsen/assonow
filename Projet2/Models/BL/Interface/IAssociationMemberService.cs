@@ -1,4 +1,6 @@
-﻿namespace Projet2.Models.BL.Interface
+﻿using System.Collections.Generic;
+
+namespace Projet2.Models.BL.Interface
 {
     public interface IAssociationMemberService
     {
@@ -7,5 +9,11 @@
         public void DeleteAssociationMember(int id);
 
         public bool DoMembershipExist(int associationId, int memberId);
+
+        public List<Association> GetAssociationsForMember(int id);
+
+        public List<Member> GetMembersForAssociation(int id);
+
+        public AssociationMember GetAssociationMember(int MemberId, int AssociationId);
     }
 }
