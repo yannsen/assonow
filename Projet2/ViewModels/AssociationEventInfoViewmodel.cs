@@ -20,6 +20,5 @@ namespace Projet2.ViewModels
         
         public int SelectedAssociationId { get; set; }
 
-        public int TicketsNumber { get; set; }
     }
 }
