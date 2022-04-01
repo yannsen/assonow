@@ -80,8 +80,6 @@ namespace Projet2.Models.BL.Service
             _bddContext.Member.Add(new Member { Id = 19, Firstname = "Jean", Lastname = "Beverly", Mail = "feverly@yahoo.fr", Password = authentificationService.EncodeMD5("123456"), Pseudonym = "Memb10", AddressId = 19, Role = "Member" });
       
         }
-
-
         // ASSOCIATIONS
         public void InitializeDB_Associations()
         {
@@ -124,7 +122,6 @@ namespace Projet2.Models.BL.Service
            
         }
 
-         
         // ASSOCIATIONS MEMBERS
         public void InitializeDB_AMembers()
         {
@@ -146,7 +143,6 @@ namespace Projet2.Models.BL.Service
             _bddContext.AssociationMember.Add(new AssociationMember { Id = 16, AssociationId = 9, MemberId = 10 });
 
         }
-
         // Cotisations
         public void InitializeDB_Contribution()
         {
@@ -163,8 +159,8 @@ namespace Projet2.Models.BL.Service
             _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 1, EventTitle = " Concert des petits Princes", Description = "Le plus grand concert javmais vu avec Rammstein", Image = "lien vers image", Date = new DateTime(2022, 03, 24), EventType = "Concert", Speakers = "Al Capone", Artists = " Rammstein", TicketsTotalNumber = 3210, AddressId = 1, AssociationId = 1 });
             _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 2, EventTitle = " Concert des WWE", Description = "Le plus grand concert ou cela va se bastonner", Image = "lien vers image", Date = new DateTime(2022, 03, 24), EventType = "Concert", Speakers = "Al Bundy", Artists = " Croix de bois", TicketsTotalNumber = 2350, AddressId = 2, AssociationId = 4 });
         }
+        
         // DOCUMENTS
-
         public void InitializeDB_Documents()
         {
             _bddContext.Document.Add(new Document { Id = 1, AssociationId = 4, Type = "OfficialJournalPublication", Path = "../FileSystem/Documents/Publication1.pdf" });
@@ -211,6 +207,7 @@ namespace Projet2.Models.BL.Service
             _bddContext.Address.Add(new Address { Id = 4, RoadNumber = "5", Road = "Rue du général de gaulle", City = "Bordeaux", PostalCode = "33000", Country = "France" });
             _bddContext.Address.Add(new Address { Id = 5, RoadNumber = "6", Road = "Rue du général", City = "Paris", PostalCode = "75000", Country = "France" });
             _bddContext.Address.Add(new Address { Id = 6, RoadNumber = "7", Road = "Rue du caporal", City = "Grenoble", PostalCode = "38000", Country = "France" });
+
             _bddContext.Address.Add(new Address { Id = 7, RoadNumber = "2", Road = "Rue de bel air", City = "Saint-Pryvé-Saint-Mesmin", PostalCode = "45750", Country = "France" });
             _bddContext.Address.Add(new Address { Id = 8, RoadNumber = "3", Road = "Avenue de la république", City = "Angers", PostalCode = "49000", Country = "France" });
             _bddContext.Address.Add(new Address { Id = 9, RoadNumber = "4", Road = "Rue du paradis", City = "Le Mans", PostalCode = "72000", Country = "France" });
@@ -259,9 +256,7 @@ namespace Projet2.Models.BL.Service
             _bddContext.Address.Add(new Address { Id = 48, RoadNumber = "8", Road = "Rue Haskell Curry", City = "Nantes", PostalCode = "44109", Country = "France" });
             _bddContext.Address.Add(new Address { Id = 49, RoadNumber = "19", Road = "Rue Andreï Ershov", City = "Nantes", PostalCode = "44109", Country = "France" });
             _bddContext.Address.Add(new Address { Id = 50, RoadNumber = "2", Road = "Rue Jay Forrester", City = "Nantes", PostalCode = "44109", Country = "France" });
-
         }
-
 
         public void InitializeDB_Event()
         {
@@ -269,8 +264,6 @@ namespace Projet2.Models.BL.Service
             _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 2, EventTitle = " Concert des WWE", Description = "Le plus grand concert ou cela va se bastonner", Image = "/FileSystem/Pictures/butterfly17532.jpg", Date = new DateTime(2022, 03, 24), EventType = "Concert", Speakers = "Al Bundy", Artists = " Croix de bois", TicketsTotalNumber = 2350, AddressId = 2, AssociationId = 4,TicketPrice = 12 });
 
         }
-
-
 
         public void Dispose()
         {
