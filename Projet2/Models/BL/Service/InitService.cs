@@ -45,7 +45,7 @@ namespace Projet2.Models.BL.Service
             InitializeDB_Order();
 
             InitializeDB_Ticket();
-            
+
             InitializeDB_Contribution();
 
             _bddContext.SaveChanges();
@@ -82,15 +82,70 @@ namespace Projet2.Models.BL.Service
             _bddContext.Member.Add(new Member { Id = 17, Firstname = "Jean", Lastname = "Beverly", Mail = "feverly@yahoo.fr", Password = authentificationService.EncodeMD5("123456"), Pseudonym = "Memb8", AddressId = 17, Role = "Member" });
             _bddContext.Member.Add(new Member { Id = 18, Firstname = "Jean", Lastname = "Beverly", Mail = "feverly@yahoo.fr", Password = authentificationService.EncodeMD5("123456"), Pseudonym = "Memb9", AddressId = 18, Role = "Member" });
             _bddContext.Member.Add(new Member { Id = 19, Firstname = "Jean", Lastname = "Beverly", Mail = "feverly@yahoo.fr", Password = authentificationService.EncodeMD5("123456"), Pseudonym = "Memb10", AddressId = 19, Role = "Member" });
-      
+
         }
         // ASSOCIATIONS
         public void InitializeDB_Associations()
         {
-            // 1 -> 10
-            _bddContext.Association.Add(new Association { Id = 1, Contribution = 50, IsHighlighted = false, AddressId = 20, Name = "Petits Princes", IsPublished = true, Description = "L'Association Petits Princes est une association à but non lucratif créée en 1987 qui s'est donné pour but de réaliser les rêves d’enfants et adolescents malades atteints de cancers, leucémies et certaines maladies génétiques.", Image = "/FileSystem/Pictures/petitprince.jpg", AssociationRepresentativeId = 9, Mail = "asso1@gmail.com" });
-            _bddContext.Association.Add(new Association { Id = 2, Contribution = 40, IsHighlighted = false, AddressId = 21, Name = "WWF", IsPublished = true, Description = "Le WWF ou Fonds mondial pour la nature est une organisation non gouvernementale internationale (ONGI) créée en 1961, vouée à la protection de l'environnement et au développement durable.", Image = "/FileSystem/Pictures/wwf.png", AssociationRepresentativeId = 9, Mail = "asso2@gmail.com" });
-            _bddContext.Association.Add(new Association { Id = 3, Contribution = 0, IsHighlighted = false, AddressId = 22, Name = "Association Hirondelle", IsPublished = true, Description = "Créée il y a plus de 25 ans, l’association Hirondelle est une association reconnue dans le domaine de la protection de l’environnement dans la région du Pays de Retz.", Image = "/FileSystem/Pictures/associationhirondelle.jpg", AssociationRepresentativeId = 9, Mail = "asso3@gmail.com" });
+            // Association utile
+            _bddContext.Association.Add(
+                new Association
+                {
+                    Id = 1,
+                    DonationService = true,
+                    TicketService = true,
+                    MemberService = true,
+                    Contribution = 40,
+                    IsHighlighted = true,
+                    AddressId = 30,
+                    Name = "A chacun son Everest",
+                    IsPublished = true,
+                    Description = "Accompagner les enfants et adolescents des services d’Oncohématologie Pédiatrique et éventuellement leurs familles, pour les aider à atteindre leur sommet et les soutenir dans leur maladie",
+                    Image = "/FileSystem/Pictures/everest.jpg",
+                    AssociationRepresentativeId = 8,
+                    Mail = "everest@gmail.com"
+                });
+
+            _bddContext.Association.Add(
+                new Association
+                {
+                    Id = 2,
+                    DonationService = true,
+                    TicketService = true,
+                    MemberService = true,
+                    Contribution = 20,
+                    IsHighlighted = true,
+                    AddressId = 40,
+                    Name = "Les enfants du soleil",
+                    IsPublished = true,
+                    Description = "La Fondation Les enfants du soleil, créée en 2015, renforce l’action de l’association du même nom qui vient en aide aux enfants des rues de Madagascar en prenant en charge leur accueil, leur hébergement, leur éducation, leur formation professionnelle et leur réinsertion dans la vie active avec un métier.",
+                    Image = "/FileSystem/Pictures/soleil.jpg",
+                    AssociationRepresentativeId = 9,
+                    Mail = "soleil@gmail.com"
+                });
+
+            _bddContext.Association.Add(
+                new Association
+                {
+                    Id = 3,
+                    DonationService = true,
+                    TicketService = true,
+                    MemberService = true,
+                    Contribution = 10,
+                    IsHighlighted = true,
+                    AddressId = 39,
+                    Name = "Vaincre la Mucoviscidose",
+                    IsPublished = true,
+                    Description = "Servir de trait d’union entre les malades atteints de mucoviscidose et de les aider, eux et leurs familles, à résoudre les divers problèmes et difficultés matériels et moraux causés par cette maladie, ainsi que d’assurer la défense des droits des malades et de leurs familles ; Contribuer à la diffusion des informations concernant le dépistage, le diagnostic et les méthodes modernes de traitement de la maladie.",
+                    Image = "/FileSystem/Pictures/muco.jpg",
+                    AssociationRepresentativeId = 8,
+                    Mail = "muco@gmail.com"
+                });
+
+
+
+            // Association remplissage
+
             _bddContext.Association.Add(new Association { Id = 4, Contribution = 5, IsHighlighted = false, AddressId = 23, Name = "Tous Au Sport", IsPublished = false, Description = "Cette association loi 1901 à but non lucratif, constituée le 25 juillet 2016, a pour objet de permettre l'accès le plus grand possible au sport à toutes et à tous et cela dans le cadre des cours collectifs.", Image = "/FileSystem/Pictures/tousausport.png", AssociationRepresentativeId = 9, Mail = "asso4@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 5, Contribution = 10, IsHighlighted = false, AddressId = 24, Name = "Sidaction", IsPublished = false, Description = "Sidaction désigne à la fois une association de lutte contre le VIH/sida, créée en 1994 et un évènement télévisuel annuel de collecte de dons pour cette association qui finance à parts égales des programmes de recherche et des associations d’aide aux malades et de prévention, en France et à l’international. Pierre Bergé présidait l'association.", Image = "/FileSystem/Pictures/sidaction.jpg", AssociationRepresentativeId = 9, Mail = "asso4@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 6, Contribution = 10, IsHighlighted = false, AddressId = 25, Name = "Société Française de Musicologie", IsPublished = true, Description = "La Société française de musicologie, fondée en 1917 par des musicologues appartenant à l’ancienne « section française » de la Société internationale de musique, est une société savante dédiée à l’étude scientifique de la musique. Son champ d’étude couvre tout phénomène musical sans restriction d’époques, de civilisations et d’esthétiques, et encourage la diversité des approches méthodologiques.", Image = "/FileSystem/Pictures/sfm.jpg", AssociationRepresentativeId = 6, Mail = "sfm@gmail.com" });
@@ -98,19 +153,17 @@ namespace Projet2.Models.BL.Service
             _bddContext.Association.Add(new Association { Id = 8, Contribution = 20, IsHighlighted = true, AddressId = 27, Name = "Reporters Sans Frontières", IsPublished = true, Description = "La promotion des droits de l'homme et plus particulièrement la défense de la liberté d'informer et d'être informé à travers le monde. Reporters sans frontières (RSF) est une organisation non gouvernementale internationale fondée en 1985, reconnue d'utilité publique en France et présente en 2020 dans 14 pays. Elle se donne pour objectif la défense de la liberté de la presse et la protection des sources des journalistes. L'association reçoit en 2005 le prix Sakharov du Parlement européen. ", Image = "/FileSystem/Pictures/rsf.jpg", AssociationRepresentativeId = 9, Mail = "rsf@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 9, Contribution = 20, IsHighlighted = false, AddressId = 28, Name = "Fédération des diabétiques de France", IsPublished = false, Description = "La Fédération Française des Diabétiques est une association de patients, au service des patients et dirigée par des patients. Avec son réseau d’environ 100 associations locales et de délégations, réparties sur l’ensemble du territoire et son siège national, elle a pour vocation de représenter les 4 millions de patients diabétiques.", Image = "/FileSystem/Pictures/diabetique.jpg", AssociationRepresentativeId = 7, Mail = "diabetique@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 10, Contribution = 20, IsHighlighted = false, AddressId = 29, Name = "Abris maternelle", IsPublished = false, Description = "Aider les femmes attendant ou ayant un ou plusieurs enfants et les familles qui se trouvent en difficulté pour diverses raisons", Image = "/FileSystem/Pictures/abris.jpg", AssociationRepresentativeId = 7, Mail = "abris@gmail.com" });
-            // 11 -> 20
-            _bddContext.Association.Add(new Association { Id = 11, Contribution = 40, IsHighlighted = true, AddressId = 30, Name = "A chacun son Everest", IsPublished = true, Description = "Accompagner les enfants et adolescents des services d’Oncohématologie Pédiatrique et éventuellement leurs familles, pour les aider à atteindre leur sommet et les soutenir dans leur maladie", Image = "/FileSystem/Pictures/everest.jpg", AssociationRepresentativeId = 8, Mail = "everest@gmail.com" });
+            _bddContext.Association.Add(new Association { Id = 11, Contribution = 50, IsHighlighted = false, AddressId = 20, Name = "Petits Princes", IsPublished = true, Description = "L'Association Petits Princes est une association à but non lucratif créée en 1987 qui s'est donné pour but de réaliser les rêves d’enfants et adolescents malades atteints de cancers, leucémies et certaines maladies génétiques.", Image = "/FileSystem/Pictures/petitprince.jpg", AssociationRepresentativeId = 9, Mail = "asso1@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 12, Contribution = 40, IsHighlighted = false, AddressId = 31, Name = "E-enfance", IsPublished = true, Description = "Protection des enfants et des adolescents contre les risques liés à l'utilisation de tous moyens de communication interactifs (internet, téléphone mobile, ordinateur, télévision)", Image = "/FileSystem/Pictures/eenfance.jpeg", AssociationRepresentativeId = 8, Mail = "eenfance@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 13, Contribution = 0, IsHighlighted = false, AddressId = 32, Name = "A Domicile 45 ", IsPublished = true, Description = "Mettre en œuvre, organiser et gérer toute action individuelle, pluridisciplaire ou collective destinée à l’aide et au maintien à domicile de toutes personnes ou groupes de personnes, notamment des personnes handicapées, des personnes âgées, des personnes et des familles vulnérables, en situation de précarité ou de pauvreté, en tenant compte de leurs besoins et de leurs attentes, sur l’ensemble du Département du Loiret.", Image = "/FileSystem/Pictures/domicile.jpeg", AssociationRepresentativeId = 8, Mail = "domicile@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 14, Contribution = 20, IsHighlighted = true, AddressId = 33, Name = "Peuples Solidaires", IsPublished = true, Description = "Créer une dynamique en faveur du développement solidaire de tous les peuples et permettre à chacun/chacune d'être acteur /actrice de la construction collective d'un monde solidaire où les droits fondamentaux sont universellement respectés", Image = "/FileSystem/Pictures/peuples.jpeg", AssociationRepresentativeId = 9, Mail = "peuples@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 15, Contribution = 30, IsHighlighted = false, AddressId = 34, Name = "Agir Soigner Eduquer Insérer (ASEI)", IsPublished = true, Description = "Prise en charge globale et insertion des personnes handicapées quel que soit leur âge, la prise en charge des personnes dépendantes et fragilisées, la promotion des droits des personnes en situation de handicap et la lutte contre l’exclusion de ces personnes, dans le respect des valeurs qui ont toujours présidé à l’action de l’association : la laïcié, le refus de toutes les discriminations, le respect de la personne et la solidarité.", Image = "/FileSystem/Pictures/asei.jpg", AssociationRepresentativeId = 7, Mail = "asei@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 16, Contribution = 0, IsHighlighted = true, AddressId = 35, Name = "Association Aurore", IsPublished = true, Description = "Réadaptation sociale et professionnelle des personnes que la maladie, l'isolement, les détresses morales et matérielles, un séjour en prison ou à l'hôpital ont privé d'une vie normale.", Image = "/FileSystem/Pictures/aurore.jpg", AssociationRepresentativeId = 8, Mail = "aurore@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 17, Contribution = 5, IsHighlighted = true, AddressId = 36, Name = "Académie de l'air et de l'espace", IsPublished = true, Description = "Elaborer une pensée multidisciplinaire de haut niveau et de favoriser le développement d’activités de qualité de toute nature dans le domaine de l’air et de l’espace ; elle se propose de valoriser et d’enrichir le patrimoine scientifique, technique, culturel et humain, de diffuser les connaissances et d’être un pôle d’animation.", Image = "/FileSystem/Pictures/academie.jpg", AssociationRepresentativeId = 9, Mail = "academie@gmail.com" });
-            _bddContext.Association.Add(new Association { Id = 18, Contribution = 15, IsHighlighted = true, AddressId = 37, Name = "Les jours heureux", IsPublished = true, Description = "Venir en aide aux familles par des informations et des conseils, de promouvoir et mettre en œuvre tout ce qui pourrait être nécessaire pour le meilleur développement physique, intellectuel et moral de leurs enfants mineurs ou majeurs handicapés mentaux ; accueillir des personnes handicapées mentales au sein d'établissements et de services appropriés avec pour objectifs leur éducation, leur accompagnement, leur réducation, leur adaptation, leur mise au travail, leur insertion sociale, leur hébergement, l'organisation de leurs loisirs, et toute autre action qui apparaitrait nécessaire.", Image = "/FileSystem/Pictures/heureux.jpg", AssociationRepresentativeId = 8, Mail = "heureux@gmail.com" });
+            _bddContext.Association.Add(new Association { Id = 18, Contribution = 15, IsHighlighted = true, AddressId = 37, Image = "/FileSystem/Pictures/heureux.jpg", AssociationRepresentativeId = 8, Name = "Les jours heureux", IsPublished = true, Description = "Venir en aide aux familles par des informations et des conseils, de promouvoir et mettre en œuvre tout ce qui pourrait être nécessaire pour le meilleur développement physique, intellectuel et moral de leurs enfants mineurs ou majeurs handicapés mentaux ; accueillir des personnes handicapées mentales au sein d'établissements et de services appropriés avec pour objectifs leur éducation, leur accompagnement, leur réducation, leur adaptation, leur mise au travail, leur insertion sociale, leur hébergement, l'organisation de leurs loisirs, et toute autre action qui apparaitrait nécessaire.", Mail = "heureux@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 19, Contribution = 0, IsHighlighted = false, AddressId = 38, Name = "Les petits frères des pauvres", IsPublished = true, Description = "Accueil, aide et accompagnement dans une relation fraternelle et désintéressée, des personnes, en priorité de plus de 50 ans, souffrant de pauvreté, de solitude, d’ exclusion, de précarité, de maladie grave, par des moyens et dans des conditions adaptés à chacune d’elles. Elle a pour objet de promouvoir le bénévolat de solidarité ; sensibiliser et alerter l’opinion et les pouvoirs publics ; et ce, au service des personnes quels que soient leur origine, leur situation sociale et leur été physique ou psychique.", Image = "/FileSystem/Pictures/freres.jpg", AssociationRepresentativeId = 9, Mail = "freres@gmail.com" });
-            _bddContext.Association.Add(new Association { Id = 20, Contribution = 50, IsHighlighted = false, AddressId = 39, Name = "Vaincre la Mucoviscidose", IsPublished = true, Description = "Servir de trait d’union entre les malades atteints de mucoviscidose et de les aider, eux et leurs familles, à résoudre les divers problèmes et difficultés matériels et moraux causés par cette maladie, ainsi que d’assurer la défense des droits des malades et de leurs familles ; Contribuer à la diffusion des informations concernant le dépistage, le diagnostic et les méthodes modernes de traitement de la maladie.", Image = "/FileSystem/Pictures/muco.jpg", AssociationRepresentativeId = 8, Mail = "muco@gmail.com" });
-            // 21 -> 30
-            _bddContext.Association.Add(new Association { Id = 21, Contribution = 20, IsHighlighted = true, AddressId = 40, Name = "Les enfants du soleil", IsPublished = true, Description = "La Fondation Les enfants du soleil, créée en 2015, renforce l’action de l’association du même nom qui vient en aide aux enfants des rues de Madagascar en prenant en charge leur accueil, leur hébergement, leur éducation, leur formation professionnelle et leur réinsertion dans la vie active avec un métier.", Image = "/FileSystem/Pictures/soleil.jpg", AssociationRepresentativeId = 9, Mail = "soleil@gmail.com" });
+            _bddContext.Association.Add(new Association { Id = 20, Contribution = 40, IsHighlighted = false, AddressId = 21, Name = "WWF", IsPublished = true, Description = "Le WWF ou Fonds mondial pour la nature est une organisation non gouvernementale internationale (ONGI) créée en 1961, vouée à la protection de l'environnement et au développement durable.", Image = "/FileSystem/Pictures/wwf.png", AssociationRepresentativeId = 9, Mail = "asso2@gmail.com" });
+            _bddContext.Association.Add(new Association { Id = 21, Contribution = 0, IsHighlighted = false, AddressId = 22, Name = "Association Hirondelle", IsPublished = true, Description = "Créée il y a plus de 25 ans, l’association Hirondelle est une association reconnue dans le domaine de la protection de l’environnement dans la région du Pays de Retz.", Image = "/FileSystem/Pictures/associationhirondelle.jpg", AssociationRepresentativeId = 9, Mail = "asso3@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 22, Contribution = 20, IsHighlighted = false, AddressId = 41, Name = "Ty Al Levenez (Maison du bonheur)", IsPublished = true, Description = "Gérer des foyers, en particulier des Foyers de Jeunes Travailleurs, des logements pour jeunes travailleurs, dans un ou des foyers de jeunes travailleurs ou dans leurs annexes, des services de logements en ville, des restaurants sociaux, des centres de formation ; Service des repas à des organismes sociaux ; Organiser des activités culturelles et sportives dans ses locaux ou à l’extérieur ; Accueillir les groupes et organismes à but non lucratif ; Ouvrir des Centres socio-culturels.", Image = "/FileSystem/Pictures/maison.jpg", AssociationRepresentativeId = 8, Mail = "ty@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 23, Contribution = 0, IsHighlighted = false, AddressId = 42, Name = "Societé Française de Santé Publique", IsPublished = true, Description = "Elle a pour objet toutes les questions se rapportant à la santé publique.", Image = "/FileSystem/Pictures/santepub.jpg", AssociationRepresentativeId = 1, Mail = "santepub@gmail.com" });
             _bddContext.Association.Add(new Association { Id = 24, Contribution = 30, IsHighlighted = false, AddressId = 43, Name = "Société d'Histoire Littéraire de la France", IsPublished = true, Description = "Fournir aux personnes qui s'intéressent à l'histoire de la littérature française des moyens de se réunir d'échanger leurs idées, de profiter en commun des recherches individuelles, d'unir leurs efforts et de grouper leurs travaux.", Image = "/FileSystem/Pictures/histoire.jpg", AssociationRepresentativeId = 9, Mail = "histoire@gmail.com" });
@@ -123,38 +176,49 @@ namespace Projet2.Models.BL.Service
 
             // empty to complete
             //_bddContext.Association.Add(new Association { Id = 11, AddressId = 30, Name = "A chacun son everest", IsPublished = true, Description = "", Image = "/FileSystem/Pictures/petitprince.jpg", AssociationRepresentativeId = 1, Mail = "asso1@gmail.com" });
-           
+
         }
 
         // ASSOCIATIONS MEMBERS
         public void InitializeDB_AMembers()
         {
-            _bddContext.AssociationMember.Add(new AssociationMember { Id = 1, AssociationId = 13, MemberId = 10});
-            _bddContext.AssociationMember.Add(new AssociationMember { Id = 2, AssociationId = 14, MemberId = 10});
-            _bddContext.AssociationMember.Add(new AssociationMember { Id = 3, AssociationId = 15, MemberId = 10});
-            _bddContext.AssociationMember.Add(new AssociationMember { Id = 4, AssociationId = 6, MemberId = 10 });
-            _bddContext.AssociationMember.Add(new AssociationMember { Id = 5, AssociationId = 6, MemberId = 11 });
-            _bddContext.AssociationMember.Add(new AssociationMember { Id = 6, AssociationId = 6, MemberId = 12 });
-            _bddContext.AssociationMember.Add(new AssociationMember { Id = 7, AssociationId = 6, MemberId = 13 });
-            _bddContext.AssociationMember.Add(new AssociationMember { Id = 8, AssociationId = 7, MemberId = 14 });
-            _bddContext.AssociationMember.Add(new AssociationMember { Id = 9, AssociationId = 7, MemberId = 15 });
-            _bddContext.AssociationMember.Add(new AssociationMember { Id = 10, AssociationId = 7, MemberId = 10 });
-            _bddContext.AssociationMember.Add(new AssociationMember { Id = 11, AssociationId = 7, MemberId = 11 });
-            _bddContext.AssociationMember.Add(new AssociationMember { Id = 12, AssociationId = 9, MemberId = 16 });
-            _bddContext.AssociationMember.Add(new AssociationMember { Id = 13, AssociationId = 9, MemberId = 17 });
-            _bddContext.AssociationMember.Add(new AssociationMember { Id = 14, AssociationId = 9, MemberId = 18 });
-            _bddContext.AssociationMember.Add(new AssociationMember { Id = 15, AssociationId = 9, MemberId = 19 });
-            _bddContext.AssociationMember.Add(new AssociationMember { Id = 16, AssociationId = 9, MemberId = 10 });
+            _bddContext.AssociationMember.Add(new AssociationMember { Id = 1, AssociationId = 1, MemberId = 10 });
+            _bddContext.AssociationMember.Add(new AssociationMember { Id = 2, AssociationId = 1, MemberId = 11 });
+            _bddContext.AssociationMember.Add(new AssociationMember { Id = 3, AssociationId = 1, MemberId = 12 });
+            _bddContext.AssociationMember.Add(new AssociationMember { Id = 4, AssociationId = 1, MemberId = 13 });
+            _bddContext.AssociationMember.Add(new AssociationMember { Id = 5, AssociationId = 1, MemberId = 14 });
+            _bddContext.AssociationMember.Add(new AssociationMember { Id = 6, AssociationId = 2, MemberId = 15 });
+            _bddContext.AssociationMember.Add(new AssociationMember { Id = 7, AssociationId = 2, MemberId = 16 });
+            _bddContext.AssociationMember.Add(new AssociationMember { Id = 8, AssociationId = 2, MemberId = 17 });
+            _bddContext.AssociationMember.Add(new AssociationMember { Id = 9, AssociationId = 2, MemberId = 18 });
+            _bddContext.AssociationMember.Add(new AssociationMember { Id = 10, AssociationId = 2, MemberId = 19 });
+            _bddContext.AssociationMember.Add(new AssociationMember { Id = 11, AssociationId = 3, MemberId = 10 });
+            _bddContext.AssociationMember.Add(new AssociationMember { Id = 12, AssociationId = 3, MemberId = 11 });
+            _bddContext.AssociationMember.Add(new AssociationMember { Id = 13, AssociationId = 3, MemberId = 12 });
+            _bddContext.AssociationMember.Add(new AssociationMember { Id = 14, AssociationId = 3, MemberId = 13 });
+            _bddContext.AssociationMember.Add(new AssociationMember { Id = 15, AssociationId = 3, MemberId = 14 });
+            _bddContext.AssociationMember.Add(new AssociationMember { Id = 16, AssociationId = 3, MemberId = 15 });
 
         }
         // Cotisations
         public void InitializeDB_Contribution()
         {
-            _bddContext.Contribution.Add(new Contribution { Id = 2, AssociationId = 14, MemberId = 10, Amount = 20});
-            _bddContext.Contribution.Add(new Contribution { Id = 3, AssociationId = 15, MemberId = 10, Amount = 30});
-            _bddContext.Contribution.Add(new Contribution { Id = 4, AssociationId = 6, MemberId = 10, Amount = 10 });
-            _bddContext.Contribution.Add(new Contribution { Id = 5, AssociationId = 7, MemberId = 10, Amount = 30 });
-            _bddContext.Contribution.Add(new Contribution { Id = 6, AssociationId = 9, MemberId = 10, Amount = 20 });
+            _bddContext.Contribution.Add(new Contribution { Id = 1, AssociationId = 1, MemberId = 10, Amount = 40 });
+            _bddContext.Contribution.Add(new Contribution { Id = 2, AssociationId = 1, MemberId = 11, Amount = 40 });
+            _bddContext.Contribution.Add(new Contribution { Id = 3, AssociationId = 1, MemberId = 12, Amount = 40 });
+            _bddContext.Contribution.Add(new Contribution { Id = 4, AssociationId = 1, MemberId = 13, Amount = 40 });
+            _bddContext.Contribution.Add(new Contribution { Id = 5, AssociationId = 1, MemberId = 14, Amount = 40 });
+            _bddContext.Contribution.Add(new Contribution { Id = 6, AssociationId = 2, MemberId = 15, Amount = 20 });
+            _bddContext.Contribution.Add(new Contribution { Id = 7, AssociationId = 2, MemberId = 16, Amount = 20 });
+            _bddContext.Contribution.Add(new Contribution { Id = 8, AssociationId = 2, MemberId = 17, Amount = 20 });
+            _bddContext.Contribution.Add(new Contribution { Id = 9, AssociationId = 2, MemberId = 18, Amount = 20 });
+            _bddContext.Contribution.Add(new Contribution { Id = 10, AssociationId = 2, MemberId = 19, Amount = 20 });
+            _bddContext.Contribution.Add(new Contribution { Id = 11, AssociationId = 3, MemberId = 10, Amount = 10 });
+            _bddContext.Contribution.Add(new Contribution { Id = 12, AssociationId = 3, MemberId = 11, Amount = 10 });
+            _bddContext.Contribution.Add(new Contribution { Id = 13, AssociationId = 3, MemberId = 12, Amount = 10 });
+            _bddContext.Contribution.Add(new Contribution { Id = 14, AssociationId = 3, MemberId = 13, Amount = 10 });
+            _bddContext.Contribution.Add(new Contribution { Id = 15, AssociationId = 3, MemberId = 14, Amount = 10 });
+            _bddContext.Contribution.Add(new Contribution { Id = 16, AssociationId = 3, MemberId = 15, Amount = 10 });
         }
 
         // ASSOCIATIONS EVENTS
@@ -192,27 +256,132 @@ namespace Projet2.Models.BL.Service
         // FUNDRAISING
         public void InitializeDB_Fundraising()
         {
-            _bddContext.Fundraising.Add(new Fundraising { Id = 1, AssociationId = 1, Name = "Des armes pour l'ukraine", Description = "Description1", IsActive = true, CurrentAmount = 0, DesiredAmount = 10000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Humanitaire" });
-            _bddContext.Fundraising.Add(new Fundraising { Id = 2, AssociationId = 1, Name = "Sauvez les éléphants", Description = "Description2", IsActive = true, CurrentAmount = 1500, DesiredAmount = 20000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Sport" });
-            _bddContext.Fundraising.Add(new Fundraising { Id = 3, AssociationId = 2, Name = "Aide aux victimes", Description = "Description3", IsActive = true, CurrentAmount = 500, DesiredAmount = 15000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Culture" });
-            _bddContext.Fundraising.Add(new Fundraising { Id = 4, AssociationId = 2, Name = "Blocage mine d'or", Description = "Description4", IsActive = true, CurrentAmount = 0, DesiredAmount = 18000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Enseignement" });
-            _bddContext.Fundraising.Add(new Fundraising { Id = 5, AssociationId = 3, Name = "Construction hopital", Description = "Description5", IsActive = true, CurrentAmount = 0, DesiredAmount = 5000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Défense des droits" });
-            _bddContext.Fundraising.Add(new Fundraising { Id = 6, AssociationId = 3, Name = "Achat lot de maillot", Description = "Description6", IsActive = true, CurrentAmount = 3000, DesiredAmount = 10000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Humanitaire" });
-            _bddContext.Fundraising.Add(new Fundraising { Id = 7, AssociationId = 4, Name = "Stop aux ailerons de requin !", Description = "Description7", IsActive = true, CurrentAmount = 50, DesiredAmount = 75000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Recherche" });
-            _bddContext.Fundraising.Add(new Fundraising { Id = 8, AssociationId = 4, Name = "Recherche scientifique", Description = "Description8", IsActive = true, CurrentAmount = 1, DesiredAmount = 100000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Humanitaire" });
-            _bddContext.Fundraising.Add(new Fundraising { Id = 9, AssociationId = 5, Name = "J'ai plus d'idée !", Description = "Description9", IsActive = true, CurrentAmount = 2500, DesiredAmount = 10000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Culture" });
-            _bddContext.Fundraising.Add(new Fundraising { Id = 10, AssociationId = 5, Name = "J'ai plus d'idée !", Description = "Description10", IsActive = false, CurrentAmount = 0, DesiredAmount = 15000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Loisirs" });
-            _bddContext.Fundraising.Add(new Fundraising { Id = 11, AssociationId = 1, Name = "Course des héros !", Description = "Description11", IsActive = true, CurrentAmount = 0, DesiredAmount = 15000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Sport" });
-
+            _bddContext.Fundraising.Add(new Fundraising
+            {
+                Id = 1,
+                AssociationId = 1,
+                Name = "Une semaine à Chamonix",
+                Description = "16 enfants ou adolescents se retrouvent à Chamonix pour vivre une semaine intense, adaptée à leurs possibilités. La vie collective est basée sur le respect, l’autonomisation des enfants et leur repos.Enfants et adultes participent à la vie de la Maison.",
+                IsActive = true,
+                CurrentAmount = 2420,
+                DesiredAmount = 10000,
+                StartingDate = new DateTime(2022, 03, 30),
+                EndingDate = new DateTime(2022, 04, 20),
+                Field = "Social"
+            });
+            _bddContext.Fundraising.Add(new Fundraising
+            {
+                Id = 2,
+                AssociationId = 1,
+                Name = "Achat d'équipements",
+                Description = "L’équipement indispensable aux activités de montagne étant fourni pour nos stages (veste gore tex, veste polaire, pantalon, chaussures de randonnée, chaussons d’escalade, bottes de neige, gants, bonnet, lunette de soleil, sac à dos…), nous devons nous réapprovisionner en matériel",
+                IsActive = true,
+                CurrentAmount = 1500,
+                DesiredAmount = 20000,
+                StartingDate = new DateTime(2022, 03, 30),
+                EndingDate = new DateTime(2022, 03, 30),
+                Field = "Social"
+            });
+            _bddContext.Fundraising.Add(new Fundraising
+            {
+                Id = 3,
+                AssociationId = 1,
+                Name = "Rénovation des locaux",
+                Description = "Un lieu d’accueil, de Vie, de « résilience ». pour laisser la place au repos, et offrir à ces femmes un temps de reprise de souffle. Un lieu d’accueil, de Vie, de « résilience ». Un lieu « cocooning »pour laisser la place au repos, et offrir à ces femmes un temps de reprise de souffle. Un lieu polyvalent, spécialement aménagé : un grand parc entoure la Maison, avec une vue apaisante sur le Mont-Blanc. Une grande salle d’escalade, un espace zen et son parc aventure.",
+                IsActive = true,
+                CurrentAmount = 500,
+                DesiredAmount = 15000,
+                StartingDate = new DateTime(2022, 04, 02),
+                EndingDate = new DateTime(2022, 05, 15),
+                Field = "Social"
+            });
+            _bddContext.Fundraising.Add(new Fundraising
+            {
+                Id = 4,
+                AssociationId = 2,
+                Name = "Blocage mine d'or",
+                Description = "Description4",
+                IsActive = true,
+                CurrentAmount = 0,
+                DesiredAmount = 18000,
+                StartingDate = new DateTime(2022, 03, 30),
+                EndingDate = new DateTime(2022, 03, 30),
+                Field = "Enseignement"
+            });
+            _bddContext.Fundraising.Add(new Fundraising
+            {
+                Id = 5,
+                AssociationId = 2,
+                Name = "Construction hopital",
+                Description = "Description5",
+                IsActive = true,
+                CurrentAmount = 0,
+                DesiredAmount = 5000,
+                StartingDate = new DateTime(2022, 03, 30),
+                EndingDate = new DateTime(2022, 03, 30),
+                Field = "Défense des droits"
+            });
+            _bddContext.Fundraising.Add(new Fundraising
+            {
+                Id = 6,
+                AssociationId = 2,
+                Name = "Achat lot de maillot",
+                Description = "Description6",
+                IsActive = true,
+                CurrentAmount = 3000,
+                DesiredAmount = 10000,
+                StartingDate = new DateTime(2022, 03, 30),
+                EndingDate = new DateTime(2022, 03, 30),
+                Field = "Humanitaire"
+            });
+            _bddContext.Fundraising.Add(new Fundraising
+            {
+                Id = 7,
+                AssociationId = 3,
+                Name = "Stop aux ailerons de requin !",
+                Description = "Description7",
+                IsActive = true,
+                CurrentAmount = 50,
+                DesiredAmount = 75000,
+                StartingDate = new DateTime(2022, 03, 30),
+                EndingDate = new DateTime(2022, 03, 30),
+                Field = "Recherche"
+            });
+            _bddContext.Fundraising.Add(new Fundraising
+            {
+                Id = 8,
+                AssociationId = 3,
+                Name = "Recherche scientifique",
+                Description = "Description8",
+                IsActive = true,
+                CurrentAmount = 1,
+                DesiredAmount = 100000,
+                StartingDate = new DateTime(2022, 03, 30),
+                EndingDate = new DateTime(2022, 03, 30),
+                Field = "Humanitaire"
+            });
+            _bddContext.Fundraising.Add(new Fundraising
+            {
+                Id = 9,
+                AssociationId = 3,
+                Name = "J'ai plus d'idée !",
+                Description = "Description9",
+                IsActive = true,
+                CurrentAmount = 2500,
+                DesiredAmount = 10000,
+                StartingDate = new DateTime(2022, 03, 30),
+                EndingDate = new DateTime(2022, 03, 30),
+                Field = "Culture"
+            });
         }
 
         // ADVIVES
         public void InitializeDB_Advices()
         {
             // Advice requests
-            _bddContext.AdviceRequest.Add(new AdviceRequest { Id = 1, AdviceRequestSubject = "DEMANDE DE CONSEIL UN ", AdviceRequestText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam", Date = new DateTime(2022, 01, 01), CompletedRequest = false, AssociationId = 1, AssociationName = "Petits Princes"});
+            _bddContext.AdviceRequest.Add(new AdviceRequest { Id = 1, AdviceRequestSubject = "DEMANDE DE CONSEIL UN ", AdviceRequestText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam", Date = new DateTime(2022, 01, 01), CompletedRequest = false, AssociationId = 1, AssociationName = "Petits Princes" });
             _bddContext.AdviceRequest.Add(new AdviceRequest { Id = 2, AdviceRequestSubject = "DEMANDE DE CONSEIL DEUX ", AdviceRequestText = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem ac illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.", Date = new DateTime(2022, 02, 02), CompletedRequest = false, AssociationId = 2, AssociationName = "WWF" });
-           
+
             //Advices
 
             _bddContext.Advice.Add(new Advice { Id = 1, AdviceSubject = "CONSEIL UN ", AdviceText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam", Date = new DateTime(2022, 02, 01), AdviceRequestId = 1, MemberId = 1, AssociationId = 1 });
@@ -287,15 +456,15 @@ namespace Projet2.Models.BL.Service
         // Commandes
         public void InitializeDB_Order()
         {
-            _bddContext.Order.Add(new Order { Id = 1, MemberId = 2, TicketsNumber = 5, PurchaseDate = new DateTime(2022, 03, 30), Amount=50 });
-            _bddContext.Order.Add(new Order { Id = 2, MemberId = 2, TicketsNumber =6, PurchaseDate = new DateTime(2022, 03, 30), Amount = 50 });
+            _bddContext.Order.Add(new Order { Id = 1, MemberId = 2, TicketsNumber = 5, PurchaseDate = new DateTime(2022, 03, 30), Amount = 50 });
+            _bddContext.Order.Add(new Order { Id = 2, MemberId = 2, TicketsNumber = 6, PurchaseDate = new DateTime(2022, 03, 30), Amount = 50 });
         }
 
         // Commandes
         public void InitializeDB_Ticket()
         {
-            _bddContext.Ticket.Add(new Ticket { Id = 1, Position = 1,OrderId = 1,AssociationEventId = 1});
-            _bddContext.Ticket.Add(new Ticket { Id = 2, Position = 2, OrderId = 2, AssociationEventId = 2});
+            _bddContext.Ticket.Add(new Ticket { Id = 1, Position = 1, OrderId = 1, AssociationEventId = 1 });
+            _bddContext.Ticket.Add(new Ticket { Id = 2, Position = 2, OrderId = 2, AssociationEventId = 2 });
         }
 
         public void Dispose()
