@@ -12,9 +12,6 @@ function onkeyupsum() { // calculate sum and show in textbox
 }
 
 
-}
-
-
 function check() {
     var remainingticket = Number(document.getElementById("RemainingTicket").value);
 
@@ -27,21 +24,4 @@ function check() {
     }
 
 }
-
-
-//WARNING RemainingTicket must in the last atribute of URL
-//function check() {
-//    var nbr;
-//    var url = window.location.href;
-//    var queue_url = Number(url.substring(url.lastIndexOf("=") + 1));
-        
-//    nbr = Number(document.getElementById("TicketsNumber").value);
-//    if (nbr > queue_url) {
-//        alert("il reste seulement " + queue_url + " billets");
-//        document.getElementById("submitbutton").disabled = true;
-//    } else {
-//        document.getElementById("submitbutton").disabled = false;
-//    }
-   
-//}
 
