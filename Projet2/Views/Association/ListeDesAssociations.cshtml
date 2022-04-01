@@ -6,41 +6,98 @@
 }
 
 
-<div class="row">
+<div class="container">
+
+    <div class="row ml-1">
+        <div class="col-3">
+            @using (Html.BeginForm())
+            {
+                @Html.LabelFor(m => Model.SearchName)
+                @Html.TextBoxFor(m => Model.SearchName)
+                <input type="submit" value="Rechercher" class="btn btn-primary" />
+            }
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-9">
+            @{
+                int i = 0;
+                while (i < Model.AssociationsList.Count)
+                {
+                    @for (int j = 0; j < 4; j++)
+                    {
+                        @if (i < Model.AssociationsList.Count)
+                        {
+                             <div class="col-md-4">
+                                <div class="card">
+                                    <img src="@Model.AssociationsList[i].Image">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@Model.AssociationsList[i].Name</h5>
+                                        <p class="card-text">@Model.AssociationsList[i].Description</p>
+                                        <a class="btn btn-primary" href="~/Association/Profil?id=@Model.AssociationsList[i].Id">Plus de détails</a>
+                                    </div>
+                                </div>
+                             </div>
+                        }
+                       i++;
+                    }
+               }
+            }
+        </div>
+    </div>
+
+
+
+
+
+</div>
+
+
+
+
+@*
+
+<div class="row ml-1">
     <div class="col-3">
-        @using (Html.BeginForm()){
+        @using (Html.BeginForm())
+        {
             @Html.LabelFor(m => Model.SearchName)
             @Html.TextBoxFor(m => Model.SearchName)
-            <input type="submit" value="Rechercher" class="btn btn-primary"/>
-            }
+
+            <input type="submit" value="Rechercher" class="btn btn-primary" />
+        }
     </div>
     <div class="col-9">
         <div class="row">
             @{
-            int i = 0;
-            while(i < Model.AssociationsList.Count)
-            {
-                @for(int j=0; j<4; j++)
+                int i = 0;
+                while (i < Model.AssociationsList.Count)
                 {
-                            @if(i < Model.AssociationsList.Count)
-                            {
-                                <div class="col-md-4">
+                    @for (int j = 0; j < 4; j++)
+                    {
+                        @if (i < Model.AssociationsList.Count)
+                        {
+                            <div class="col-md-4">
 
-                                    <div class="card align-items-center">
-                                        <img src="@Model.AssociationsList[i].Image">
-                                        <div class="card-body">
-                                            <h5 class="card-title">@Model.AssociationsList[i].Name</h5>
-                                            <p class="card-text">@Model.AssociationsList[i].Description</p>
-                                            <a class="btn btn-primary" href="~/Association/Profil?id=@Model.AssociationsList[i].Id">Plus de détails</a>
-                                        </div>
+                                <div class="card align-items-center">
+                                    <img src="@Model.AssociationsList[i].Image">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@Model.AssociationsList[i].Name</h5>
+                                        <p class="card-text">@Model.AssociationsList[i].Description</p>
+                                        <a class="btn btn-primary" href="~/Association/Profil?id=@Model.AssociationsList[i].Id">Plus de détails</a>
                                     </div>
-                                    </div>
-                                
-                            }
-                            i++;
+                                </div>
+                            </div>
+
                         }
+                        i++;
+                    }
+                }
             }
-        }
         </div>
     </div>
 </div>
+*@
