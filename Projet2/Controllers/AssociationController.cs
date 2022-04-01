@@ -143,6 +143,7 @@ namespace Projet2.Controllers
             viewModel.MemberService = association.MemberService;
             viewModel.DonationService = association.DonationService;
             viewModel.AssociationId = id;
+            ViewBag.Association = associationService.GetAssociation(id);
             return View(viewModel);
         }
 
@@ -163,6 +164,7 @@ namespace Projet2.Controllers
         {
             DocumentsViewModel viewModel = new DocumentsViewModel();
             viewModel.AssociationId = id;
+            viewModel.Association = associationService.GetAssociation(id);
             viewModel.FormerOfficialJournalPublication = documentService.GetOfficialJournalPublicationPath(id);
             viewModel.FormerRepresentativeID = documentService.GetAssociationRepresentativeIDPath(id);
             viewModel.FormerBankDetails = documentService.GetBankDetailsPath(id);
@@ -239,14 +241,14 @@ namespace Projet2.Controllers
                 officialJournalPublication.Type = "OfficialJournalPublication";
                 documentService.CreateDocument(officialJournalPublication);
             }
-            return RedirectToAction("AssociationManagement", "AssociationEvent", new { Id = viewModel.AssociationId });
+            return RedirectToAction("Documents", "Association", new { Id = viewModel.AssociationId });
         }
 
         [Authorize(Roles = "Representative")]
         public IActionResult Member(int id)
         {
             List<Member> members = associationMemberService.GetMembersForAssociation(id);
-            ViewBag.AssociationId = id;
+            ViewBag.Association = associationService.GetAssociation(id);
             return View(members);
         }
 

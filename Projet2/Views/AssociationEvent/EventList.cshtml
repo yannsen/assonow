@@ -6,62 +6,118 @@
     ViewBag.Title = "Modification de l'évènement";
     Layout = "_Layout";
 }
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start list-group-flush" id="menu">
+                    <li class="nav-item">
+                        <img src="@Model.Association.Image" class="rounded" width="250" height="200" />
+                    </li>
+                    @if (Model.Association.IsPublished)
+                    {
+                        @if (Model.Association.TicketService)
+                        {
+                            <li class="nav-item list-group-item bg-light w-100">
+                                <a href="~/AssociationEvent/EventList?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
+                                    <span class="ms-1 d-none d-sm-inline">Gestion des évènements</span>
+                                </a>
+                            </li>
+                        }
+                        @if (Model.Association.MemberService)
+                        {
+                            <li class="nav-item list-group-item bg-light w-100">
+                                <a href="~/Association/Member?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
+                                    <span class="ms-1 d-none d-sm-inline">Gestion de vos adhérents</span>
+                                </a>
+                            </li>
+                        }
+                        @if (Model.Association.DonationService)
+                        {
+                            <li class="nav-item list-group-item bg-light w-100">
+                                <a href="~/Fundraising/Management?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
+                                    <span class="ms-1 d-none d-sm-inline">Gestion de vos collectes</span>
+                                </a>
+                            </li>
+                        }
+                        <li class="nav-item list-group-item bg-light w-100">
+                            <a href="~/Advice/AskForAdvice?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
+                                <span class="ms-1 d-none d-sm-inline">Demander un conseil</span>
+                            </a>
+                        </li>
+                        <li class="nav-item list-group-item bg-light w-100">
+                            <a href="~/Advice/SeeAdvice?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
+                                <span class="ms-1 d-none d-sm-inline">Voir nos réponses</span>
+                            </a>
+                        </li>
+                        <li class="nav-item list-group-item bg-light w-100">
+                            <a href="~/Association/Services?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
+                                <span class="ms-1 d-none d-sm-inline">Nos services</span>
+                            </a>
+                        </li>
+                        <li class="nav-item list-group-item bg-light w-100">
+                            <a href="~/Association/Profil?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
+                                <span class="ms-1 d-none d-sm-inline">Profil de l'association</span>
+                            </a>
+                        </li>
+                    }
+                    <li class="nav-item list-group-item bg-light w-100">
+                        <a href="~/Association/Documents?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
+                            <span class="ms-1 d-none d-sm-inline">Fournir vos documents</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col py-3">
+            @using (Html.BeginForm("EventList", "AssociationEvent", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <fieldset>
+                    <legend align="center">Liste des évènements en cours </legend>
+                    <br>
+                    <br>
+                    <table width="50%" align="center">
+                        <tr>
+                            <th>
+                                Image
+                            </th>
+                            <th>
+                                Titre
+                            </th>
+                            <th>
+                                Description
+                            </th>
+                            @foreach (var item in Model.AssociationEventsList)
+                            {
+                            <tr>
+                                <td>
+                                    <img src="@item.Image" width="100" height="100" />
+                                </td>
+                                <td>
+                                        @item.EventTitle
+                                </td>
+                                <td>
+                                        @item.Description
+                                </td>
+                                <td>
+                                        @Html.ActionLink("Modifier","EventEdit","AssociationEvent", new {id=@Model.SelectedAssociationId,eventid=item.Id},null)
+                                        @Html.ActionLink("Effacer","EventDelete","AssociationEvent",new {id=@Model.SelectedAssociationId,eventid=item.Id}, null)
+                                </td>
+                            </tr>
+                            }
+                        <tr>
+                    </table>
+                    <a href="/AssociationEvent/EventRegister?id=@Model.SelectedAssociationId"></a>
+                </fieldset>
+            }
+        </div>
+    </div>
+</div>
 
-
-
-@using (Html.BeginForm("EventList", "AssociationEvent", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    <fieldset>
-        <legend align="center">Liste des évènements en cours </legend>
-        <br>
-        <br>
-        <table width="50%" align="center">
-            <tr>
-                <th>
-                    Image
-                </th>
-                <th>
-                    Titre
-                </th>
-                <th>
-                    Description
-                </th>
-
-
-                @foreach (var item in Model.AssociationEventsList)
-                {
-
-                <tr>
-                    <td>
-                        <img src="@item.Image" width="100" height="100" />
-                    </td>
-                    <td>
-                            @item.EventTitle
-                    </td>
-                    <td>
-                            @item.Description
-                    </td>
-
-                    <td>
-                            @Html.ActionLink("Modifier","EventEdit","AssociationEvent", new {id=@Model.SelectedAssociationId,eventid=item.Id},null)
-                            @Html.ActionLink("Effacer","EventDelete","AssociationEvent",new {id=@Model.SelectedAssociationId,eventid=item.Id}, null)
-
-                    </td>
-
-                </tr>
-
-                }
-            <tr>
-            </tr>
-
-
-        </table>
-        <div class="col-4 m-5" style="width: 18rem;">
+        @*<div class="col-4 m-5" style="width: 18rem;">
             <a href="/AssociationEvent/EventRegister?id=@Model.SelectedAssociationId">
 
                 <img src="/event/positif.png" alt="Ajouter un évènement" title="Ajouter un évènement" />
 
             </a>
-        </div>
-    </fieldset>
-}
+        </div>*@

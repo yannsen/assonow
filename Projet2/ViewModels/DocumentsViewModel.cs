@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Projet2.Models;
 
 namespace Projet2.ViewModels
 {
     public class DocumentsViewModel
     {
         public int AssociationId { get; set; }
+
+        public Association Association { get; set; }
 
         public IFormFile RepresentativeID { get; set; }
 
