@@ -9,7 +9,6 @@ function onkeyupsum() { // calculate sum and show in textbox
         multiply = Number(document.getElementById("TicketsNumber").value) * Number(document.getElementById("TicketPrice").value);
 
     document.getElementById("Amount").value = multiply;
-    document.getElementById("NewAmount").value = multiply;
 }
 
 
