@@ -157,7 +157,6 @@ namespace Projet2.Controllers
             
         }
 
-
         // view of one event with id of event as parameter
         public ActionResult EventView(int id)
         {
@@ -167,20 +166,6 @@ namespace Projet2.Controllers
 
            return View(viewModel);
         }
-
-
-        [HttpPost]
-        public ActionResult EventView(AssociationEventInfoViewmodel viewModel)
-        {
-            //public
-            //TicketsNumber
-            //MemberID; Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier))
-            //DateTime.Today;
-            
-            return RedirectToAction("TicketRegister", "AssociationEvent");
-
-        }
-
         
         public ActionResult VisibleEventList()
         {

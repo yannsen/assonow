@@ -71,7 +71,7 @@ namespace Projet2.Controllers
             }
             else if (viewModel.CommandId != null)
             {
-                //Redirection commande payé
+                ViewBag.Next = "../AssociationEvent/EventView?id=" + viewModel.CommandId;
             }
             paymentService.CreatePayment(viewModel);
             return View(viewModel);
