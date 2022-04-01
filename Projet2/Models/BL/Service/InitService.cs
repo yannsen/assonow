@@ -269,8 +269,8 @@ namespace Projet2.Models.BL.Service
             {
                 Id = 3,
                 AssociationId = 1,
-                Name = "Rénovation espace Everest",
-                Description = "Description3",
+                Name = "Rénovation des locaux",
+                Description = "Un lieu d’accueil, de Vie, de « résilience ». pour laisser la place au repos, et offrir à ces femmes un temps de reprise de souffle. Un lieu d’accueil, de Vie, de « résilience ». Un lieu « cocooning »pour laisser la place au repos, et offrir à ces femmes un temps de reprise de souffle. Un lieu polyvalent, spécialement aménagé : un grand parc entoure la Maison, avec une vue apaisante sur le Mont-Blanc. Une grande salle d’escalade, un espace zen et son parc aventure.",
                 IsActive = true,
                 CurrentAmount = 500,
                 DesiredAmount = 15000,

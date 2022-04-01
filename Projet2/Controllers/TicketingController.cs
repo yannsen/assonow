@@ -64,7 +64,7 @@ namespace Projet2.Controllers
 
             //PB pour enregistrer les tckets et la commande si ici cela est fait avant validation de la commande
             //PB bis entre donationID et eventID
-            paymentViewModel.DonationId = viewModel.EventId;
+            paymentViewModel.CommandId = viewModel.EventId;
             return RedirectToAction("CreditCard", "Payment", paymentViewModel);
         }
    
