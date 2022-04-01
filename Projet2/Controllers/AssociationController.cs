@@ -21,6 +21,7 @@ namespace Projet2.Controllers
         private IContributionService contributionService;
         private IAssociationMemberService associationMemberService;
         private IFundraisingService fundraisingService;
+        private IAssociationEventService associationEventService;
 
 
 
@@ -33,6 +34,8 @@ namespace Projet2.Controllers
             this.documentService = new DocumentService();
             this._webEnv = environment;
             this.associationMemberService = new AssociationMemberService();
+            this.associationEventService = new AssociationEventService();
+
         }
 
         [Authorize]
@@ -76,6 +79,7 @@ namespace Projet2.Controllers
             AssociationProfileViewModel viewModel = new AssociationProfileViewModel();
             viewModel.Association = associationService.GetAssociation((int)id);
             viewModel.Fundraisings = fundraisingService.GetFundraisingsByAssociation((int)id);
+            viewModel.Events = associationEventService.GetEventsByAssociation((int)id);
             return View(viewModel);
         }
 

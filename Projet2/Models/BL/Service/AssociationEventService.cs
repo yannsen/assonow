@@ -88,7 +88,9 @@ namespace Projet2.Models.BL.Service
 
         }
 
-
-
+        public List<AssociationEvent> GetEventsByAssociation(int id)
+        {
+            return _bddContext.AssociationEvent.Where(e => e.AssociationId == id).ToList();
+        }
     }
 }
