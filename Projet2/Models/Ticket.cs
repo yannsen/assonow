@@ -9,7 +9,7 @@ namespace Projet2.Models
         public string Category { get; set; }
         public int OrderId { get; set; }
         public int AssociationEventId { get; set; }
-        public DateTime purchaseDate { get; set; }
+
 
 
     }

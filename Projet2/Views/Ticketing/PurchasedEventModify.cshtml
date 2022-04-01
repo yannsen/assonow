@@ -1,7 +1,7 @@
 ﻿@model Projet2.ViewModels.TicketingViewModel
 
 @{
-    ViewBag.Title = "Commande de billets";
+    ViewBag.Title = "Changement de billets";
     Layout = "_Layout";
 }
 <script type="text/javascript" src="/js/validateresult.js"></script> 
@@ -27,10 +27,22 @@
                 <td>
                    
                     @Html.LabelFor(m => m.TicketsNumber)
+                    @Html.DisplayFor(m => m.TicketsNumber)
+                    Somme déjà payée
+                    @Html.DisplayFor(m=>m.Amount)
+                    
+                </td>
+            </tr>
+
+             <tr> 
+                <td>
+                   
+                    @Html.LabelFor(m => m.TicketsNumber)
                     @Html.TextBoxFor(m => m.TicketsNumber,new {@class="multi", @onkeyup="setTimeout(check, 1000);onkeyupsum()", @autocomplete="off"})
-                     @Html.DisplayFor(m=>m.TicketPrice,new {@class="multi",})
+                     @Html.DisplayFor(m=>m.TicketPrice)
                     X
                     @Html.TextBoxFor(m=>m.Amount)
+                     @Html.TextBoxFor(m=>m.NewAmount)
                     
                 </td>
             </tr>

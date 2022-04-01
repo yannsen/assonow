@@ -42,6 +42,10 @@ namespace Projet2.Models.BL.Service
 
             InitializeDB_Adresses();
 
+            InitializeDB_Order();
+
+            InitializeDB_Ticket();
+            
             InitializeDB_Contribution();
 
             _bddContext.SaveChanges();
@@ -156,8 +160,8 @@ namespace Projet2.Models.BL.Service
         // ASSOCIATIONS EVENTS
         public void InitializeDB_AEvents()
         {
-            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 1, EventTitle = " Concert des petits Princes", Description = "Le plus grand concert javmais vu avec Rammstein", Image = "lien vers image", Date = new DateTime(2022, 03, 24), EventType = "Concert", Speakers = "Al Capone", Artists = " Rammstein", TicketsTotalNumber = 3210, AddressId = 1, AssociationId = 1 });
-            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 2, EventTitle = " Concert des WWE", Description = "Le plus grand concert ou cela va se bastonner", Image = "lien vers image", Date = new DateTime(2022, 03, 24), EventType = "Concert", Speakers = "Al Bundy", Artists = " Croix de bois", TicketsTotalNumber = 2350, AddressId = 2, AssociationId = 4 });
+            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 1, EventTitle = " Concert des petits Princes", Description = "Le plus grand concert javmais vu avec Rammstein", Image = "/FileSystem/Pictures/aigles.jpeg", Date = new DateTime(2022, 03, 24), EventType = "Concert", Speakers = "Al Capone", Artists = " Rammstein", TicketsTotalNumber = 100, RemainingTickets= 6, AddressId = 1, AssociationId = 1,TicketPrice= 12.0 });
+            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 2, EventTitle = " Concert des WWE", Description = "Le plus grand concert ou cela va se bastonner", Image = "/FileSystem/Pictures/butterfly17532.jpg", Date = new DateTime(2022, 03, 24), EventType = "Concert", Speakers = "Al Bundy", Artists = " Croix de bois", TicketsTotalNumber = 2350, RemainingTickets = 2350, AddressId = 2, AssociationId = 4, TicketPrice = 15.50 });
         }
         
         // DOCUMENTS
@@ -181,6 +185,7 @@ namespace Projet2.Models.BL.Service
             _bddContext.Fundraising.Add(new Fundraising { Id = 8, AssociationId = 4, Name = "Recherche scientifique", Description = "Description8", IsActive = true, CurrentAmount = 1, DesiredAmount = 100000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Humanitaire" });
             _bddContext.Fundraising.Add(new Fundraising { Id = 9, AssociationId = 5, Name = "J'ai plus d'idée !", Description = "Description9", IsActive = true, CurrentAmount = 2500, DesiredAmount = 10000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Culture" });
             _bddContext.Fundraising.Add(new Fundraising { Id = 10, AssociationId = 5, Name = "J'ai plus d'idée !", Description = "Description10", IsActive = false, CurrentAmount = 0, DesiredAmount = 15000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Loisirs" });
+            _bddContext.Fundraising.Add(new Fundraising { Id = 11, AssociationId = 1, Name = "Course des héros !", Description = "Description11", IsActive = true, CurrentAmount = 0, DesiredAmount = 15000, StartingDate = new DateTime(2022, 03, 30), EndingDate = new DateTime(2022, 03, 30), Field = "Sport" });
 
         }
 
@@ -258,11 +263,18 @@ namespace Projet2.Models.BL.Service
             _bddContext.Address.Add(new Address { Id = 50, RoadNumber = "2", Road = "Rue Jay Forrester", City = "Nantes", PostalCode = "44109", Country = "France" });
         }
 
-        public void InitializeDB_Event()
+        // Commandes
+        public void InitializeDB_Order()
         {
-            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 1, EventTitle = " Concert des petits Princes",Description="Le plus grand concert javmais vu avec Rammstein", Image = "/FileSystem/Pictures/aigles.jpeg", Date = new DateTime(2022, 03, 24), EventType ="Concert", Speakers ="Al Capone", Artists=" Rammstein",TicketsTotalNumber=3210,AddressId=1,AssociationId=1, TicketPrice = 14 });
-            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 2, EventTitle = " Concert des WWE", Description = "Le plus grand concert ou cela va se bastonner", Image = "/FileSystem/Pictures/butterfly17532.jpg", Date = new DateTime(2022, 03, 24), EventType = "Concert", Speakers = "Al Bundy", Artists = " Croix de bois", TicketsTotalNumber = 2350, AddressId = 2, AssociationId = 4,TicketPrice = 12 });
+            _bddContext.Order.Add(new Order { Id = 1, MemberId = 2, TicketsNumber = 5, PurchaseDate = new DateTime(2022, 03, 30), Amount=50 });
+            _bddContext.Order.Add(new Order { Id = 2, MemberId = 2, TicketsNumber =6, PurchaseDate = new DateTime(2022, 03, 30), Amount = 50 });
+        }
 
+        // Commandes
+        public void InitializeDB_Ticket()
+        {
+            _bddContext.Ticket.Add(new Ticket { Id = 1, Position = 1,OrderId = 1,AssociationEventId = 1});
+            _bddContext.Ticket.Add(new Ticket { Id = 2, Position = 2, OrderId = 2, AssociationEventId = 2});
         }
 
         public void Dispose()

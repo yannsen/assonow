@@ -1,4 +1,4 @@
-﻿using Projet2.Models.BL.Interface;
+using Projet2.Models.BL.Interface;
 using System;
 using Projet2.ViewModels;
 using Microsoft.AspNetCore.Authentication;
@@ -96,6 +96,11 @@ namespace Projet2.Models.BL.Service
             var AllAssocationsEvent = query.ToList();
             return AllAssocationsEvent;
 
+        }
+        
+        public List<AssociationEvent> GetEventsByAssociation(int id)
+        {
+            return _bddContext.AssociationEvent.Where(e => e.AssociationId == id).ToList();
         }
 
     }
