@@ -3066,7 +3066,7 @@ textarea {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-family: "Montserrat", "Helvetica", Arial, sans-serif;
-  font-weight: 300;
+  font-weight: 600 !important;
 }
 
 h1,
@@ -3292,7 +3292,7 @@ blockquote small {
 body {
   color: #66615b;
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 500;
   font-family: 'Montserrat', "Helvetica", Arial, sans-serif;
 }
 
