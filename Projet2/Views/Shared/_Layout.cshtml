@@ -98,21 +98,21 @@
                                     if (User.IsInRole("Administrator"))
                                     {
                                         <li class="nav-item">
-                                            <a href="~/AdminDashboard/Index" target="_blank" class="btn btn-info">Tableau de bord</a>
+                                            <a href="~/AdminDashboard/Index" class="btn btn-info">Tableau de bord</a>
                                         </li>
                                     }
                                     else if (User.IsInRole("Representative"))
                                     {
-                                        <li class="nav-item "><a href="~/AssociationEvent/Index" target="_blank" class="btn btn-info">Tableau de bord</a>>  </li>
+                                        <li class="nav-item "><a href="~/AssociationEvent/Index" class="btn btn-info">Tableau de bord</a></li>
                                     }
                                     //Bouton pour le role legalexpert
                                     else if (User.IsInRole("LegalExpert"))
                                     {
-                                        <li class="nav-item px-2"> <a href="~/Advice/Index" target="_blank" class="btn btn-info">Tableau de bord</a></li>
+                                        <li class="nav-item px-2"> <a href="~/Advice/Index" class="btn btn-info">Tableau de bord</a></li>
                                     }
                                     else if (User.IsInRole("Member"))
                                     {
-                                        <li class="nav-item px-2"> <a href="~/Association/Inscrire" target="_blank" class="btn btn-info">Inscrire une association</a></li>
+                                        <li class="nav-item px-2"> <a href="~/Association/Inscrire" class="btn btn-info">Inscrire une association</a></li>
                                     }
                                 }
                             }
