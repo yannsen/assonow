@@ -363,6 +363,7 @@ h4 {
     padding-left: 0px !important;
 }
 
+
 /*Newsletter*/
 newsletter {
     padding: 80px 0;
@@ -400,3 +401,10 @@ newsletter {
         color: #fff;
         font-weight: 600;
     }
+
+/*.gestionD h2 {
+    padding-bottom: 75px !important;
+    padding-top: 10px !important;
+}
+*/
+
