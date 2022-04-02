@@ -53,7 +53,7 @@
                             <a href="~/Association/ListeDesAssociations" class="nav-link"><i class="nc-icon nc-bullet-list-67"></i> Associations</a>
                         </li>
                         <li class="nav-item ">
-                            <a href="~/AssociationEvent/VisibleEventList"  class="nav-link"><i class="nc-icon nc-badge"></i> Evènements</a>
+                            <a href="~/AssociationEvent/VisibleEventList" class="nav-link"><i class="nc-icon nc-badge"></i> Evènements</a>
                         <li class="nav-item ">
                             <a href="~/Fundraising/FundraisingList" class="nav-link"><i class="nc-icon nc-bank"></i> Collectes</a>
                         </li>
@@ -73,11 +73,12 @@
                                         Mon espace
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="~/Compte/Creer">S'inscrire</a>
-                                        <a class="dropdown-item" href="~/Compte/Connexion">Se connecter</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Besoin d'aide ?</a>
-                                    </div>
+                                            <a class="dropdown-item" href="~/Compte/Creer">S'inscrire</a>
+                                            <a class="dropdown-item" href="~/Compte/Adhesions">Mes adhésions</a>
+                                            <a class="dropdown-item" href="~/Ticketing/MemberOrderList">Mes commandes</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="~/Compte/Connexion">Se connecter</a>
+                                        </div>
                                 </li>
                             }
                             else
@@ -88,9 +89,10 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="~/Compte/Modifier">Modifier mes informations</a>
-                                        <a class="dropdown-item" href="~/Compte/Deconnexion">Se déconnecter</a>
+                                        <a class="dropdown-item" href="~/Compte/Adhesions">Mes adhésions</a>
+                                        <a class="dropdown-item" href="~/Ticketing/MemberOrderList">Mes commandes</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Besoin d'aide ?</a>
+                                        <a class="dropdown-item" href="~/Compte/Deconnexion">Se déconnecter</a>
                                     </div>
                                 </li>
 
@@ -110,7 +112,11 @@
                                 //Bouton pour le role legalexpert
                                 else if (User.IsInRole("LegalExpert"))
                                 {
-                                    <li class="nav-item px-2"> <a href="~/Association/Inscrire" target="_blank" class="btn btn-info">Tableau de bord</a></li>
+                                    <li class="nav-item px-2"> <a href="~/Advice/Index" target="_blank" class="btn btn-info">Tableau de bord</a></li>
+                                }
+                                else if (User.IsInRole("Member"))
+                                {
+                                    <li class="nav-item px-2"> <a href="~/Association/Inscrire" target="_blank" class="btn btn-info">Inscrire une association</a></li>
                                 }
                             }
                         }
@@ -122,18 +128,18 @@
         </nav>
     </section>
 
- 
+
 
     <div>
         @RenderBody()
     </div>
 
 
-     <footer class="  footer bg-dark py-4 mt-auto footer-custom  black-footer  ">
+    <footer class="  footer bg-dark py-4 mt-auto footer-custom  black-footer  ">
         <div class="container px-5">
             <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-               <a class="link-dark " href="#!">
-                <div class="col-auto"><div class=" m-0 ">Copyright &copy; AssoNow 2022</div></div>
+                <a class="link-dark " href="#!">
+                    <div class="col-auto"><div class=" m-0 ">Copyright &copy; AssoNow 2022</div></div>
                 </a>
                 <div class="col-auto">
                     <a class="link-dark " href="#!">Qui sommes-nous ?</a>

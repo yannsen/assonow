@@ -11,12 +11,14 @@ namespace Projet2.Controllers
     {
         private IAssociationService associationService;
         private IFundraisingService fundraisingService;
+        private IAssociationEventService associationEventService;
 
         BddContext _bddContext;
         public HomeController()
         {
             this.associationService = new AssociationService();
             this.fundraisingService = new FundraisingService();
+            this.associationEventService = new AssociationEventService();
             this._bddContext = new BddContext();
         }
 
@@ -25,6 +27,7 @@ namespace Projet2.Controllers
             IndexViewModel viewModel = new IndexViewModel();
             viewModel.Associations =  associationService.GetHighlightedAssociations();
             viewModel.Fundraisings = fundraisingService.GetHighlightedFundraisings();
+            viewModel.AssociationEvents = associationEventService.GetAllAssociationEvents();
             return View(viewModel);
         }
     }
