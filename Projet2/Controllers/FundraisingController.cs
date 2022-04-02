@@ -113,21 +113,15 @@ namespace Projet2.Controllers
             viewModel.FundraisingsList = fundraisingService.GetAllFundraisings();
             viewModel.SearchIfActive = true;
             List<string> imagesList = new List<string>();
-            foreach (Fundraising fundraising in viewModel.FundraisingsList)
-                imagesList.Add(associationService.GetAssociationByFundraisingId(fundraising.Id).Image);
-            viewModel.FundraisingsImage = imagesList;
             return View(viewModel);
         }
 
         [HttpPost]
         public IActionResult FundraisingList(FundraisingListViewModel viewModel)
         {
+            if (viewModel.AssociationNameToSearch == null) viewModel.AssociationNameToSearch = "";
             if (viewModel.FundraisingNameToSearch == null) viewModel.FundraisingNameToSearch = "";
             viewModel.FundraisingsList = fundraisingService.GetFundraisingsToSearch(viewModel);
-            List<string> imagesList = new List<string>();
-            foreach (Fundraising fundraising in viewModel.FundraisingsList)
-                imagesList.Add(associationService.GetAssociationByFundraisingId(fundraising.Id).Image);
-            viewModel.FundraisingsImage = imagesList;
             return View(viewModel);
         }
 

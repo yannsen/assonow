@@ -116,6 +116,23 @@ namespace Projet2.Models.BL.Service
             return GetAssociationEvent(idAssociationEvent);
         }
 
+        public List<AssociationEvent> GetAssociationEventToSearch(AssociationEventInfoViewmodel viewModel)
+        {
+            List<AssociationEvent> resultEvent = _bddContext.AssociationEvent.Where(f => f.EventTitle.Contains(viewModel.EventNameToSearch)).ToList();
+            List<Association> resultAsso = _bddContext.Association.Where(a => a.Name.Contains(viewModel.AssociationNameToSearch)).ToList();
+            List<int> resultAssoInt = new List<int>();
+            foreach (Association asso in resultAsso)
+                resultAssoInt.Add(asso.Id);
+            List<AssociationEvent> rechercheFinale = new List<AssociationEvent>();
+            foreach (AssociationEvent associationEvent in resultEvent)
+            {
+                if (resultAssoInt.Contains(associationEvent.AssociationId))
+                {
+                    rechercheFinale.Add(associationEvent);
+                }
+            }
+            return rechercheFinale;
+        }
     }
 
 }

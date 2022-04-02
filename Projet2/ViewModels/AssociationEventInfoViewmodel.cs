@@ -23,5 +23,11 @@ namespace Projet2.ViewModels
         public Association Association { get; set; }
 
         public int TicketsTotalNumber { get; set; }
+
+        [Display(Name = "Nom de l'association :")]
+        public string AssociationNameToSearch { get; set; }
+
+        [Display(Name = "Nom de l'évènement :")]
+        public string EventNameToSearch { get; set; }
     }
 }
