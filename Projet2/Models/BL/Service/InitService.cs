@@ -250,8 +250,10 @@ namespace Projet2.Models.BL.Service
                 DesiredAmount = 10000,
                 StartingDate = new DateTime(2022, 03, 30),
                 EndingDate = new DateTime(2022, 04, 20),
+                Image = "/FileSystem/Pictures/chacunsoneverest1.jpg",
+                IsHighlighted = true,
                 Field = "Social"
-            });
+            }) ;
             _bddContext.Fundraising.Add(new Fundraising
             {
                 Id = 2,
@@ -263,6 +265,8 @@ namespace Projet2.Models.BL.Service
                 DesiredAmount = 20000,
                 StartingDate = new DateTime(2022, 03, 30),
                 EndingDate = new DateTime(2022, 03, 30),
+                Image = "/FileSystem/Pictures/chacunsoneverest2.jpg",
+                IsHighlighted = true,
                 Field = "Social"
             });
             _bddContext.Fundraising.Add(new Fundraising
@@ -276,84 +280,98 @@ namespace Projet2.Models.BL.Service
                 DesiredAmount = 15000,
                 StartingDate = new DateTime(2022, 04, 02),
                 EndingDate = new DateTime(2022, 05, 15),
+                Image = "/FileSystem/Pictures/chacunsoneverest3.jpg",
+                IsHighlighted = true,
                 Field = "Social"
             });
             _bddContext.Fundraising.Add(new Fundraising
             {
                 Id = 4,
                 AssociationId = 2,
-                Name = "Blocage mine d'or",
-                Description = "Description4",
+                Name = "Financement cantine",
+                Description = "Au sud de la Grande « Île Rouge », à Tuléar, la sous-nutrition et la malnutrition sont particulièrement dramatiques. Selon les autorités locales, le taux de fréquentation de l’école est inférieur à 40%, et le taux réel de scolarisation encore plus faible. Si les enfants dans cette région ont certes un toit et une famille, très souvent, ils ne bénéficient que d’un seul repas par jour, parfois moins. C’est pourquoi l’association a décidé d’intervenir dans des cantines scolaires à Tuléar.",
                 IsActive = true,
                 CurrentAmount = 0,
                 DesiredAmount = 18000,
-                StartingDate = new DateTime(2022, 03, 30),
-                EndingDate = new DateTime(2022, 03, 30),
+                StartingDate = new DateTime(2022, 03, 15),
+                EndingDate = new DateTime(2022, 04, 30),
+                Image = "/FileSystem/Pictures/enfantsoleil1.jpg",
+                IsHighlighted = true,
                 Field = "Enseignement"
             });
             _bddContext.Fundraising.Add(new Fundraising
             {
                 Id = 5,
                 AssociationId = 2,
-                Name = "Construction hopital",
-                Description = "Description5",
+                Name = "Nouveau centre d'acceuil",
+                Description = "Les enfants sont identifiés dans le cadre de rondes dans la ville organisées par un assistant social et un éducateur faisant partie du personnel. Leur rôle est de proposer aux enfants de passer la nuit en sécurité dans un Centre d’Accueil et d’Ecoute. Au sein de ce centre, les enfants sont accueillis par un éducateur et ont la possibilité de se laver, de prendre un repas, de jouer avec d’autres enfants et de dormir en sécurité.",
                 IsActive = true,
                 CurrentAmount = 0,
                 DesiredAmount = 5000,
                 StartingDate = new DateTime(2022, 03, 30),
-                EndingDate = new DateTime(2022, 03, 30),
+                EndingDate = new DateTime(2022, 07, 06),
+                Image = "/FileSystem/Pictures/enfantsoleil2.jpg",
+                IsHighlighted = true,
                 Field = "Défense des droits"
             });
             _bddContext.Fundraising.Add(new Fundraising
             {
                 Id = 6,
                 AssociationId = 2,
-                Name = "Achat lot de maillot",
-                Description = "Description6",
+                Name = "Nouveau foyer d'adolescent",
+                Description = "A l’adolescence, l’enfant peut entamer une formation professionnelle ou des études supérieures, le jeune intègrera les Foyers des Grands Adolescents Garçons ou Filles (FGAG/FGAF). Il y rejoindra d’autres jeunes de son âge, également en formation ou étudiants. Ces ainés l’aideront à s’impliquer dans sa formation ou sa recherche de premier emploi. Pour soutenir les jeunes dans la recherche de leur orientation, l’association a développé des activités éducatives qui leurs permettent de découvrir de nouveaux métiers.",
                 IsActive = true,
                 CurrentAmount = 3000,
                 DesiredAmount = 10000,
-                StartingDate = new DateTime(2022, 03, 30),
-                EndingDate = new DateTime(2022, 03, 30),
+                StartingDate = new DateTime(2022, 03, 15),
+                EndingDate = new DateTime(2022, 04, 15),
+                Image = "/FileSystem/Pictures/enfantsoleil3.jpg",
+                IsHighlighted = true,
                 Field = "Humanitaire"
             });
             _bddContext.Fundraising.Add(new Fundraising
             {
                 Id = 7,
                 AssociationId = 3,
-                Name = "Stop aux ailerons de requin !",
-                Description = "Description7",
+                Name = "Soutien CRCM Bordeaux",
+                Description = "Depuis 1992, Vaincre la Mucoviscidose apporte son soutien aux centres de soins. Les subventions attribuées doivent permettre de mieux répondre aux attentes des patients et des familles quant à l’organisation, la qualité et la continuité des soins, en adéquation avec les recommandations des professionnels de santé.",
                 IsActive = true,
                 CurrentAmount = 50,
                 DesiredAmount = 75000,
                 StartingDate = new DateTime(2022, 03, 30),
-                EndingDate = new DateTime(2022, 03, 30),
+                EndingDate = new DateTime(2022, 04, 30),
+                Image = "/FileSystem/Pictures/muco2.jpg",
+                IsHighlighted = true,
                 Field = "Recherche"
             });
             _bddContext.Fundraising.Add(new Fundraising
             {
                 Id = 8,
                 AssociationId = 3,
-                Name = "Recherche scientifique",
-                Description = "Description8",
+                Name = "Soutien CRCM Dijon",
+                Description = "Depuis 1992, Vaincre la Mucoviscidose apporte son soutien aux centres de soins. Les subventions attribuées doivent permettre de mieux répondre aux attentes des patients et des familles quant à l’organisation, la qualité et la continuité des soins, en adéquation avec les recommandations des professionnels de santé.",
                 IsActive = true,
-                CurrentAmount = 1,
+                CurrentAmount = 74250,
                 DesiredAmount = 100000,
-                StartingDate = new DateTime(2022, 03, 30),
-                EndingDate = new DateTime(2022, 03, 30),
+                StartingDate = new DateTime(2022, 02, 28),
+                EndingDate = new DateTime(2022, 04, 07),
+                Image = "/FileSystem/Pictures/muco3.jpg",
+                IsHighlighted = true,
                 Field = "Humanitaire"
             });
             _bddContext.Fundraising.Add(new Fundraising
             {
                 Id = 9,
                 AssociationId = 3,
-                Name = "J'ai plus d'idée !",
-                Description = "Description9",
+                Name = "Soutien CRCM Caen",
+                Description = "Depuis 1992, Vaincre la Mucoviscidose apporte son soutien aux centres de soins. Les subventions attribuées doivent permettre de mieux répondre aux attentes des patients et des familles quant à l’organisation, la qualité et la continuité des soins, en adéquation avec les recommandations des professionnels de santé.",
                 IsActive = true,
                 CurrentAmount = 2500,
                 DesiredAmount = 10000,
                 StartingDate = new DateTime(2022, 03, 30),
-                EndingDate = new DateTime(2022, 03, 30),
+                EndingDate = new DateTime(2022, 04, 15),
+                Image = "/FileSystem/Pictures/muco1.jpg",
+                IsHighlighted = true,
                 Field = "Culture"
             });
         }
