@@ -35,10 +35,13 @@ h4 {
 
 .card-text {
     max-width: 300px !important;
+    max-height: 90px;
     display: -webkit-box !important;
     -webkit-line-clamp: 4 !important;
     -webkit-box-orient: vertical !important;
     overflow: scroll !important;
+    text-overflow: ellipsis !important;
+    white-space: normal;
 }
 
     .card-text::-webkit-scrollbar {
