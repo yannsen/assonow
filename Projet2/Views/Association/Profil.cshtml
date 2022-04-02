@@ -100,21 +100,16 @@
                                 </time>
                                 <img alt="@item.EventTitle" src="@item.Image" />
                                 <div class="info">
-                                    <h2 class="title">@item.EventTitle</h2>
+                                    <a href="~/AssociationEvent/EventView?id=@item.Id">
+                                        <h2 class="title">@item.EventTitle</h2>
+                                     </a>
                                     @*<p class="desc">@item.Description</p>*@
                                     <ul>
                                         <li style="width:50%;">Nombre de tickets restant : @item.RemainingTickets<span class="glyphicon glyphicon-ok"></span></li>
-                                        <li style="width:50%;">@item.TicketPrice <span>€</span></li>
+                                        <li style="width:50%;">Prix : @item.TicketPrice <span>€</span></li>
                              
                                     </ul>
                                 </div>
-                                @*<div class="social">
-                                    <ul>
-                                        <li class="facebook" style="width:33%;"><a href="#facebook"><span class="fa fa-facebook"></span></a></li>
-                                        <li class="twitter" style="width:34%;"><a href="#twitter"><span class="fa fa-twitter"></span></a></li>
-                                        <li class="google-plus" style="width:33%;"><a href="#google-plus"><span class="fa fa-google-plus"></span></a></li>
-                                    </ul>
-                                </div>*@
                             </li>
                         }
                     </ul>

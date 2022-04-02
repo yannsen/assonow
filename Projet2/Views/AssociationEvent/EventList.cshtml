@@ -7,8 +7,8 @@
     Layout = "_Layout";
 }
 <div class="container-fluid">
-    <div class="row flex-nowrap">
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
+    <div class="row "> @*flex-nowrap*@
+        <div class="col-3 col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start list-group-flush" id="menu">
                     <li class="nav-item">
@@ -69,7 +69,45 @@
                 </ul>
             </div>
         </div>
-        <div class="col py-3">
+        </div>
+        </div>
+
+        <section>
+        <div class="text-center">
+            <h2 class="fw-bolder">Liste des événements en cours </h2>
+            <p class="lead fw-normal text-muted mb-5"></p>
+        </div>
+        <div class="row justify-content-md-center">
+            @foreach (var item in Model.AssociationEventsList)
+            {
+                <div class="col-sm-9 mx-auto ">
+                    <div class="card shadow border-0">
+                        <img class="card-img-top" src="@item.Image" alt="@item.EventTitle" />
+                        <div class="card-body">
+                            <div class="badge bg-primary bg-gradient rounded-pill mb-2">@item.EventTitle</div>
+                            <a class="text-decoration-none link-dark stretched-link" asp-controller="Fundraising" asp-action="Profile" asp-route-id="@item.Id"><h5 class="card-title mb-3">@item.EventTitle</h5></a>
+                            <p class="card-text mb-0">@item.Description</p>
+                            <p class="card-text mb-0">Le nombre de tickets restant : @item.RemainingTickets</p>
+                            <p class="card-text mb-0">Le Prix : @item.TicketPrice</p>
+                        </div>
+                        <div> 
+                            <a class="btn btn-primary btn-sm px-4 me-sm-3" href="~/AssociationEvent/EventEdit?id=@Model.SelectedAssociationId&eventid=@item.Id">Modifier</a>
+
+                            <a class="btn btn-primary btn-sm px-4 me-sm-3" href="~/AssociationEvent/EventDelete?id=@Model.SelectedAssociationId&eventid=@item.Id">Supprimer</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+
+
+
+
+
+
+
+        @*<div class="col py-3">
             @using (Html.BeginForm("EventList", "AssociationEvent", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 <fieldset>
@@ -122,10 +160,10 @@
 
 
 
-        @*<div class="col-4 m-5" style="width: 18rem;">
+        <div class="col-4 m-5" style="width: 18rem;">
             <a href="/AssociationEvent/EventRegister?id=@Model.SelectedAssociationId">
             </a>
-        </div>*@
+        </div>
         <section>
         <div class="text-center">
             <h2 class="fw-bolder">NOS EVENEMENTS</h2>
@@ -167,4 +205,4 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>*@
