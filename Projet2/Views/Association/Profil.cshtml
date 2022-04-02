@@ -94,27 +94,27 @@
                             <li>
                                 <time datetime="@item.Date">
                                     <span class="day">@item.Date.Day</span>
-                                    <span class="month">@item.Date.Month</span>
+                                    <span class="month">@item.Date.ToString("MMMM")</span>
                                     <span class="year">@item.Date.Year</span>
                                     <span class="time">ALL DAY</span>
                                 </time>
                                 <img alt="@item.EventTitle" src="@item.Image" />
                                 <div class="info">
                                     <h2 class="title">@item.EventTitle</h2>
-                                    <p class="desc">@item.Description</p>
+                                    @*<p class="desc">@item.Description</p>*@
                                     <ul>
-                                        <li style="width:33%;">@item.TicketsTotalNumber <span class="glyphicon glyphicon-ok"></span></li>
-                                        <li style="width:34%;">@item.TicketPrice <span class="fa fa-question"></span></li>
-                                        <li style="width:33%;">103 <span class="fa fa-envelope"></span></li>
+                                        <li style="width:50%;">Nombre de tickets restant : @item.RemainingTickets<span class="glyphicon glyphicon-ok"></span></li>
+                                        <li style="width:50%;">@item.TicketPrice <span>€</span></li>
+                             
                                     </ul>
                                 </div>
-                                <div class="social">
+                                @*<div class="social">
                                     <ul>
                                         <li class="facebook" style="width:33%;"><a href="#facebook"><span class="fa fa-facebook"></span></a></li>
                                         <li class="twitter" style="width:34%;"><a href="#twitter"><span class="fa fa-twitter"></span></a></li>
                                         <li class="google-plus" style="width:33%;"><a href="#google-plus"><span class="fa fa-google-plus"></span></a></li>
                                     </ul>
-                                </div>
+                                </div>*@
                             </li>
                         }
                     </ul>
