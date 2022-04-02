@@ -1,0 +1,33 @@
+﻿@model Projet2.ViewModels.TicketingViewModel
+
+@{
+    ViewBag.Title = "Annulation de l'achat";
+    Layout = "_Layout";
+}
+
+
+
+<legend align="center">Confirmez vous l'annulation de votre achat ?</legend>
+<br>
+<div class="d-flex flex-row justify-content-center w-100">
+
+    <table>
+        <tr>
+            <td>
+                <a class="btn btn-primary p-3" href="/Ticketing/PurchasedEventDelete?orderId=@Model.IdOrder">oui </a>
+            </td>
+            <td>
+
+            </td>
+
+            <td>
+                <a class="btn btn-primary p-3" href="/Ticketing/MemberOrderList">non </a>
+            </td>
+        </tr>
+
+    </table>
+
+</div>
+
+<br />
+<br />
