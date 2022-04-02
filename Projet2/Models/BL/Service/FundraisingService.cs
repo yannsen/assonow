@@ -34,8 +34,21 @@ namespace Projet2.Models.BL.Service
 
         public List<Fundraising> GetFundraisingsToSearch(FundraisingListViewModel viewModel)
         {
-            return _bddContext.Fundraising.Where(f => f.IsActive == viewModel.SearchIfActive)
+            List<Fundraising> resultFund = _bddContext.Fundraising.Where(f => f.IsActive == viewModel.SearchIfActive)
                 .Where(f => f.Name.Contains(viewModel.FundraisingNameToSearch)).ToList();
+            List<Association> resultAsso = _bddContext.Association.Where(a => a.Name.Contains(viewModel.AssociationNameToSearch)).ToList();
+            List<int> resultAssoInt = new List<int>();
+            foreach(Association asso in resultAsso)
+                resultAssoInt.Add(asso.Id);
+            List<Fundraising> rechercheFinale = new List<Fundraising>();
+            foreach(Fundraising fundraising in resultFund)
+            {
+                if(resultAssoInt.Contains(fundraising.AssociationId))
+                {
+                    rechercheFinale.Add(fundraising);
+                }
+            }
+            return rechercheFinale;
         }
 
         public Fundraising GetFundraisingByDonationId(int id)

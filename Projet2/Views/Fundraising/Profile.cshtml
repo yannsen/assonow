@@ -41,10 +41,7 @@
             </div>
             <div class="d-flex justify-content-center p-3">
                 @{
-                    if (User.IsInRole("Member") || User.IsInRole("Representative"))
-                    {
-                        <a class="btn btn-primary p-3" href="/Donation/Association/@Model.AssociationId">Participer</a>
-                    }
+                    <a class="btn btn-primary p-3" href="/Donation/Fundraising/@Model.Id">Participer</a>
                 }
             </div>
         </div>
