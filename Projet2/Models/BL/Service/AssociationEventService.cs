@@ -22,6 +22,11 @@ namespace Projet2.Models.BL.Service
             this.addressService = new AddressService();
         }
 
+        public AssociationEvent GetAssociationEvent(int id)
+        {
+            return _bddContext.AssociationEvent.Find(id);
+        }
+
         public int CreateAssociationEvent(AssociationEventInfoViewmodel viewModel)
         {
             int idAddress = addressService.CreateAddress(viewModel.Address);
@@ -101,6 +106,14 @@ namespace Projet2.Models.BL.Service
         public List<AssociationEvent> GetEventsByAssociation(int id)
         {
             return _bddContext.AssociationEvent.Where(e => e.AssociationId == id).ToList();
+        }
+
+
+
+        public AssociationEvent GetAssociationEventWithOrderId(int id)
+        {
+            int idAssociationEvent = _bddContext.Ticket.FirstOrDefault(t => t.OrderId == id).AssociationEventId;
+            return GetAssociationEvent(idAssociationEvent);
         }
 
     }

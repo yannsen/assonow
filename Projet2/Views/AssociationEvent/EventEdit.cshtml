@@ -30,7 +30,7 @@
             </tr>
             <tr>
                 <td align="right">@Html.LabelFor(m => Model.AssociationEvent.Description)</td>
-                <td>@Html.TextBoxFor(m => Model.AssociationEvent.Description)</td>
+                <td>@Html.TextAreaFor(m => Model.AssociationEvent.Description)</td>
                 <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.Description)</td>
             </tr>
             <tr>
@@ -65,6 +65,11 @@
                 <td align="right">@Html.LabelFor(m => Model.AssociationEvent.TicketsTotalNumber)</td>
                 <td>@Html.TextBoxFor(m => Model.AssociationEvent.TicketsTotalNumber)</td>
                 <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.TicketsTotalNumber)</td>
+            </tr>
+                        <tr>
+                <td align="right">@Html.LabelFor(m => Model.AssociationEvent.TicketPrice)</td>
+                <td>@Html.TextBoxFor(m => Model.AssociationEvent.TicketPrice)</td>
+                <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.TicketPrice)</td>
             </tr>
 
              <tr>

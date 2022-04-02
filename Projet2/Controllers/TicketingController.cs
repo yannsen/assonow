@@ -36,7 +36,7 @@ namespace Projet2.Controllers
             viewModel.EventTitle = associationEvent.EventTitle;
             viewModel.EventId = id;
             viewModel.RemainingTicket = associationEvent.RemainingTickets;//RemainingTicket;
-            viewModel.Threshold = 10*Convert.ToInt32(associationEvent.TicketsTotalNumber)/100;
+            viewModel.Threshold = 10 * Convert.ToInt32(associationEvent.TicketsTotalNumber) / 100;
             viewModel.Position = associationEvent.TicketsTotalNumber - viewModel.RemainingTicket;
 
 
@@ -52,7 +52,7 @@ namespace Projet2.Controllers
             DateTime _PurchaseDate = DateTime.Now;
             viewModel.Amount = viewModel.TicketPrice * viewModel.TicketsNumber;
 
-             _OrderId = ticketingService.CreateOrder(_MemberId, viewModel.TicketsNumber, _PurchaseDate, viewModel.Amount);
+            _OrderId = ticketingService.CreateOrder(_MemberId, viewModel.TicketsNumber, _PurchaseDate, viewModel.Amount);
             for (int i = 1; i <= viewModel.TicketsNumber; i++)
             {
                 viewModel.Position += 1;
@@ -62,12 +62,10 @@ namespace Projet2.Controllers
             paymentViewModel.Amount = viewModel.Amount.ToString();
 
 
-            //PB pour enregistrer les tckets et la commande si ici cela est fait avant validation de la commande
-            //PB bis entre donationID et eventID
-            paymentViewModel.DonationId = viewModel.EventId;
+            paymentViewModel.CommandId = viewModel.EventId;
             return RedirectToAction("CreditCard", "Payment", paymentViewModel);
         }
-   
+
 
         public IActionResult MemberOrderList()
 
@@ -75,7 +73,7 @@ namespace Projet2.Controllers
             TicketingViewModel viewModel = new TicketingViewModel();
             viewModel.OrderByEventList = new List<OrderByEvent>();
             viewModel.OrderList = ticketingService.ListAllOrderByMember(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
-            
+
             foreach (Order order in viewModel.OrderList)
             {
                 AssociationEvent associationEvent = ticketingService.GetAssociationEventByOrder(order.Id)[0];
@@ -87,13 +85,14 @@ namespace Projet2.Controllers
                 orderByEvent.IdEvent = associationEvent.Id;
                 orderByEvent.Image = associationEvent.Image;
                 orderByEvent.IdOrder = order.Id;
+                orderByEvent.PurchasedDate = order.PurchaseDate;
 
                 viewModel.OrderByEventList.Add(orderByEvent);
             }
 
             return View(viewModel);
         }
-    
+
         public IActionResult PurchasedEventDelete(int orderId)
         {
             ticketingService.DeleteOrder(orderId);
@@ -101,7 +100,7 @@ namespace Projet2.Controllers
             return View();
         }
         //localhost:5000/ticketing/PurchasedEventModify?id=1&idOrder=1
-        public IActionResult PurchasedEventModify(int id,int idOrder)
+        public IActionResult PurchasedEventModify(int id, int idOrder)
         {
             TicketingViewModel viewModel = new TicketingViewModel();
             AssociationEvent associationEvent = new AssociationEvent();
@@ -123,18 +122,18 @@ namespace Projet2.Controllers
         [HttpPost]
         public IActionResult PurchasedEventModify(TicketingViewModel viewModel)
         {
-            if (viewModel.NewAmount> viewModel.Amount)
+            if (viewModel.NewAmount > viewModel.Amount)
             {
                 viewModel.Amount = viewModel.NewAmount - viewModel.Amount;
             }
-            
+
 
             int _OrderId;
             int _MemberId = Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             DateTime _PurchaseDate = DateTime.Now;
             viewModel.Amount = viewModel.TicketPrice * viewModel.TicketsNumber;
 
-             _OrderId = ticketingService.CreateOrder(_MemberId, viewModel.TicketsNumber, _PurchaseDate, viewModel.Amount);
+            _OrderId = ticketingService.CreateOrder(_MemberId, viewModel.TicketsNumber, _PurchaseDate, viewModel.Amount);
             for (int i = 1; i <= viewModel.TicketsNumber; i++)
             {
                 viewModel.Position += 1;

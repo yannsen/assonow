@@ -31,6 +31,7 @@ namespace Projet2.Controllers
         {
             FundraisingInfoViewModel viewModel = new FundraisingInfoViewModel();
             viewModel.AssociationId = id;
+            ViewBag.Association = associationService.GetAssociation(id);
             ViewBag.Action = "Create";
             return View(viewModel);
         }
@@ -39,6 +40,7 @@ namespace Projet2.Controllers
         [HttpPost]
         public IActionResult Create(FundraisingInfoViewModel viewModel)
         {
+            ModelState.Remove("Fundraising.Id");
             if (ModelState.IsValid)
             {
                 if (viewModel.File.Length > 0)
@@ -53,10 +55,12 @@ namespace Projet2.Controllers
                 viewModel.Fundraising.Image = "/FileSystem/Pictures/" + viewModel.File.FileName;
                 viewModel.Fundraising.AssociationId = viewModel.AssociationId;
                 viewModel.Fundraising.StartingDate = DateTime.Now;
+                viewModel.Fundraising.IsActive = true;
                 fundraisingService.Create(viewModel);
                 ViewBag.Action = "Create";
-                return RedirectToAction("Management", "Fundraising", viewModel.AssociationId);
+                return RedirectToAction("Management", "Fundraising", new { id = viewModel.AssociationId });
             }
+            ViewBag.Association = associationService.GetAssociation(viewModel.AssociationId);
             return View(viewModel);
         }
 
@@ -66,6 +70,7 @@ namespace Projet2.Controllers
             FundraisingInfoViewModel viewModel = new FundraisingInfoViewModel();
             viewModel.Fundraising = fundraisingService.GetFundraising(id);
             viewModel.AssociationId = viewModel.Fundraising.AssociationId;
+            ViewBag.Association = associationService.GetAssociation(id);
             ViewBag.Action = "Modify";
             return View(viewModel);
         }
@@ -98,6 +103,7 @@ namespace Projet2.Controllers
                 ViewBag.Action = "Modify";
                 return RedirectToAction("Management", new { Id = viewModel.AssociationId });
             }
+            ViewBag.Association = associationService.GetAssociation(viewModel.AssociationId);
             return View(viewModel);
         }
 
@@ -130,6 +136,7 @@ namespace Projet2.Controllers
         {
             FundraisingManagementViewModel viewModel = new FundraisingManagementViewModel();
             viewModel.Fundraisings = fundraisingService.GetFundraisingsByAssociation(id);
+            viewModel.Association = associationService.GetAssociation(id);
             return View(viewModel);
         }
 
