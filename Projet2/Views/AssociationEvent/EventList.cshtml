@@ -1,4 +1,4 @@
-﻿@model Projet2.ViewModels.AssociationEventInfoViewmodel
+@model Projet2.ViewModels.AssociationEventInfoViewmodel
 
 
 
@@ -9,7 +9,7 @@
 <div class="container-fluid">
     <div class="row ">
         @*flex-nowrap*@
-        <div class="col-3 col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
+        <div class="col-2 col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start list-group-flush" id="menu">
                     <li class="nav-item">
@@ -19,7 +19,7 @@
                     {
                         @if (Model.Association.TicketService)
                         {
-                            <li class="nav-item list-group-item bg-light w-100">
+                            <li class="nav-item list-group-item bg-danger w-100">
                                 <a href="~/AssociationEvent/EventList?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
                                     <span class="ms-1 d-none d-sm-inline">Gestion des évènements</span>
                                 </a>
@@ -70,6 +70,9 @@
                 </ul>
             </div>
         </div>
+    </div>
+</div>
+
 
 
         <div class="col py-3">
@@ -135,12 +138,4 @@
 
     </div>
 </div>
-
-
-
-
-
-<
-
-
 
