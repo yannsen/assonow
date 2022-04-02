@@ -1,27 +1,14 @@
 ﻿@model List<Projet2.Models.Fundraising>
 
-<div class="text-center">
-    <h4>Les collectes de dons du moment</h4>
-</div>
-
 <section class="pt-5 pb-5">
     <div class="container">
         <div class="row">
-            <!-- Boutons -->
-            <div class="col-6">
-                <h3 class="mb-3"> Quelques-unes de nos associations ... </h3>
-            </div>
-            <div class="col-6 text-right">
-                <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
-                    <i class="fa fa-arrow-left"></i>
-                </a>
-                <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
-                    <i class="fa fa-arrow-right"></i>
-                </a>
+            <div class="col-12 text-right">
+                <h3 class="title">... Et de nos collectes ! </h3>
             </div>
             <!-- Le fameux -->
             <div class="col-12">
-                <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+                <div id="carouselFundraising" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         @{
                             string isFirst = "active";
@@ -34,7 +21,7 @@
                                         {
                                             <div class="col-md-4 mb-3">
                                                 <div class="card">
-                                                    <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
+                                                    <img class="img-fluid" alt="100%x280" src="~/Images/carroussel_en_attendant_bis.jpg">
                                                     <div class="card-body">
                                                         <h4 class="card-title">Bientôt, ici ...</h4>
                                                         <p class="card-text">D'autres projets à venir !</p>
@@ -63,6 +50,8 @@
                                                             <h4 class="card-title">@Model[i].Name</h4>
                                                             <br>
                                                             <p class="card-text">@Model[i].Description</p>
+                                                            <a href="../Fundraising/Profile?id=@Model[i].Id" class="stretched-link"></a>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -71,10 +60,10 @@
                                             {
                                                 <div class="col-md-4 mb-3">
                                                     <div class="card">
-                                                        <img class="img-fluid card-img-top" alt="100%x280" src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
+                                                        <img class="img-fluid card-img-top" alt="100%x280" src="~/Images/carroussel_en_attendant_bis.jpg">
                                                         <div class="card-body">
                                                             <h4 class="card-title">Bientôt, ici ... </h4>
-                                                            <p class="card-text">D'autres associations à venir !</p>
+                                                            <p class="card-text">D'autres projets à venir !</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -87,6 +76,16 @@
                         }
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-right">
+                <a class="btn btn-primary mb-3 mr-1" href="#carouselFundraising" role="button" data-slide="prev">
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+                <a class="btn btn-primary mb-3 " href="#carouselFundraising" role="button" data-slide="next">
+                    <i class="fa fa-arrow-right"></i>
+                </a>
             </div>
         </div>
     </div>

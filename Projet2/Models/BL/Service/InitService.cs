@@ -97,7 +97,7 @@ namespace Projet2.Models.BL.Service
                     MemberService = true,
                     Contribution = 40,
                     IsHighlighted = true,
-                    AddressId = 30,
+                    AddressId = 54,
                     Name = "A chacun son Everest",
                     IsPublished = true,
                     Description = "Accompagner les enfants et adolescents des services d’Oncohématologie Pédiatrique et éventuellement leurs familles, pour les aider à atteindre leur sommet et les soutenir dans leur maladie",
@@ -224,19 +224,20 @@ namespace Projet2.Models.BL.Service
         // ASSOCIATIONS EVENTS
         public void InitializeDB_AEvents()
         {
-            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 1, EventTitle = " Concert privé Rammstein pour les petits Princes", Description = "S’il était nécessaire de prouver que Rammstein figure actuellement parmi les plus grands groupes du monde, le succès de leur septième album éponyme et la conclusion de la première partie de leur tournée des stades en dit long. Les évidences sont là : le groupe atteint le sommet des charts européens dans plusieurs pays, le retour enthousiastes des fans à propos de l’album et les critiques élogieuses autour de leur tournée qui s’est vendu en un temps record. Peu d’artistes dans le paysage musical actuel propose un spectacle de cette ampleur et qualité : une nouvelle scène gigantesque, les étincelles, les lance flammes, le groupe parfaitement orchestré, le tout dans une mise en scène chargée de pathos et d’humour", Image = "/FileSystem/event/rammstein.jpg", Date = new DateTime(2022, 05, 24), EventType = "Concert", Speakers = "", Artists = " Rammstein", TicketsTotalNumber = 200, RemainingTickets= 6, AddressId = 1, AssociationId = 1,TicketPrice= 20.0 });
-            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 2, EventTitle = " Odyssée : la conférence musicale ", Description = "Il s’agit de l’histoire d’amour entre Ulysse et Pénélope. Mais il s’agit également de l’histoire d’amour entre René Brillotte, professeur de grec antique et conférencier spécialiste d’Homère, et Marie Louise Costaille, directrice de la salle. Lorsque René commence sa conférence, il ne se doute pas que, sous l’influence de Marie-Louise, tout va déraper et se transformer en un délire musical où l’Odyssée sera racontée à la sauce loufoque entre sorcières, dieux, cyclopes et retour à Ithaque !", Image = "/FileSystem/event/odyssee.png", Date = new DateTime(2022, 03, 24), EventType = "conte musicale", Speakers = "", Artists = "Julie Costanza, Stéphanie Gagneux et Simon Gallant ", TicketsTotalNumber = 400, RemainingTickets = 400, AddressId = 2, AssociationId = 4, TicketPrice = 15.50 });
-            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 3, EventTitle = " Exoconference", Description = "Un astrophysicien (Alexandre Astier) donne une conférence au cours de laquelle il retrace les grandes étapes de la formation de l'univers depuis le Big Bang avant de se pencher sur la question de la vie extraterrestre", Image = "/FileSystem/event/odyssee.png", Date = new DateTime(2022, 03, 24), EventType = "Concert", Speakers = "", Artists = " Alexandre Astier", TicketsTotalNumber = 500, RemainingTickets = 500, AddressId = 2, AssociationId = 4, TicketPrice = 15.50 });          
-            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 4, EventTitle = " Puy Du Fou", Description = "Il existe des mondes et des époques que l’on croyait à jamais disparus. Pourtant, la forêt centenaire du Puy du Fou est devenue leur refuge et l’Histoire continue.Évadez - vous au Puy du Fou pour découvrir cette terre où les héros sont éternels.Venez percer le mystère de ce lieu hors norme et partez pour un spectaculaire voyage dans le temps des Romains au XXème siècle! Chaque spectacle, chaque aventure resteront gravés à jamais dans votre mémoire.En famille ou entre amis, préparez-vous à vivre une expérience bouleversante riche en émotions fortes, en grands spectacles et en souvenirs!", Image = "/FileSystem/event/odyssee.png", Date = new DateTime(2022, 03, 24), EventType = "Spectacle", Speakers = "", Artists = "La compagnie du Puy du Fou", TicketsTotalNumber = 200, RemainingTickets = 200, AddressId = 2, AssociationId = 4, TicketPrice = 15.50 });
-            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 5, EventTitle = " Conférence de Michel Ocelot", Description = "Rétrospective Michel Ocelot,Autodidacte, Michel Ocelot a consacré toute sa carrière au cinéma d’animation, écrivant ses propres histoires, dessinant lui-même les personnages de ses films et créant leur univers graphique. ", Image = "/FileSystem/event/odyssee.png", Date = new DateTime(2022, 03, 24), EventType = "Conférérence", Speakers = "Michel Laclotte", Artists = "", TicketsTotalNumber = 400, RemainingTickets = 400, AddressId = 2, AssociationId = 4, TicketPrice = 15.50 });
-            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 6, EventTitle = " Conférence des sciences ", Description = "La confrontation des savoirs et des savoir-faire est indispensable au progrès scientifique. Riche de sa pluridisciplinarité et de ses relations étroites avec les forces de la recherche, en France comme à l’étranger, l’Académie des sciences propose chaque année une série de manifestations scientifiques consacrées aux frontières de la connaissance", Image = "/FileSystem/event/conference-Sci.jpg", Date = new DateTime(2022, 04, 18), EventType = "Conférence", Speakers = "", Artists = "Antonin  Atger", TicketsTotalNumber = 200, RemainingTickets = 200, AddressId = 2, AssociationId = 4, TicketPrice = 15.50 });
-            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 7, EventTitle = " Tadjikistan au pays des fleuves d'or", Description = "la plus grande exposition jamais consacrée en occident au Tadjikistan. Elle révèle la richesse culturelle de ce pays méconnu, resté dans l’ombre de ses voisins davantage médiatisés que sont l’Afghanistan et l’Ouzbékistan, avec des pièces exceptionnelles et rares.", Image = " /FileSystem/event/archeologie.jpg", Date = new DateTime(2022, 03, 24), EventType = "Conférence", Speakers = "", Artists = " ", TicketsTotalNumber = 2350, RemainingTickets = 2350, AddressId = 2, AssociationId = 24, TicketPrice = 2.00 });
-            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 8, EventTitle = " Solidays", Description = "Faire chavirer les cœurs. Voilà l’ambition de cette 24e édition qui s’annonce exceptionnelle.", Image = "/FileSystem/event/solidays.png", Date = new DateTime(2022, 06, 24), EventType = "Concert", Speakers = "", Artists = " Black Eyed Peas, Damso, Justice ", TicketsTotalNumber = 500, RemainingTickets = 500, AddressId = 5, AssociationId = 4, TicketPrice = 15.50 });
-            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 9, EventTitle = " Matchs d'exhibition  du comité Yvelines Tennis", Description = "Depuis déjà plusieurs années, le Comité Yvelines nous apporte son soutien à travers le Circuit TMC Everest 78. Un tournoi féminin avec de nombreuses dates, les profits des matchs sont reversés à l'association.", Image = "/FileSystem/event/odyssee.png", Date = new DateTime(2022, 04, 17), EventType = "Concert", Speakers = "comité Yvelines de Tennis", Artists = "", TicketsTotalNumber = 200, RemainingTickets = 200, AddressId = 51, AssociationId = 11, TicketPrice = 5.50 });
-            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 10, EventTitle = " Winter Legacy : l'événement solidaire d'Alexis Pinturault", Description = "Au programme : une course polyvalente ouverte à tous pour se mesurer à cinq disciplines: bosses, géant, super géant, ski cross et water slide. De nombreuses animations sont prévues : DJ, tombola, ski test…etc.", Image = "/FileSystem/event/winter.png", Date = new DateTime(2022, 04, 09), EventType = "Concert", Speakers = "", Artists = "Alexis Pinturault", TicketsTotalNumber = 300, RemainingTickets = 300, AddressId = 6, AssociationId = 11, TicketPrice = 60.00 });
-            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 11, EventTitle = " TOC TOC à Saint-Jorioz", Description = "L'association Mums'n roses vous invite à assister à la représentation Toc Toc, le grand succès de Laurent Baffie interprété par la troupe Imagine.", Image = "/FileSystem/event/toctoc.jpg", Date = new DateTime(2022, 04, 09), EventType = "Spectacle", Speakers = "", Artists = "Mums'n roses", TicketsTotalNumber = 150, RemainingTickets = 150, AddressId = 2, AssociationId = 11, TicketPrice = 6.00 });
-
-
+            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 1, EventTitle = " Concert privé Rammstein pour Vaincre la Muco", Description = "S’il était nécessaire de prouver que Rammstein figure actuellement parmi les plus grands groupes du monde, le succès de leur septième album éponyme et la conclusion de la première partie de leur tournée des stades en dit long. pour soutenir l'association Vaincre la Mucovisidose Rammstein organie un concert privé", Image = "/FileSystem/Pictures/rammstein.jpg", Date = new DateTime(2022, 05, 24), EventType = "Concert", Speakers = "", Artists = " Rammstein", TicketsTotalNumber = 200, RemainingTickets= 6, AddressId = 39, AssociationId = 3,TicketPrice= 20.0 });
+            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 2, EventTitle = " Odyssée : la conférence musicale ", Description = "Il s’agit de l’histoire d’amour entre Ulysse et Pénélope. Mais il s’agit également de l’histoire d’amour entre René Brillotte, professeur de grec antique et conférencier spécialiste d’Homère, et Marie Louise Costaille, directrice de la salle. Lorsque René commence sa conférence, il ne se doute pas que, sous l’influence de Marie-Louise, tout va déraper et se transformer en un délire musical où l’Odyssée sera racontée à la sauce loufoque entre sorcières, dieux, cyclopes et retour à Ithaque !", Image = "/FileSystem/Pictures/odyssee.png", Date = new DateTime(2022, 03, 24), EventType = "conte musicale", Speakers = "", Artists = "Julie Costanza, Stéphanie Gagneux et Simon Gallant ", TicketsTotalNumber = 400, RemainingTickets = 400, AddressId = 2, AssociationId = 6, TicketPrice = 15.50 });
+            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 3, EventTitle = " Exoconference", Description = "Un astrophysicien (Alexandre Astier) donne une conférence au cours de laquelle il retrace les grandes étapes de la formation de l'univers depuis le Big Bang avant de se pencher sur la question de la vie extraterrestre", Image = "/FileSystem/Pictures/exoconference.jpg", Date = new DateTime(2022, 03, 24), EventType = "Concert", Speakers = "", Artists = " Alexandre Astier", TicketsTotalNumber = 500, RemainingTickets = 500, AddressId = 2, AssociationId = 17, TicketPrice = 15.50 });          
+            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 4, EventTitle = " Puy Du Fou", Description = "Il existe des mondes et des époques que l’on croyait à jamais disparus. Pourtant, la forêt centenaire du Puy du Fou est devenue leur refuge et l’Histoire continue.Évadez - vous au Puy du Fou pour découvrir cette terre où les héros sont éternels.Venez percer le mystère de ce lieu hors norme et partez pour un spectaculaire voyage dans le temps des Romains au XXème siècle! Chaque spectacle, chaque aventure resteront gravés à jamais dans votre mémoire.En famille ou entre amis, préparez-vous à vivre une expérience bouleversante riche en émotions fortes, en grands spectacles et en souvenirs!", Image = "/FileSystem/Pictures/puydufou.jpg", Date = new DateTime(2022, 03, 24), EventType = "Spectacle", Speakers = "", Artists = "La compagnie du Puy du Fou", TicketsTotalNumber = 200, RemainingTickets = 200, AddressId = 2, AssociationId = 19, TicketPrice = 15.50 });
+            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 5, EventTitle = " Conférence de Michel Ocelot", Description = "Rétrospective Michel Ocelot,Autodidacte, Michel Ocelot a consacré toute sa carrière au cinéma d’animation, écrivant ses propres histoires, dessinant lui-même les personnages de ses films et créant leur univers graphique. ", Image = "/FileSystem/Pictures/Conference_Michel_Ocelot.jpg", Date = new DateTime(2022, 03, 24), EventType = "Conférérence", Speakers = "Michel Laclotte", Artists = "", TicketsTotalNumber = 400, RemainingTickets = 400, AddressId = 2, AssociationId = 12, TicketPrice = 15.50 });
+            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 6, EventTitle = " Conférence des sciences ", Description = "La confrontation des savoirs et des savoir-faire est indispensable au progrès scientifique. Riche de sa pluridisciplinarité et de ses relations étroites avec les forces de la recherche, en France comme à l’étranger, l’Académie des sciences propose chaque année une série de manifestations scientifiques consacrées aux frontières de la connaissance", Image = "/FileSystem/Pictures/conference-Sci.jpg", Date = new DateTime(2022, 04, 18), EventType = "Conférence", Speakers = "", Artists = "Antonin  Atger", TicketsTotalNumber = 200, RemainingTickets = 200, AddressId = 2, AssociationId = 29, TicketPrice = 15.50 });
+            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 7, EventTitle = " Tadjikistan au pays des fleuves d'or", Description = "la plus grande exposition jamais consacrée en occident au Tadjikistan. Elle révèle la richesse culturelle de ce pays méconnu, resté dans l’ombre de ses voisins davantage médiatisés que sont l’Afghanistan et l’Ouzbékistan, avec des pièces exceptionnelles et rares.", Image = " /FileSystem/Pictures/archeologie.jpg", Date = new DateTime(2022, 03, 24), EventType = "Conférence", Speakers = "", Artists = " ", TicketsTotalNumber = 2350, RemainingTickets = 2350, AddressId = 2, AssociationId = 24, TicketPrice = 2.00 });
+            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 8, EventTitle = " Solidays", Description = "Faire chavirer les cœurs. Voilà l’ambition de cette 24e édition qui s’annonce exceptionnelle.", Image = "/FileSystem/Pictures/solidays.jpg", Date = new DateTime(2022, 06, 24), EventType = "Concert", Speakers = "", Artists = " Black Eyed Peas, Damso, Justice ", TicketsTotalNumber = 500, RemainingTickets = 500, AddressId = 5, AssociationId = 5, TicketPrice = 15.50 });
+            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 9, EventTitle = " Matchs d'exhibition  du comité Yvelines Tennis", Description = "Depuis déjà plusieurs années, le Comité Yvelines nous apporte son soutien à travers le Circuit TMC Everest 78. Un tournoi féminin avec de nombreuses dates, les profits des matchs sont reversés à l'association.", Image = "/FileSystem/Pictures/comitetennisy.png", Date = new DateTime(2022, 04, 17), EventType = "Concert", Speakers = "comité Yvelines de Tennis", Artists = "", TicketsTotalNumber = 200, RemainingTickets = 200, AddressId = 51, AssociationId = 1, TicketPrice = 5.50 });
+            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 10, EventTitle = "Winter Legacy", Description = "Au programme : une course polyvalente ouverte à tous pour se mesurer à cinq disciplines: bosses, géant, super géant, ski cross et water slide. De nombreuses animations sont prévues : DJ, tombola, ski test…etc.", Image = "/FileSystem/Pictures/winter.png", Date = new DateTime(2022, 04, 09), EventType = "Concert", Speakers = "", Artists = "Alexis Pinturault", TicketsTotalNumber = 300, RemainingTickets = 300, AddressId = 6, AssociationId = 1, TicketPrice = 60.00 });
+            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 11, EventTitle = "TOC TOC à Saint-Jorioz", Description = "L'association Mums'n roses vous invite à assister à la représentation Toc Toc, le grand succès de Laurent Baffie interprété par la troupe Imagine.", Image = "/FileSystem/Pictures/toctoc.jpg", Date = new DateTime(2022, 04, 09), EventType = "Spectacle", Speakers = "", Artists = "Mums'n roses", TicketsTotalNumber = 150, RemainingTickets = 150, AddressId = 2, AssociationId = 1, TicketPrice = 6.00 });
+            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 12, EventTitle = "Concert M", Description = "Concert exceptionnel de l'artiste M en soutien à l'assocation Les Enfants du soleil", Image = "/FileSystem/Pictures/concertM.jpg", Date = new DateTime(2022, 04, 09), EventType = "Spectacle", Speakers = "", Artists = "M", TicketsTotalNumber = 1500, RemainingTickets = 150, AddressId = 55, AssociationId = 2, TicketPrice = 6.00 });
+            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 13, EventTitle = "Un air de famille", Description = "Le théâtre du Triangle, troupe au talent reconnu joue une nouvelle fois pour les Enfants du Soleil  et donne la célèbre pièce Un air de famille", Image = "/FileSystem/Pictures/ttriangle.jpg", Date = new DateTime(2022, 05, 18), EventType = "Theatre", Speakers = "", Artists = "Le théâtre du Triangle", TicketsTotalNumber = 200, RemainingTickets = 150, AddressId = 56, AssociationId = 2, TicketPrice = 6.00 });
+            _bddContext.AssociationEvent.Add(new AssociationEvent { Id = 14, EventTitle = "Green de l'espoir à St Germain En Laye", Description = "Le Green de l’espoir, une histoire de famille et surtout de grande famille, la nôtre et celle de la MUCO. c’est pourquoi nous nous sommes engagés depuis maintenant 5 ans dans l’organisation d’une compétition Green de l’espoir.", Image = "/FileSystem/Pictures/greeMuco.png", Date = new DateTime(2022, 05, 18), EventType = "Sport", Speakers = "", Artists = "", TicketsTotalNumber = 100, RemainingTickets = 100, AddressId = 56, AssociationId = 3, TicketPrice = 6.00 });
         }   
         
         // DOCUMENTS
@@ -261,8 +262,10 @@ namespace Projet2.Models.BL.Service
                 DesiredAmount = 10000,
                 StartingDate = new DateTime(2022, 03, 30),
                 EndingDate = new DateTime(2022, 04, 20),
+                Image = "/FileSystem/Pictures/chacunsoneverest1.jpg",
+                IsHighlighted = true,
                 Field = "Social"
-            });
+            }) ;
             _bddContext.Fundraising.Add(new Fundraising
             {
                 Id = 2,
@@ -274,6 +277,8 @@ namespace Projet2.Models.BL.Service
                 DesiredAmount = 20000,
                 StartingDate = new DateTime(2022, 03, 30),
                 EndingDate = new DateTime(2022, 03, 30),
+                Image = "/FileSystem/Pictures/chacunsoneverest2.jpg",
+                IsHighlighted = true,
                 Field = "Social"
             });
             _bddContext.Fundraising.Add(new Fundraising
@@ -287,85 +292,114 @@ namespace Projet2.Models.BL.Service
                 DesiredAmount = 15000,
                 StartingDate = new DateTime(2022, 04, 02),
                 EndingDate = new DateTime(2022, 05, 15),
+                Image = "/FileSystem/Pictures/chacunsoneverest3.jpg",
+                IsHighlighted = true,
                 Field = "Social"
             });
             _bddContext.Fundraising.Add(new Fundraising
             {
                 Id = 4,
                 AssociationId = 2,
-                Name = "Blocage mine d'or",
-                Description = "Description4",
+                Name = "Financement cantine",
+                Description = "Au sud de la Grande « Île Rouge », à Tuléar, la sous-nutrition et la malnutrition sont particulièrement dramatiques. Selon les autorités locales, le taux de fréquentation de l’école est inférieur à 40%, et le taux réel de scolarisation encore plus faible. Si les enfants dans cette région ont certes un toit et une famille, très souvent, ils ne bénéficient que d’un seul repas par jour, parfois moins. C’est pourquoi l’association a décidé d’intervenir dans des cantines scolaires à Tuléar.",
                 IsActive = true,
                 CurrentAmount = 0,
                 DesiredAmount = 18000,
-                StartingDate = new DateTime(2022, 03, 30),
-                EndingDate = new DateTime(2022, 03, 30),
+                StartingDate = new DateTime(2022, 03, 15),
+                EndingDate = new DateTime(2022, 04, 30),
+                Image = "/FileSystem/Pictures/enfantsoleil1.jpg",
+                IsHighlighted = true,
                 Field = "Enseignement"
             });
             _bddContext.Fundraising.Add(new Fundraising
             {
                 Id = 5,
                 AssociationId = 2,
-                Name = "Construction hopital",
-                Description = "Description5",
+                Name = "Nouveau centre d'accueil",
+                Description = "Les enfants sont identifiés dans le cadre de rondes dans la ville organisées par un assistant social et un éducateur faisant partie du personnel. Leur rôle est de proposer aux enfants de passer la nuit en sécurité dans un Centre d’Accueil et d’Ecoute. Au sein de ce centre, les enfants sont accueillis par un éducateur et ont la possibilité de se laver, de prendre un repas, de jouer avec d’autres enfants et de dormir en sécurité.",
                 IsActive = true,
                 CurrentAmount = 0,
                 DesiredAmount = 5000,
                 StartingDate = new DateTime(2022, 03, 30),
-                EndingDate = new DateTime(2022, 03, 30),
+                EndingDate = new DateTime(2022, 07, 06),
+                Image = "/FileSystem/Pictures/enfantsoleil2.jpg",
+                IsHighlighted = true,
                 Field = "Défense des droits"
             });
             _bddContext.Fundraising.Add(new Fundraising
             {
                 Id = 6,
                 AssociationId = 2,
-                Name = "Achat lot de maillot",
-                Description = "Description6",
+                Name = "Nouveau foyer d'adolescent",
+                Description = "A l’adolescence, l’enfant peut entamer une formation professionnelle ou des études supérieures, le jeune intègrera les Foyers des Grands Adolescents Garçons ou Filles (FGAG/FGAF). Il y rejoindra d’autres jeunes de son âge, également en formation ou étudiants. Ces ainés l’aideront à s’impliquer dans sa formation ou sa recherche de premier emploi. Pour soutenir les jeunes dans la recherche de leur orientation, l’association a développé des activités éducatives qui leurs permettent de découvrir de nouveaux métiers.",
                 IsActive = true,
                 CurrentAmount = 3000,
                 DesiredAmount = 10000,
-                StartingDate = new DateTime(2022, 03, 30),
-                EndingDate = new DateTime(2022, 03, 30),
+                StartingDate = new DateTime(2022, 03, 15),
+                EndingDate = new DateTime(2022, 04, 15),
+                Image = "/FileSystem/Pictures/enfantsoleil3.jpg",
+                IsHighlighted = true,
                 Field = "Humanitaire"
             });
             _bddContext.Fundraising.Add(new Fundraising
             {
                 Id = 7,
                 AssociationId = 3,
-                Name = "Stop aux ailerons de requin !",
-                Description = "Description7",
+                Name = "Soutien CRCM Bordeaux",
+                Description = "Depuis 1992, Vaincre la Mucoviscidose apporte son soutien aux centres de soins. Les subventions attribuées doivent permettre de mieux répondre aux attentes des patients et des familles quant à l’organisation, la qualité et la continuité des soins, en adéquation avec les recommandations des professionnels de santé.",
                 IsActive = true,
                 CurrentAmount = 50,
                 DesiredAmount = 75000,
                 StartingDate = new DateTime(2022, 03, 30),
-                EndingDate = new DateTime(2022, 03, 30),
+                EndingDate = new DateTime(2022, 04, 30),
+                Image = "/FileSystem/Pictures/muco2.jpg",
+                IsHighlighted = true,
                 Field = "Recherche"
             });
             _bddContext.Fundraising.Add(new Fundraising
             {
                 Id = 8,
                 AssociationId = 3,
-                Name = "Recherche scientifique",
-                Description = "Description8",
+                Name = "Soutien CRCM Dijon",
+                Description = "Depuis 1992, Vaincre la Mucoviscidose apporte son soutien aux centres de soins. Les subventions attribuées doivent permettre de mieux répondre aux attentes des patients et des familles quant à l’organisation, la qualité et la continuité des soins, en adéquation avec les recommandations des professionnels de santé.",
                 IsActive = true,
-                CurrentAmount = 1,
+                CurrentAmount = 74250,
                 DesiredAmount = 100000,
-                StartingDate = new DateTime(2022, 03, 30),
-                EndingDate = new DateTime(2022, 03, 30),
+                StartingDate = new DateTime(2022, 02, 28),
+                EndingDate = new DateTime(2022, 04, 07),
+                Image = "/FileSystem/Pictures/muco3.jpg",
+                IsHighlighted = true,
                 Field = "Humanitaire"
             });
             _bddContext.Fundraising.Add(new Fundraising
             {
                 Id = 9,
                 AssociationId = 3,
-                Name = "J'ai plus d'idée !",
-                Description = "Description9",
+                Name = "Soutien CRCM Caen",
+                Description = "Depuis 1992, Vaincre la Mucoviscidose apporte son soutien aux centres de soins. Les subventions attribuées doivent permettre de mieux répondre aux attentes des patients et des familles quant à l’organisation, la qualité et la continuité des soins, en adéquation avec les recommandations des professionnels de santé.",
                 IsActive = true,
                 CurrentAmount = 2500,
                 DesiredAmount = 10000,
                 StartingDate = new DateTime(2022, 03, 30),
-                EndingDate = new DateTime(2022, 03, 30),
+                EndingDate = new DateTime(2022, 04, 15),
+                Image = "/FileSystem/Pictures/muco1.jpg",
+                IsHighlighted = true,
                 Field = "Culture"
+            });
+            _bddContext.Fundraising.Add(new Fundraising
+            {
+                Id = 10,
+                AssociationId = 11,
+                Name = "Soutien Maison de Tom Pouce",
+                Description = "Créée en 1987,la Maison de Tom Pouce qui héberge et accompagne les femmes enceintes a besoin d'équipement postnatale dont des tables à langer",
+                IsActive = true,
+                CurrentAmount = 1500,
+                DesiredAmount = 2500,
+                StartingDate = new DateTime(2022, 02, 15),
+                EndingDate = new DateTime(2022, 05, 15),
+                Image = "/FileSystem/Pictures/petitprince.jpg",
+                IsHighlighted = false,
+                Field = "Humanitaire"
             });
         }
 
@@ -407,7 +441,7 @@ namespace Projet2.Models.BL.Service
             _bddContext.Address.Add(new Address { Id = 17, RoadNumber = "17", Road = "Rue du Gathelot", City = "Clamart", PostalCode = "92140", Country = "France" });
             _bddContext.Address.Add(new Address { Id = 18, RoadNumber = "18", Road = "Rue du Trosy", City = "Clamart", PostalCode = "92140", Country = "France" });
             _bddContext.Address.Add(new Address { Id = 19, RoadNumber = "19", Road = "Rue Chef", City = "Clamart", PostalCode = "92140", Country = "France" });
-            _bddContext.Address.Add(new Address { Id = 20, RoadNumber = "20", Road = "Rue Martin", City = "Clamart", PostalCode = "92140", Country = "France" });
+            _bddContext.Address.Add(new Address { Id = 20, RoadNumber = "66", Road = "Avenue du Maine", City = "Paris", PostalCode = "75014", Country = "France" });
             // 21 -> 30
             _bddContext.Address.Add(new Address { Id = 21, RoadNumber = "6", Road = "Rue du général", City = "Chatillon", PostalCode = "92320", Country = "France" });
             _bddContext.Address.Add(new Address { Id = 22, RoadNumber = "7", Road = "Rue du colonel", City = "Chatillon", PostalCode = "92320", Country = "France" });
@@ -418,9 +452,9 @@ namespace Projet2.Models.BL.Service
             _bddContext.Address.Add(new Address { Id = 27, RoadNumber = "7", Road = "Rue du gendarme", City = "Chatillon", PostalCode = "92320", Country = "France" });
             _bddContext.Address.Add(new Address { Id = 28, RoadNumber = "6", Road = "Rue de l'aspirant", City = "Chatillon", PostalCode = "92320", Country = "France" });
             _bddContext.Address.Add(new Address { Id = 29, RoadNumber = "7", Road = "Rue du major", City = "Chatillon", PostalCode = "92320", Country = "France" });
-            _bddContext.Address.Add(new Address { Id = 30, RoadNumber = "7", Road = "Rue de l'adjudant-chef", City = "Chatillon", PostalCode = "92320", Country = "France" });
+            _bddContext.Address.Add(new Address { Id = 30, RoadNumber = "181", Road = "Rue de Tolbiac", City = "Paris", PostalCode = "75013", Country = "France" });
             // 31 -> 40
-            _bddContext.Address.Add(new Address { Id = 31, RoadNumber = "11", Road = "Rue Louise Michel", City = "Nice", PostalCode = "92140", Country = "France" });
+            _bddContext.Address.Add(new Address { Id = 31, RoadNumber = "5 bis", Road = "Rue du Louvre", City = "Paris", PostalCode = "75024", Country = "France" });
             _bddContext.Address.Add(new Address { Id = 32, RoadNumber = "12", Road = "Rue Olympe de Gouges ", City = "Nice", PostalCode = "92140", Country = "France" });
             _bddContext.Address.Add(new Address { Id = 33, RoadNumber = "13", Road = "Rue Clara Zetkin ", City = "Nice", PostalCode = "92140", Country = "France" });
             _bddContext.Address.Add(new Address { Id = 34, RoadNumber = "14", Road = "Rue Emmeline Pankhurst ", City = "Nice", PostalCode = "92140", Country = "France" });
@@ -444,7 +478,9 @@ namespace Projet2.Models.BL.Service
             _bddContext.Address.Add(new Address { Id = 51, RoadNumber = "2", Road = "Chemin de Ronde", City = "Croissy sur Seine", PostalCode = "78290", Country = "France" });
             _bddContext.Address.Add(new Address { Id = 52, RoadNumber = "6", Road = "Place des pistes", City = "Courchevel", PostalCode = "73120 ", Country = "France" });
             _bddContext.Address.Add(new Address { Id = 53, RoadNumber = "209", Road = "impasse de Champs Fleuris", City = "Saint-Jorioz ", PostalCode = "74410  ", Country = "France" });
-             
+            _bddContext.Address.Add(new Address { Id = 54, RoadNumber = "703", Road = "Rue Joseph Vallot", City = "Chamonix-Mont-Blanc", PostalCode = "74400  ", Country = "France" });
+            _bddContext.Address.Add(new Address { Id = 55, RoadNumber = "211", Road = "Avenue Jean Jaurès,", City = "Paris", PostalCode = "75019", Country = "France" });
+            _bddContext.Address.Add(new Address { Id = 56, RoadNumber = "6", Road = "Rue de Picardie", City = "Castelnau-le-Lez", PostalCode = "34170", Country = "France" });
         }
 
         // Commandes

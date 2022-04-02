@@ -334,6 +334,13 @@ h4 {
                     }
 }
 
+.presentation {
+    padding-top: 10px !important;
+    padding-right: 0px !important;
+    padding-bottom: 10px !important;
+    padding-left: 0px !important;
+}
+
 /*Newsletter*/
 newsletter {
     padding: 80px 0;

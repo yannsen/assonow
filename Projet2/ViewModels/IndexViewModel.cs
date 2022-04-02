@@ -8,5 +8,7 @@ namespace Projet2.ViewModels
         public List<Association> Associations { get; set; }
 
         public List<Fundraising> Fundraisings { get; set; }
+
+        public List<AssociationEvent> AssociationEvents { get; set; }
     }
 }

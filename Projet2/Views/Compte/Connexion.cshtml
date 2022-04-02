@@ -9,8 +9,58 @@
     Layout = "_Layout";
 }
 
+
+ 
+ <!-- <div class=" container-fluid h-100"> -->
+ 
+     <div style="height: 100vh; ">
+         <div class="h-100  align="center""> 
+
 @using (Html.BeginForm())
 {
+
+    <fieldset>
+        <legend align="center">Se connecter</legend>
+        <br>
+        <br>
+        <table width="50%" align="center">
+            <tr>
+                <td width="50%" align="right">@Html.LabelFor(m => Model.Pseudonym)</td>
+                <td>@Html.TextBoxFor(m => Model.Pseudonym)</td>
+                <td>@Html.ValidationMessageFor(m => Model.Pseudonym)</td>
+            </tr>
+            <tr>
+                <td align="right">@Html.LabelFor(m => Model.Password)</td>
+                <td>@Html.PasswordFor(m => Model.Password)</td>
+                <td>@Html.ValidationMessageFor(m => Model.Password)</td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <br>@Html.ValidationMessage("Pseudonym.Password")
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center">
+                    <br><button type="submit">Se Connecter</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center" class="pt-3">
+                    <a href="~/Compte/Creer">Créer un compte</a>
+                </td>
+            </tr>
+        </table>
+
+
+    </fieldset>
+}
+
+ <!---->
+ <!--</div> -->
+</div> 
+</div> 
+
+
 <div class="container login-container">
     <div class="row justify-content-md-center">
         <div class="col-md-6 login-form-1">
@@ -41,3 +91,4 @@
     </div>
 </div>
 }
+
