@@ -1,7 +1,31 @@
 ﻿@model Projet2.ViewModels.MemberInfoViewModel
 
+
 @using (Html.BeginForm())
 {
+    <div class="container login-container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-6 login-form-1">
+                <h3>@ViewBag.Legend</h3>
+                <br>
+                <br>
+                
+                    <div class="form-group row">
+                        @Html.LabelFor(m => Model.Member.Lastname, new { @class = "col-sm-2 col-form-label"})
+                        @Html.TextBoxFor(m => Model.Member.Lastname, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(m => Model.Member.Lastname)
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(m => Model.Member.Firstname)
+                        @Html.TextBoxFor(m => Model.Member.Firstname, new { @class = "form-control"})
+                     </div>
+                    <div class="form-group">
+                        <input type="submit" class="btnSubmit" value="Valider" />
+                    </div>
+            </div>
+        </div>
+    </div>
+
     <fieldset>
         <legend align="center">@ViewBag.Legend</legend>
         <br>

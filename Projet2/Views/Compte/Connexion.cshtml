@@ -1,5 +1,9 @@
 ﻿@model Projet2.ViewModels.MemberViewModel
 
+@section Styles{
+    <link href="/assets/css/login.css" rel="stylesheet" />
+}
+
 @{
     ViewBag.Title = "Connexion";
     Layout = "_Layout";
@@ -7,32 +11,33 @@
 
 @using (Html.BeginForm())
 {
-    <fieldset>
-        <legend align="center">Se connecter</legend>
-        <br>
-        <br>
-        <table width="50%" align="center">
-            <tr>
-                <td width="50%" align="right">@Html.LabelFor(m => Model.Pseudonym)</td>
-                <td>@Html.TextBoxFor(m => Model.Pseudonym)</td>
-                <td>@Html.ValidationMessageFor(m => Model.Pseudonym)</td>
-            </tr>
-            <tr>
-                <td align="right">@Html.LabelFor(m => Model.Password)</td>
-                <td>@Html.PasswordFor(m => Model.Password)</td>
-                <td>@Html.ValidationMessageFor(m => Model.Password)</td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center">
-                    <br>@Html.ValidationMessage("Pseudonym.Password")
-                </td>
-            </tr>
-            <tr>
-                <td colspan="3" align="center">
-                    <br><button type="submit">Se Connecter</button>
-                </td>
-            </tr>
-        </table>
-
-    </fieldset>
+<div class="container login-container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-6 login-form-1">
+            <h3>Se connecter</h3>
+            <br>
+            <br>
+            @if(!ViewData.ModelState.IsValid) {
+                 <span class="alert alert-danger">@Html.ValidationMessage("Pseudonym.Password")</span>
+                 <br />
+                 <br />
+             }
+            
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="Pseudonym" placeholder="Pseudonym *" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="password" name="Password" class="form-control" placeholder="Mot de passe *" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btnSubmit" value="Se connecter" />
+                </div>
+                <div class="form-group">
+                    <a href="#" class="ForgetPwd">Mot de passe oublié?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 }
