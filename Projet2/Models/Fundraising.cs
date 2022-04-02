@@ -14,7 +14,7 @@ namespace Projet2.Models
 
         [Required(ErrorMessage = "La description est obligatoire")]
         [Display(Name = "Description :")]
-        [MaxLength(512, ErrorMessage = "La description ne doit pas excéder 512 caractères")]
+        [MaxLength(1024, ErrorMessage = "La description ne doit pas excéder 512 caractères")]
         public string Description { get; set; }
 
         public int AssociationId { get; set; }
