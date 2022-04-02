@@ -5,22 +5,45 @@
     Layout = "_Layout";
 }
 
-<div class="d-flex flex-column justify-content-center w-100">
-    <div class="d-flex">
-        <img src="@ViewBag.AssociationImage" class="rounded mx-auto d-block" alt="@Model.Name">
-    </div>
-    <div class="d-flex flex-row justify-content-around w-100">
-        <div class="d-flex">
-            <p>Montant récolté : @Model.CurrentAmount</p>
+<div class="d-flex w-100 justify-content-center">
+
+    <div class="d-flex flex-row w-75">
+
+        <div class="d-flex flex-column w-50 justify-content-center p-3">
+            <div class="d-flex">
+                <img class="img-fluid img-rounded img-responsive shadow" style="height:400px; width:auto;" src="@Model.Image" alt="@Model.Name" />
+            </div>
         </div>
-        <div class="d-flex">
-            <p>Montant cible : @Model.DesiredAmount</p>
+        <div class="d-flex flex-column w-50 p-3">
+            <div class="d-flex flex-column w-100 p-3">
+                <div class="d-flex flex-row justify-content-around w-100">
+                    <div class="d-flex m-1 p-3 bg-danger rounded w-100  justify-content-md-center">
+                        <p>Date du lancement : @Model.StartingDate.Day @Model.StartingDate.ToString("MMMM") @Model.StartingDate.Year</p>
+                    </div>
+                    <div class="d-flex m-1 p-3 bg-warning rounded w-100  justify-content-md-center">
+                        <p>Date de fin : @Model.EndingDate.Day @Model.EndingDate.ToString("MMMM") @Model.EndingDate.Year</p>
+                    </div>
+                </div>
+                <div class="d-flex flex-row justify-content-center w-100">
+                    <div class="d-flex m-1 p-3 bg-success rounded w-100 justify-content-md-center">
+                        <p>Montant actuel : @Model.CurrentAmount</p>
+                    </div>
+                    <div class="d-flex m-1 p-3 bg-primary rounded w-100 justify-content-md-center">
+                        <p>Montant cible : @Model.DesiredAmount</p>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex px-3">
+                <h2 class="fw-bolder">@Html.DisplayFor(model => Model.Name)</h2>
+            </div>
+            <div class="d-flex p-3">
+                <p class="lead fst-normal text-muted-sm mb-0">@Html.DisplayFor(model => Model.Description)</p>
+            </div>
+            <div class="d-flex justify-content-center p-3">
+                @{
+                    <a class="btn btn-primary p-3" href="/Donation/Fundraising/@Model.Id">Participer</a>
+                }
+            </div>
         </div>
-    </div>
-    <div class="d-flex justify-content-center w-100">
-        <p>@Model.Description</p>
-    </div>
-    <div class="d-flex justify-content-center w-100">
-        <a class="btn btn-primary" href="~/Donation/Fundraising/@Model.Id">Faire un don</a>
     </div>
 </div>

@@ -6,24 +6,24 @@
 }
 
 
-<div   class="row ml-1">
-    <div class="col-3">
+<div class="row ml-1">
+    <div class="col-3 ">
         @using (Html.BeginForm())
         {
-            <br />
-
-               <div class="form-group has-danger">
-             
-          
-             
-            @Html.LabelFor(m => Model.SearchName)
-            @Html.TextBoxFor(m => Model.SearchName)
-           <!--  <input type="submit" value="Rechercher" class="btn btn-primary" /> -->
-
-            <input type="submit" class="form-control form-control-danger  btn-primary" id="inputDanger1" value="Rechercher une association">
-              <div class="form-control-feedback">Sorry, that username's taken. Try another?</div>
-
+            @*
+                <div style="font-weight:600;" class="row justify-content-md-center ">
+                @Html.LabelFor(m => Model.SearchName)
+                </div>
+            *@
+            <div class="row mt-4 ml-1 justify-content-md-center">
+                @Html.TextBoxFor(m => Model.SearchName, new { onchange = "submit();", @Class = "form-control form-control-lg form-control-borderless " })
             </div>
+            <!--  <input type="submit" value="Rechercher" class="btn btn-primary" /> -->
+            <div class="row mt-4 ml-1 justify-content-md-center">
+                <input type="submit" value="Rechercher" class="btn btn-primary" />
+            </div>
+
+
         }
     </div>
 
@@ -38,13 +38,13 @@
                         @if (i < Model.AssociationsList.Count)
                         {
                             <div class="col-md-4">
-                               <div class="card">
-                                     <img class="img-fluid card-img-top" alt="100%x280"  src="@Model.AssociationsList[i].Image">
+                                <div class="card">
+                                    <img class="img-fluid card-img-top" alt="100%x280" src="@Model.AssociationsList[i].Image">
                                     <div class="card-body">
                                         <h4 class="card-title">@Model.AssociationsList[i].Name</h4>
-                                        <p class="card-text">@Model.AssociationsList[i].Description</p>           
-                                       <a href="~/Association/Profil?id=@Model.AssociationsList[i].Id" class="stretched-link"></a>
-                                      
+                                        <p class="card-text">@Model.AssociationsList[i].Description</p>
+                                        <a href="~/Association/Profil?id=@Model.AssociationsList[i].Id" class="stretched-link"></a>
+
                                     </div>
                                 </div>
                             </div>

@@ -35,16 +35,38 @@ h4 {
 
 .card-text {
     max-width: 300px !important;
+    max-height: 90px;
     display: -webkit-box !important;
     -webkit-line-clamp: 4 !important;
     -webkit-box-orient: vertical !important;
     overflow: scroll !important;
+    text-overflow: ellipsis !important;
+    white-space: normal;
 }
 
     .card-text::-webkit-scrollbar {
         display: none;
     }
 
+.bg-danger {
+    background-color: #D61518 !important;
+    color :white;
+}
+
+.bg-warning {
+    background-color: #F1C71D !important;
+    color: white;
+}
+
+.bg-success {
+    background-color: #A2C21F !important;
+    color: white;
+}
+
+.bg-primary {
+    background-color: #1B94D3 !important;
+    color: white;
+}
 
 .carousel-control-prev {
     color: dimgray;
@@ -341,6 +363,7 @@ h4 {
     padding-left: 0px !important;
 }
 
+
 /*Newsletter*/
 newsletter {
     padding: 80px 0;
@@ -378,3 +401,10 @@ newsletter {
         color: #fff;
         font-weight: 600;
     }
+
+/*.gestionD h2 {
+    padding-bottom: 75px !important;
+    padding-top: 10px !important;
+}
+*/
+

@@ -28,8 +28,9 @@
                    
                     @Html.LabelFor(m => m.TicketsNumber)
                     @Html.TextBoxFor(m => m.TicketsNumber,new {@class="multi", @onkeyup="setTimeout(check, 1000);onkeyupsum()", @autocomplete="off"})
-                     @Html.DisplayFor(m=>m.TicketPrice,new {@class="multi",})
-                    X
+                     X
+                     @Html.DisplayFor(m=>m.TicketPrice,new {@class="multi",}),00€  
+ 
                     @Html.TextBoxFor(m=>m.Amount)
                     
                 </td>

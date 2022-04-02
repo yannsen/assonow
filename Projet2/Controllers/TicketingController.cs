@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Projet2.Models;
 using Projet2.Models.BL.Interface;
 using Projet2.Models.BL.Service;
@@ -9,6 +10,8 @@ using System.Security.Claims;
 
 namespace Projet2.Controllers
 {
+
+    [Authorize(Roles="Member,Representative")]
     public class TicketingController : Controller
     {
 
@@ -93,6 +96,13 @@ namespace Projet2.Controllers
             return View(viewModel);
         }
 
+
+        public IActionResult DeletedEventConfirm(int orderId)
+        {
+            TicketingViewModel viewModel = new TicketingViewModel();
+            viewModel.IdOrder = orderId;
+            return View(viewModel);
+        }
         public IActionResult PurchasedEventDelete(int orderId)
         {
             ticketingService.DeleteOrder(orderId);
