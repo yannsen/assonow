@@ -7,9 +7,6 @@
     Layout = "_Layout";
 }
 
-
-
-
 {
 
 <legend align="center">Liste des places de concert </legend>
@@ -18,48 +15,48 @@
 <table width="50%" align="center">
     <tr>
         <th>
-            Image
+           
         </th>
-        <th>
+        <th align="center">
             Titre
         </th>
         <th>
-            Description
+             nombre de places achetées
 
         </th>
         <th>
-             nombre de places achetées
-        </th>
-       
-        <th>
             Date d'achat
+        </th>
+
+        <th>
+           
         </th>
     </tr>
 
     @foreach (var orderByEvent in Model.OrderByEventList)
     {
 
-        <tr>
-            <td>
+            <tr>
+                <td align="center">
                 @Html.HiddenFor(m=>orderByEvent.IdOrder)
-                <img src="@orderByEvent.Image" width="100" height="100" />
-            </td>
-            <td>
+                    <img src="@orderByEvent.Image" width="100" height="100" />
+                </td>
+                <td>
                 @orderByEvent.EventTitle
 
-            </td>
-            <td>
+                </td>
+                <td align="center">
                 @orderByEvent.TicketsNumber
-            </td>
-            <td>
+                </td>
+                <td>
                 @orderByEvent.PurchasedDate.ToString("dd/MM/yyyy")
-            </td>
+                </td>
 
-            <td>
+                <td>
                 @Html.ActionLink("Annuler","PurchasedEventDelete","Ticketing", new {orderId=@orderByEvent.IdOrder},null)
-            </td>
+                </td>
 
-        </tr>
+            </tr>
 
     }
 
