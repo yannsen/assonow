@@ -57,6 +57,11 @@
                 <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.TicketsTotalNumber)</td>
             </tr>
 
+            <tr>
+                <td align="right">@Html.LabelFor(m => Model.AssociationEvent.TicketPrice)</td>
+                <td>@Html.TextBoxFor(m => Model.AssociationEvent.TicketPrice)</td>
+                <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.TicketPrice)</td>
+            </tr>
              <tr>
                 <td align="right">@Html.LabelFor(m => Model.Address.RoadNumber)</td>
                 <td>@Html.TextBoxFor(m => Model.Address.RoadNumber)</td>

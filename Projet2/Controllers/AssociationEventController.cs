@@ -78,6 +78,7 @@ namespace Projet2.Controllers
         public IActionResult EventRegister(AssociationEventInfoViewmodel viewModel)
         {   
             viewModel.AssociationEvent.AssociationId = viewModel.SelectedAssociationId;
+            viewModel.AssociationEvent.RemainingTickets = viewModel.AssociationEvent.TicketsTotalNumber;
             if (ModelState.IsValid)
             {
 
