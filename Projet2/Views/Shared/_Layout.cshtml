@@ -21,12 +21,13 @@
     <link href="/assets/css/styles.css" rel="stylesheet" />
 
 </head>
-<body class="sidebar-collapse"> <!-- index-page -->
+<body class="sidebar-collapse">
+    <!-- index-page -->
     <div class="row">
         <!-- Navbar -->
         <div class="container">
-        <nav class="navbar navbar-expand-lg fixed-top">
-            
+            <nav class="navbar navbar-expand-lg fixed-top">
+
                 <div class="navbar-translate">
                     <a class="navbar-brand" href="/" rel="tooltip" title="AssoNow, by ADFY" data-placement="bottom" >
                         <h5 style="font-weight:600; font-size:1.9em; ">
@@ -50,73 +51,80 @@
                             <a href="~/Association/ListeDesAssociations" class="nav-link"><i class="nc-icon nc-bullet-list-67"></i> Associations</a>
                         </li>
                         <li class="nav-item ">
-                            <a href="~/AssociationEvent/VisibleEventList"  class="nav-link"><i class="nc-icon nc-badge"></i> Evènements</a>
+                            <a href="~/AssociationEvent/VisibleEventList" class="nav-link"><i class="nc-icon nc-badge"></i> Evènements</a>
                         </li>
                         <li class="nav-item ">
                             <a href="~/Fundraising/FundraisingList" class="nav-link"><i class="nc-icon nc-bank"></i> Collectes</a>
                         </li>
                     </ul>
-                <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
 
-                    <!-- Doublement de la <ul class="navbar-nav> pour pouvoir posotionner asso evts collectes à g et connnexion tableau de bord à droite-->
-                    <!-- Début du c# -->
-                    <ul class="navbar-nav">
-                        @{
-                            if (!User.Identity.IsAuthenticated)
-                            {
-
-                                <li class="nav-item  dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Connexion
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="~/Compte/Creer">S'inscrire</a>
-                                        <a class="dropdown-item" href="~/Compte/Connexion">Se connecter</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Besoin d'aide ?</a>
-                                    </div>
-
-                                </li>
-                            }
-                            else
-                            {
-                                <li class="nav-item  dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Mon Compte
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="~/Compte/Modifier">Modifier mes informations</a>
-                                        <a class="dropdown-item" href="~/Compte/Deconnexion">Se déconnecter</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Besoin d'aide ?</a>
-                                    </div>
-                                </li>
-
-                                // Bouton pour l'administeur
-                                if (User.IsInRole("Administrator"))
+                        <!-- Doublement de la <ul class="navbar-nav> pour pouvoir posotionner asso evts collectes à g et connnexion tableau de bord à droite-->
+                        <!-- Début du c# -->
+                        <ul class="navbar-nav">
+                            @{
+                                if (!User.Identity.IsAuthenticated)
                                 {
-                                    <li class="nav-item">
-                                        <a href="~/AdminDashboard/Index" target="_blank" class="btn btn-info">Tableau de bord</a>
+
+                                    <li class="nav-item  dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Connexion
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="~/Compte/Creer">S'inscrire</a>
+                                            <a class="dropdown-item" href="~/Compte/Adhesions">Mes adhésions</a>
+                                            <a class="dropdown-item" href="~/Ticketing/MemberOrderList">Mes commandes</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="~/Compte/Connexion">Se connecter</a>
+                                            
+                                        </div>
+
                                     </li>
                                 }
-
-                                else if (User.IsInRole("Representative"))
+                                else
                                 {
-                                    <li class="nav-item "><a href="~/AssociationEvent/Index" target="_blank" class="btn btn-info">Tableau de bord</a>>  </li>
-                                }
+                                    <li class="nav-item  dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Mon Compte
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="~/Compte/Creer">S'inscrire</a>
+                                            <a class="dropdown-item" href="~/Compte/Adhesions">Mes adhésions</a>
+                                            <a class="dropdown-item" href="~/Ticketing/MemberOrderList">Mes commandes</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="~/Compte/Deconnexion">Se déconnecter</a>
+                                        </div>
+                                    </li>
 
-                                //Bouton pour le role legalexpert
-                                else if (User.IsInRole("LegalExpert"))
-                                {
-                                    <li class="nav-item px-2"> <a href="~/Association/Inscrire" target="_blank" class="btn btn-info">Tableau de bord</a></li>
+                                    // Bouton pour l'administeur
+                                    if (User.IsInRole("Administrator"))
+                                    {
+                                        <li class="nav-item">
+                                            <a href="~/AdminDashboard/Index" target="_blank" class="btn btn-info">Tableau de bord</a>
+                                        </li>
+                                    }
+
+                                    else if (User.IsInRole("Representative"))
+                                    {
+                                        <li class="nav-item "><a href="~/AssociationEvent/Index" target="_blank" class="btn btn-info">Tableau de bord</a>>  </li>
+                                    }
+
+                                    //Bouton pour le role legalexpert
+                                    else if (User.IsInRole("LegalExpert"))
+                                    {
+                                        <li class="nav-item px-2"> <a href="~/Advice/Index" target="_blank" class="btn btn-info">Tableau de bord</a></li>
+                                    }
+                                    else if (User.IsInRole("Member"))
+                                    {
+                                        <li class="nav-item px-2"> <a href="~/Association/Inscrire" target="_blank" class="btn btn-info">Inscrire une association</a></li>
+                                    }
                                 }
                             }
-                        }
-                    </ul>
-                </div>
-            
+                        </ul>
+                    </div>
 
-        </nav>
+
+            </nav>
         </div>
     </div>
 
@@ -162,7 +170,7 @@
     <script src="/assets/js/paper-kit.js?v=2.2.0" type="text/javascript"></script>
     <!--  Google Maps Plugin    -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-      @* YS*@
-    <script type="text/javascript" src="/js/validateresult.js"></script> 
+    @* YS*@
+    <script type="text/javascript" src="/js/validateresult.js"></script>
 </body>
 </html>
