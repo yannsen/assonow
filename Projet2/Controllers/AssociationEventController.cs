@@ -106,6 +106,7 @@ namespace Projet2.Controllers
         {
             AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
             viewModel.AssociationEventsList = associationEventService.ListAssociationEvent(id);
+            viewModel.AssociationEventsList.Sort((x, y) => DateTime.Compare(x.Date, y.Date));
             viewModel.SelectedAssociationId = id;
             viewModel.Association = associationService.GetAssociation(id);
             return View(viewModel);
