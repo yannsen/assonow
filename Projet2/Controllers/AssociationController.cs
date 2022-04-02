@@ -81,6 +81,7 @@ namespace Projet2.Controllers
             viewModel.Association = associationService.GetAssociation((int)id);
             viewModel.Fundraisings = fundraisingService.GetFundraisingsByAssociation((int)id);
             viewModel.Events = associationEventService.GetEventsByAssociation((int)id);
+            viewModel.Events.Sort((x, y) => DateTime.Compare(x.Date, y.Date));
             return View(viewModel);
         }
 

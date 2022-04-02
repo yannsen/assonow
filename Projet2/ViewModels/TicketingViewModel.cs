@@ -25,6 +25,8 @@ namespace Projet2.ViewModels
 
         public List<OrderByEvent> OrderByEventList { get; set; }
 
+        public int IdOrder { get; set; }
+
     }
 
 }

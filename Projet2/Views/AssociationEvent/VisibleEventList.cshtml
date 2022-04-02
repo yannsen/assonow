@@ -5,39 +5,55 @@
     Layout = "_Layout";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>ListeDesEvenements</title>
-</head>
-<body>
-    <section class="py-5">
-                <div class="container px-5 my-5">
-                    <div class="row gx-5 justify-content-center">
-                        <div class="col-lg-8 col-xl-6">
-                            <div class="text-center">
-                                <h2 class="fw-bolder"> </h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row gx-5">
-                        @foreach (var item in Model.AssociationEventsList)
-                        {
-                            <div class="col-lg-4 mb-5">
-                            <div class="card h-100 shadow border-0">
-                                <img class="card-img-top" src="@item.Image" alt="@item.EventTitle" />
-                                <div class="card-body p-4">
-                                    <a class="text-decoration-none link-dark stretched-link" asp-area="" asp-controller="AssociationEvent" asp-action="EventView" asp-route-id="@item.Id"><h5 class="card-title mb-3">@item.EventTitle</h5></a>
-                                    <p class="card-text mb-0">@item.Description</p>
-                                </div>
-                                    </div>
-
-                                </div>
-                        }
-                   </div>
+<div class="d-flex flex-column w-100">
+    <div class="d-flex flex-row w-100">
+        <div class="d-flex justify-content-center w-25">
+            <div class="d-flex flex-column bg-light rounded w-75" style="height:500px;">
+                <div class="d-flex justify-content-md-center p-3">
+                    <p>Recherche</p>
                 </div>
-    </section>
-</body>
-</html>
+                @using (Html.BeginForm())
+                {
+                    <div class="d-flex flex-column p-3">
+                        @Html.LabelFor(m => Model.AssociationNameToSearch)
+                        @Html.TextBoxFor(m => Model.AssociationNameToSearch, new { onchange = "submit();", @Class = "form-control form-control-lg form-control-borderless " } )
+                    </div>
+                    <div class="d-flex flex-column p-3">
+                        @Html.LabelFor(m => Model.EventNameToSearch)
+                        @Html.TextBoxFor(m => Model.EventNameToSearch, new { onchange = "submit();", @Class = "form-control form-control-lg form-control-borderless " } )
+                    </div>
+                    <div class="d-flex flex-row p-3 justify-content-md-center">
+                        <button type="submit" class="btn btn-info">Rechercher</button>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="d-flex flex-column w-75">
+            @{
+                int i = 0;
+                while (i < Model.AssociationEventsList.Count)
+                {
+                    <div class="d-flex flex-row justify-content-around w-100">
+                        @for (int j = 0; j < 3; j++)
+                        {
+                            @if (i < Model.AssociationEventsList.Count)
+                            {
+                                <div class="card align-items-center w25">
+                                    <img class="card-img-top" src="@Model.AssociationEventsList[i].Image">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@Model.AssociationEventsList[i].EventTitle</h5>
+                                        <p class="card-text">@Model.AssociationEventsList[i].Description</p>
+                                        <a href="~/AssociationEvent/EventView?id=@Model.AssociationEventsList[i].Id" class="stretched-link"></a>
+                                    </div>
+                                </div>
+                            }
+                            i++;
+                        }
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+   

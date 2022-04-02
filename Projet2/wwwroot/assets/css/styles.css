@@ -1,8 +1,7 @@
 ﻿@charset "UTF-8";
 
-
-@import url("http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic");
-@import url("//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css");
+/*@import url("http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic");
+@import url("//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css");*/
 
 h4 {
     font-size: 20px;
@@ -30,26 +29,48 @@ h4 {
     height: 200px !important;
 }
 
-.card-body{
+.card-body {
     height: 200px;
 }
 
 .card-text {
     max-width: 300px !important;
+    max-height: 90px;
     display: -webkit-box !important;
     -webkit-line-clamp: 4 !important;
     -webkit-box-orient: vertical !important;
     overflow: scroll !important;
+    text-overflow: ellipsis !important;
+    white-space: normal;
 }
 
-.card-text::-webkit-scrollbar{
-    display:none;
+    .card-text::-webkit-scrollbar {
+        display: none;
+    }
+
+.bg-danger {
+    background-color: #D61518 !important;
+    color :white;
 }
 
+.bg-warning {
+    background-color: #F1C71D !important;
+    color: white;
+}
 
-.carousel-control-prev{
+.bg-success {
+    background-color: #A2C21F !important;
+    color: white;
+}
+
+.bg-primary {
+    background-color: #1B94D3 !important;
+    color: white;
+}
+
+.carousel-control-prev {
     color: dimgray;
-    margin-left:-200px;
+    margin-left: -200px;
 }
 
 .carousel-control-next {
@@ -81,7 +102,7 @@ h4 {
     color: black;
 }
 
-.listBox{
+.listBox {
     width: 400px;
 }
 
@@ -104,11 +125,11 @@ h4 {
 }
 
 #ulhighlight {
-    text-align:center;
+    text-align: center;
 }
 
 #lihighlight {
-    width:250px;
+    width: 250px;
 }
 
 .descriptionForm {
@@ -335,7 +356,6 @@ h4 {
                     }
 }
 
-
 .presentation {
     padding-top: 10px !important;
     padding-right: 0px !important;
@@ -343,8 +363,48 @@ h4 {
     padding-left: 0px !important;
 }
 
+
+/*Newsletter*/
+newsletter {
+    padding: 80px 0;
+    background: #19beda;
+}
+
+.newsletter .content {
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+    .newsletter .content h2 {
+        color: #243c4f;
+        margin-bottom: 40px;
+    }
+
+    .newsletter .content .form-control {
+        height: 50px;
+        border-color: #ffffff;
+        border-radius: 0;
+    }
+
+        .newsletter .content.form-control:focus {
+            box-shadow: none;
+            border: 2px solid #243c4f;
+        }
+
+    .newsletter .content .btn {
+        min-height: 50px;
+        border-radius: 0;
+        background: #243c4f;
+        color: #fff;
+        font-weight: 600;
+    }
+
 /*.gestionD h2 {
     padding-bottom: 75px !important;
     padding-top: 10px !important;
 }
 */
+

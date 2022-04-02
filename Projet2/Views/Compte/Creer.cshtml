@@ -1,9 +1,12 @@
-﻿@model Projet2.ViewModels.MemberInfoViewModel
+@model Projet2.ViewModels.MemberInfoViewModel
+@section Styles{
+    <link href="/assets/css/login.css" rel="stylesheet" />
+}
+
 
 @{
     ViewBag.Title = "Création de compte";
     Layout = "_Layout";
 }
-
 
 @await Html.PartialAsync("CreationModificationAccountForm", @Model)
