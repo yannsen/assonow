@@ -45,6 +45,25 @@ h4 {
         display: none;
     }
 
+.bg-danger {
+    background-color: #D61518 !important;
+    color :white;
+}
+
+.bg-warning {
+    background-color: #F1C71D !important;
+    color: white;
+}
+
+.bg-success {
+    background-color: #A2C21F !important;
+    color: white;
+}
+
+.bg-primary {
+    background-color: #1B94D3 !important;
+    color: white;
+}
 
 .carousel-control-prev {
     color: dimgray;
