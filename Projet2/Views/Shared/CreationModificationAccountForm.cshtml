@@ -18,6 +18,48 @@
                     <div class="form-group row">
                         @Html.LabelFor(m => Model.Member.Firstname)
                         @Html.TextBoxFor(m => Model.Member.Firstname, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(m => Model.Member.Firstname)
+                     </div>
+                      <div class="form-group row">
+                        @Html.LabelFor(m => Model.Member.Pseudonym)
+                        @Html.TextBoxFor(m => Model.Member.Pseudonym, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(m => Model.Member.Pseudonym)
+                    
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(m => Model.Member.Mail)
+                        @Html.TextBoxFor(m => Model.Member.Mail, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(m => Model.Member.Mail)
+                     </div>
+                     <div>
+                        @if (ViewBag.Legend == "Création de compte")
+                        {
+                            @Html.LabelFor(m => Model.Member.Password)
+                            @Html.TextBoxFor(m => Model.Member.Password, new { @class = "form-control"})
+                            @Html.ValidationMessageFor(m => Model.Member.Password)
+                        }
+                     <div class="form-group row">
+                        @Html.LabelFor(m => Model.Address.RoadNumber)
+                        @Html.TextBoxFor(m => Model.Address.RoadNumber, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(m => Model.Address.RoadNumber)
+                     </div>
+                     <div class="form-group row">
+                        @Html.LabelFor(m => Model.Address.Road)
+                        @Html.TextBoxFor(m => Model.Address.Road, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(m => Model.Address.Road)
+                     </div>
+                     <div class="form-group row">
+                        @Html.LabelFor(m => Model.Address.PostalCode)
+                        @Html.TextBoxFor(m => Model.Address.PostalCode, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(m => Model.Address.PostalCode)
+                     </div>
+                     <div class="form-group row">
+                        @Html.LabelFor(m => Model.Address.City)
+                        @Html.TextBoxFor(m => Model.Address.City, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(m => Model.Address.City)
+                     </div>
+
+
                      </div>
                     <div class="form-group">
                         <input type="submit" class="btnSubmit" value="Valider" />
