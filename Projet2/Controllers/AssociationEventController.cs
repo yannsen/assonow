@@ -177,5 +177,16 @@ namespace Projet2.Controllers
             return View(viewModel);
 
         }
+
+        [HttpPost]
+        public ActionResult VisibleEventList(AssociationEventInfoViewmodel viewModel)
+        {
+
+            if (viewModel.AssociationNameToSearch == null) viewModel.AssociationNameToSearch = "";
+            if (viewModel.EventNameToSearch == null) viewModel.EventNameToSearch = "";
+            viewModel.AssociationEventsList = associationEventService.GetAssociationEventToSearch(viewModel);
+            return View(viewModel);
+
+        }
     }
 }
