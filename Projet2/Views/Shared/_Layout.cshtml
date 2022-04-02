@@ -6,6 +6,14 @@
     <meta charset="utf-8" />
 
     <title>@ViewBag.Title</title>
+
+   @* Nos fichiers Bootstrap sont en local *@
+   @*<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>   *@
+  
+    <link href="~/assets/css/styles.css" rel="stylesheet" />
+
     <!-- Favicon (icone dans l'onglet)  oldone : <link rel="icon" type="image/x-icon" href="./Images/LogoDef.png">-->
     <link rel="icon" type="image/png" href="/Images/LogoDef.png">
 
@@ -18,7 +26,10 @@
     <!-- CSS Files -->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/assets/css/paper-kit.css?v=2.2.0" rel="stylesheet" />
+  
     <link href="/assets/css/styles.css" rel="stylesheet" />
+
+    @await RenderSectionAsync("Styles", required: false)
 
 </head>
 <body class="sidebar-collapse">
@@ -29,7 +40,7 @@
             <nav class="navbar navbar-expand-lg fixed-top">
 
                 <div class="navbar-translate">
-                    <a class="navbar-brand" href="/" rel="tooltip" title="AssoNow, by ADFY" data-placement="bottom" target="_blank">
+                    <a class="navbar-brand" href="/" rel="tooltip" title="AssoNow, by ADFY" data-placement="bottom" >
                         <h5 style="font-weight:600; font-size:1.9em; ">
                             <img src="/Images/LogoDef.png" width="50" height="50" mr-1="" class="d-inline-block" alt=""> <!-- class="d-inline-block -->
                             <span style="color: rgb(214, 21, 24)">A</span><span style="text-transform:lowercase">sso</span><span style="color: rgb(27, 148, 255)">N</span><span style="text-transform:lowercase">ow</span>

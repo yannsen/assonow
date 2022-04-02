@@ -10,9 +10,20 @@
     <div class="col-3">
         @using (Html.BeginForm())
         {
+            <br />
+
+               <div class="form-group has-danger">
+             
+          
+             
             @Html.LabelFor(m => Model.SearchName)
             @Html.TextBoxFor(m => Model.SearchName)
-            <input type="submit" value="Rechercher" class="btn btn-primary" />
+           <!--  <input type="submit" value="Rechercher" class="btn btn-primary" /> -->
+
+            <input type="submit" class="form-control form-control-danger  btn-primary" id="inputDanger1" value="Rechercher une association">
+              <div class="form-control-feedback">Sorry, that username's taken. Try another?</div>
+
+            </div>
         }
     </div>
 
