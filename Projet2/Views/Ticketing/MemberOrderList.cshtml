@@ -11,46 +11,60 @@
 
 
 {
-    
-        <legend align="center">Liste des places de concert </legend>
-        <br>
-        <br>
-        <table width="50%" align="center">
-            <tr>
-                 <th>
-                     Image
-                 </th>
-                 <th>
-                    Titre
-                 </th>
-                 <th> 
-                     Description
-                 </th>
-            </tr>
 
-           @foreach (var orderByEvent  in Model.OrderByEventList)
-           {
+<legend align="center">Liste des places de concert </legend>
+<br>
+<br>
+<table width="50%" align="center">
+    <tr>
+        <th>
+            Image
+        </th>
+        <th>
+            Titre
+        </th>
+        <th>
+            Description
 
-            <tr>   
-                <td>@Html.HiddenFor(m=>orderByEvent.IdOrder)
-                    <img src="@orderByEvent.Image" width="100" height="100"/>
-                </td>
-                <td>
-                    @orderByEvent.EventTitle
-                </td>
+        </th>
+        <th>
+             nombre de places achetées
+        </th>
+       
+        <th>
+            Date d'achat
+        </th>
+    </tr>
 
-                  <td>
-                    @Html.ActionLink("Consulter","OrderByEventList","Ticketing", new {id=orderByEvent.IdEvent,orderId=@orderByEvent.IdOrder},null)
-                    @Html.ActionLink("modifier","PurchasedEventModify","Ticketing", new {id=orderByEvent.IdEvent,idOrder=@orderByEvent.IdOrder},null)    
-                   @Html.ActionLink("Annuler","PurchasedEventDelete","Ticketing", new {orderId=@orderByEvent.IdOrder},null)                  
-               </td>
+    @foreach (var orderByEvent in Model.OrderByEventList)
+    {
 
-             </tr>
+        <tr>
+            <td>
+                @Html.HiddenFor(m=>orderByEvent.IdOrder)
+                <img src="@orderByEvent.Image" width="100" height="100" />
+            </td>
+            <td>
+                @orderByEvent.EventTitle
 
-           }
-  
+            </td>
+            <td>
+                @orderByEvent.TicketsNumber
+            </td>
+            <td>
+                @orderByEvent.PurchasedDate.ToString("dd/MM/yyyy")
+            </td>
+
+            <td>
+                @Html.ActionLink("Annuler","PurchasedEventDelete","Ticketing", new {orderId=@orderByEvent.IdOrder},null)
+            </td>
+
+        </tr>
+
+    }
 
 
-        </table>
- 
+
+</table>
+
 }
