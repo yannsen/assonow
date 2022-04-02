@@ -6,45 +6,46 @@
 }
 
 
-@using (Html.BeginForm())
-{
-    <fieldset>
-        <legend align="center">Informations sur l'évènement</legend>
-        <br>
-        <br>
-        @Html.HiddenFor(m=>m.SelectedAssociationId)
-        @Html.HiddenFor(m=>m.AssociationEvent.AddressId)
-        @Html.HiddenFor(m=>m.AssociationEvent.AssociationId)
-        @Html.HiddenFor(m=>m.AssociationEvent.Id)
-        @*<div class="d-flex flex-column justify-content-center w-100">*@
-        <div class="float:left;width:33%;">
+@*@using (Html.BeginForm())
+    {
+    <fieldset>*@
+<legend align="center">Informations sur l'évènement</legend>
+<br>
+<br>
+@Html.HiddenFor(m=>m.SelectedAssociationId)
+@Html.HiddenFor(m=>m.AssociationEvent.AddressId)
+@Html.HiddenFor(m=>m.AssociationEvent.AssociationId)
+@Html.HiddenFor(m=>m.AssociationEvent.Id)
+
+<div class="d-flex flex-column justify-content-center w-100">
+    <div class="d-flex flex-row w-75">
+        <div class="d-flex flex-row  justify-content-center w-100 p-3">
+            <div class="d-flex ">
+                <img src="@Model.AssociationEvent.Image" class="rounded mx-auto d-block" alt="@Model.AssociationEvent.EventTitle">
+            </div>
+        </div>
+
+        <div class="d-flex flex-column w-50 justify-content-center w-50 p-3">
+
             <div class="d-flex">
-                <img src="@Model.AssociationEvent.Image" class="rounded mx-auto d-block" alt="@Model.SelectedAssociationId">
-            </div>
-            <div class="d-flex flex-row justify-content-center w-100">
-                <div class="d-flex">
-                    <table class="table">
-                        <tr>
-                            <td>@Html.LabelFor(m => Model.AssociationEvent.EventTitle)</td>
-                            <td>@Model.AssociationEvent.EventTitle)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.LabelFor(m => Model.AssociationEvent.Description)</td>
-                            <td>@Model.AssociationEvent.Description)</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="float:left;width:33%;">
                 <table>
                     <tr>
-                        <td>Nombre de tickets restant</td>
-                        <td>@Model.AssociationEvent.RemainingTickets</td>
+                        <td>
+                            <h4>
+                                @Model.AssociationEvent.EventTitle
+                            </h4>
+                            <hr width="50%" size="2" align="center">
+                        </td>
                     </tr>
 
                     <tr>
-                        <td> Adresse</td>
+
+                        <td>
+                            @Model.AssociationEvent.Description
+                            <hr width="50%" size="2" align="center">
+                        </td>
                     </tr>
+
                     <tr>
                         <td>@Model.Address.RoadNumber, @Model.Address.Road</td>
                     <tr>
@@ -52,69 +53,145 @@
                     <tr>
                         <td>@Model.Address.PostalCode, @Model.Address.City</td>
                     </tr>
-
                     <tr>
-                        <td>@Html.LabelFor(m => Model.Address.Country)</td>
-                        <td>@Model.Address.Country</td>
+                        <td>
+                                @Model.Address.Country
+                            <hr width="50%" size="2" align="center">
+                        </td>
                     </tr>
-                </table>
-            </div>
-            @*<div class="d-flex justify-content-center w-100">*@
-            <div class="float:left;width:33%;">
-                <table>
                     <tr>
-                        <td align="right">@Html.LabelFor(m => Model.AssociationEvent.Date)</td>
-                        <td>@Model.AssociationEvent.Date)</td>
+                        <td>@Model.AssociationEvent.RemainingTickets places restantes</td>
                     </tr>
 
-                    <tr>
-                        <td align="right">@Html.LabelFor(m => Model.AssociationEvent.EventType)</td>
-                        <td>@Model.AssociationEvent.EventType</td>
-                    </tr>
 
-                    <tr>
-                        <td align="right">@Html.LabelFor(m => Model.AssociationEvent.Speakers)</td>
-                        <td>@Model.AssociationEvent.Speakers</td>
-                    </tr>
-                    <tr>
-                        <td align="right">@Html.LabelFor(m => Model.AssociationEvent.Artists)</td>
-                        <td>@Model.AssociationEvent.Artists</td>
-                    </tr>
+
                 </table>
+
             </div>
-            <div>
-                <table width="50%" align="center">
-                    <tr>
-                        <td align="center" colspan="7">Nombre de places disponibles @Model.AssociationEvent.TicketsTotalNumber</td>
-                    </tr>
-                </table>
-            </div>
+
+
             <div class="d-flex justify-content-center w-100">
                 <a href="~/Ticketing/TicketRegister?id=@Model.AssociationEvent.Id" class="btn btn-primary">Commander</a>
             </div>
+
+
+
         </div>
-     @*<table>
-                 <tr>
-                <td>Nombre de tickets restant</td>
-                <td>@Model.AssociationEvent.RemainingTickets</td>
-            </tr>
 
-             <tr>
-                <td> Adresse</td>
-               </tr>
-               <tr>
-                <td>@Model.Address.RoadNumber, @Model.Address.Road</td>
-                <tr>
-                </tr>
-                <td>@Model.Address.PostalCode, @Model.Address.City</td>
-            </tr>
+        @*                    <div class="d-flex flex-column w-50 p-3">
 
-           
+            <table>
             <tr>
-                <td>@Html.LabelFor(m => Model.Address.Country)</td>
-                <td>@Model.Address.Country</td>
-            </tr> 
-       </table>
-       *@
-    </fieldset>
+            <td>@Model.AssociationEvent.EventTitle)</td>
+            </tr>
+            <td>@Model.AssociationEvent.Description)</td>
+
+            </table>
+
+            </div>     *@
+    </div>
+
+</div>
+
+@*
+    <div class="float:left;width:33%;">
+    <div class="d-flex">
+    <img src="@Model.AssociationEvent.Image" class="rounded mx-auto d-block" alt="@Model.SelectedAssociationId">
+    </div>
+    <div class="d-flex flex-row justify-content-center w-100">
+    <div class="d-flex">
+    <table class="table">
+    <tr>
+    <td>@Html.LabelFor(m => Model.AssociationEvent.EventTitle)</td>
+    <td>@Model.AssociationEvent.EventTitle)</td>
+    </tr>
+    <tr>
+    <td>@Html.LabelFor(m => Model.AssociationEvent.Description)</td>
+    <td>@Model.AssociationEvent.Description)</td>
+    </tr>
+    </table>
+    </div>
+    </div>
+    <div class="float:left;width:33%;">
+    <table>
+    <tr>
+    <td>Nombre de tickets restant</td>
+    <td>@Model.AssociationEvent.RemainingTickets</td>
+    </tr>
+
+    <tr>
+    <td> Adresse</td>
+    </tr>
+    <tr>
+    <td>@Model.Address.RoadNumber, @Model.Address.Road</td>
+    <tr>
+    </tr>
+    <tr>
+    <td>@Model.Address.PostalCode, @Model.Address.City</td>
+    </tr>
+
+    <tr>
+    <td>@Html.LabelFor(m => Model.Address.Country)</td>
+    <td>@Model.Address.Country</td>
+    </tr>
+    </table>
+    </div>
+    @*<div class="d-flex justify-content-center w-100">
+    <div class="float:left;width:33%;">
+    <table>
+    <tr>
+    <td align="right">@Html.LabelFor(m => Model.AssociationEvent.Date)</td>
+    <td>@Model.AssociationEvent.Date)</td>
+    </tr>
+
+    <tr>
+    <td align="right">@Html.LabelFor(m => Model.AssociationEvent.EventType)</td>
+    <td>@Model.AssociationEvent.EventType</td>
+    </tr>
+
+    <tr>
+    <td align="right">@Html.LabelFor(m => Model.AssociationEvent.Speakers)</td>
+    <td>@Model.AssociationEvent.Speakers</td>
+    </tr>
+    <tr>
+    <td align="right">@Html.LabelFor(m => Model.AssociationEvent.Artists)</td>
+    <td>@Model.AssociationEvent.Artists</td>
+    </tr>
+    </table>
+    </div>
+    <div>
+    <table width="50%" align="center">
+    <tr>
+    <td align="center" colspan="7">Nombre de places disponibles @Model.AssociationEvent.TicketsTotalNumber</td>
+    </tr>
+    </table>
+    </div>
+    <div class="d-flex justify-content-center w-100">
+    <a href="~/Ticketing/TicketRegister?id=@Model.AssociationEvent.Id" class="btn btn-primary">Commander</a>
+    </div>
+    </div>
+    <table>
+    <tr>
+    <td>Nombre de tickets restant</td>
+    <td>@Model.AssociationEvent.RemainingTickets</td>
+    </tr>
+
+    <tr>
+    <td> Adresse</td>
+    </tr>
+    <tr>
+    <td>@Model.Address.RoadNumber, @Model.Address.Road</td>
+    <tr>
+    </tr>
+    <td>@Model.Address.PostalCode, @Model.Address.City</td>
+    </tr>
+
+
+    <tr>
+    <td>@Html.LabelFor(m => Model.Address.Country)</td>
+    <td>@Model.Address.Country</td>
+    </tr>
+    </table>
+*@
+
 }
