@@ -93,6 +93,13 @@ namespace Projet2.Controllers
             return View(viewModel);
         }
 
+
+        public IActionResult DeletedEventConfirm(int orderId)
+        {
+            TicketingViewModel viewModel = new TicketingViewModel();
+            viewModel.IdOrder = orderId;
+            return View(viewModel);
+        }
         public IActionResult PurchasedEventDelete(int orderId)
         {
             ticketingService.DeleteOrder(orderId);

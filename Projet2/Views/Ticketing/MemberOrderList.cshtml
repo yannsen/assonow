@@ -7,12 +7,17 @@
     Layout = "_Layout";
 }
 
-{
 
-<legend align="center">Liste des places de concert </legend>
+
+<legend>Liste des places de concert </legend>
 <br>
-<br>
-<table width="50%" align="center">
+<div class="d-flex flex-row justify-content-center w-100">
+    <div class="d-flex flex-column justify-content-center border-dark border rounded w-35">
+
+
+
+
+<table class="table table-light table-striped w-100 h-100">
     <tr>
         <th>
            
@@ -51,17 +56,13 @@
                 <td>
                 @orderByEvent.PurchasedDate.ToString("dd/MM/yyyy")
                 </td>
-
                 <td>
-                @Html.ActionLink("Annuler","PurchasedEventDelete","Ticketing", new {orderId=@orderByEvent.IdOrder},null)
+                @Html.ActionLink("Annuler","DeletedEventConfirm","Ticketing", new {orderId=@orderByEvent.IdOrder},null)
                 </td>
-
             </tr>
-
     }
-
-
-
 </table>
-
-}
+        </div>
+</div>
+<br />
+<br />
