@@ -35,7 +35,7 @@ namespace Projet2.Models.BL.Service
             ticket.Position = position;
             ticket.AssociationEventId = associationEventId;
             ticket.OrderId = orderId;
-            AddRemainingTicket(associationEventId);
+            SubtractdRemainingTicket(associationEventId);
             _bddContext.Ticket.Add(ticket);
             _bddContext.SaveChanges();
         }
@@ -78,7 +78,7 @@ namespace Projet2.Models.BL.Service
             if (ticket != null)
             {
                 _bddContext.Ticket.Remove(ticket);
-                SubtractdRemainingTicket(ticket.AssociationEventId);
+                AddRemainingTicket(ticket.AssociationEventId);
                 _bddContext.SaveChanges();
             }
 
