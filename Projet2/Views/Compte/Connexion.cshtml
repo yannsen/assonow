@@ -20,7 +20,7 @@
                 <br>
                 @if (!ViewData.ModelState.IsValid)
                 {
-                    <span class="alert alert-danger">@Html.ValidationMessage("Pseudonym.Password")</span>
+                    <span class="alert alert-danger">@Html.Label("Pseudo et/ou mot de passe incorrect(s)")</span>
                     <br />
                     <br />
                 }

@@ -4,6 +4,7 @@ using Projet2.Models;
 using Projet2.Models.BL.Interface;
 using Projet2.Models.BL.Service;
 using Projet2.ViewModels;
+using System.Linq;
 
 namespace Projet2.Controllers
 {
@@ -78,8 +79,8 @@ namespace Projet2.Controllers
         public IActionResult HighlightedAssociations()
         {
             HighlightedViewModel viewModel = new HighlightedViewModel();
-            viewModel.HAssociations = associationService.GetHighlightedAssociations();
-            viewModel.NHAssociations = associationService.GetNotHighlightedAssociations();
+            viewModel.HAssociations = associationService.GetHighlightedAssociations().OrderBy(a => a.Name).ToList();
+            viewModel.NHAssociations = associationService.GetNotHighlightedAssociations().OrderBy(a => a.Name).ToList();
             return View(viewModel);
         }
 
@@ -112,8 +113,8 @@ namespace Projet2.Controllers
         public IActionResult HighlightedFundraisings()
         {
             HighlightedViewModel viewModel = new HighlightedViewModel();
-            viewModel.HFundraisings = fundraisingService.GetHighlightedFundraisings();
-            viewModel.NHFundraisings = fundraisingService.GetNotHighlightedFundraisings();
+            viewModel.HFundraisings = fundraisingService.GetHighlightedFundraisings().OrderBy(a => a.Name).ToList(); ;
+            viewModel.NHFundraisings = fundraisingService.GetNotHighlightedFundraisings().OrderBy(a => a.Name).ToList(); ;
             return View(viewModel);
         }
 
@@ -146,8 +147,8 @@ namespace Projet2.Controllers
         public IActionResult HighlightedAssociationEvent()
         {
             HighlightedViewModel viewModel = new HighlightedViewModel();
-            viewModel.HEvents = associationEventService.GetHighlightedAssociationEvents();
-            viewModel.NHEvents = associationEventService.GetNotHighlightedAssociationEvents();
+            viewModel.HEvents = associationEventService.GetHighlightedAssociationEvents().OrderBy(a => a.EventTitle).ToList(); ;
+            viewModel.NHEvents = associationEventService.GetNotHighlightedAssociationEvents().OrderBy(a => a.EventTitle).ToList(); ;
             return View(viewModel);
         }
 

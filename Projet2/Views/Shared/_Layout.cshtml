@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8" />
     <title>@ViewBag.Title</title>
-   @* Nos fichiers Bootstrap sont en local *@
-   @*<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>   *@
+    @* Nos fichiers Bootstrap sont en local *@
+    @*<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>   *@
     <link href="~/assets/css/styles.css" rel="stylesheet" />
     <!-- Favicon (icone dans l'onglet)  oldone : <link rel="icon" type="image/x-icon" href="./Images/LogoDef.png">-->
     <link rel="icon" type="image/png" href="/Images/LogoDef.png">
@@ -23,84 +23,86 @@
 <body class="sidebar-collapse">
     <section>
         <nav class="navbar navbar-expand-lg fixed-top">
-            <div class="navbar-translate">
-                <a class="navbar-brand" href="/" rel="tooltip" title="AssoNow, by ADFY" data-placement="bottom">
-                    <h5 style="font-weight:600; font-size:1.9em; ">
-                        <img src="/Images/LogoDef.png" width="50" height="50" mr-1="" class="d-inline-block" alt=""> <!-- class="d-inline-block -->
-                        <span style="color: rgb(214, 21, 24)">A</span><span style="text-transform:lowercase">sso</span><span style="color: rgb(27, 148, 255)">N</span><span style="text-transform:lowercase">ow</span>
-                    </h5>
-                </a>
-                <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-bar bar1"></span>
-                    <span class="navbar-toggler-bar bar2"></span>
-                    <span class="navbar-toggler-bar bar3"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse justify-content-start " id="navigation">
-                <ul class="navbar-nav">
-                    <li class="nav-item ">
-                        <a href="~/Association/ListeDesAssociations" class="nav-link"><i class="nc-icon nc-bullet-list-67"></i> Associations</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="~/AssociationEvent/VisibleEventList" class="nav-link"><i class="nc-icon nc-badge"></i> Evènements</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a href="~/Fundraising/FundraisingList" class="nav-link"><i class="nc-icon nc-bank"></i> Collectes</a>
-                    </li>
-                </ul>
-                <div class="collapse navbar-collapse justify-content-end" id="navigation">
+            <div class="container">
+                <div class="navbar-translate">
+                    <a class="navbar-brand" href="/" rel="tooltip" title="AssoNow, by ADFY" data-placement="bottom">
+                        <h5 style="font-weight:600; font-size:1.9em; ">
+                            <img src="/Images/LogoDef.png" width="50" height="50" mr-1="" class="d-inline-block" alt=""> <!-- class="d-inline-block -->
+                            <span style="color: rgb(214, 21, 24)">A</span><span style="text-transform:lowercase">sso</span><span style="color: rgb(27, 148, 255)">N</span><span style="text-transform:lowercase">ow</span>
+                        </h5>
+                    </a>
+                    <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-bar bar1"></span>
+                        <span class="navbar-toggler-bar bar2"></span>
+                        <span class="navbar-toggler-bar bar3"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse justify-content-start " id="navigation">
                     <ul class="navbar-nav">
-                        @{
-                            if (!User.Identity.IsAuthenticated)
-                            {
-                                <li class="nav-item  dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Connexion
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="~/Compte/Creer">S'inscrire</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="~/Compte/Connexion">Se connecter</a>
-                                    </div>
-                                </li>
-                            }
-                            else
-                            {
-                                <li class="nav-item  dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Mon Compte
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="~/Compte/Creer">S'inscrire</a>
-                                        <a class="dropdown-item" href="~/Compte/Adhesions">Mes adhésions</a>
-                                        <a class="dropdown-item" href="~/Ticketing/MemberOrderList">Mes commandes</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="~/Compte/Deconnexion">Se déconnecter</a>
-                                    </div>
-                                </li>
-                                // Bouton pour l'administeur
-                                if (User.IsInRole("Administrator"))
+                        <li class="nav-item ">
+                            <a href="~/Association/ListeDesAssociations" class="nav-link"><i class="nc-icon nc-bullet-list-67"></i> Associations</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="~/AssociationEvent/VisibleEventList" class="nav-link"><i class="nc-icon nc-badge"></i> Evènements</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="~/Fundraising/FundraisingList" class="nav-link"><i class="nc-icon nc-bank"></i> Collectes</a>
+                        </li>
+                    </ul>
+                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                        <ul class="navbar-nav">
+                            @{
+                                if (!User.Identity.IsAuthenticated)
                                 {
-                                    <li class="nav-item">
-                                        <a href="~/AdminDashboard/Index"  class="btn btn-info">Tableau de bord</a>
+                                    <li class="nav-item  dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Connexion
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="~/Compte/Creer">S'inscrire</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="~/Compte/Connexion">Se connecter</a>
+                                        </div>
                                     </li>
                                 }
-                                else if (User.IsInRole("Representative"))
+                                else
                                 {
-                                    <li class="nav-item "><a href="~/AssociationEvent/Index"  class="btn btn-info">Tableau de bord</a>  </li>
-                                }
-                                //Bouton pour le role legalexpert
-                                else if (User.IsInRole("LegalExpert"))
-                                {
-                                    <li class="nav-item px-2"> <a href="~/Advice/Index"  class="btn btn-info">Tableau de bord</a></li>
-                                }
-                                else if (User.IsInRole("Member"))
-                                {
-                                    <li class="nav-item px-2"> <a href="~/Association/Inscrire"  class="btn btn-info">Inscrire une association</a></li>
+                                    <li class="nav-item  dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Mon Compte
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="~/Compte/Modifier">Modifier mes informations</a>
+                                            <a class="dropdown-item" href="~/Compte/Adhesions">Mes adhésions</a>
+                                            <a class="dropdown-item" href="~/Ticketing/MemberOrderList">Mes commandes</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="~/Compte/Deconnexion">Se déconnecter</a>
+                                        </div>
+                                    </li>
+                                    // Bouton pour l'administeur
+                                    if (User.IsInRole("Administrator"))
+                                    {
+                                        <li class="nav-item">
+                                            <a href="~/AdminDashboard/Index" class="btn btn-info">Tableau de bord</a>
+                                        </li>
+                                    }
+                                    else if (User.IsInRole("Representative"))
+                                    {
+                                        <li class="nav-item "><a href="~/AssociationEvent/Index" class="btn btn-info">Tableau de bord</a>  </li>
+                                    }
+                                    //Bouton pour le role legalexpert
+                                    else if (User.IsInRole("LegalExpert"))
+                                    {
+                                        <li class="nav-item px-2"> <a href="~/Advice/Index" class="btn btn-info">Tableau de bord</a></li>
+                                    }
+                                    else if (User.IsInRole("Member"))
+                                    {
+                                        <li class="nav-item px-2"> <a href="~/Association/Inscrire" class="btn btn-info">Inscrire une association</a></li>
+                                    }
                                 }
                             }
-                        }
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>

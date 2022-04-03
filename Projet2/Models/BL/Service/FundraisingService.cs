@@ -22,6 +22,13 @@ namespace Projet2.Models.BL.Service
             _bddContext.SaveChanges();
             return viewModel.Fundraising.Id;
         }
+
+        public void Delete(Fundraising fundraising)
+        {
+            _bddContext.Fundraising.Remove(fundraising);
+            _bddContext.SaveChanges();
+        }
+
         public Fundraising GetFundraising(int id)
         {
             return _bddContext.Fundraising.Find(id);
