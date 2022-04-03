@@ -30,6 +30,12 @@ namespace Projet2.Controllers
             viewModel.AssociationEvents = associationEventService.GetAllAssociationEvents();
             return View(viewModel);
         }
+
+        public IActionResult TeamAssoNow()
+        {
+        
+            return View();
+        }
     }
 
 }
