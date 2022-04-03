@@ -27,7 +27,7 @@ namespace Projet2.Controllers
             IndexViewModel viewModel = new IndexViewModel();
             viewModel.Associations =  associationService.GetHighlightedAssociations();
             viewModel.Fundraisings = fundraisingService.GetHighlightedFundraisings();
-            viewModel.AssociationEvents = associationEventService.GetAllAssociationEvents();
+            viewModel.AssociationEvents = associationEventService.GetHighlightedAssociationEvents();
             return View(viewModel);
         }
     }

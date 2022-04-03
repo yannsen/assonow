@@ -54,6 +54,13 @@ namespace Projet2.Models.BL.Service
             this._bddContext.SaveChanges();
 
         }
+
+        public void Update(AssociationEvent associationEvent)
+        {
+            _bddContext.AssociationEvent.Update(associationEvent);
+            _bddContext.SaveChanges();
+        }
+
         public void DeleteAssociationEvent(int associationEventId)
         {
             AssociationEvent associationEvent = _bddContext.AssociationEvent.Find(associationEventId);
@@ -132,6 +139,16 @@ namespace Projet2.Models.BL.Service
                 }
             }
             return rechercheFinale;
+        }
+
+        public List<AssociationEvent> GetHighlightedAssociationEvents()
+        {
+            return _bddContext.AssociationEvent.Where(a => a.IsHighlighted == true).ToList();
+        }
+
+        public List<AssociationEvent> GetNotHighlightedAssociationEvents()
+        {
+            return _bddContext.AssociationEvent.Where(a => a.IsHighlighted == false).ToList();
         }
     }
 
