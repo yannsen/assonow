@@ -25,54 +25,28 @@
                 </div>
                 <div class="py-5">
                     <a class="btn btn-primary btn-sm px-4 me-sm-3" asp-controller="Donation" asp-action="Association" asp-route-id="@Model.Association.Id">Faire un don</a>
-                    @{
-                        if (!User.Identity.IsAuthenticated)
-                        {
-                            <a class="btn btn-primary btn-sm px-4 me-sm-3" asp-controller="Donation" asp-action="Association" asp-route-id="@Model.Association.Id">Adhérer</a>
-                        }
-                        else
-                        {
-                            <a class="btn btn-primary btn-sm px-4 me-sm-3" asp-controller="Donation" asp-action="Association" asp-route-id="@Model.Association.Id">Gérer les adhérents</a>
-                        }
-                    }
+                    <a class="btn btn-primary btn-sm px-4 me-sm-3" asp-controller="Association" asp-action="Join" asp-route-id="@Model.Association.Id">Adhérer</a>
                 </div>
             </div>
         </div>
     </section>
     <!-- About section two-->
-    @*<section class="py-5">
-        <div class="container px-5 my-5">
-        <div class="row gx-5>
-        @foreach (var item in Model.Fundraisings)
-        {
-        <div class="card h-100 shadow border-0">
-        <div class="card-body p-4">
-        <img class="img-fluid rounded mb-5 mb-lg-0" src="@item.Image" alt="@item.Name" /></div>
-        <div class="col-lg-8">
-        <h2 class="fw-bolder">@Html.DisplayFor(model => item.Name)</h2>
-        <p class="lead fw-normal text-muted mb-0">
-        @Html.DisplayFor(model => item.Description)
-        </div>
-        </div>
-        }
-        </div>
-        </div>
-        </section>*@
     <section>
         <div class="text-center">
             <h2 class="fw-bolder">NOS PROJETS</h2>
             <p class="lead fw-normal text-muted mb-5"></p>
         </div>
-        <div class="row">
+        <div class="row ml-5">
             @foreach (var item in Model.Fundraisings)
             {
-                <div class="col-sm-4 mb-5-ml-2">
+                <div class="col-sm-4 mb-5">
                     <div class="card shadow border-0">
-                        <img class="card-img-top" src="https://picsum.photos/150/100" alt="@item.Name" />
+                        <img class="card-img-top" src="@item.Image" alt="@item.Name" />
                         <div class="card-body p-4">
-                            <div class="badge bg-primary bg-gradient rounded-pill mb-2">@item.Name</div>
-                            <a class="text-decoration-none link-dark stretched-link" asp-controller="Fundraising" asp-action="Profile" asp-route-id="@item.Id"><h5 class="card-title mb-3">@item.Name</h5></a>
-                            <p class="card-text mb-0">This text is a bit longer to illustrate the adaptive height of each card. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <div class="badge bg-danger bg-gradient rounded-pill mb-2">
+                                <a asp-controller="Fundraising" asp-action="Profile" asp-route-id="@item.Id"><h5>@item.Name</h5></a>
+                             </div>
+                            <p class="card-text mb-0">@item.Description</p>
                         </div>
                     </div>
                 </div>
@@ -101,53 +75,18 @@
                                 <img alt="@item.EventTitle" src="@item.Image" />
                                 <div class="info">
                                     <a href="~/AssociationEvent/EventView?id=@item.Id">
-                                        <h2 class="title">@item.EventTitle</h2>
+                                        <h4 class="title">@item.EventTitle</h4>
                                      </a>
                                     @*<p class="desc">@item.Description</p>*@
                                     <ul>
-                                        <li style="width:50%;">Nombre de tickets restant : @item.RemainingTickets<span class="glyphicon glyphicon-ok"></span></li>
-                                        <li style="width:50%;">Prix : @item.TicketPrice <span>€</span></li>
+                                        <li style="width:40%;">Nombre de tickets restant : @item.RemainingTickets<span class="glyphicon glyphicon-ok"></span></li>
+                                        <li style="width:40%;">Prix : @item.TicketPrice <span>€</span></li>
                              
                                     </ul>
                                 </div>
                             </li>
                         }
                     </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Team members section-->
-    <section class="py-5 bg-light">
-        <div class="container px-5 my-5">
-            <div class="text-center">
-                <h2 class="fw-bolder">Our team</h2>
-                <p class="lead fw-normal text-muted mb-5">Dedicated to quality and your success</p>
-            </div>
-            <div class="row gx-5 row-cols-1 row-cols-sm-2 row-cols-xl-4 justify-content-center">
-                <div class="col mb-5 mb-5 mb-xl-0">
-                    <div class="text-center">
-                        <img class="img-fluid rounded-circle mb-4 px-4" src="https://dummyimage.com/150x150/ced4da/6c757d" alt="..." />
-                        <h5 class="fw-bolder">Ibbie Eckart</h5>
-                        <div class="fst-italic text-muted">Founder &amp; CEO</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="newsletter">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="content">
-                        <h2>S'inscrire aux newsletter</h2>
-                        <div class="input-group">
-                            <input type="email" class="form-control" placeholder="Enter your email">
-                            <span class="input-group-btn">
-                                <button class="btn" type="submit">S'inscrire</button>
-                            </span>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

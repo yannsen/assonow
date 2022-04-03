@@ -17,7 +17,7 @@
                     {
                         @if (Model.Association.TicketService)
                         {
-                            <li class="nav-item list-group-item bg-light w-100">
+                            <li class="nav-item list-group-item bg-warning w-100">
                                 <a href="~/AssociationEvent/EventList?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
                                     <span class="ms-1 d-none d-sm-inline">Gestion des évènements</span>
                                 </a>
@@ -33,7 +33,7 @@
                         }
                         @if (Model.Association.DonationService)
                         {
-                            <li class="nav-item list-group-item bg-light w-100">
+                            <li class="nav-item list-group-item bg-warning w-100">
                                 <a href="~/Fundraising/Management?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
                                     <span class="ms-1 d-none d-sm-inline">Gestion de vos collectes</span>
                                 </a>

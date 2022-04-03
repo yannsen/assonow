@@ -50,11 +50,13 @@ h4 {
 
 .card-text {
     max-width: 300px !important;
-    max-height: 90px;
+    line-height: 1.3em;
+    height: 6.5em;
+    margin-top:10px;
     display: -webkit-box !important;
-    -webkit-line-clamp: 4 !important;
+    -webkit-line-clamp: 5 !important;
     -webkit-box-orient: vertical !important;
-    overflow: scroll !important;
+    overflow: hidden !important;
     text-overflow: ellipsis !important;
     white-space: normal;
 }
@@ -150,6 +152,20 @@ h4 {
 .descriptionForm {
     height: 200px;
     width: 190px;
+}
+
+body, html {
+    min-height: 100vh;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    margin-top: auto;
 }
 
 .event-list {
@@ -378,7 +394,6 @@ h4 {
     padding-left: 0px !important;
 }
 
-
 /*Newsletter*/
 newsletter {
     padding: 80px 0;
@@ -416,10 +431,3 @@ newsletter {
         color: #fff;
         font-weight: 600;
     }
-
-/*.gestionD h2 {
-    padding-bottom: 75px !important;
-    padding-top: 10px !important;
-}
-*/
-

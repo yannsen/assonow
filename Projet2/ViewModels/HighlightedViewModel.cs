@@ -13,8 +13,8 @@ namespace Projet2.ViewModels
 
         public List<Fundraising> NHFundraisings { get; set; }
 
-        public List<AssociationEvent> AssociationEvents { get; set; }
+        public List<AssociationEvent> HEvents { get; set; }
 
-        public List<AssociationEvent> NAssociationEvents { get; set; }
+        public List<AssociationEvent> NHEvents { get; set; }
     }
 }
