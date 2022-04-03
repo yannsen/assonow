@@ -24,6 +24,12 @@ namespace Projet2.Models.BL.Interface
 
         public AssociationEvent GetAssociationEventWithOrderId(int id);
 
+        public void Update(AssociationEvent associationEvent);
+
         public List<AssociationEvent> GetAssociationEventToSearch(AssociationEventInfoViewmodel viewModel);
+
+        public List<AssociationEvent> GetHighlightedAssociationEvents();
+
+        public List<AssociationEvent> GetNotHighlightedAssociationEvents();
     }
 }

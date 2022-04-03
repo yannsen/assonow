@@ -1,7 +1,7 @@
 ﻿@model Projet2.ViewModels.HighlightedViewModel
 
 @{
-    ViewBag.title = "Gérer les associations mise en avant";
+    ViewBag.title = "Gérer les évènements mis en avant";
     Layout = "_Layout";
 }
 
@@ -9,7 +9,7 @@
     <div class="d-flex flex-column align-items-center w-100">
         <div class="d-flex flex-row w-50 justify-content-around mb-3">
             <div class="d-flex">
-                <a href="~/AdminDashboard/HighlightedAssociationEvent" class="btn btn-primary w-100">Évènements</a>
+                <a href="~/AdminDashboard/HighlightedAssociations" class="btn btn-primary w-100">Associations</a>
             </div>
             <div class="d-flex">
                 <a href="~/AdminDashboard/HighlightedFundraisings" class="btn btn-primary w-100">Collectes</a>
@@ -19,20 +19,20 @@
             @using (Html.BeginForm())
             {
                 int i = 0;
-                if (Model.HAssociations != null)
+                if (Model.HEvents != null)
                 {
-                    while (i < Model.HAssociations.Count)
+                    while (i < Model.HEvents.Count)
                     {
                         <ul id="ulhighlight" class="list-group list-group-horizontal">
                             @for (int j = 0; j < 4; j++)
                             {
-                                @if (i < Model.HAssociations.Count)
+                                @if (i < Model.HEvents.Count)
                                 {
                                     <li id="lihighlight" class="list-group-item">
-                                        <p>@Model.HAssociations[i].Name : @Html.CheckBoxFor(a => a.HAssociations[i].IsHighlighted)</p>
+                                        <p>@Model.HEvents[i].EventTitle : @Html.CheckBoxFor(a => a.HEvents[i].IsHighlighted)</p>
                                     </li>
-                                    @Html.HiddenFor(a => a.HAssociations[i].Id)
-                                    @Html.HiddenFor(a => a.HAssociations[i].Name)
+                                    @Html.HiddenFor(a => a.HEvents[i].Id)
+                                    @Html.HiddenFor(a => a.HEvents[i].EventTitle)
                                     i++;
                                 }
                             }
@@ -45,20 +45,20 @@
                     </div>
                 </div>
                 int x = 0;
-                if (Model.NHAssociations != null)
+                if (Model.NHEvents != null)
                 {
-                    while (x < Model.NHAssociations.Count)
+                    while (x < Model.NHEvents.Count)
                     {
                         <ul id="ulhighlight" class="list-group list-group-horizontal">
                             @for (int j = 0; j < 4; j++)
                             {
-                                @if (x < Model.NHAssociations.Count)
+                                @if (x < Model.NHEvents.Count)
                                 {
                                     <li id="lihighlight" class="list-group-item">
-                                        <p>@Model.NHAssociations[x].Name : @Html.CheckBoxFor(a => a.NHAssociations[x].IsHighlighted)</p>
+                                        <p>@Model.NHEvents[x].EventTitle : @Html.CheckBoxFor(a => a.NHEvents[x].IsHighlighted)</p>
                                     </li>
-                                    @Html.HiddenFor(a => a.NHAssociations[x].Id)
-                                    @Html.HiddenFor(a => a.NHAssociations[x].Name)
+                                    @Html.HiddenFor(a => a.NHEvents[x].Id)
+                                    @Html.HiddenFor(a => a.NHEvents[x].EventTitle)
                                     x++;
                                 }
                             }
