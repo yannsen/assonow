@@ -1,0 +1,33 @@
+﻿@model Projet2.ViewModels.AssociationEventInfoViewmodel
+
+@{
+    ViewBag.Title = "Annulation de l'évènement";
+    Layout = "_Layout";
+}
+
+
+
+<legend align="center">Confirmez vous l'annulation de l'évènementt ?</legend>
+<br>
+<div class="d-flex flex-row justify-content-center w-100">
+
+    <table>
+        <tr>
+            <td>
+                <a class="btn btn-primary p-3" href="/AssociationEvent/EventDelete?id=@Model.SelectedAssociationId&eventid=@Model.eventId">oui </a>
+            </td>
+            <td>
+
+            </td>
+
+            <td>
+                <a class="btn btn-primary p-3" href="/AssociationEvent/EventList?id=@Model.SelectedAssociationId&eventid">non </a>
+            </td>
+        </tr>
+
+    </table>
+
+</div>
+
+<br />
+<br />

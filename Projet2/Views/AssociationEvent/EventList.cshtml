@@ -111,7 +111,7 @@
 
                                     <td>
                                         @Html.ActionLink("Modifier","EventEdit","AssociationEvent", new {id=@Model.SelectedAssociationId,eventid=item.Id},null)
-                                        @Html.ActionLink("Effacer","EventDelete","AssociationEvent",new {id=@Model.SelectedAssociationId,eventid=item.Id}, null)
+                                        @Html.ActionLink("Effacer","DeletedEventConfirm","AssociationEvent",new {id=@Model.SelectedAssociationId,eventid=item.Id}, null)
                                     </td>
                                 </tr>
                             }
