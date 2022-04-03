@@ -5,10 +5,8 @@
     Layout = "_Layout";
 }
 
-
 @using (Html.BeginForm("EventEdit", "AssociationEvent", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-
     @Html.HiddenFor(m=>m.SelectedAssociationId)
     @Html.HiddenFor(m=>m.AssociationEvent.AddressId)
     @Html.HiddenFor(m=>m.AssociationEvent.AssociationId)
@@ -16,17 +14,15 @@
     @Html.HiddenFor(m=>m.AssociationEvent.Image)
     <fieldset>
         <legend align="center">Informations sur l'évènement à modifier</legend>
-
-
-                <div class="container">
+        <div class="container">
             <div class="row">
                 <div class="col-sm justify-content-md-center">
-                    <img src="@Model.AssociationEvent.Image" alt="Rounded Image" style="height:400px; width:auto; min-height:400px; max-width:350px;" class="img-rounded img-responsive" style="width: 75%">
+                    <img src="@Model.AssociationEvent.Image" alt="Rounded Image" style="height:400px; width:auto; min-height:400px; max-width:350px; width: 75%;" class="img-rounded img-responsive">
                 </div>
                 <div class="col-sm m-2">
                     <div class="form-group row">
                         @Html.LabelFor(m => Model.AssociationEvent.EventTitle)
-                        @Html.TextBoxFor(m => Model.AssociationEvent.EventTitle,new {@class = "form-control"})
+                        @Html.TextBoxFor(m => Model.AssociationEvent.EventTitle, new {@class = "form-control"})
                         @Html.ValidationMessageFor(m => Model.AssociationEvent.EventTitle)
                     </div>
                     <div class="form-group row">
@@ -90,9 +86,9 @@
                         @Html.ValidationMessageFor(m => Model.Address.City)
                     </div>
                     <div class="form-group row">
-                        <td align="right">@Html.LabelFor(m => Model.Address.PostalCode)
-                        <td>@Html.TextBoxFor(m => Model.Address.PostalCode, new {size ="4", @class = "form-control"})
-                        <td>@Html.ValidationMessageFor(m => Model.Address.PostalCode)
+                        align="right">@Html.LabelFor(m => Model.Address.PostalCode)
+                        @Html.TextBoxFor(m => Model.Address.PostalCode, new {size ="4", @class = "form-control"})
+                        @Html.ValidationMessageFor(m => Model.Address.PostalCode)
                     </div>
                     <div class="form-group row">
                         @Html.LabelFor(m => Model.Address.Country)
