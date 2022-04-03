@@ -70,7 +70,7 @@ namespace Projet2.Controllers
             FundraisingInfoViewModel viewModel = new FundraisingInfoViewModel();
             viewModel.Fundraising = fundraisingService.GetFundraising(id);
             viewModel.AssociationId = viewModel.Fundraising.AssociationId;
-            ViewBag.Association = associationService.GetAssociation(id);
+            ViewBag.Association = associationService.GetAssociation(viewModel.Fundraising.AssociationId);
             ViewBag.Action = "Modify";
             return View(viewModel);
         }
@@ -124,6 +124,13 @@ namespace Projet2.Controllers
             viewModel.FundraisingsList = fundraisingService.GetFundraisingsToSearch(viewModel);
             return View(viewModel);
         }
+
+        public IActionResult Delete(int id, int associationId)
+        {
+            fundraisingService.Delete(fundraisingService.GetFundraising(id));
+            return RedirectToAction("Management", new { Id = associationId });
+        }
+
 
         [Authorize(Roles = "Representative")]
         public IActionResult Management(int id)
