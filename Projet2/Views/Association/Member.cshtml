@@ -19,7 +19,7 @@
                     {
                         @if (ViewBag.Association.TicketService)
                         {
-                            <li class="nav-item list-group-item bg-warning w-100">
+                            <li class="nav-item list-group-item bg-light w-100">
                                 <a href="~/AssociationEvent/EventList?id=@ViewBag.Association.Id" class="nav-link align-middle px-0 border-0">
                                     <span class="ms-1 d-none d-sm-inline">Gestion des évènements</span>
                                 </a>
@@ -27,7 +27,7 @@
                         }
                         @if (ViewBag.Association.MemberService)
                         {
-                            <li class="nav-item list-group-item bg-warning w-100">
+                            <li class="nav-item list-group-item bgmodify-warning w-100">
                                 <a href="~/Association/Member?id=@ViewBag.Association.Id" class="nav-link align-middle px-0 border-0">
                                     <span class="ms-1 d-none d-sm-inline">Gestion de vos adhérents</span>
                                 </a>
