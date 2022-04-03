@@ -20,10 +20,10 @@
             <div class="d-flex flex-column w-100 p-3">
                 <div class="d-flex flex-row justify-content-around w-100">
                     <div class="d-flex m-1 p-3 bg-danger rounded w-100  justify-content-md-center">
-                        <p>Lancement : @Model.StartingDate.Day @Model.StartingDate.ToString("MMMM").ToString(CultureInfo.CreateSpecificCulture("fr-FR")) @Model.StartingDate.Year</p>
+                        <p>Lancement : @Model.StartingDate.Day @Model.StartingDate.ToString("MMMM", CultureInfo.CreateSpecificCulture("fr-FR")) @Model.StartingDate.Year</p>
                     </div>
                     <div class="d-flex m-1 p-3 bg-warning rounded w-100  justify-content-md-center">
-                        <p>Fin : @Model.EndingDate.Day @Model.EndingDate.ToString("MMMM").ToString(CultureInfo.CreateSpecificCulture("fr-FR")) @Model.EndingDate.Year</p>
+                        <p>Fin : @Model.EndingDate.Day @Model.EndingDate.ToString("MMMM", CultureInfo.CreateSpecificCulture("fr-FR")) @Model.EndingDate.Year</p>
                     </div>
                 </div>
                 <div class="d-flex flex-row justify-content-center w-100">
