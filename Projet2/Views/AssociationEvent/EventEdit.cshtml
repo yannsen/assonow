@@ -1,7 +1,7 @@
 ﻿@model Projet2.ViewModels.AssociationEventInfoViewmodel
 
 @{
-    ViewBag.Title = "Modification de l'évènement";
+    ViewBag.Title = "Modification à apporter sur l'évènement";
     Layout = "_Layout";
 }
 
@@ -21,99 +21,99 @@
 
 
         <div class="d-flex w-100 justify-content-center">
+            <div class="d-flex flex-column w-75">
 
-            <div class="d-flex flex-row w-75">
+                <div class="d-flex flex-row w-100">
 
-                <div class="d-flex w-50">
-                    <table>
-                        <tr>
-                            <td>@Html.LabelFor(m => Model.AssociationEvent.EventTitle)</td>
-                            <td>@Html.TextBoxFor(m => Model.AssociationEvent.EventTitle)</td>
-                            <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.EventTitle)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.LabelFor(m => Model.AssociationEvent.Description)</td>
-                            <td>@Html.TextAreaFor(m => Model.AssociationEvent.Description)</td>
-                            <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.Description)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.LabelFor(m => m.File)</td>
-                            <td>@Html.TextBoxFor(m => m.File, new { placeholder = "Description", @type = "file" })</td>
-                            <td>@Html.ValidationMessageFor(m => m.File)</td>
-                        </tr>
-                        <tr>
-                            <td>@Html.LabelFor(m => Model.AssociationEvent.Date)</td>
-                            <td>@Html.TextBoxFor(m => Model.AssociationEvent.Date)</td>
-                            <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.Date)</td>
-                        </tr>
+                    <div class="d-flex w-50">
+                        <table>
+                            <tr>
+                                <td>@Html.LabelFor(m => Model.AssociationEvent.EventTitle)</td>
+                                <td>@Html.TextBoxFor(m => Model.AssociationEvent.EventTitle)</td>
+                                <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.EventTitle)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(m => Model.AssociationEvent.Description)</td>
+                                <td>@Html.TextAreaFor(m => Model.AssociationEvent.Description)</td>
+                                <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.Description)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(m => m.File)</td>
+                                <td>@Html.TextBoxFor(m => m.File, new { placeholder = "Description", @type = "file" })</td>
+                                <td>@Html.ValidationMessageFor(m => m.File)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.LabelFor(m => Model.AssociationEvent.Date)</td>
+                                <td>@Html.TextBoxFor(m => Model.AssociationEvent.Date)</td>
+                                <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.Date)</td>
+                            </tr>
 
-                        <tr>
-                            <td align="right">@Html.LabelFor(m => Model.AssociationEvent.EventType)</td>
-                            <td>@Html.TextBoxFor(m => Model.AssociationEvent.EventType)</td>
-                            <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.EventType)</td>
-                        </tr>
-                    </table>
+                            <tr>
+                                <td align="right">@Html.LabelFor(m => Model.AssociationEvent.EventType)</td>
+                                <td>@Html.TextBoxFor(m => Model.AssociationEvent.EventType)</td>
+                                <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.EventType)</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="d-flex w-50">
+                        <table>
+
+
+                            <tr>
+                                <td align="right">@Html.LabelFor(m => Model.AssociationEvent.TicketsTotalNumber)</td>
+                                <td>@Html.TextBoxFor(m => Model.AssociationEvent.TicketsTotalNumber)</td>
+                                <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.TicketsTotalNumber)</td>
+                            </tr>
+                            <tr>
+                                <td align="right">@Html.LabelFor(m => Model.AssociationEvent.TicketPrice)</td>
+                                <td>@Html.TextBoxFor(m => Model.AssociationEvent.TicketPrice)</td>
+                                <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.TicketPrice)</td>
+                            </tr>
+
+                            <tr>
+                                <td align="right">@Html.LabelFor(m => Model.Address.RoadNumber)</td>
+                                <td>@Html.TextBoxFor(m => Model.Address.RoadNumber)</td>
+                                <td>@Html.ValidationMessageFor(m => Model.Address.RoadNumber)</td>
+                            </tr>
+
+                            <tr>
+                                <td align="right">@Html.LabelFor(m => Model.Address.Road)</td>
+                                <td>@Html.TextBoxFor(m => Model.Address.Road)</td>
+                                <td>@Html.ValidationMessageFor(m => Model.Address.Road)</td>
+                            </tr>
+                            <tr>
+                                <td align="right">@Html.LabelFor(m => Model.Address.City)</td>
+                                <td>@Html.TextBoxFor(m => Model.Address.City)</td>
+                                <td>@Html.ValidationMessageFor(m => Model.Address.City)</td>
+                            </tr>
+                            <tr>
+                                <td align="right">@Html.LabelFor(m => Model.Address.PostalCode)</td>
+                                <td>@Html.TextBoxFor(m => Model.Address.PostalCode)</td>
+                                <td>@Html.ValidationMessageFor(m => Model.Address.PostalCode)</td>
+                            </tr>
+                            <tr>
+                                <td align="right">@Html.LabelFor(m => Model.Address.Country)</td>
+                                <td>@Html.TextBoxFor(m => Model.Address.Country)</td>
+                                <td>@Html.ValidationMessageFor(m => Model.Address.Country)</td>
+                            </tr>
+
+
+                        </table>
+
+                    </div>
+
                 </div>
-                <div class="d-flex w-50">
-                    <table>
-                        <tr>
-
-
-                        <tr>
-                            <td align="right">@Html.LabelFor(m => Model.AssociationEvent.TicketsTotalNumber)</td>
-                            <td>@Html.TextBoxFor(m => Model.AssociationEvent.TicketsTotalNumber)</td>
-                            <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.TicketsTotalNumber)</td>
-                        </tr>
-                        <tr>
-                            <td align="right">@Html.LabelFor(m => Model.AssociationEvent.TicketPrice)</td>
-                            <td>@Html.TextBoxFor(m => Model.AssociationEvent.TicketPrice)</td>
-                            <td>@Html.ValidationMessageFor(m => Model.AssociationEvent.TicketPrice)</td>
-                        </tr>
-
-                        <tr>
-                            <td align="right">@Html.LabelFor(m => Model.Address.RoadNumber)</td>
-                            <td>@Html.TextBoxFor(m => Model.Address.RoadNumber)</td>
-                            <td>@Html.ValidationMessageFor(m => Model.Address.RoadNumber)</td>
-                        </tr>
-
-                        <tr>
-                            <td align="right">@Html.LabelFor(m => Model.Address.Road)</td>
-                            <td>@Html.TextBoxFor(m => Model.Address.Road)</td>
-                            <td>@Html.ValidationMessageFor(m => Model.Address.Road)</td>
-                        </tr>
-                        <tr>
-                            <td align="right">@Html.LabelFor(m => Model.Address.City)</td>
-                            <td>@Html.TextBoxFor(m => Model.Address.City)</td>
-                            <td>@Html.ValidationMessageFor(m => Model.Address.City)</td>
-                        </tr>
-                        <tr>
-                            <td align="right">@Html.LabelFor(m => Model.Address.PostalCode)</td>
-                            <td>@Html.TextBoxFor(m => Model.Address.PostalCode)</td>
-                            <td>@Html.ValidationMessageFor(m => Model.Address.PostalCode)</td>
-                        </tr>
-                        <tr>
-                            <td align="right">@Html.LabelFor(m => Model.Address.Country)</td>
-                            <td>@Html.TextBoxFor(m => Model.Address.Country)</td>
-                            <td>@Html.ValidationMessageFor(m => Model.Address.Country)</td>
-                        </tr>
-
-
-
-
-
-                    </table>
-
-                </div>
-
-
+                <div class"d-flex"> <input type="submit" value="Valider" /></div>
             </div>
         </div>
+
+
 
     </fieldset>
     @*     <table width="50%" align="center">
 
 
-
+        <div class"d-flex"> <input type="submit" value="Valider" /></div>
 
         <tr>
         <td width="50%" align="right">@Html.LabelFor(m => Model.AssociationEvent.EventTitle)</td>

@@ -75,6 +75,7 @@ namespace Projet2.Models.BL.Service
             _bddContext.Fundraising.Update(toUpdate);
             _bddContext.SaveChanges();
         }
+
         public List<Fundraising> GetFundraisingsByAssociation(int id)
         {
             return _bddContext.Fundraising.Where(f => f.AssociationId == id).Where(f => f.IsActive).ToList();
