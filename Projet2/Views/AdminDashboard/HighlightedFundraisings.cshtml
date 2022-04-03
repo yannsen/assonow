@@ -6,10 +6,14 @@
 }
 
 <div class="d-flex flex-column align-items-center w-100">
-    <div class="d-flex flex-column align-items-center">
-        <div class="d-flex flex-row w-50 justify-content-between">
-            <a href="~/AdminDashboard/HighlightedAssociations" class="btn btn-primary w-100">Associations</a>
-            <a href="~/AdminDashboard/HighlightedEvents" class="btn btn-primary w-100">Évènements</a>
+    <div class="d-flex flex-column align-items-center w-100">
+        <div class="d-flex flex-row w-50 justify-content-around mb-3">
+            <div class="d-flex">
+                <a href="~/AdminDashboard/HighlightedAssociations" class="btn btn-primary w-100">Associations</a>
+            </div>
+            <div class="d-flex">
+                <a href="~/AdminDashboard/HighlightedAssociationEvent" class="btn btn-primary w-100">Évènements</a>
+            </div>
         </div>
         @{
             @using (Html.BeginForm())
@@ -35,8 +39,10 @@
                         </ul>
                     }
                 }
-                <div class="d-flex">
-                    <input type="submit" value="Valider" />
+                <div class="d-flex my-3 w-100 justify-content-center">
+                    <div class="d-flex">
+                        <input type="submit" value="Valider" />
+                    </div>
                 </div>
                 int x = 0;
                 if (Model.NHFundraisings != null)
