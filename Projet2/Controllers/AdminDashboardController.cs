@@ -14,6 +14,7 @@ namespace Projet2.Controllers
         private IFundraisingService fundraisingService;
         private IAddressService addressService;
         private IDocumentService documentService;
+        private IAssociationEventService associationEventService;
         BddContext _bddContext;
 
         public AdminDashboardController()
@@ -21,6 +22,7 @@ namespace Projet2.Controllers
             this.addressService = new AddressService();
             this.fundraisingService = new FundraisingService();
             this.associationService = new AssociationService();
+            this.associationEventService = new AssociationEventService();
             this.documentService = new DocumentService();
             this._bddContext = new BddContext();
         }
@@ -139,6 +141,40 @@ namespace Projet2.Controllers
                 }
             }
             return RedirectToAction("HighlightedFundraisings");
+        }
+
+        public IActionResult HighlightedAssociationEvent()
+        {
+            HighlightedViewModel viewModel = new HighlightedViewModel();
+            viewModel.HEvents = associationEventService.GetHighlightedAssociationEvents();
+            viewModel.NHEvents = associationEventService.GetNotHighlightedAssociationEvents();
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult HighlightedAssociationEvent(HighlightedViewModel viewModel)
+        {
+            bool H = associationEventService.GetHighlightedAssociationEvents().Count > 0;
+            bool NH = associationEventService.GetNotHighlightedAssociationEvents().Count > 0;
+            if (H)
+            {
+                foreach (AssociationEvent associationEvent in viewModel.HEvents)
+                {
+                    AssociationEvent associationEventToUpdate = associationEventService.GetAssociationEvent(associationEvent.Id);
+                    associationEventToUpdate.IsHighlighted = associationEvent.IsHighlighted;
+                    associationEventService.Update(associationEventToUpdate);
+                }
+            }
+            if (NH)
+            {
+                foreach (AssociationEvent associationEvent in viewModel.NHEvents)
+                {
+                    AssociationEvent associationEventToUpdate = associationEventService.GetAssociationEvent(associationEvent.Id);
+                    associationEventToUpdate.IsHighlighted = associationEvent.IsHighlighted;
+                    associationEventService.Update(associationEventToUpdate);
+                }
+            }
+            return RedirectToAction("HighlightedAssociationEvent");
         }
     }
 }

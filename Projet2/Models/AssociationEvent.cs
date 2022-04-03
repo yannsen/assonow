@@ -39,7 +39,7 @@ namespace Projet2.Models
         [Required(ErrorMessage = "Quel est le nombre de ticket")]
         public int TicketsTotalNumber { get; set; }
         public int RemainingTickets { get; set; }
-
+        public bool IsHighlighted { get; set; }
         public int AddressId { get; set; }
         public Address Address { get; set; }
         public int AssociationId { get; set; }
