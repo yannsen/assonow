@@ -4,14 +4,16 @@
 @import url("//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css");*/
 
 
-
-
+#explicationtexte {
+    font-weight: bold !important;
+    color: #000000;
+}
 
 
 #image-evenement {
-    width: 200px; 
-    height: 400px; 
-   /* background-size: cover;
+    width: 200px;
+    height: 400px;
+    /* background-size: cover;
     background-position: center;
     background-repeat: no-repeat;*/
 }
