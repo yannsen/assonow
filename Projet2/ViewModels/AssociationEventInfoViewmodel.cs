@@ -29,5 +29,7 @@ namespace Projet2.ViewModels
 
         [Display(Name = "Nom de l'évènement :")]
         public string EventNameToSearch { get; set; }
+
+        public int eventId { get; set; }
     }
 }

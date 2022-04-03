@@ -9,6 +9,8 @@ namespace Projet2.Models.BL.Interface
 
         public List<Fundraising> GetAllFundraisings();
 
+        public void Delete(Fundraising fundraising);
+
         public List<Fundraising> GetFundraisingsToSearch(FundraisingListViewModel viewModel);
 
         public Fundraising GetFundraisingByDonationId(int id);

@@ -19,7 +19,7 @@ namespace Projet2.Models
 
         [Display(Name = "Ville :")]
         [Required(ErrorMessage = "La ville est obligatoire")]
-        [MaxLength(30)]
+        [MaxLength(40)]
         public string City { get; set; }
 
         [Display(Name = "Code Postal :")]
