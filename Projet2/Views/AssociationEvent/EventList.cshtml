@@ -19,7 +19,7 @@
                     {
                         @if (Model.Association.TicketService)
                         {
-                            <li class="nav-item list-group-item bg-arning w-100">
+                            <li class="nav-item list-group-item bgmodify-warning w-100">
                                 <a href="~/AssociationEvent/EventList?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
                                     <span class="ms-1 d-none d-sm-inline">Gestion des évènements</span>
                                 </a>
@@ -102,7 +102,7 @@
                                     </td>
                                     <td>
                                         @Html.ActionLink("Modifier","EventEdit","AssociationEvent", new {id=@Model.SelectedAssociationId,eventid=item.Id},null)
-                                        @Html.ActionLink("Effacer","EventDelete","AssociationEvent",new {id=@Model.SelectedAssociationId,eventid=item.Id}, null)
+                                        @Html.ActionLink("Effacer","DeletedEventConfirm","AssociationEvent",new {id=@Model.SelectedAssociationId,eventid=item.Id}, null)
                                     </td>
                                 </tr>
                             }

@@ -113,6 +113,20 @@ namespace Projet2.Controllers
 
         }
 
+
+
+        [Authorize(Roles = "Representative")]
+        public ActionResult DeletedEventConfirm(int id, int eventid)
+        {
+            AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
+            viewModel.eventId = eventid;
+            viewModel.SelectedAssociationId = id;
+
+            return View(viewModel);
+
+        }
+
+
         [Authorize(Roles = "Representative")]
         public ActionResult EventDelete(int id,int eventid)
         {
@@ -188,5 +202,13 @@ namespace Projet2.Controllers
             return View(viewModel);
 
         }
+
+
+
+        
+
+
+
+
     }
 }
