@@ -1,9 +1,13 @@
 @model Projet2.ViewModels.AssociationProfileViewModel
+
+@using System.Globalization
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewBag.title = "Profil Association";
     Layout = "_Layout";
 }
+
+
 <main>
     <!-- About section one-->
 
@@ -21,11 +25,10 @@
                     <p class="lead fst-normal text-muted-sm mb-0">
                         @Html.DisplayFor(model => Model.Association.Description)
                     </p>
-
                 </div>
                 <div class="py-5">
-                    <a class="btn btn-primary btn-sm px-4 me-sm-3" asp-controller="Donation" asp-action="Association" asp-route-id="@Model.Association.Id">Faire un don</a>
-                    <a class="btn btn-primary btn-sm px-4 me-sm-3" asp-controller="Association" asp-action="Join" asp-route-id="@Model.Association.Id">Adhérer</a>
+                    <a class="btn btn-primary btn-sm px-4 me-sm-3 ml-4" asp-controller="Donation" asp-action="Association" asp-route-id="@Model.Association.Id">Faire un don</a>
+                    <a class="btn btn-primary btn-sm px-4 me-sm-3 ml-5" asp-controller="Association" asp-action="Join" asp-route-id="@Model.Association.Id">Adhérer</a>
                 </div>
             </div>
         </div>
@@ -36,22 +39,25 @@
             <h2 class="fw-bolder">NOS PROJETS</h2>
             <p class="lead fw-normal text-muted mb-5"></p>
         </div>
-        <div class="row ml-5">
-            @foreach (var item in Model.Fundraisings)
-            {
-                <div class="col-sm-4 mb-5">
-                    <div class="card shadow border-0">
-                        <img class="card-img-top" src="@item.Image" alt="@item.Name" />
-                        <div class="card-body p-4">
-                            <div class="badge bg-danger bg-gradient rounded-pill mb-2">
-                                <a asp-controller="Fundraising" asp-action="Profile" asp-route-id="@item.Id"><h5>@item.Name</h5></a>
-                             </div>
-                            <p class="card-text mb-0">@item.Description</p>
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model.Fundraisings)
+                {
+                    <div class="col-sm-4 mb-5">
+                        <div class="card shadow border-0">
+                            <img class="card-img-top" src="@item.Image" alt="@item.Name" />
+                            <div class="card-body p-4">
+                                <div class="mb-2">
+                                    <a class="stretched-link" asp-controller="Fundraising" asp-action="Profile" asp-route-id="@item.Id"><h5>@item.Name</h5></a>
+                                </div>
+                                <p class="card-text mb-0">@item.Description</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
         </div>
+
     </section>
 
     <section>
@@ -68,7 +74,7 @@
                             <li>
                                 <time datetime="@item.Date">
                                     <span class="day">@item.Date.Day</span>
-                                    <span class="month">@item.Date.ToString("MMMM")</span>
+                                    <span class="month">@item.Date.ToString("MMMM", CultureInfo.CreateSpecificCulture("fr-FR"))</span>
                                     <span class="year">@item.Date.Year</span>
                                     <span class="time">ALL DAY</span>
                                 </time>
@@ -76,12 +82,12 @@
                                 <div class="info">
                                     <a href="~/AssociationEvent/EventView?id=@item.Id">
                                         <h4 class="title">@item.EventTitle</h4>
-                                     </a>
+                                    </a>
                                     @*<p class="desc">@item.Description</p>*@
                                     <ul>
                                         <li style="width:40%;">Nombre de tickets restant : @item.RemainingTickets<span class="glyphicon glyphicon-ok"></span></li>
                                         <li style="width:40%;">Prix : @item.TicketPrice <span>€</span></li>
-                             
+
                                     </ul>
                                 </div>
                             </li>
