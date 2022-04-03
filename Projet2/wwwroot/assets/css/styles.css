@@ -139,6 +139,20 @@ h4 {
     width: 190px;
 }
 
+body, html {
+    min-height: 100vh;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    margin-top: auto;
+}
+
 .event-list {
     list-style: none;
     font-family: 'Lato', sans-serif;
