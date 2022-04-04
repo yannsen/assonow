@@ -390,7 +390,7 @@ namespace Projet2.Models.BL.Service
             {
                 Id = 10,
                 AssociationId = 11,
-                Name = "Soutien Maison de Tom Pouce",
+                Name = "Maison de Tom Pouce",
                 Description = "Créée en 1987, la Maison de Tom Pouce qui héberge et accompagne les femmes enceintes a besoin d'équipement postnatale dont des tables à langer.",
                 IsActive = false,
                 CurrentAmount = 2350,
