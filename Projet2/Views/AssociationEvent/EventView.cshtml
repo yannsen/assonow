@@ -26,7 +26,7 @@
         <div class="row example-page">
             <div class="col-md-6 text-center">
                 <a href="examples/landing.html" target="_blank">
-                    <img src="@Model.AssociationEvent.Image" alt="Rounded Image" style="height:400px; width:auto; min-height:400px; max-width:350px;" class="img-rounded img-responsive" style="width: 75%">
+                    <img src="@Model.AssociationEvent.Image" alt="Rounded Image" style="height:400px; width:auto; min-height:400px; max-width:350px;" class="img-rounded img-responsive">
 
                 </a>
             </div>
@@ -66,6 +66,17 @@
                             <hr width="50%" size="2" align="center">
                         </td>
                     </tr>
+                    <tr>
+                        <td>Date de l'évènement :</td>
+                    </tr>
+                    <tr>
+                        <td>
+                                @Model.AssociationEvent.Date.ToString("dd MM yyyy")
+                            <hr width="50%" size="2" align="center">
+                        </td>
+
+                    </tr>
+
                     <tr>
                         <td>@Model.AssociationEvent.RemainingTickets places restantes</td>
                     </tr>
