@@ -1,0 +1,120 @@
+﻿@model Projet2.ViewModels.FundraisingManagementViewModel
+
+@{
+    ViewBag.title = "Gérer les collectes de dons";
+    Layout = "_Layout";
+}
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2 col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start list-group-flush" id="menu">
+                    <li class="nav-item">
+                        <img src="@Model.Association.Image" class="rounded" width="250" height="200" />
+                    </li>
+                    @if (Model.Association.IsPublished)
+                    {
+                        @if (Model.Association.TicketService)
+                        {
+                            <li class="nav-item list-group-item bg-light w-100">
+                                <a href="~/AssociationEvent/EventList?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
+                                    <span class="ms-1 d-none d-sm-inline">Gestion des évènements</span>
+                                </a>
+                            </li>
+                        }
+                        @if (Model.Association.MemberService)
+                        {
+                            <li class="nav-item list-group-item bg-light w-100">
+                                <a href="~/Association/Member?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
+                                    <span class="ms-1 d-none d-sm-inline">Gestion de vos adhérents</span>
+                                </a>
+                            </li>
+                        }
+                        @if (Model.Association.DonationService)
+                        {
+                            <li class="nav-item list-group-item bgmodify-warning w-100">
+                                <a href="~/Fundraising/Management?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
+                                    <span class="ms-1 d-none d-sm-inline">Gestion de vos collectes</span>
+                                </a>
+                            </li>
+                        }
+                        <li class="nav-item list-group-item bg-light w-100">
+                            <a href="~/Advice/AskForAdvice?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
+                                <span class="ms-1 d-none d-sm-inline">Demander un conseil</span>
+                            </a>
+                        </li>
+                        <li class="nav-item list-group-item bg-light w-100">
+                            <a href="~/Advice/SeeAdvice?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
+                                <span class="ms-1 d-none d-sm-inline">Voir nos réponses</span>
+                            </a>
+                        </li>
+                        <li class="nav-item list-group-item bg-light w-100">
+                            <a href="~/Association/Services?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
+                                <span class="ms-1 d-none d-sm-inline">Nos services</span>
+                            </a>
+                        </li>
+                        <li class="nav-item list-group-item bg-light w-100">
+                            <a href="~/Association/Profil?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
+                                <span class="ms-1 d-none d-sm-inline">Profil de l'association</span>
+                            </a>
+                        </li>
+                    }
+                    <li class="nav-item list-group-item bg-light w-100">
+                        <a href="~/Association/Documents?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
+                            <span class="ms-1 d-none d-sm-inline">Fournir vos documents</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col py-3">
+            <div class="d-flex flex-column align-items-center w-100">
+                <div class="d-flex flex-column w-75">
+                    <div class="d-flex">
+                        <table class="table table-light table-striped w-100 h-100">
+                            <tr>
+                                <th>
+                                </th>
+                                <th align="center">
+                                    Titre
+                                </th>
+                                <th>
+                                    Description
+                                </th>
+                                <th>
+                                </th>
+                            </tr>
+                            @foreach (var item in Model.Fundraisings)
+                            {
+                                <tr>
+                                    <td align="center">
+
+                                        <img src="@item.Image" width="25" height="25" />
+                                    </td>
+                                    <td>
+                                        @item.Name
+                                    </td>
+                                    <td align="center">
+                                        @item.Description
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Modifier","Modify","Fundraising", new {id=@item.Id},null)
+                                        @Html.ActionLink("Effacer","Delete","Fundraising",new {id=@item.Id,associationId=item.AssociationId}, null)
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <a href="/Fundraising/Create?id=@Model.Association.Id">
+                            <img src="/FileSystem/Pictures/postif.png" alt="Ajouter une collecte" title="Ajouter une collecte" width="50" height="50" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

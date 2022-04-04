@@ -1,0 +1,68 @@
+﻿@model Projet2.ViewModels.TicketingViewModel
+
+
+
+@{
+    ViewBag.Title = "Modification de l'évènement";
+    Layout = "_Layout";
+}
+
+
+
+<legend>Liste des places de concert </legend>
+<br>
+<div class="d-flex flex-row justify-content-center w-100">
+    <div class="d-flex flex-column justify-content-center border-dark border rounded w-35">
+
+
+
+
+        <table class="table table-light table-striped w-100 h-100">
+            <tr>
+                <th>
+
+                </th>
+                <th align="center">
+                    Titre
+                </th>
+                <th>
+                    nombre de places achetées
+
+                </th>
+                <th>
+                    Date d'achat
+                </th>
+
+                <th>
+
+                </th>
+            </tr>
+
+            @foreach (var orderByEvent in Model.OrderByEventList)
+            {
+
+                <tr>
+                    <td align="center">
+                        @Html.HiddenFor(m=>orderByEvent.IdOrder)
+                        <img src="@orderByEvent.Image" width="100" height="100" />
+                    </td>
+                    <td>
+                        @orderByEvent.EventTitle
+
+                    </td>
+                    <td align="center">
+                        @orderByEvent.TicketsNumber
+                    </td>
+                    <td>
+                        @orderByEvent.PurchasedDate.ToString("dd/MM/yyyy")
+                    </td>
+                    <td>
+                        @Html.ActionLink("Annuler","DeletedEventConfirm","Ticketing", new {orderId=@orderByEvent.IdOrder},null)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+<br />
+<br />

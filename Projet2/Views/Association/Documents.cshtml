@@ -1,0 +1,133 @@
+﻿@model Projet2.ViewModels.DocumentsViewModel
+
+@{
+    ViewBag.Title = "Fournir des documents";
+    Layout = "_Layout";
+}
+
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start list-group-flush" id="menu">
+                    <li class="nav-item">
+                        <img src="@Model.Association.Image" class="rounded" width="250" height="200" />
+                    </li>
+                    @if (Model.Association.IsPublished)
+                    {
+                        @if (Model.Association.TicketService)
+                        {
+                            <li class="nav-item list-group-item bg-light w-100">
+                                <a href="~/AssociationEvent/EventList?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
+                                    <span class="ms-1 d-none d-sm-inline">Gestion des évènements</span>
+                                </a>
+                            </li>
+                        }
+                        @if (Model.Association.MemberService)
+                        {
+                            <li class="nav-item list-group-item bg-light w-100">
+                                <a href="~/Association/Member?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
+                                    <span class="ms-1 d-none d-sm-inline">Gestion de vos adhérents</span>
+                                </a>
+                            </li>
+                        }
+                        @if (Model.Association.DonationService)
+                        {
+                            <li class="nav-item list-group-item bg-light w-100">
+                                <a href="~/Fundraising/Management?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
+                                    <span class="ms-1 d-none d-sm-inline">Gestion de vos collectes</span>
+                                </a>
+                            </li>
+                        }
+                        <li class="nav-item list-group-item bg-light w-100">
+                            <a href="~/Advice/AskForAdvice?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
+                                <span class="ms-1 d-none d-sm-inline">Demander un conseil</span>
+                            </a>
+                        </li>
+                        <li class="nav-item list-group-item bg-light w-100">
+                            <a href="~/Advice/SeeAdvice?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
+                                <span class="ms-1 d-none d-sm-inline">Voir nos réponses</span>
+                            </a>
+                        </li>
+                        <li class="nav-item list-group-item bg-light w-100">
+                            <a href="~/Association/Services?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
+                                <span class="ms-1 d-none d-sm-inline">Nos services</span>
+                            </a>
+                        </li>
+                        <li class="nav-item list-group-item bg-light w-100">
+                            <a href="~/Association/Profil?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
+                                <span class="ms-1 d-none d-sm-inline">Profil de l'association</span>
+                            </a>
+                        </li>
+                    }
+                    <li class="nav-item list-group-item bgmodify-warning w-100">
+                        <a href="~/Association/Documents?id=@Model.Association.Id" class="nav-link align-middle px-0 border-0">
+                            <span class="ms-1 d-none d-sm-inline">Fournir vos documents</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col py-3">
+            @{
+    <div class="d-flex flex-column align-items-center w-100">
+        <div class="d-flex">
+            <h4>Vos documents</h4>
+        </div>
+        <div class="d-flex">
+            <p>En choisir un nouveau remplacera l'ancien</p>
+        </div>
+        <div class="d-flex">
+            @using (Html.BeginForm("Documents", "Association", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <table class="table table-bordered table-light table-striped border-2">
+                    @Html.HiddenFor(m => m.AssociationId)
+                    <tr>
+                        <td align="right">@Html.Label("RIB : ")</td>
+                        <td>@Html.TextBoxFor(model => model.BankDetails, new { placeholder = "Description", @type = "file" })</td>
+                        @if (@Model.FormerBankDetails != "")
+                        {
+                            <td><a href=@Model.FormerBankDetails target="_blank">RIB actuel</a></td>
+                        }
+                        else
+                        {
+                            <td>Pas de RIB actuellement</td>
+                        }
+                    </tr>
+                    <tr>
+                        <td align="right">@Html.Label("Pièce d'identité du mandataire : ")</td>
+                        <td>@Html.TextBoxFor(model => model.RepresentativeID, new { placeholder = "Description", @type = "file" })</td>
+                        @if (@Model.FormerRepresentativeID != "")
+                        {
+                            <td><a href=@Model.FormerRepresentativeID target="_blank">Pièce d'identité actuelle</a></td>
+                        }
+                        else
+                        {
+                            <td>Pas de pièce d'identité actuellement</td>
+                        }
+                    </tr>
+                    <tr>
+                        <td align="right">@Html.Label("Publication au journal officiel")</td>
+                        <td>@Html.TextBoxFor(model => model.OfficialJournalPublication, new { placeholder = "Description", @type = "file" })</td>
+                        @if (@Model.FormerOfficialJournalPublication != "")
+                        {
+                            <td><a href=@Model.FormerOfficialJournalPublication target="_blank">Publication actuelle</a></td>
+                        }
+                        else
+                        {
+                            <td>Pas de publication actuellement</td>
+                        }
+                    </tr>
+                    <tr>
+                        <td colspan="3" align="center">
+                            <input type="submit" value="Valider" />
+                        </td>
+                    </tr>
+                </table>
+            }
+        </div>
+    </div>
+}
+        </div>
+    </div>
+</div>

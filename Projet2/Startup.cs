@@ -17,6 +17,7 @@ namespace Projet2
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
             {
                 options.LoginPath = "/Compte/Connexion";
+                options.AccessDeniedPath = "/Compte/AccessDenied";
             });
             services.AddControllersWithViews();
         }
@@ -43,7 +44,15 @@ namespace Projet2
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+             
             });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "EventDelete",
+                    pattern: "{controller=AssociationEvent}/{action=EventDelete}/{id?}/{eventid?}");
+            });   
+
         }
     }
 }

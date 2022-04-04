@@ -14,18 +14,18 @@
             </tr>
             <tr>
                 <td align="right">@Html.LabelFor(m => Model.Association.Description)</td>
-                <td>@Html.TextBoxFor(m => Model.Association.Description)</td>
+                <td>@Html.TextAreaFor(m => Model.Association.Description, new { @class = "descriptionForm"})</td>
                 <td>@Html.ValidationMessageFor(m => Model.Association.Description)</td>
-            </tr>
-            <tr>
-                <td align="right">@Html.LabelFor(model => model.File)</td>
-                <td>@Html.TextBoxFor(model => model.File, new { placeholder = "Description", @type = "file" })</td>
-                <td>@Html.ValidationMessageFor(model => model.File)</td>
             </tr>
             <tr>
                 <td align="right">@Html.LabelFor(m => Model.Association.Mail)</td>
                 <td>@Html.TextBoxFor(m => Model.Association.Mail)</td>
                 <td>@Html.ValidationMessageFor(m => Model.Association.Mail)</td>
+            </tr>
+            <tr>
+                <td align="right">@Html.LabelFor(m => Model.Association.Contribution)</td>
+                <td>@Html.TextBoxFor(m => Model.Association.Contribution)</td>
+                <td>@Html.ValidationMessageFor(m => Model.Association.Contribution)</td>
             </tr>
             <tr>
                 <td align="right">@Html.LabelFor(m => Model.Address.RoadNumber)</td>
@@ -51,6 +51,11 @@
                 <td align="right">@Html.LabelFor(m => Model.Address.Country)</td>
                 <td>@Html.TextBoxFor(m => Model.Address.Country)</td>
                 <td>@Html.ValidationMessageFor(m => Model.Address.Country)</td>
+            </tr>
+            <tr>
+                <td align="right">@Html.LabelFor(model => model.File)</td>
+                <td>@Html.TextBoxFor(model => model.File, new { placeholder = "Description", @type = "file" })</td>
+                <td>@Html.ValidationMessageFor(model => model.File)</td>
             </tr>
             <tr>
                 <td colspan="3" align="center">

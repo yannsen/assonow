@@ -1,0 +1,109 @@
+﻿@model Projet2.ViewModels.AssociationEventInfoViewmodel
+
+
+@{
+    ViewBag.Title = "ajout de l'évènement";
+    Layout = "_Layout";
+}
+
+@using (Html.BeginForm("EventRegister", "AssociationEvent", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <fieldset>
+        <legend align="center">Informations sur l'évènement</legend>
+
+                        @Html.HiddenFor(m=>m.SelectedAssociationId)
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm m-2">
+                    <div class="form-group row">
+                        @Html.LabelFor(m => Model.AssociationEvent.EventTitle)
+                        @Html.TextBoxFor(m => Model.AssociationEvent.EventTitle,new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => Model.AssociationEvent.EventTitle)
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(m => m.File)
+                        @Html.TextBoxFor(m => m.File, new { placeholder = "Description", @type = "file", @class = "form-control"})
+                        @Html.ValidationMessageFor(m => m.File)
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(m => Model.AssociationEvent.Date)
+                        @Html.TextBoxFor(m => Model.AssociationEvent.Date,"{0:dd/MM/yyyy}", new {@maxlength = "10", size ="10", @class = "form-control"})
+
+                        @Html.ValidationMessageFor(m => Model.AssociationEvent.Date)
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(m => Model.AssociationEvent.EventType)
+                        @Html.TextBoxFor(m => Model.AssociationEvent.EventType, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => Model.AssociationEvent.EventType)
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(m => Model.AssociationEvent.TicketsTotalNumber)
+                        @Html.TextBoxFor(m => Model.AssociationEvent.TicketsTotalNumber, new {size ="6", @class = "form-control"})
+                        @Html.ValidationMessageFor(m => Model.AssociationEvent.TicketsTotalNumber)
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(m => Model.AssociationEvent.Description)
+                        @Html.TextAreaFor(m => Model.AssociationEvent.Description, new{rows="8", cols="15", @class = "form-control"})
+                        @Html.ValidationMessageFor(m => Model.AssociationEvent.Description)
+                    </div>
+                </div>
+
+                <div class="col-sm m-2">
+
+                    <div class="form-group row">
+                        @Html.LabelFor(m => Model.AssociationEvent.Speakers)
+                        @Html.TextBoxFor(m => Model.AssociationEvent.Speakers, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => Model.AssociationEvent.Speakers)
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(m => Model.AssociationEvent.Artists)
+                        @Html.TextBoxFor(m => Model.AssociationEvent.Artists, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => Model.AssociationEvent.Artists)
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(m => Model.AssociationEvent.TicketPrice)
+                        @Html.TextBoxFor(m => Model.AssociationEvent.TicketPrice, new {size ="5", @class = "form-control"})
+                        @Html.ValidationMessageFor(m => Model.AssociationEvent.TicketPrice)
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(m => Model.Address.RoadNumber)
+                        @Html.TextBoxFor(m => Model.Address.RoadNumber, new {size ="2", @class = "form-control"})
+                        @Html.ValidationMessageFor(m => Model.Address.RoadNumber)
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(m => Model.Address.Road)
+                        @Html.TextBoxFor(m => Model.Address.Road, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => Model.Address.Road)
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(m => Model.Address.City)
+                        @Html.TextBoxFor(m => Model.Address.City,new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => Model.Address.City)
+                    </div>
+                    <div class="form-group row">
+                        <td align="right">@Html.LabelFor(m => Model.Address.PostalCode)
+                        <td>@Html.TextBoxFor(m => Model.Address.PostalCode, new {size ="4", @class = "form-control"})
+                        <td>@Html.ValidationMessageFor(m => Model.Address.PostalCode)
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(m => Model.Address.Country)
+                        @Html.TextBoxFor(m => Model.Address.Country, new {@class = "form-control"})
+                        @Html.ValidationMessageFor(m => Model.Address.Country)
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-sm"></div>
+
+            <div class="col-sm"><input type="submit" value="Valider" class="btn btn-primary" /></div>
+            <div class="col-sm"> </div>
+        </div>
+
+    </fieldset>
+}

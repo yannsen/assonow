@@ -1,0 +1,142 @@
+﻿@model Projet2.ViewModels.AdviceListViewModel
+
+@{
+    ViewBag.Title = "Vos échanges";
+    Layout = "_Layout";
+}
+
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start list-group-flush" id="menu">
+                    <li class="nav-item">
+                        <img src="@ViewBag.Association.Image" class="rounded" width="250" height="200" />
+                    </li>
+                    @if (ViewBag.Association.IsPublished)
+                    {
+                        @if (ViewBag.Association.TicketService)
+                        {
+                            <li class="nav-item list-group-item bg-light w-100">
+                                <a href="~/AssociationEvent/EventList?id=@ViewBag.Association.Id" class="nav-link align-middle px-0 border-0">
+                                    <span class="ms-1 d-none d-sm-inline">Gestion des évènements</span>
+                                </a>
+                            </li>
+                        }
+                        @if (ViewBag.Association.MemberService)
+                        {
+                            <li class="nav-item list-group-item bg-light w-100">
+                                <a href="~/Association/Member?id=@ViewBag.Association.Id" class="nav-link align-middle px-0 border-0">
+                                    <span class="ms-1 d-none d-sm-inline">Gestion de vos adhérents</span>
+                                </a>
+                            </li>
+                        }
+                        @if (ViewBag.Association.DonationService)
+                        {
+                            <li class="nav-item list-group-item bg-light w-100">
+                                <a href="~/Fundraising/Management?id=@ViewBag.Association.Id" class="nav-link align-middle px-0 border-0">
+                                    <span class="ms-1 d-none d-sm-inline">Gestion de vos collectes</span>
+                                </a>
+                            </li>
+                        }
+                        <li class="nav-item list-group-item bg-light w-100">
+                            <a href="~/Advice/AskForAdvice?id=@ViewBag.Association.Id" class="nav-link align-middle px-0 border-0">
+                                <span class="ms-1 d-none d-sm-inline">Demander un conseil</span>
+                            </a>
+                        </li>
+                        <li class="nav-item list-group-item bgmodify-warning w-100">
+                            <a href="~/Advice/SeeAdvice?id=@ViewBag.Association.Id" class="nav-link align-middle px-0 border-0">
+                                <span class="ms-1 d-none d-sm-inline">Voir nos réponses</span>
+                            </a>
+                        </li>
+                        <li class="nav-item list-group-item bg-light w-100">
+                            <a href="~/Association/Services?id=@ViewBag.Association.Id" class="nav-link align-middle px-0 border-0">
+                                <span class="ms-1 d-none d-sm-inline">Nos services</span>
+                            </a>
+                        </li>
+                        <li class="nav-item list-group-item bg-light w-100">
+                            <a href="~/Association/Profil?id=@ViewBag.Association.Id" class="nav-link align-middle px-0 border-0">
+                                <span class="ms-1 d-none d-sm-inline">Profil de l'association</span>
+                            </a>
+                        </li>
+                    }
+                    <li class="nav-item list-group-item bg-light w-100">
+                        <a href="~/Association/Documents?id=@ViewBag.Association.Id" class="nav-link align-middle px-0 border-0">
+                            <span class="ms-1 d-none d-sm-inline">Fournir vos documents</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col py-3">
+            @using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.AssociationId)
+    <div class="d-flex justify-content-center w-100">
+        @if (ViewBag.EstVide == true)
+        {
+            <div class="d-flex flex-column">
+                <div class="d-flex">
+                    <p>Vous n'avez pas encore eu d'échange avec notre équipe</p>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="d-flex flex-column align-items-center w-100">
+                <div class="d-flex flex-column align-items-center">
+                    @if (@Model.Advices.Count > 0)
+                    {
+                        <div class="d-flex">
+                            <p>Nos réponses</p>
+                        </div>
+                        <div class="d-flex mb-5">
+                            @Html.DropDownListFor(m => m.SelectedAdviceId, new SelectList(@Model.Advices, "Id", "AdviceSubject"), new { onchange = "submit()", style = "width:500px" })
+                        </div>
+                    }
+                </div>
+                <div class="d-flex flex-row w-75 justify-content-between">
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="d-flex">
+                            <p>La demande :</p>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <div class="d-flex">
+                                @Html.Label("Objet de votre demande :")
+                            </div>
+                            <div class="d-flex">
+                                @Html.TextBoxFor(m => m.SelectedAdviceRequest.AdviceRequestSubject, new { style = "width: 500px", @readonly = true})
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <div class="d-flex mt-3">
+                                @Html.TextAreaFor(m => m.SelectedAdviceRequest.AdviceRequestText, new { style = "width: 500px; height: 500px", @readonly = true})
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="d-flex">
+                            <p>Votre réponse :</p>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <div class="d-flex">
+                                @Html.Label("Objet de la réponse :")
+                            </div>
+                            <div class="d-flex">
+                                @Html.TextBoxFor(m => m.SelectedAdvice.AdviceSubject, new { style = "width: 500px", @readonly = true})
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <div class="d-flex mt-3">
+                                @Html.TextAreaFor(m => m.SelectedAdvice.AdviceText, new { style = "width: 500px; height: 500px", @readonly = true})
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+        </div>
+    </div>
+</div>

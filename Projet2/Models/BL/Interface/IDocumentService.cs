@@ -2,16 +2,22 @@
 {
     public interface IDocumentService 
     {
-        public void CreateDocument();
+        public int CreateDocument(Document document);
 
-        public void DeleteDocument();
+        public void DeleteDocument(int id);
 
-        public string GetDocument(int id);
+        public Document GetDocument(int id);
 
-        public string GetAssociationRepresentativeID(int AssociationId);
+        public string GetAssociationRepresentativeIDPath(int associationId);
 
-        public string GetOfficialJournalPublication(int AssociationId);
+        public string GetOfficialJournalPublicationPath(int associationId);
 
-        public string GetBankDetails(int AssociationId);
+        public string GetBankDetailsPath(int associationId);
+
+        public Document GetBankDetails(int associationId);
+
+        public Document GetOfficialJournalPublication(int associationId);
+
+        public Document GetAssociationRepresentativeID(int associationId);
     }
 }

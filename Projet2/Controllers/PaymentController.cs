@@ -5,6 +5,7 @@ using Projet2.ViewModels;
 using Projet2.Models;
 using System;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Projet2.Controllers
 {
@@ -25,30 +26,46 @@ namespace Projet2.Controllers
             this._bddContext = new BddContext();
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
+        [Authorize(Roles = "Member,Representative")]
         public IActionResult CreditCard (PaymentViewModel paymentViewModel)
         {
             PaymentCreditCardViewModel viewModel = new PaymentCreditCardViewModel();
             viewModel.SavedCreditCard = creditCardService.GetSavedCard(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+            if (viewModel.SavedCreditCard != null)
+            {
+                viewModel.Month = viewModel.SavedCreditCard.DateTime.Month.ToString();
+                viewModel.Year = viewModel.SavedCreditCard.DateTime.Year.ToString();
+            }
             viewModel.PaymentViewModel = paymentViewModel;
             return View(viewModel);
         }
 
+        [Authorize(Roles = "Member,Representative")]
         [HttpPost]
-        public IActionResult CreditCard(PaymentCreditCardViewModel viewModel)
+        public IActionResult CreditCard(string submitButton, PaymentCreditCardViewModel viewModel)
         {
-            if(viewModel.SaveCard == true)
+            if(submitButton == "Changer de carte")
             {
-                viewModel.NewCreditCard.MemberId = Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-                creditCardService.SaveCard(viewModel.NewCreditCard);
+                ModelState.Clear();
+                viewModel.SavedCreditCard = null;
+                viewModel.Month = "";
+                viewModel.Year = "";
+                return View(viewModel);
             }
-            return RedirectToAction("Validation", "Payment", viewModel.PaymentViewModel);
+            if (ModelState.IsValid)
+            {
+                if (viewModel.SaveCard == true)
+                {
+                    viewModel.NewCreditCard.MemberId = Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                    viewModel.NewCreditCard.DateTime = new DateTime(Int32.Parse(viewModel.Year), Int32.Parse(viewModel.Month), 1);
+                    creditCardService.SaveCard(viewModel.NewCreditCard);
+                }
+                return RedirectToAction("Validation", "Payment", viewModel.PaymentViewModel);
+            }
+            return View(viewModel);
         }
 
+        [Authorize(Roles = "Member,Representative")]
         public IActionResult Validation(PaymentViewModel viewModel)
         {
             if (viewModel.DonationId != null)
@@ -59,11 +76,11 @@ namespace Projet2.Controllers
             }
             else if (viewModel.ContributionId != null)
             {
-                //Redirection page contribution
+                ViewBag.Next = "../Association/Joined?id=" + viewModel.ContributionId;
             }
             else if (viewModel.CommandId != null)
             {
-                //Redirection commande payé
+                ViewBag.Next = "../AssociationEvent/EventView?id=" + viewModel.CommandId;
             }
             paymentService.CreatePayment(viewModel);
             return View(viewModel);

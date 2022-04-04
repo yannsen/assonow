@@ -1,0 +1,57 @@
+﻿@model Projet2.ViewModels.TicketingViewModel
+
+@{
+    ViewBag.Title = "Changement de billets";
+    Layout = "_Layout";
+}
+<script type="text/javascript" src="/js/validateresult.js"></script> 
+<div class="d-flex w-100 justify-content-center">
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <legend align="center">Billet pour @Model.EventTitle</legend>
+        <table>
+            @Html.HiddenFor(m => m.EventId)
+            @Html.HiddenFor(m => m.TicketPrice)
+            @Html.HiddenFor(m => m.RemainingTicket)
+            
+                 @if (@Model.RemainingTicket <= @Model.Threshold)
+                    {
+                        <tr>
+                        <td>
+                        <label>Attention il ne reste que @Model.RemainingTicket place(s) de disponible</label>
+                        </td>
+                      </tr>
+                    }
+             <tr> 
+                <td>
+                   
+                    @Html.LabelFor(m => m.TicketsNumber)
+                    @Html.DisplayFor(m => m.TicketsNumber)
+                    Somme déjà payée
+                    @Html.DisplayFor(m=>m.Amount)
+                    
+                </td>
+            </tr>
+
+             <tr> 
+                <td>
+                   
+                    @Html.LabelFor(m => m.TicketsNumber)
+                    @Html.TextBoxFor(m => m.TicketsNumber,new {@class="multi", @onkeyup="setTimeout(check, 1000);onkeyupsum()", @autocomplete="off"})
+                     @Html.DisplayFor(m=>m.TicketPrice)
+                    X
+                    @Html.TextBoxFor(m=>m.Amount)
+                     @Html.TextBoxFor(m=>m.NewAmount)
+                    
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center">
+                    <br><br><input type="submit" value="Valider"  id="submitbutton" onclick=""/>
+                </td>
+            </tr>
+        </table>
+        </fieldset>
+    }
+</div>

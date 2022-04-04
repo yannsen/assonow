@@ -1,0 +1,45 @@
+﻿@model List<Projet2.Models.Association>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+	<h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Séjours</h2>
+		<!-- Icon Divider-->
+		<div class="divider-custom">
+			<div class="divider-custom-line"></div>
+			<div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+			<div class="divider-custom-line"></div>
+		</div>
+		<div class="row justify-content-start">
+			@foreach (var association in Model)
+			{
+				string Selectlink = "/AssociationEvent/AssociationManagement/" + association.Id;
+				
+				<div >
+					<div class="card-body d-flex flex-column justify-content-between">
+                        <div>
+                            <h5 class="card-title">@association.Name</h5>
+                            <div class="my-3">
+                                <img src="@association.Image" width="200" height="200" />
+                            </div>
+                            
+                            <p class="card-text">@association.Description</p>
+
+                        </div>
+			
+                        <div>
+                            <a href=@Selectlink class="card-link">Sélectionner</a>
+
+                        </div>
+						
+
+					</div>
+				</div>
+			}
+			<div class="col-4 m-5" style="width: 18rem;">
+
+			</div>
+
+		</div>

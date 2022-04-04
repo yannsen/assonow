@@ -1,0 +1,116 @@
+﻿@model Projet2.ViewModels.ServicesViewModel
+
+@{
+    ViewBag.Title = "Gestion des services";
+    Layout = "_Layout";
+}
+
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start list-group-flush" id="menu">
+                    <li class="nav-item">
+                        <img src="@ViewBag.Association.Image" class="rounded" width="250" height="200" />
+                    </li>
+                    @if (ViewBag.Association.IsPublished)
+                    {
+                        @if (ViewBag.Association.TicketService)
+                        {
+                            <li class="nav-item list-group-item bg-light w-100">
+                                <a href="~/AssociationEvent/EventList?id=@ViewBag.Association.Id" class="nav-link align-middle px-0 border-0">
+                                    <span class="ms-1 d-none d-sm-inline">Gestion des évènements</span>
+                                </a>
+                            </li>
+                        }
+                        @if (ViewBag.Association.MemberService)
+                        {
+                            <li class="nav-item list-group-item bg-light w-100">
+                                <a href="~/Association/Member?id=@ViewBag.Association.Id" class="nav-link align-middle px-0 border-0">
+                                    <span class="ms-1 d-none d-sm-inline">Gestion de vos adhérents</span>
+                                </a>
+                            </li>
+                        }
+                        @if (ViewBag.Association.DonationService)
+                        {
+                            <li class="nav-item list-group-item bg-light w-100">
+                                <a href="~/Fundraising/Management?id=@ViewBag.Association.Id" class="nav-link align-middle px-0 border-0">
+                                    <span class="ms-1 d-none d-sm-inline">Gestion de vos collectes</span>
+                                </a>
+                            </li>
+                        }
+                        <li class="nav-item list-group-item bg-light w-100">
+                            <a href="~/Advice/AskForAdvice?id=@ViewBag.Association.Id" class="nav-link align-middle px-0 border-0">
+                                <span class="ms-1 d-none d-sm-inline">Demander un conseil</span>
+                            </a>
+                        </li>
+                        <li class="nav-item list-group-item bg-light w-100">
+                            <a href="~/Advice/SeeAdvice?id=@ViewBag.Association.Id" class="nav-link align-middle px-0 border-0">
+                                <span class="ms-1 d-none d-sm-inline">Voir nos réponses</span>
+                            </a>
+                        </li>
+                        <li class="nav-item list-group-item bgmodify-warning w-100">
+                            <a href="~/Association/Services?id=@ViewBag.Association.Id" class="nav-link align-middle px-0 border-0">
+                                <span class="ms-1 d-none d-sm-inline">Nos services</span>
+                            </a>
+                        </li>
+                        <li class="nav-item list-group-item bg-light w-100">
+                            <a href="~/Association/Profil?id=@ViewBag.Association.Id" class="nav-link align-middle px-0 border-0">
+                                <span class="ms-1 d-none d-sm-inline">Profil de l'association</span>
+                            </a>
+                        </li>
+                    }
+                    <li class="nav-item list-group-item bg-light w-100">
+                        <a href="~/Association/Documents?id=@ViewBag.Association.Id" class="nav-link align-middle px-0 border-0">
+                            <span class="ms-1 d-none d-sm-inline">Fournir vos documents</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col py-3">
+            <div class="d-flex flex-column align-items-center w-100">
+                <div class="d-flex">
+                    <h4>Nos services</h4>
+                </div>
+                <div class="d-flex flex-column">
+                    <p>Tarification mensuelle dont le prélèvement s'effectuera chaque début de mois :</p>
+                    <p>1 service : 15,99€</p>
+                    <p>2 services : 29,99€</p>
+                    <p>3 services : 39,99€</p>
+                </div>
+                <div class="d-flex w-25">
+                    @using (Html.BeginForm())
+                    {
+                        <table class="table table-bordered table-light table-striped border-2">
+                            @Html.HiddenFor(m => m.AssociationId)
+                            <tr>
+                                <td>@Html.Label("Service de gestion de vos adhérents")</td>
+                                <td>Ce service vous offre la possibilité d'acquérir et de gérer de nouveaux adhérents parmi les visiteurs de notre plateforme</td>
+                                <td>@Html.CheckBoxFor(m => m.MemberService)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.Label("Service de gestion des donations")</td>
+                                <td>Ce service vous offre la possibilité de recevoir des donations et de créer des collectes de dons pour vos projets</td>
+                                <td>@Html.CheckBoxFor(m => m.DonationService)</td>
+                            </tr>
+                            <tr>
+                                <td>@Html.Label("Service de billetterie")</td>
+                                <td>Ce service vous offre la possibilité de créer des évènements et de mettre en place la billetterie correspondante</td>
+                                <td>@Html.CheckBoxFor(m => m.TicketService)</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" align="center">
+                                    <input type="submit" value="Valider" />
+                                </td>
+                            </tr>
+                        </table>
+
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

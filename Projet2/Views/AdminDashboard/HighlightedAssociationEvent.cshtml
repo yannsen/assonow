@@ -1,0 +1,71 @@
+﻿@model Projet2.ViewModels.HighlightedViewModel
+
+@{
+    ViewBag.title = "Gérer les évènements mis en avant";
+    Layout = "_Layout";
+}
+
+<div class="d-flex flex-column align-items-center w-100">
+    <div class="d-flex flex-column align-items-center w-100">
+        <div class="d-flex flex-row w-50 justify-content-around mb-3">
+            <div class="d-flex">
+                <a href="~/AdminDashboard/HighlightedAssociations" class="btn btn-primary w-100">Associations</a>
+            </div>
+            <div class="d-flex">
+                <a href="~/AdminDashboard/HighlightedFundraisings" class="btn btn-primary w-100">Collectes</a>
+            </div>
+        </div>
+        @{
+            @using (Html.BeginForm())
+            {
+                int i = 0;
+                if (Model.HEvents != null)
+                {
+                    while (i < Model.HEvents.Count)
+                    {
+                        <ul id="ulhighlight" class="list-group list-group-horizontal">
+                            @for (int j = 0; j < 4; j++)
+                            {
+                                @if (i < Model.HEvents.Count)
+                                {
+                                    <li id="lihighlight" class="list-group-item">
+                                        <p>@Model.HEvents[i].EventTitle : @Html.CheckBoxFor(a => a.HEvents[i].IsHighlighted)</p>
+                                    </li>
+                                    @Html.HiddenFor(a => a.HEvents[i].Id)
+                                    @Html.HiddenFor(a => a.HEvents[i].EventTitle)
+                                    i++;
+                                }
+                            }
+                        </ul>
+                    }
+                }
+                <div class="d-flex my-3 w-100 justify-content-center">
+                    <div class="d-flex">
+                        <input type="submit" value="Valider" />
+                    </div>
+                </div>
+                int x = 0;
+                if (Model.NHEvents != null)
+                {
+                    while (x < Model.NHEvents.Count)
+                    {
+                        <ul id="ulhighlight" class="list-group list-group-horizontal">
+                            @for (int j = 0; j < 4; j++)
+                            {
+                                @if (x < Model.NHEvents.Count)
+                                {
+                                    <li id="lihighlight" class="list-group-item">
+                                        <p>@Model.NHEvents[x].EventTitle : @Html.CheckBoxFor(a => a.NHEvents[x].IsHighlighted)</p>
+                                    </li>
+                                    @Html.HiddenFor(a => a.NHEvents[x].Id)
+                                    @Html.HiddenFor(a => a.NHEvents[x].EventTitle)
+                                    x++;
+                                }
+                            }
+                        </ul>
+                    }
+                }
+            }
+        }
+    </div>
+</div>

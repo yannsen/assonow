@@ -1,0 +1,59 @@
+﻿@model Projet2.ViewModels.AssociationEventInfoViewmodel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewBag.title = "Les évènements présents sur AssoNow";
+    Layout = "_Layout";
+}
+
+<div class="d-flex flex-column w-100">
+    <div class="d-flex flex-row w-100">
+        <div class="d-flex justify-content-center w-25">
+            <div class="d-flex flex-column bg-light rounded w-75" style="height:500px;">
+                <div class="d-flex justify-content-md-center p-3">
+                    <p>Recherche</p>
+                </div>
+                @using (Html.BeginForm())
+                {
+                    <div class="d-flex flex-column p-3">
+                        @Html.LabelFor(m => Model.AssociationNameToSearch)
+                        @Html.TextBoxFor(m => Model.AssociationNameToSearch, new { onchange = "submit();", @Class = "form-control form-control-lg form-control-borderless " } )
+                    </div>
+                    <div class="d-flex flex-column p-3">
+                        @Html.LabelFor(m => Model.EventNameToSearch)
+                        @Html.TextBoxFor(m => Model.EventNameToSearch, new { onchange = "submit();", @Class = "form-control form-control-lg form-control-borderless " } )
+                    </div>
+                    <div class="d-flex flex-row p-3 justify-content-md-center">
+                        <button type="submit" class="btn btn-info">Rechercher</button>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="d-flex flex-column w-75">
+            @{
+                int i = 0;
+                while (i < Model.AssociationEventsList.Count)
+                {
+                    <div class="d-flex flex-row justify-content-around w-100">
+                        @for (int j = 0; j < 3; j++)
+                        {
+                            @if (i < Model.AssociationEventsList.Count)
+                            {
+                                <div class="card align-items-center w25">
+                                    <img class="card-img-top" src="@Model.AssociationEventsList[i].Image">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@Model.AssociationEventsList[i].EventTitle</h5>
+                                        <p class="card-text">@Model.AssociationEventsList[i].Description</p>
+                                        <a href="~/AssociationEvent/EventView?id=@Model.AssociationEventsList[i].Id" class="stretched-link"></a>
+                                    </div>
+                                </div>
+                            }
+                            i++;
+                        }
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+   

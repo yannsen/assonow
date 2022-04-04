@@ -7,57 +7,55 @@
 
 <div class="d-flex flex-column w-100">
     <div class="d-flex flex-row w-100">
-        @*@await Html.PartialAsync("CarouselFundraising", @Model.FundraisingsList)*@
-    </div>
-    <div class="d-flex flex-row w-100">
-        <div class="d-flex w-25">
-            @using (Html.BeginForm()){
-            <table class="table">
-                <thead>
-                    <tr>
-                        <td>Recherche</td>
-                    </tr>
-                </thead>
-                <tr>
-                    <td>@Html.LabelFor(m => Model.FundraisingNameToSearch)</td>
-                    <td>@Html.TextBoxFor(m => Model.FundraisingNameToSearch)</td>
-                </tr>
-                <tr>
-                    <td>@Html.LabelFor(m => Model.SearchIfActive)</td>
-                    <td>@Html.CheckBoxFor(m => Model.SearchIfActive)</td>
-                </tr>
-                <tr>
-                    <td>
-                        <br><br><input type="submit" value="Rechercher" />
-                    </td>
-                </tr>
-            </table>
-            }
+        <div class="d-flex justify-content-center w-25">
+            <div class="d-flex flex-column bg-light rounded w-75" style="height:500px;">
+                <div class="d-flex justify-content-md-center p-3">
+                    <p>Recherche</p>
+                </div>
+                @using (Html.BeginForm())
+                {
+                    <div class="d-flex flex-column p-3">
+                        @Html.LabelFor(m => Model.AssociationNameToSearch)
+                        @Html.TextBoxFor(m => Model.AssociationNameToSearch, new { onchange = "submit();", @Class = "form-control form-control-lg form-control-borderless " } )
+                    </div>
+                    <div class="d-flex flex-column p-3">
+                        @Html.LabelFor(m => Model.FundraisingNameToSearch)
+                        @Html.TextBoxFor(m => Model.FundraisingNameToSearch, new { onchange = "submit();", @Class = "form-control form-control-lg form-control-borderless " } )
+                    </div>
+                    <div class="d-flex flex-row p-3">
+                        @Html.LabelFor(m => Model.SearchIfActive, new { @Class="mr-2"})
+                        @Html.CheckBoxFor(m => Model.SearchIfActive)
+                    </div>
+                    <div class="d-flex flex-row p-3 justify-content-md-center">
+                        <button type="submit" class="btn btn-info">Rechercher</button>
+                    </div>
+                }
+            </div>
         </div>
         <div class="d-flex flex-column w-75">
             @{
-            int i = 0;
-            while(i < Model.FundraisingsList.Count)
-            {
-                <div class="d-flex flex-row w-100">
-                @for(int j=0; j<4; j++)
+                int i = 0;
+                while (i < Model.FundraisingsList.Count)
                 {
-                            @if(i < Model.FundraisingsList.Count)
+                    <div class="d-flex flex-row justify-content-around w-100">
+                        @for (int j = 0; j < 3; j++)
+                        {
+                            @if (i < Model.FundraisingsList.Count)
                             {
                                 <div class="card align-items-center w25">
-                                    <img class="card-img-top" src="@Model.FundraisingsImage[i]">
+                                    <img class="card-img-top" src="@Model.FundraisingsList[i].Image">
                                     <div class="card-body">
                                         <h5 class="card-title">@Model.FundraisingsList[i].Name</h5>
                                         <p class="card-text">@Model.FundraisingsList[i].Description</p>
-                                        <a class="btn btn-primary" href="~/Fundraising/Profile?id=@Model.FundraisingsList[i].Id">Plus de détails</a>
+                                        <a href="~/Fundraising/Profile?id=@Model.FundraisingsList[i].Id" class="stretched-link"></a>
                                     </div>
                                 </div>
                             }
                             i++;
                         }
-                </div>
+                    </div>
+                }
             }
-        }
         </div>
     </div>
 </div>

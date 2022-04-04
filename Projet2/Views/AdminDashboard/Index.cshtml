@@ -3,21 +3,31 @@
     Layout = "_Layout";
 }
 
-<div class ="d-flex justify-content-center w-100">
+<div  class="d-flex justify-content-center w-100 ">
+    <h2 class ="gestionD" style = "padding-bottom: 75px;padding-top: 10px; "> Gestion administrative des associations</h2>
+</div>
+
+
+<div class="d-flex justify-content-center w-100">
     <table class="w-25 p-5">
         <tr>
             <td class="py-3">
-                <a href="../AdminDashboard/DemandeInscription" class="btn btn-primary w-100">Gérer les demandes d'inscriptions</a>
+                <a href="~/AdminDashboard/DemandeInscription" class="btn btn-primary w-100">Gérer les demandes d'inscriptions</a>
             </td>
         </tr>
         <tr>
             <td class="py-3">
-                <a href="../Home/Index" class="btn btn-primary w-100">Retour à l'acceuil</a>
+                <a href="~/AdminDashboard/HighlightedAssociations" class="btn btn-primary w-100">Gérer les mises en avant</a>
             </td>
         </tr>
         <tr>
             <td class="py-3">
-                <a href="../Compte/Deconnexion" class="btn btn-primary w-100">Se déconnecter</a>
+                <a href="~/Home/Index" class="btn btn-primary w-100">Retour à l'accueil</a>
+            </td>
+        </tr>
+        <tr>
+            <td class="py-3">
+                <a href="~/Compte/Deconnexion" class="btn btn-primary w-100">Se déconnecter</a>
             </td>
         </tr>
     </table>
