@@ -18,8 +18,7 @@ namespace Projet2.Models
 
         public string Image { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Date :")]
         [Required(ErrorMessage = "Veuillez indiquer la date de l'événement")]
         public DateTime Date { get; set; }
