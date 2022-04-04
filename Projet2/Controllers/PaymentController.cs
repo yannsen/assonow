@@ -13,6 +13,7 @@ namespace Projet2.Controllers
     {
         private IPaymentService paymentService;
         private IFundraisingService fundraisingService;
+        private IAssociationService associationService;
         private ICreditCardService creditCardService;
         private IDonationService donationService;
         private BddContext _bddContext;
@@ -22,6 +23,7 @@ namespace Projet2.Controllers
             this.paymentService = new PaymentService();
             this.creditCardService = new CreditCardService();
             this.fundraisingService = new FundraisingService();
+            this.associationService = new AssociationService();
             this.donationService = new DonationService();
             this._bddContext = new BddContext();
         }
@@ -76,7 +78,7 @@ namespace Projet2.Controllers
             }
             else if (viewModel.ContributionId != null)
             {
-                ViewBag.Next = "../Association/Joined?id=" + viewModel.ContributionId;
+                ViewBag.Next = "../Association/Joined?id=" + associationService.GetAssociationByContributionId((int)viewModel.ContributionId).Id;
             }
             else if (viewModel.CommandId != null)
             {

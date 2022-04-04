@@ -111,8 +111,9 @@ namespace Projet2.Controllers
         {
             FundraisingListViewModel viewModel = new FundraisingListViewModel();
             viewModel.FundraisingsList = fundraisingService.GetAllFundraisings();
+            foreach (Fundraising fundraising in viewModel.FundraisingsList)
+                fundraising.Association = associationService.GetAssociation(fundraising.AssociationId);
             viewModel.SearchIfActive = true;
-            List<string> imagesList = new List<string>();
             return View(viewModel);
         }
 
@@ -122,6 +123,8 @@ namespace Projet2.Controllers
             if (viewModel.AssociationNameToSearch == null) viewModel.AssociationNameToSearch = "";
             if (viewModel.FundraisingNameToSearch == null) viewModel.FundraisingNameToSearch = "";
             viewModel.FundraisingsList = fundraisingService.GetFundraisingsToSearch(viewModel);
+            foreach (Fundraising fundraising in viewModel.FundraisingsList)
+                fundraising.Association = associationService.GetAssociation(fundraising.AssociationId);
             return View(viewModel);
         }
 

@@ -7,6 +7,14 @@
         <div class="row justify-content-md-center">
             <div class="login-form-1">
                 <h3>@ViewBag.Legend</h3>
+                
+            @if (ViewBag.Legend == "Modification du compte")
+            {
+                @Html.HiddenFor(m => Model.Member.AddressId)
+                @Html.HiddenFor(m => Model.Address.Id)
+                @Html.HiddenFor(m => Model.Member.Role)
+                @Html.HiddenFor(m => Model.Member.Password)
+            }
                 <div class="form-group row">
                     @Html.LabelFor(m => Model.Member.Lastname, new { @class = "form-label"})
                     
@@ -72,6 +80,13 @@
                 <div class="form-group" align="center">
                     <input type="submit" class="btn btn-primary" value="Valider" />
                 </div>
+
+                @if (ViewBag.Modified == true)
+                {
+                    <div class="form-group" align="center">
+                        <p class="text-success">Vos modifications ont bien été prises en compte</p>
+                    </div>
+                }
             </div>
         </div>
     </div>
