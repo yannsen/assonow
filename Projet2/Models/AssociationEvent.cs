@@ -21,9 +21,9 @@ namespace Projet2.Models
         [Display(Name = "Date :")]
         [Required(ErrorMessage = "Veuillez indiquer la date de l'événement")]
         public DateTime Date { get; set; }
+
         [Display(Name = "Type d'événement :")]
         [Required(ErrorMessage = "Veuillez sélectionner un type d'événement")]
-
         public string EventType { get; set; }
 
 #nullable enable
