@@ -57,6 +57,10 @@ namespace Projet2.Controllers
                 {
                     string uploads = Path.Combine(_webEnv.WebRootPath, "FileSystem/Pictures");
                     string filePath = Path.Combine(uploads, viewModel.File.FileName);
+                    if (System.IO.File.Exists(filePath))
+                    {
+                        System.IO.File.Delete(filePath);
+                    }
                     using (Stream fileStream = new FileStream(filePath, FileMode.Create))
                     {
                         viewModel.File.CopyToAsync(fileStream);
