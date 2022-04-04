@@ -17,33 +17,43 @@
                 @Html.HiddenFor(p => p.PaymentViewModel.DonationId)
                 <table class="table table-borderless table-light table-striped w-100 h-100">
                     <tr>
-                        <td colspan="2" align="center"><h4>Carte bancaire enregistrée :</h4></td>
+                        <td colspan="4" align="center"><h4>Carte bancaire enregistrée :</h4></td>
                     </tr>
                     <tr>
-                        <td class="w-50" align="right">@Html.LabelFor(m => Model.SavedCreditCard.CardNumber)</td>
-                        <td class="w-50">@Html.TextBoxFor(m => Model.SavedCreditCard.CardNumber)</td>
+                        <td class="w-50" align="right" colspan="2">@Html.LabelFor(m => Model.SavedCreditCard.CardNumber)</td>
+                        <td class="w-50" colspan="2">@Html.TextBoxFor(m => Model.SavedCreditCard.CardNumber)</td>
                     </tr>
                     <tr>
-                        <td align="right">@Html.LabelFor(m => Model.SavedCreditCard.Lastname)</td>
-                        <td>@Html.TextBoxFor(m => Model.SavedCreditCard.Lastname)</td>
+                        <td align="right" colspan="2">@Html.LabelFor(m => Model.SavedCreditCard.Lastname)</td>
+                        <td colspan="2">@Html.TextBoxFor(m => Model.SavedCreditCard.Lastname)</td>
                     </tr>
                     <tr>
-                        <td align="right">@Html.LabelFor(m => Model.SavedCreditCard.Firstname)</td>
-                        <td>@Html.TextBoxFor(m => Model.SavedCreditCard.Firstname)</td>
+                        <td align="right" colspan="2">@Html.LabelFor(m => Model.SavedCreditCard.Firstname)</td>
+                        <td colspan="2">@Html.TextBoxFor(m => Model.SavedCreditCard.Firstname)</td>
                     </tr>
                     <tr>
-                        <td align="right">@Html.LabelFor(m => Model.SavedCreditCard.Cvc)</td>
-                        <td>@Html.TextBoxFor(m => Model.SavedCreditCard.Cvc)</td>
+                        <td align="right" colspan="2">@Html.LabelFor(m => Model.SavedCreditCard.Cvc)</td>
+                        <td colspan="2">@Html.TextBoxFor(m => Model.SavedCreditCard.Cvc)</td>
                     </tr>
                     <tr>
-                        <td align="right">@Html.LabelFor(m => Model.SavedCreditCard.DateTime)</td>
-                        <td>@Html.TextBoxFor(m => Model.SavedCreditCard.DateTime)</td>
+                        <td>
+                                @Html.LabelFor(m => Model.Month)
+                                </td>
+                                <td>
+                                @Html.TextBoxFor(m => Model.Month, new { style="width: 100px;"})
+                                </td>
+                                <td>
+                                @Html.LabelFor(m => Model.Year)
+                                </td>
+                                <td>
+                                @Html.TextBoxFor(m => Model.Year, new { style="width: 100px;"})
+                                </td>
                     </tr>
                     <tr>
-                        <td align="right">
+                        <td align="center" colspan="2">
                             <input type="submit" value="Changer de carte" name="submitButton" />
                         </td>
-                        <td>
+                        <td align="center" colspan="2">
                             <input type="submit" value="Valider" name="submitButton" />
                         </td>
                     </tr>
@@ -60,51 +70,64 @@
                     @Html.HiddenFor(m => m.PaymentViewModel.ContributionId)
                     @Html.HiddenFor(m => m.PaymentViewModel.DonationId)
                     <tr>
-                        <td colspan="2" align="center"><h4>Informations de la carte bancaire :</h4></td>
+                        <td colspan="4" align="center"><h4>Informations de la carte bancaire :</h4></td>
                     </tr>
                     <tr>
-                        <td class="w-50" align="right">@Html.LabelFor(m => Model.NewCreditCard.CardNumber)</td>
-                        <td class="w-50">@Html.TextBoxFor(m => Model.NewCreditCard.CardNumber)</td>
+                        <td class="w-50" colspan="2" align="right">@Html.LabelFor(m => Model.NewCreditCard.CardNumber)</td>
+                        <td class="w-50" colspan="2">@Html.TextBoxFor(m => Model.NewCreditCard.CardNumber)</td>
                     </tr>
                     <tr>
-                        <td colspan="2" align="center">@Html.ValidationMessageFor(m => Model.NewCreditCard.CardNumber, null, new { @class = "text-danger" })</td>
+                        <td colspan="4" align="center">@Html.ValidationMessageFor(m => Model.NewCreditCard.CardNumber, null, new { @class = "text-danger" })</td>
                     </tr>
                     <tr>
-                        <td align="right">@Html.LabelFor(m => Model.NewCreditCard.Lastname)</td>
-                        <td>@Html.TextBoxFor(m => Model.NewCreditCard.Lastname)</td>
+                        <td align="right" colspan="2">@Html.LabelFor(m => Model.NewCreditCard.Lastname)</td>
+                        <td colspan="2">@Html.TextBoxFor(m => Model.NewCreditCard.Lastname)</td>
                     </tr>
                     <tr>
-                        <td colspan="2" align="center">@Html.ValidationMessageFor(m => Model.NewCreditCard.Lastname, null, new { @class = "text-danger" })</td>
+                        <td colspan="4" align="center">@Html.ValidationMessageFor(m => Model.NewCreditCard.Lastname, null, new { @class = "text-danger" })</td>
                     </tr>
                     <tr>
-                        <td align="right">@Html.LabelFor(m => Model.NewCreditCard.Firstname)</td>
-                        <td>@Html.TextBoxFor(m => Model.NewCreditCard.Firstname)</td>
+                        <td align="right" colspan="2">@Html.LabelFor(m => Model.NewCreditCard.Firstname)</td>
+                        <td colspan="2">@Html.TextBoxFor(m => Model.NewCreditCard.Firstname)</td>
                     </tr>
                     <tr>
-                        <td colspan="2" align="center">@Html.ValidationMessageFor(m => Model.NewCreditCard.Firstname, null, new { @class = "text-danger" })</td>
+                        <td colspan="4" align="center">@Html.ValidationMessageFor(m => Model.NewCreditCard.Firstname, null, new { @class = "text-danger" })</td>
                     </tr>
                     <tr>
-                        <td align="right">@Html.LabelFor(m => Model.NewCreditCard.Cvc)</td>
-                        <td>@Html.TextBoxFor(m => Model.NewCreditCard.Cvc)</td>
+                        <td align="right" colspan="2">@Html.LabelFor(m => Model.NewCreditCard.Cvc)</td>
+                        <td colspan="2">@Html.TextBoxFor(m => Model.NewCreditCard.Cvc)</td>
                     </tr>
                     <tr>
-                        <td colspan="2" align="center">@Html.ValidationMessageFor(m => Model.NewCreditCard.Cvc, null, new { @class = "text-danger" })</td>
+                        <td colspan="4" align="center">@Html.ValidationMessageFor(m => Model.NewCreditCard.Cvc, null, new { @class = "text-danger" })</td>
                     </tr>
                     <tr>
-                        <td align="right">@Html.LabelFor(m => Model.NewCreditCard.DateTime)</td>
-                        <td>@Html.TextBoxFor(m => Model.NewCreditCard.DateTime)</td>
+                        <td>
+                                @Html.LabelFor(m => Model.Month)
+                                </td>
+                                <td>
+                                @Html.TextBoxFor(m => Model.Month, new { style="width: 100px;"})
+                                </td>
+                                <td>
+                                @Html.LabelFor(m => Model.Year)
+                                </td>
+                                <td>
+                                @Html.TextBoxFor(m => Model.Year, new { style="width: 100px;"})
+                                </td>
                     </tr>
                     <tr>
-                        <td colspan="2" align="center">@Html.ValidationMessageFor(m => Model.NewCreditCard.DateTime, null, new { @class = "text-danger" })</td>
+                        <td colspan="4" align="center">@Html.ValidationMessageFor(m => Model.Month, null, new { @class = "text-danger" })</td>
                     </tr>
                     <tr>
-                        <td colspan="2" align="center">
+                        <td colspan="4" align="center">@Html.ValidationMessageFor(m => Model.Year, null, new { @class = "text-danger" })</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" align="center">
                             @Html.Label("Sauvegarder cette carte ?")
                             @Html.CheckBoxFor(m => m.SaveCard)
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2" align="center">
+                        <td colspan="4" align="center">
                             <input type="submit" name="submitButton" value="Valider" />
                         </td>
                     </tr>

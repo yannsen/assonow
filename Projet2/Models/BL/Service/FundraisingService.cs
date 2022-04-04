@@ -60,7 +60,7 @@ namespace Projet2.Models.BL.Service
 
         public Fundraising GetFundraisingByDonationId(int id)
         {
-            int fundraisingId = (int)_bddContext.Fundraising.Find(id).AssociationId;
+            int fundraisingId = (int)_bddContext.Donation.Find(id).FundraisingId;
             return GetFundraising(fundraisingId);
         }
 
