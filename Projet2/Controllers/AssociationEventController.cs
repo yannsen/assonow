@@ -81,7 +81,6 @@ namespace Projet2.Controllers
             viewModel.AssociationEvent.RemainingTickets = viewModel.AssociationEvent.TicketsTotalNumber;
             if (ModelState.IsValid)
             {
-
                 if (viewModel.File.Length > 0)
                 {
                     string uploads = Path.Combine(_webEnv.WebRootPath, "FileSystem/Pictures");
@@ -121,9 +120,7 @@ namespace Projet2.Controllers
             AssociationEventInfoViewmodel viewModel = new AssociationEventInfoViewmodel();
             viewModel.eventId = eventid;
             viewModel.SelectedAssociationId = id;
-
             return View(viewModel);
-
         }
 
 
