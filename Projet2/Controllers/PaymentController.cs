@@ -31,6 +31,11 @@ namespace Projet2.Controllers
         {
             PaymentCreditCardViewModel viewModel = new PaymentCreditCardViewModel();
             viewModel.SavedCreditCard = creditCardService.GetSavedCard(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+            if (viewModel.SavedCreditCard != null)
+            {
+                viewModel.Month = viewModel.SavedCreditCard.DateTime.Month.ToString();
+                viewModel.Year = viewModel.SavedCreditCard.DateTime.Year.ToString();
+            }
             viewModel.PaymentViewModel = paymentViewModel;
             return View(viewModel);
         }
@@ -41,7 +46,10 @@ namespace Projet2.Controllers
         {
             if(submitButton == "Changer de carte")
             {
+                ModelState.Clear();
                 viewModel.SavedCreditCard = null;
+                viewModel.Month = "";
+                viewModel.Year = "";
                 return View(viewModel);
             }
             if (ModelState.IsValid)
@@ -49,6 +57,7 @@ namespace Projet2.Controllers
                 if (viewModel.SaveCard == true)
                 {
                     viewModel.NewCreditCard.MemberId = Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                    viewModel.NewCreditCard.DateTime = new DateTime(Int32.Parse(viewModel.Year), Int32.Parse(viewModel.Month), 1);
                     creditCardService.SaveCard(viewModel.NewCreditCard);
                 }
                 return RedirectToAction("Validation", "Payment", viewModel.PaymentViewModel);

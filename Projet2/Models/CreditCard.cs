@@ -35,10 +35,6 @@ namespace Projet2.Models
         [RegularExpression(@"^[0-9]+$", ErrorMessage = "Le code CVC est composé de 3 chiffres")]
         public string Cvc { get; set; }
 
-        [Required(ErrorMessage = "La date est obligatoire")]
-        [Display(Name = "Date d'expiration :")]
-        [DataType(DataType.Date, ErrorMessage = "Le format pour la date est : jj/mm/aaaa")]
-        //[RegularExpression(@"^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$", ErrorMessage = "Le format est dd/mm/aaaa")]
         public DateTime DateTime { get; set; }
     }
 }
