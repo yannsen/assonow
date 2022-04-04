@@ -107,6 +107,12 @@ namespace Projet2.Models.BL.Service
             return GetAssociation(associationId);
         }
 
+        public Association GetAssociationByContributionId(int id)
+        {
+            int associationId = (int)_bddContext.Contribution.Find(id).AssociationId;
+            return GetAssociation(associationId);
+        }
+
         public List<Association> GetHighlightedAssociations()
         {
             return _bddContext.Association.Where(a => a.IsHighlighted).ToList();

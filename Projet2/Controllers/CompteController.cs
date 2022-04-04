@@ -70,7 +70,9 @@ namespace Projet2.Controllers
             ViewBag.Legend = "Modification du compte";
             if (ModelState.IsValid)
             {
+                viewModel.Member.Id = Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
                 memberService.ModifyMember(viewModel);
+                ViewBag.Modified = true;
                 return View(viewModel);
             }
             return View(viewModel);

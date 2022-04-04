@@ -33,6 +33,8 @@ namespace Projet2.Models.BL.Interface
 
         public int GetContribution(int id);
 
+        public Association GetAssociationByContributionId(int id);
+
         public List<Association> GetAssociationsToSearch(ListSearchAssociationViewModel viewModel);
     }
 }

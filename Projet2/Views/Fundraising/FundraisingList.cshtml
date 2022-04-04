@@ -48,6 +48,7 @@
                                         <h5 class="card-title">@Model.FundraisingsList[i].Name</h5>
                                         <p class="card-text">@Model.FundraisingsList[i].Description</p>
                                         <a href="~/Fundraising/Profile?id=@Model.FundraisingsList[i].Id" class="stretched-link"></a>
+                                        <p class="card-text text-primary">@Model.FundraisingsList[i].Association.Name</p>
                                     </div>
                                 </div>
                             }
