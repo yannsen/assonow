@@ -96,7 +96,7 @@ namespace Projet2.Controllers
                     }
                     using (Stream fileStream = new FileStream(filePath, FileMode.Create))
                     {
-                        viewModel.File.CopyToAsync(fileStream);
+                        viewModel.File.CopyTo(fileStream);
                     }
                 }
                 viewModel.AssociationEvent.Image = "/FileSystem/Pictures/" + fileName;
@@ -176,7 +176,7 @@ namespace Projet2.Controllers
                     }
                     using (Stream fileStream = new FileStream(filePath, FileMode.Create))
                     {
-                        viewModel.File.CopyToAsync(fileStream);
+                        viewModel.File.CopyTo(fileStream);
                     }
                 }
                 viewModel.AssociationEvent.Image = "/FileSystem/Pictures/" + fileName;

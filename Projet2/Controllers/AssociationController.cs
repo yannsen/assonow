@@ -67,7 +67,7 @@ namespace Projet2.Controllers
                     }
                     using (Stream fileStream = new FileStream(filePath, FileMode.Create))
                     {
-                        viewModel.File.CopyToAsync(fileStream);
+                        viewModel.File.CopyTo(fileStream);
                     }
                 }
                 viewModel.Association.Image = "/FileSystem/Pictures/" + fileName;
@@ -204,7 +204,7 @@ namespace Projet2.Controllers
                 }
                 using (Stream fileStream = new FileStream(filePath, FileMode.Create))
                 {
-                    viewModel.BankDetails.CopyToAsync(fileStream);
+                    viewModel.BankDetails.CopyTo(fileStream);
                 }
                 Document bankDetails = new Document();
                 bankDetails.AssociationId = viewModel.AssociationId;
@@ -230,7 +230,7 @@ namespace Projet2.Controllers
                 }
                 using (Stream fileStream = new FileStream(filePath, FileMode.Create))
                 {
-                    viewModel.RepresentativeID.CopyToAsync(fileStream);
+                    viewModel.RepresentativeID.CopyTo(fileStream);
                 }
                 Document representativeID = new Document();
                 representativeID.AssociationId = viewModel.AssociationId;
@@ -256,7 +256,7 @@ namespace Projet2.Controllers
                 }
                 using (Stream fileStream = new FileStream(filePath, FileMode.Create))
                 {
-                    viewModel.OfficialJournalPublication.CopyToAsync(fileStream);
+                    viewModel.OfficialJournalPublication.CopyTo(fileStream);
                 }
                 Document officialJournalPublication = new Document();
                 officialJournalPublication.AssociationId = viewModel.AssociationId;
