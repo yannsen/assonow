@@ -192,6 +192,10 @@ namespace Projet2.Controllers
                 fileName = withoutExtension + "_" + viewModel.AssociationId + extension;
                 string uploads = Path.Combine(_webEnv.WebRootPath, "FileSystem/Documents");
                 string filePath = Path.Combine(uploads, fileName);
+                if (System.IO.File.Exists(filePath))
+                {
+                    System.IO.File.Delete(filePath);
+                }
                 using (Stream fileStream = new FileStream(filePath, FileMode.Create))
                 {
                     viewModel.BankDetails.CopyToAsync(fileStream);
@@ -214,6 +218,10 @@ namespace Projet2.Controllers
                 fileName = withoutExtension + "_" + viewModel.AssociationId + extension;
                 string uploads = Path.Combine(_webEnv.WebRootPath, "FileSystem/Documents");
                 string filePath = Path.Combine(uploads, fileName);
+                if (System.IO.File.Exists(filePath))
+                {
+                    System.IO.File.Delete(filePath);
+                }
                 using (Stream fileStream = new FileStream(filePath, FileMode.Create))
                 {
                     viewModel.RepresentativeID.CopyToAsync(fileStream);
@@ -236,6 +244,10 @@ namespace Projet2.Controllers
                 fileName = withoutExtension + "_" + viewModel.AssociationId + extension;
                 string uploads = Path.Combine(_webEnv.WebRootPath, "FileSystem/Documents");
                 string filePath = Path.Combine(uploads, fileName);
+                if (System.IO.File.Exists(filePath))
+                {
+                    System.IO.File.Delete(filePath);
+                }
                 using (Stream fileStream = new FileStream(filePath, FileMode.Create))
                 {
                     viewModel.OfficialJournalPublication.CopyToAsync(fileStream);
