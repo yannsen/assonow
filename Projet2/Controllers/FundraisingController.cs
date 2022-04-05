@@ -43,10 +43,15 @@ namespace Projet2.Controllers
             ModelState.Remove("Fundraising.Id");
             if (ModelState.IsValid)
             {
+                string fileName = "";
                 if (viewModel.File.Length > 0)
                 {
+                    Random rnd = new Random();
+                    string withoutExtension = Path.GetFileNameWithoutExtension(viewModel.File.FileName);
+                    string extension = Path.GetExtension(viewModel.File.FileName);
+                    fileName = withoutExtension + "_" + rnd.Next(1, 100000).ToString() + extension;
                     string uploads = Path.Combine(_webEnv.WebRootPath, "FileSystem/Pictures");
-                    string filePath = Path.Combine(uploads, viewModel.File.FileName);
+                    string filePath = Path.Combine(uploads, fileName);
                     if (System.IO.File.Exists(filePath))
                     {
                         System.IO.File.Delete(filePath);
@@ -56,7 +61,7 @@ namespace Projet2.Controllers
                         viewModel.File.CopyToAsync(fileStream);
                     }
                 }
-                viewModel.Fundraising.Image = "/FileSystem/Pictures/" + viewModel.File.FileName;
+                viewModel.Fundraising.Image = "/FileSystem/Pictures/" + fileName;
                 viewModel.Fundraising.AssociationId = viewModel.AssociationId;
                 viewModel.Fundraising.StartingDate = DateTime.Now;
                 viewModel.Fundraising.IsActive = true;
@@ -91,9 +96,11 @@ namespace Projet2.Controllers
                     string fileName = "";
                     if (viewModel.File.Length > 0)
                     {
+
+                        Random rnd = new Random();
                         string withoutExtension = Path.GetFileNameWithoutExtension(viewModel.File.FileName);
                         string extension = Path.GetExtension(viewModel.File.FileName);
-                        fileName = withoutExtension + "_" + viewModel.AssociationId + "_" + viewModel.Fundraising.Id + extension;
+                        fileName = withoutExtension + "_" + rnd.Next(1, 100000).ToString() + extension;
                         string uploads = Path.Combine(_webEnv.WebRootPath, "FileSystem/Pictures");
                         string filePath = Path.Combine(uploads, fileName);
                         if (System.IO.File.Exists(filePath))

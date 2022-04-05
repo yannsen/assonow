@@ -52,11 +52,15 @@ namespace Projet2.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                string fileName = "";
                 if (viewModel.File.Length > 0)
                 {
+                    Random rnd = new Random();
+                    string withoutExtension = Path.GetFileNameWithoutExtension(viewModel.File.FileName);
+                    string extension = Path.GetExtension(viewModel.File.FileName);
+                    fileName = withoutExtension + "_" + rnd.Next(1, 100000).ToString() + extension;
                     string uploads = Path.Combine(_webEnv.WebRootPath, "FileSystem/Pictures");
-                    string filePath = Path.Combine(uploads, viewModel.File.FileName);
+                    string filePath = Path.Combine(uploads, fileName);
                     if (System.IO.File.Exists(filePath))
                     {
                         System.IO.File.Delete(filePath);
@@ -66,7 +70,7 @@ namespace Projet2.Controllers
                         viewModel.File.CopyToAsync(fileStream);
                     }
                 }
-                viewModel.Association.Image = "/FileSystem/Pictures/" + viewModel.File.FileName;
+                viewModel.Association.Image = "/FileSystem/Pictures/" + fileName;
                 associationService.CreateAssociation(viewModel, Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)));
                 memberService.NewRole(Int32.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)), "Representative");
                 HttpContext.SignOutAsync();
@@ -181,15 +185,17 @@ namespace Projet2.Controllers
         public IActionResult Documents(DocumentsViewModel viewModel)
         {
             string fileName = "";
+            Random rnd = new Random();
             if (viewModel.BankDetails != null)
             {
                 if (documentService.GetBankDetails(viewModel.AssociationId) != null)
                 {
                     documentService.DeleteDocument(documentService.GetBankDetails(viewModel.AssociationId).Id);
                 }
+
                 string withoutExtension = Path.GetFileNameWithoutExtension(viewModel.BankDetails.FileName);
                 string extension = Path.GetExtension(viewModel.BankDetails.FileName);
-                fileName = withoutExtension + "_" + viewModel.AssociationId + extension;
+                fileName = withoutExtension + "_" + rnd.Next(1, 100000).ToString() + extension;
                 string uploads = Path.Combine(_webEnv.WebRootPath, "FileSystem/Documents");
                 string filePath = Path.Combine(uploads, fileName);
                 if (System.IO.File.Exists(filePath))
@@ -215,7 +221,7 @@ namespace Projet2.Controllers
                 }
                 string withoutExtension = Path.GetFileNameWithoutExtension(viewModel.RepresentativeID.FileName);
                 string extension = Path.GetExtension(viewModel.RepresentativeID.FileName);
-                fileName = withoutExtension + "_" + viewModel.AssociationId + extension;
+                fileName = withoutExtension + "_" + rnd.Next(1, 100000).ToString() + extension;
                 string uploads = Path.Combine(_webEnv.WebRootPath, "FileSystem/Documents");
                 string filePath = Path.Combine(uploads, fileName);
                 if (System.IO.File.Exists(filePath))
@@ -241,7 +247,7 @@ namespace Projet2.Controllers
                 }
                 string withoutExtension = Path.GetFileNameWithoutExtension(viewModel.OfficialJournalPublication.FileName);
                 string extension = Path.GetExtension(viewModel.OfficialJournalPublication.FileName);
-                fileName = withoutExtension + "_" + viewModel.AssociationId + extension;
+                fileName = withoutExtension + "_" + rnd.Next(1, 100000).ToString() + extension;
                 string uploads = Path.Combine(_webEnv.WebRootPath, "FileSystem/Documents");
                 string filePath = Path.Combine(uploads, fileName);
                 if (System.IO.File.Exists(filePath))
