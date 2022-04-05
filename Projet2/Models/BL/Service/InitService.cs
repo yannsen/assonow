@@ -67,7 +67,7 @@ namespace Projet2.Models.BL.Service
             // LegalExperts
             _bddContext.Member.Add(new Member { Id = 5, Firstname = "Jean", Lastname = "Lexpert", Mail = "antoine.blk@gmail.com", Password = authentificationService.EncodeMD5("123456"), Pseudonym = "Exp1", AddressId = 5, Role = "LegalExpert" });
             // Representatives
-            _bddContext.Member.Add(new Member { Id = 6, Firstname = "Jade", Lastname = "Arnold", Mail = "arnold@gmail.com", Password = authentificationService.EncodeMD5("123456"), Pseudonym = "Repr1", AddressId = 6, Role = "Representative" });
+            _bddContext.Member.Add(new Member { Id = 6, Firstname = "Jade", Lastname = "Arnold", Mail = "arnold@gmail.com", Password = authentificationService.EncodeMD5("123456"), Pseudonym = "assoeverest", AddressId = 6, Role = "Representative" });
             _bddContext.Member.Add(new Member { Id = 7, Firstname = "Louise", Lastname = "Farina", Mail = "farina@gmail.com", Password = authentificationService.EncodeMD5("123456"), Pseudonym = "Repr2", AddressId = 7, Role = "Representative" });
             _bddContext.Member.Add(new Member { Id = 8, Firstname = "Alice", Lastname = "Lemelin", Mail = "femelin@gmail.com", Password = authentificationService.EncodeMD5("123456"), Pseudonym = "Repr3", AddressId = 8, Role = "Representative" });
             _bddContext.Member.Add(new Member { Id = 9, Firstname = "Jean", Lastname = "Beverly", Mail = "feverly@yahoo.fr", Password = authentificationService.EncodeMD5("123456"), Pseudonym = "Repr4", AddressId = 9, Role = "Representative" });
@@ -136,7 +136,7 @@ namespace Projet2.Models.BL.Service
                     AddressId = 39,
                     Name = "Vaincre la Mucoviscidose",
                     IsPublished = true,
-                    Description = "Servir de trait d’union entre les malades atteints de mucoviscidose et de les aider, eux et leurs familles, à résoudre les divers problèmes et difficultés matériels et moraux causés par cette maladie, ainsi que d’assurer la défense des droits des malades et de leurs familles; Contribuer à la diffusion des informations concernant le dépistage, le diagnostic et les méthodes modernes de traitement de la maladie.",
+                    Description = "Servir de trait d’union entre les malades atteints de mucoviscidose et de les aider, eux et leurs familles, à résoudre les divers problèmes et difficultés matériels et moraux causés par cette maladie, ainsi que d’assurer la défense des droits des malades et de leurs familles, contribuer à la diffusion des informations concernant le dépistage, le diagnostic et les méthodes modernes de traitement de la maladie.",
                     Image = "/FileSystem/Pictures/muco.jpg",
                     AssociationRepresentativeId = 7,
                     Mail = "muco@gmail.com"

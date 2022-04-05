@@ -65,6 +65,14 @@
                             <span class="ms-1 d-none d-sm-inline">Fournir vos documents</span>
                         </a>
                     </li>
+                    @if (@ViewBag.Association.IsPublished)
+                    {
+                        <li class="nav-item list-group-item bg-light w-100">
+                            <a href="~/Association/Inscrire" class="nav-link align-middle px-0 border-0">
+                                <span class="ms-1 d-none d-sm-inline">Inscrire une association</span>
+                            </a>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
