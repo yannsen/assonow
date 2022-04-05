@@ -98,7 +98,6 @@ namespace Projet2.Controllers
             ListSearchAssociationViewModel viewModel = new ListSearchAssociationViewModel();
             viewModel.AssociationsList = associationService.GetAllAssociations();
             return View(viewModel);
-
         }
 
         [HttpPost]
@@ -192,7 +191,6 @@ namespace Projet2.Controllers
                 {
                     documentService.DeleteDocument(documentService.GetBankDetails(viewModel.AssociationId).Id);
                 }
-
                 string withoutExtension = Path.GetFileNameWithoutExtension(viewModel.BankDetails.FileName);
                 string extension = Path.GetExtension(viewModel.BankDetails.FileName);
                 fileName = withoutExtension + "_" + rnd.Next(1, 100000).ToString() + extension;
