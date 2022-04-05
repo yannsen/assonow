@@ -81,10 +81,15 @@ namespace Projet2.Controllers
             viewModel.AssociationEvent.RemainingTickets = viewModel.AssociationEvent.TicketsTotalNumber;
             if (ModelState.IsValid)
             {
+                string fileName = "";
                 if (viewModel.File.Length > 0)
                 {
+                    Random rnd = new Random();
+                    string withoutExtension = Path.GetFileNameWithoutExtension(viewModel.File.FileName);
+                    string extension = Path.GetExtension(viewModel.File.FileName);
+                    fileName = withoutExtension + "_" + rnd.Next(1, 100000).ToString() + extension;
                     string uploads = Path.Combine(_webEnv.WebRootPath, "FileSystem/Pictures");
-                    string filePath = Path.Combine(uploads, viewModel.File.FileName);
+                    string filePath = Path.Combine(uploads, fileName);
                     if (System.IO.File.Exists(filePath))
                     {
                         System.IO.File.Delete(filePath);
@@ -94,7 +99,7 @@ namespace Projet2.Controllers
                         viewModel.File.CopyToAsync(fileStream);
                     }
                 }
-                viewModel.AssociationEvent.Image = "/FileSystem/Pictures/" + viewModel.File.FileName;
+                viewModel.AssociationEvent.Image = "/FileSystem/Pictures/" + fileName;
                 associationEventService.CreateAssociationEvent(viewModel);
                 return RedirectToAction("EventList", "AssociationEvent",new {id= viewModel.SelectedAssociationId});
             }
@@ -156,11 +161,15 @@ namespace Projet2.Controllers
         {  
             if (ModelState.IsValid)
             {
-
+                string fileName = "";
                 if (viewModel.File.Length > 0)
                 {
+                    Random rnd = new Random();
+                    string withoutExtension = Path.GetFileNameWithoutExtension(viewModel.File.FileName);
+                    string extension = Path.GetExtension(viewModel.File.FileName);
+                    fileName = withoutExtension + "_" + rnd.Next(1, 100000).ToString() + extension;
                     string uploads = Path.Combine(_webEnv.WebRootPath, "FileSystem/Pictures");
-                    string filePath = Path.Combine(uploads, viewModel.File.FileName);
+                    string filePath = Path.Combine(uploads, fileName);
                     if (System.IO.File.Exists(filePath))
                     {
                         System.IO.File.Delete(filePath);
@@ -170,7 +179,7 @@ namespace Projet2.Controllers
                         viewModel.File.CopyToAsync(fileStream);
                     }
                 }
-                viewModel.AssociationEvent.Image = "/FileSystem/Pictures/" + viewModel.File.FileName;
+                viewModel.AssociationEvent.Image = "/FileSystem/Pictures/" + fileName;
 
                 associationEventService.ModifyAssociationEvent(viewModel);
                 return RedirectToAction("EventList", "AssociationEvent", new { Id = viewModel.SelectedAssociationId });
